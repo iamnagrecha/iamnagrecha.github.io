@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Abhishek Nagrecha</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+
+
+</head>
+<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+
+
+
+	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
+
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+
+			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+				<body onload="incrementCount(10)">
+					<div class="main_container" id="id_main_container">
+					  <div class="container_inner" id="display_div_id">
+					  </div>
+					</div>
+				  </body>
+				</html>
+				
+				<script>
+				  var counter_list = [1,0,0];
+				  var str_counter_0 = counter_list[0];
+				  var str_counter_1 = counter_list[1];
+				  var str_counter_2 = counter_list[2];
+				  var display_str = "";
+				  var display_div = document.getElementById("display_div_id");
+				
+				  function incrementCount(current_count){
+					setInterval(function(){
+					  // clear count
+					  while (display_div.hasChildNodes()) {
+						  display_div.removeChild(display_div.lastChild);
+					  }
+					  str_counter_0++;
+					  if (str_counter_0 > 99999) {
+						str_counter_0 = 0; // reset count
+						str_counter_1++;    // increase next count
+					  }
+					  if(str_counter_1>99999){
+						str_counter_2++;
+					  }
+					  display_str = str_counter_2.toString() + str_counter_1.toString() + str_counter_0.toString();
+					  for (var i = 0; i < display_str.length; i++) {
+						var new_span = document.createElement('span');
+						new_span.className = 'num_tiles';
+						new_span.innerText = display_str[i];
+						display_div.appendChild(new_span);
+					  }
+					},1000);
+				  }
+				</script>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-portfolio">Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-resume">Curriculum Vitae</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-skills">Skills</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-blog">Blogs</a></li>
+					<li class="nav-item"><a class="nav-link" href="#section-contact">Connect</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+
+
+	<section class="site-hero" style="background-image: url(images/hello3.jpg);" id="section-home" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row intro-text align-items-center justify-content-center">
+				<div class="col-md-10 text-center pt-5">
+
+					<h1 class="site-heading site-animate">I'm <strong class="d-block">Abhishek Nagrecha</strong></h1>
+					<div class="page-scroll">
+                        <a href="#section-contact" class="btn btn-secondary px-2 py-0.5 btn-sm">Let's Chat</a>
+						<a href="#section-portfolio" class="btn btn-primary px-2 py-0.5 btn-sm smoothscroll">learn more</a>
+                    </div>
+					<strong class="d-block text-white text-uppercase letter-spacing"></strong>
+					<section class="animation-box">					  
+					  
+
+				</div>
+			</div>
+		</div>
+	</section> <!-- section -->
+
+
+	<section class="site-section" id="section-portfolio">
+		<div class="container">
+			<div class="row">
+				<div class="section-heading text-center col-md-12">
+					<h2> <strong>Recent Projects</strong></h2>				</div>
+			</div>
+			<div class="filters">
+				<ul>
+					<li class="active" data-filter="*">All</li>
+					<li data-filter=".da">Data Science</li>
+					<li data-filter=".ml">Machine Learning</li>
+					<li data-filter=".cv">Computer Vision</li>
+					<li data-filter=".nl">NLP</li>
+					<li data-filter=".nw">Networks</li>
+					<li data-filter=".ja">Java</li>
+
+					
+
+				</ul>
+			</div>
+
+			<div class="filters-content">
+				<div class="row grid">
+					<div class="single-portfolio col-sm-4 all nl">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p1.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							                               
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" class="button">Text Summarization of Clinical Discharge Summaries</h4></a>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/mike-petrucci-c9FQyqIECds-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p4.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div> 
+						<div class="p-inner">
+								<a href="https://github.com/AbhishekNagrecha/Historical-Sales" class="button">Walmart Historical Sales Analysis</h4>
+							</a>
+
+						</div>
+					</div>
+
+					<div class="single-portfolio col-sm-4 all ml">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p5.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" class="button">Machine Learning Models for Bank Telemarketing</h4>
+							</a>
+						</div>
+					</div>
+					
+					<div class="single-portfolio col-sm-4 all ml">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/robina-weermeijer-z8_-Fmfz06c-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p4.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div> 
+						<div class="p-inner">
+								<a href="https://github.com/AbhishekNagrecha/Predicting-Heart-disease-using-Machine-Learning-Algorithms" class="button">Predicting Heart disease using Machine Learning Algorithms</h4>
+							</a>
+
+						</div>
+					</div>
+
+
+					<div class="single-portfolio col-sm-4 all cv">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p2.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>                                 
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" class="button">Early Identification of Demantia Using Deep Learning Techniques</h4></a>
+						</div>
+					</div>
+
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" class="button">Tableau Dashboards for Statistical Data Analysis of IMDB Movies </h4>
+							</a>
+						</div>
+					</div>
+
+					<div class="single-portfolio col-sm-4 all nw">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p5.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" class="button">VANET Simulation Using Veins</h4>
+							</a>
+						</div>
+					</div>
+					
+					<div class="single-portfolio col-sm-4 all nw">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p5.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" class="button">SDN and Cloud Computing</h4>
+							</a>
+						</div>
+					</div>
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/ev-70EJQdpTry4-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p3.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							
+	
+						</div>
+						<div class="p-inner">
+								<a href="https://github.com/AbhishekNagrecha/Analysis-of-Crimes-in-Canada-Over-14-years" class="button">Analysis of Carnages in Canada
+									</h4></a>
+							</div>                                         
+					</div>
+
+					<div class="single-portfolio col-sm-4 all ja">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/matthew-feeney-Nwkh-n6l25w-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p4.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div> 
+						<div class="p-inner">
+								<a href="https://github.com/AbhishekNagrecha/Course-Registration-System" class="button">Student Course Registration System</h4>
+							</a>
+
+						</div>                                         
+					</div>  
+					
+				
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/steve-harvey-r4NMjZl19DY-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Exploratory-Analysis-of-Used-Automobile-Dataset" class="button">Exploratory Data Analysis of Used Automobiles</h4>
+							</a>
+						</div>
+					</div>
+				   
+<!-- 
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/isaac-smith-6EnTPvPPL6I-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Data-Visualization-with-Pandas-And-Seaborn" class="button">Data Visualization with Pandas and Seaborn</h4>
+							</a>
+						</div>
+					</div> -->
+
+				
+
+					<div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/william-iven-jrh5lAq-mIs-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/Excel-Data-Analysis-Using-Python" class="button">Performing Excel Data Analysis Using Python</h4>
+							</a>
+						</div>
+					</div>
+					
+					<!-- <div class="single-portfolio col-sm-4 all da">
+						<div class="relative">
+							<div class="thumb">
+								<div class="overlay overlay-bg"></div>
+								<img class="image img-fluid" src="images/imattsmart-8vTKvTdenyc-unsplash.jpg" alt="">
+							</div>
+							<a href="images/p6.jpg" class="img-pop-up">  
+								<div class="middle">
+									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
+								</div>
+							</a>                                
+						</div>
+						<div class="p-inner">
+							<a href="https://github.com/AbhishekNagrecha/data-collection-project-to-perform-demographic-level-data-analyses/tree/master" class="button">Demographic Level Data Analyses-A tool to combat Covid-19 Pandemic</h4>
+							</a>
+						</div>
+					</div>
+				 -->
+			
+				
+			
+				
+				</div>
+			</div>
+		</div>
+	</section> 
+
+
+	
+	<section class="site-section " id="section-resume">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2><strong>Curriculum Vitae</strong></h2>
+					
+						<p>
+
+						<!-- <a href="Resume_Abhishek_Nagrecha.pdf" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a> -->
+						<!-- <a href="#section-contact" class="btn btn-primary px-4 py-2 btn-sm smoothscroll">Hire Me</a> -->
+
+                        </p>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2 class="mb-5">Education</h2>
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> August 2019 - Present</span>
+						<h3>Masters in Computer Science (MSc)</h3>
+						<span class="school">Lakehead University, Thunder Bay, ON, Canada</span>
+						<p>GPA: 84.5/100</p>
+					</div>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> August 2014 - June 2018.</span>
+						<h3>Computer Engineering (BEng)</h3>
+						<span class="school">Gujarat Technological University, India </span>
+						<p>CGPA: 7.77/10</p>
+
+					</div>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2012 - july 2014</span>
+						<h3>Higher Secondary Certificate</h3>
+						<span class="school">Parth School of Science And Competition, Vadodara, Gujarat, India</span>
+						<p>Percentile: 94.5/100</p>
+
+					</div>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2005 - February 2012.</span>
+						<h3>Junior High</h3>
+						<span class="school">Delhi Public School,Vadodara, Gujarat, India</span>
+						<p>CGPA: 9.8/10</p>
+
+
+					</div>
+
+				</div>
+				<div class="col-md-6">
+
+
+					<h2 class="mb-5">Work Experience and Certification </p></h2>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> July 2018 - March 2019</span>
+						<h3>Data Analyst Intern </h3>
+						<span class="school">Codium Techlabs Private Limited, Mumbai, India</a> </span>
+						<p> <a href = "assets/Abhishek Nagrecha Experience Letter.pdf" >Experience Letter </a></p>
+
+					</div>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> January 2021 - January 2024</span>
+						<h3>AWS Certified Cloud Practitioner </h3>
+						<span class="school">Amazon Web Services (AWS)</span>
+						<p> <a href = "assets/AWS Certified Cloud Practitioner certificate.pdf" >View Certificate </a></p>
+
+					<!-- <div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> July 2019 - December 2019</span>
+						<h3>Complete Python Developer in 2020</h3>
+						<span class="school">Udemy</span>
+						<p> <a href = "certificate python.pdf" >View Certificate </a></p> -->
+
+
+						
+					</div>
+					
+
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> October 2020- Present</span>
+						<h3>Acclaim Badges</h3>
+						<span class="school">6 IBM Developer Skills Network Badges & 1 AWS CCP Badge.</span>
+						<p> <a href = "https://www.youracclaim.com/users/abhishek-nagrecha" >View Dashboard  </a></p>
+					
+
+						
+					</div>
+
+					<div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span>November 2020</span>
+						<h3>SQL for Data Science</h3>
+						<span class="school">Non-Credit Course Authorized by University of California, Davis</span>
+						<p> <a href = "assets/Coursera BFPDVQECJBBU.pdf" >View Certificate </a></p>
+
+
+					</div>
+
+					<!-- <p>Top Skills Covered-
+							Data Visualization, Data Analytics, Data Analysis</p> -->
+
+					<!-- <div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> June 2020 - October 2020</span>
+						<h3>Become a Data Analyst (Learning Path) </h3>
+						<span class="school">Linkedin Learning</span>
+						<p> <a href = "assets/CertificateOfCompletion_Become a Data Analyst.pdf" >View Certificate </a></p>
+
+					<!-- <div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> July 2019 - December 2019</span>
+						<h3>Complete Python Developer in 2020</h3>
+						<span class="school">Udemy</span>
+						<p> <a href = "certificate python.pdf" >View Certificate </a></p> -->
+
+
+						
+					</div> 
+
+					<!-- <div class="resume-item mb-4">
+						<span class="date"><span class="icon-calendar"></span> March 2020</span>
+						<h3>Cert Prep: PMI Agile Certified Practitioner (PMI-ACP)®</h3>
+						<span class="school">Linkedin Learning</span>
+						<p> <a href = "CertificateOfCompletion_Cert Prep Pmi Agile Certified Practitioner Pmi Acp (1).pdf" >View Certificate </a></p>
+					</div> -->
+
+
+				</div>
+			</div>
+		</div>
+	</section> <!-- .section -->
+	<section class="site-section section-counters text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<p class="counter start" data-to="1" data-speed="2000">1</p>
+					<h4>Years Experience</h4>
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<p class="counter start" data-to="20" data-speed="2000">20</p>       
+					<h4>Projects Completed</h4>      
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<p class="counter start" data-to="50" data-speed="2000">50</p>       
+					<h4>Coursework Completed</h4>
+				</div>
+			</div>
+		</div>
+	</section><!-- /.section-counters -->
+	
+
+	<section class="site-section" id="section-about">
+		<div class="container">
+			<div class="row mb-5 align-items-center">
+				<div class="col-lg-7 pr-lg-5 mb-5 mb-lg-0">
+					
+					<img src="images/WhatsApp Image 2020-09-25 at 12.22.15 AM.jpeg" alt="Image placeholder" class="img-fluid">
+				</div>
+				<div class="col-lg-5 pl-lg-5">
+					<div class="section-heading">
+						<h2>About <strong>Me</strong></h2>
+					</div>
+					<p class="lead">Ambitious, Focused, and Hardworking Computer Science Graduate student at Lakehead University, Ontario, Canada,
+						 with strong work ethics, eager to contribute developed knowledge
+						in Data Science and Machine Learning roles. Skilled in Python, R, SQL and Business Intelligence tools. Adept at managing
+						concurrent objectives to promote efficiency and influence positive outcomes. <br>
+						</p>
+					<p class="mb-5  "> 
+						
+						
+						In the last six years that I studied computation and computer programming my interest
+						 in the field has only increased manifold. I have always taken great joy in writing and executing programmes and take pride in my
+						 sense of competition regarding the same.My focus right now is to learn the most I can in terms of different technologies and specialize later! 
+						<br><br> When I'm not busy with school or work, I like to take long walks, hike, read, and work on personal projects.</p>
+						<blockquote cite="http://www.worldwildlife.org/who/index.html">
+							"It is not enough to do your best;
+							you must know what to do,
+							and then do your best"<br>
+							--W. Edwards Deming
+							</blockquote>
+							
+										
+
+					<p>
+						<!-- <a href="#section-contact" class="btn btn-primary px-4 py-2 btn-sm smoothscroll">Hire Me</a> -->
+						<a href="assets/Resume.pdf" class="btn btn-secondary px-4 py-2 btn-sm">Download My CV</a>
+					</p> 
+				</div>
+			</div>
+			
+
+
+		</div>
+	</section>
+	
+
+	<!-- <section class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2>Professor's <strong>Testimonial</strong></h2>
+					</div>
+				</div> 
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="images/teacher.png" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;He was a student in my classes on 'Digital Electronics','Artificial Intelligence' and 'Computer Networks'
+								and this allowed me to witness his eagerness to learn new concepts while also strengthning his foundations.
+								He has been a hard-working student who is keen to learn and build his skill-set.&rdquo;</p>
+							<cite class="block-47-quote-author">&mdash; Nisha Velani, Assistant Professor <a href="https://www.svitvasad.ac.in/">SVIT.</a></cite>
+						</blockquote>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="images/teacher.png" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<p>&ldquo;Abhishek's personal strenghts are as impressive as his intellectual accomplishments.He has actively
+								taken part in sports and has shown keen interest in badminton.He has an open mind and is receptive to New
+								ideas and is willing to put in extra efforts to himself on the latest developments in his field.&rdquo;</p>
+							<cite class="block-47-quote-author">&mdash; Tejas Bhatt, Assistant Professor <a href="https://www.svitvasad.ac.in/">SVIT.</a></cite>
+						</blockquote>
+					</div>
+				</div>
+				
+				</div>
+				<div class="col-md-6">
+				
+				</div>
+			</div>
+		</div>
+	</section> -->
+<!-- 
+	<section class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2>Relevant <strong>Academic Coursework</strong></h2>
+					</div>
+				</div> 
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="images/bookk.jpg" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<ul>
+                            <li>Machine Learning</li>
+							<li>Artificial Intelligence</li>
+							<li>Big Data Analytics</li>	
+							<li>Data Mining And Business Intelligence </li>	
+							<li>Data structures</li>	
+							<li>Database Management Systems </li>	
+							<li>Software Engineering </li>		
+							<li>Web Technology</li>	
+							</ul>
+							<cite class="block-47-quote-author"> <a href="https://www.svitvasad.ac.in/">Undergraduate Courses at SVIT</a></cite>
+						</blockquote>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="block-47 d-flex mb-5">
+						<div class="block-47-image">
+							<img src="images/bookk.jpg" alt="Image placeholder" class="img-fluid">
+						</div>
+						<blockquote class="block-47-quote">
+							<ul>
+			
+								<li>Topics in Pattern Recognition</li>
+								<li>Computer Security</li>	
+								<li>Topics in Smart Health Informatics </li>	
+								<li>Ethical Issues in Computer Science</li>	
+								<li>Comuter Networks </li>	
+								<li>Graduate Seminar </li>	
+								<li>Wireless Communications </li>	
+								<li>Research Methodology</li>	
+	
+								</ul>
+							<cite class="block-47-quote-author"> <a href="https://www.lakeheadu.ca/">Graduate Courses at Lakehead University</a></cite>
+						</blockquote>
+					</div>
+				</div> -->
+
+				
+				<!-- </div>
+				<div class="col-md-6">
+				
+				</div>
+			</div>
+		</div>
+	</section>
+	 -->
+	
+	
+	<section class="site-section" id="section-skills">
+		<div class="container">
+
+			<div class="row mb-4">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2><strong>Skills</strong></h2>
+
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				
+
+				<div class="col-md-2.5 col-lg-3 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-laptop2"></span>
+						</span>
+						<h3 class="mb-4">Machine Learning</h3>
+						<p>TensorFlow, PyTorch, Keras, NumPy, NLTK, OpenCV,
+							Predictive and Clustering
+							 Models, Explanatory Analysis
+							 
+							</p>
+					</div>
+				</div>
+				<div class="col-md-2.5 col-lg-3 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-code"></span>
+						</span>
+						<h3 class="mb-4">Languages | IDE</h3>
+						<p>  Python, R, C++, XML, C#, Java, JSON, PyCharm, Repl.it, Spyder, Eclipse,
+							 Code::Blocks, Sublime Text</p>
+					</div>
+				</div>
+			
+				<div class="col-md-2.5 col-lg-3 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-database2"></span>
+						</span>
+						<h3 class="mb-4">Database | Web Development</h3>
+						<p> SQL, MongoDB,
+							PostgreSQL, MS Access, Redshift, HTML5, CSS3, Javascript, PHP. </p>
+					</div>
+				</div>
+
+				<div class="col-md-2.5 col-lg-3 text-center mb-5">
+					<div class="site-service-item site-animate" data-animate-effect="fadeIn">
+						<span class="icon">
+							<span class="icon-folder-open"></span>
+						</span>
+						<h3 class="mb-4">Tools And Software</h3>
+						<p> AWS, Tableau, Power BI, GitHub, Gurobi Optimizer, MS Visio, Office 365, Visual Studio Code,Android Studio						   .</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+<!-- 
+	<section class="site-section" id="section-skills">
+		<div class="container">
+
+			<div class="row mb-4">
+				<div class="col-md-12">
+					<div class="section-heading text-center">
+						<h2><strong>Languages</strong></h2>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+	<div class="container">
+		<div class="progress">
+		  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+			80%  Python
+		  </div>
+		</div>
+		<div class="progress">
+		  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+			70% Java
+		  </div>
+		</div>
+		<div class="progress">
+		  <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+			75% C++
+		  </div>
+		</div>
+		<div class="progress">
+		  <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+			70% R
+		  </div>
+	  </div> -->
+
+
+
+	
+
+	<section class="site-section" id="section-blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2>Blogs on <strong><a href = "https://medium.com/@abhisheknagrecha">Medium</a></strong></h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-sm-8 col-lg-3 mb-4">
+					<div class="blog-entry">
+						<img src="images/caleb-white-NLE9RCsxX3c-unsplash.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text ">
+							<h3 style="text-align:center"> <a href="https://iamnagrecha.medium.com/unleashing-the-power-of-github-841a48548407">Unleashing The Power of GitHub</a></h3>
+							<!-- <p class="mb-4">Since the last few months, all of us have been handling a very unusual and challenging time.
+								 I’m rather sure none of us will ever forget the eleventh day of February, when we got to know the name of 
+								 the virus that has taken over the world, COVID-19. This virus has remained on people’s emotional radar,
+								  so there’s a need to take essential steps in a stipulated period.</p> -->
+								  <div class="meta" >
+									<!-- <span class="icon-calendar"></span> Feb 21, 2021</a> -->
+								</div>
+
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-8 col-lg-3 mb-4">
+					<div class="blog-entry">
+						<img src="images/susan-yin-2JIvboGLeho-unsplash.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3 style="text-align:center"> <a href="https://medium.com/@abhishek.nagrecha.an/ethics-and-online-education-94140a7d9481">Ethics and Online Education</a></h3>
+							<!-- <p>There could not be a more appropriate topic to dwell upon then online education during the COVID-19 pandemic worldwide.
+								 It’s not that we are completely unaware of this technology but, it’s just the current period of crisis which has made it
+								  highly important and relevant, with global EdTech investments reaching US$18.66 billion in 2019 and the overall market
+								   for online education projected to reach $350 Billion by 2025</p> -->
+								   <div class="meta">
+									<!-- <span class="icon-calendar"></span> May 14, 2020</a> -->
+								</div>
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-8 col-lg-3 mb-4">
+					<div class="blog-entry">
+						<img src="images/morning-brew-MwPkry9H4gI-unsplash.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3 style="text-align:center"> <a href="https://medium.com/@abhishek.nagrecha.an/covid-19-ethical-design-of-contact-tracing-app-c10f694a557a">Ethical Design of Contact Tracing App</a></h3>
+							<!-- <p class="mb-4">Since the last few months, all of us have been handling a very unusual and challenging time.
+								 I’m rather sure none of us will ever forget the eleventh day of February, when we got to know the name of 
+								 the virus that has taken over the world, COVID-19. This virus has remained on people’s emotional radar,
+								  so there’s a need to take essential steps in a stipulated period.</p> -->
+								  <div class="meta">
+									<!-- <span class="icon-calendar"></span> May 17, 2020</a> -->
+								</div>
+
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-8 col-lg-3 mb-4">
+					<div class="blog-entry">
+						<img src="images/kevin-horvat-Pyjp2zmxuLk-unsplash.jpg" alt="Image placeholder" class="img-fluid"></a>
+						<div class="blog-entry-text">
+							<h3 style="text-align:center"> <a href="https://medium.com/@abhishek.nagrecha.an/open-source-vs-proprietary-software-fc98bf2a5176">Is It Worth Going Open Source</a></h3>
+
+							<!-- <p class="mb-4">Over the years, companies like Microsoft, Oracle, SAP, and several others have extracted 
+								monopoly-like software rents that the top developers of that time did not believe were world-class. 
+								Thus, beginning with the most commonly used software components — operating systems and databases
+								 — progressive developers collaborated, often asynchronously, with the author of large pieces of 
+								 software. </p> -->
+								 <div class="meta">
+									<!-- <span class="icon-calendar"></span> Sep 17, 2020</a> -->
+								</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+
+	<section class="site-section" id="section-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="section-heading text-center">
+						<h2>Connect <strong>with Me </strong></h2>
+					</div>
+				</div>
+				
+
+
+				<div class="col-md-7 mb-5 mb-md-0">
+					<form action="" class="site-form">
+						<h3 class="mb-5">Get In Touch</h3>
+						<div class="form-group">
+							<input type="text" class="form-control px-2 py-3" placeholder="Full Name">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control px-2 py-3" placeholder="Email ID">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control px-2 py-3" placeholder="Phone">
+						</div>
+						<div class="form-group mb-5">
+							<textarea class="form-control px-2 py-3"cols="5" rows="3" placeholder="Write a Message"></textarea>
+						</div>
+						
+						<div class="form-group">
+							<input type="submit" class="btn btn-secondary px-4 py-2 btn-sm  px-3 py-2" value="Message">
+						</div>
+					</form>
+					
+				</div>
+				
+				<div class="col-md-5 pl-md-5">
+					<h3 class="mb-5">My Contact Details</h3>
+					<ul class="site-contact-details">
+						<li>
+							<span class="text-uppercase">Email</span>
+							abhishek.nagrecha.an@gmail.com
+						</li>
+						<li>
+							<span class="text-uppercase">Phone</span>
+							+1 (807) 357-8383
+						</li>
+						<li>
+							<span class="text-uppercase">Address</span>
+							Ottawa, ON <br>
+							96, Cohen Avenue  <br>
+							K2L4G4
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<footer class="site-footer">
+		<div class="container">
+
+			<div class="row mb-5">
+				<p class="col-12 text-center">
+				<!-- Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Abhishek Nagrecha</a> -->
+			</p>
+			</div>
+			
+			<div class="row mb-5">
+				<div class="col-md-12 text-center">
+					<div class="row">
+						<div class="col-md-12 mb-5">
+							<div class="section-heading text-center">
+								<h2> <strong></strong></h2>
+						</div>
+		
+					<p>
+						<a href="https://www.linkedin.com/in/iamnagrecha/" class="social-item"><span class="icon-linkedin2"></span></a>
+						<a href="https://github.com/AbhishekNagrecha" class="social-item"><span class="icon-github2"></span></a>
+						<a href="https://twitter.com/iamnagrecha" class="social-item"><span class="icon-twitter"></span></a>
+						<!-- <a href="https://www.facebook.com/" class="social-item"><span class="icon-facebook2"></span></a> -->
+						<!-- <a href="https://www.instagram.com/?hl=en" class="social-item"><span class="icon-instagram2"></span></a> -->
+						<a href="https://join.skype.com/rV2WN9CRvOhr" class="social-item"><span class="icon-skype2"></span></a>
+						<a href="https://mail.google.com/mail/u/4/#inbox" class="social-item"</a><span class="icon-mail"></span></a>
+						<!-- <a href="https://dev.to/abhisheknagrecha">
+							<img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Abhishek Nagrecha's DEV Profile" height="30" width="30">
+						  </a> -->
+
+
+
+					</p>
+				</div>
+			</div>
+			<footer class="site-footer">
+				<div class="container">
+		
+					<div class="row mb-5">
+						<p class="col-12 text-center">
+						Copyright &copy; <script>document.write(new Date().getFullYear());</script> All Rights Reserved | Abhishek Nagrecha</a>
+					</p>
+
+					</div>
+						
+					
+		</div>
+	</footer>
+
+
+
+
+	<script src="js/vendor/jquery.min.js"></script>
+	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/vendor/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+
+	<script src="js/vendor/jquery.easing.1.3.js"></script>
+
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/script.js"></script>
+
+
+	<!-- Google Map -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    	<script src="js/google-map.js"></script> -->
+
+    </body>
+    </html>
