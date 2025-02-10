@@ -829,53 +829,90 @@
     <div class="container">
 
         <div class="row mb-4">
-            <div class="col-md-12">
-                <div class="section-heading text-center">
+            <div class="col-md-12 text-center">
+                <div class="section-heading">
                     <h2 class="text-dark"><strong>What Others Say</strong></h2>
-                    <p class="lead text-muted">Here's what colleagues and clients have to say about working with me.</p>
+                    <p class="lead text-muted">See the feedback from those who have worked closely with me on various projects.</p>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <!-- Testimonial 1 -->
-            <div class="col-md-4 mb-5">
-                <div class="testimonial-item text-center">
-                    <img src="path_to_your_image_1.jpg" alt="Testimonial 1" class="img-fluid rounded-circle mb-4" style="width: 100px; height: 100px;">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-2 text-muted">"Working with [Your Name] has been an absolute pleasure. Their deep knowledge of machine learning and excellent communication skills have made a significant impact on our projects."</p>
-                        <footer class="blockquote-footer text-dark font-weight-bold">[Colleague Name], [Position]</footer>
-                    </blockquote>
-                    <img src="path_to_your_linkedin_screenshot_1.jpg" alt="LinkedIn Recommendation 1" class="img-fluid mt-3 rounded">
+        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+                <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+                <!-- Add more indicators as needed -->
+            </ol>
+
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                <!-- Testimonial 1 -->
+                <div class="carousel-item active">
+                    <div class="testimonial-box p-4 shadow-sm bg-light rounded">
+                        <blockquote class="text-muted font-italic">
+                            "An outstanding problem solver with exceptional technical skills, [Your Name] has helped us achieve remarkable results."
+                        </blockquote>
+                        <footer class="blockquote-footer text-dark font-weight-bold">
+                            [Colleague Name], [Position]
+                        </footer>
+                        <div class="mt-3">
+                            <img src="path_to_your_linkedin_screenshot_1.jpg" alt="LinkedIn Recommendation 1" class="img-fluid rounded">
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Testimonial 2 -->
+                <div class="carousel-item">
+                    <div class="testimonial-box p-4 shadow-sm bg-light rounded">
+                        <blockquote class="text-muted font-italic">
+                            "[Your Name] brings a rare combination of technical expertise and excellent communication skills. Highly recommended!"
+                        </blockquote>
+                        <footer class="blockquote-footer text-dark font-weight-bold">
+                            [Client Name], [Position]
+                        </footer>
+                        <div class="mt-3">
+                            <img src="path_to_your_linkedin_screenshot_2.jpg" alt="LinkedIn Recommendation 2" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="carousel-item">
+                    <div class="testimonial-box p-4 shadow-sm bg-light rounded">
+                        <blockquote class="text-muted font-italic">
+                            "[Your Name] consistently delivered exceptional results under tight deadlines, demonstrating a clear commitment to excellence."
+                        </blockquote>
+                        <footer class="blockquote-footer text-dark font-weight-bold">
+                            [Supervisor Name], [Position]
+                        </footer>
+                        <div class="mt-3">
+                            <img src="path_to_your_linkedin_screenshot_3.jpg" alt="LinkedIn Recommendation 3" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more testimonials as needed -->
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="col-md-4 mb-5">
-                <div class="testimonial-item text-center">
-                    <img src="path_to_your_image_2.jpg" alt="Testimonial 2" class="img-fluid rounded-circle mb-4" style="width: 100px; height: 100px;">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-2 text-muted">"[Your Name] is a true professional. Their expertise and problem-solving skills helped our team achieve great results in a short time frame."</p>
-                        <footer class="blockquote-footer text-dark font-weight-bold">[Client Name], [Position]</footer>
-                    </blockquote>
-                    <img src="path_to_your_linkedin_screenshot_2.jpg" alt="LinkedIn Recommendation 2" class="img-fluid mt-3 rounded">
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="col-md-4 mb-5">
-                <div class="testimonial-item text-center">
-                    <img src="path_to_your_image_3.jpg" alt="Testimonial 3" class="img-fluid rounded-circle mb-4" style="width: 100px; height: 100px;">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-2 text-muted">"An exceptional team player. [Your Name] consistently demonstrates leadership, technical expertise, and dedication to excellence."</p>
-                        <footer class="blockquote-footer text-dark font-weight-bold">[Supervisor Name], [Position]</footer>
-                    </blockquote>
-                    <img src="path_to_your_linkedin_screenshot_3.jpg" alt="LinkedIn Recommendation 3" class="img-fluid mt-3 rounded">
-                </div>
-            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
+
     </div>
 </section>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 	<section class="site-section" id="section-contact">
