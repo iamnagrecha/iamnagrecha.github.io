@@ -946,58 +946,80 @@ I founded Abhishek to be a punctual and disciplined individual who showed up in 
 
 
 <section class="site-section" id="section-contact">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 mb-5">
-				<div class="section-heading text-center">
-					<h2>Connect <strong>with Me</strong></h2>
-				</div>
-			</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="section-heading text-center">
+                    <h2>Connect <strong>with Me</strong></h2>
+                </div>
+            </div>
 
-			<div class="col-md-7 mb-5 mb-md-0">
-				<form onsubmit="sendMail(event)" class="site-form">
-					<h3 class="mb-5">Get In Touch</h3>
-					<div class="form-group">
-						<input type="text" id="name" class="form-control px-2 py-3" placeholder="Full Name" required>
-					</div>
-					<div class="form-group">
-						<input type="email" id="email" class="form-control px-2 py-3" placeholder="Email ID" required>
-					</div>
-					<div class="form-group">
-						<input type="tel" id="phone" class="form-control px-2 py-3" placeholder="Phone">
-					</div>
-					<div class="form-group mb-5">
-						<textarea id="message" class="form-control px-2 py-3" cols="5" rows="3" placeholder="Write a Message" required></textarea>
-					</div>
+            <div class="col-md-7 mb-5 mb-md-0">
+                <form action="mailto:abhishek.nagrecha.an@gmail.com" method="post" enctype="text/plain" class="site-form">
+                    <h3 class="mb-5">Get In Touch</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control px-2 py-3" placeholder="Full Name" name="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control px-2 py-3" placeholder="Email ID" name="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control px-2 py-3" placeholder="Phone" name="Phone">
+                    </div>
+                    <div class="form-group mb-5">
+                        <textarea class="form-control px-2 py-3" cols="5" rows="3" placeholder="Write a Message" name="Message"></textarea>
+                    </div>
 
-					<div class="form-group">
-						<input type="submit" class="btn btn-secondary px-4 py-2" value="Send Message">
-					</div>
-				</form>
-			</div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-secondary px-4 py-2 btn-sm px-3 py-2" value="Send Message">
+                    </div>
+                </form>
+            </div>
 
-			<div class="col-md-5 pl-md-5">
-				<h3 class="mb-5">My Contact Details</h3>
-				<ul class="site-contact-details">
-					<li>
-						<span class="text-uppercase">Email</span>
-						abhishek.nagrecha.an@gmail.com
-					</li>
-					<li>
-						<span class="text-uppercase">Phone</span>
-						+1 (807) 357-8383
-					</li>
-					<li>
-						<span class="text-uppercase">Address</span>
-						Ottawa, ON <br>
-						3100, Carling Ave  <br>
-						K2B 6J6
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            <div class="col-md-5 pl-md-5">
+                <h3 class="mb-5">My Contact Details</h3>
+                <ul class="site-contact-details">
+                    <li>
+                        <span class="text-uppercase">Email</span>
+                        abhishek.nagrecha.an@gmail.com
+                    </li>
+                    <li>
+                        <span class="text-uppercase">Phone</span>
+                        +1 (807) 357-8383
+                    </li>
+                    <li>
+                        <span class="text-uppercase">Address</span>
+                        Ottawa, ON <br>
+                        3100, Carling Ave  <br>
+                        K2B 6J6
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
+
+<style>
+    .site-form input, 
+    .site-form textarea {
+        color: white !important; /* White text when typing */
+        background-color: rgba(255, 255, 255, 0.2); /* Light background */
+        border: 1px solid #ccc; /* Subtle border */
+        caret-color: white; /* Ensures cursor visibility */
+    }
+
+    .site-form input::placeholder,
+    .site-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6); /* Light gray placeholder */
+    }
+
+    .site-form input:focus,
+    .site-form textarea:focus {
+        background-color: rgba(255, 255, 255, 0.3); /* Slightly brighter on focus */
+        border-color: #fff; /* White border on focus */
+        outline: none; /* Removes default browser focus outline */
+    }
+</style>
 
 <script>
 	function sendMail(event) {
