@@ -679,7 +679,6 @@ a {
 .nav-link {
     padding: 10px 15px;
     transition: all 0.3s ease-in-out;
-    display: flex;
     align-items: center;
     gap: 8px;
 }
