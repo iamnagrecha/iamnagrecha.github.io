@@ -16,6 +16,22 @@
 
 
 </head>
+
+	<!-- Include jQuery (if not already included) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Counter Up Plugin (if not already included) -->
+<script src="https://cdn.rawgit.com/bfintal/Counter-Up/master/dist/jquery.counterup.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize the counter
+        $('.counter').counterUp({
+            delay: 10,    // Delay in milliseconds
+            time: 2000    // Duration of the animation
+        });
+    });
+</script>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
 
@@ -608,25 +624,24 @@
 
 
 
-	</section> <!-- .section -->
-	<section class="site-section section-counters text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="5" data-speed="2000">5</p>
-					<h4>Years Experience</h4>
-				</div>
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="40" data-speed="2000">40</p>       
-					<h4>Projects Completed</h4>      
-				</div>
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="50" data-speed="2000">50</p>       
-					<h4>Coursework Completed</h4>
-				</div>
-			</div>
-		</div>
-	</section><!-- /.section-counters -->
+		<section class="site-section section-counters text-center">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-sm-4 col-xs-12">
+		                <p class="counter start" data-to="0" data-speed="2000">5</p>
+		                <h4>Years Experience</h4>
+		            </div>
+		            <div class="col-sm-4 col-xs-12">
+		                <p class="counter start" data-to="0" data-speed="2000">40</p>
+		                <h4>Projects Completed</h4>
+		            </div>
+		            <div class="col-sm-4 col-xs-12">
+		                <p class="counter start" data-to="0" data-speed="2000">50</p>
+		                <h4>Coursework Completed</h4>
+		            </div>
+		        </div>
+		    </div>
+		</section>
 	
 
 
