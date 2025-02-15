@@ -22,143 +22,68 @@
 
 
 
-<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarsExample09">
-            <!-- Navbar items -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-home">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-about">
-                        <i class="fas fa-user"></i> About Me
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-resume">
-                        <i class="fas fa-file-alt"></i> My CV
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-skills">
-                        <i class="fas fa-tools"></i> Skills
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-portfolio">
-                        <i class="fas fa-briefcase"></i> Projects
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-blog">
-                        <i class="fas fa-lightbulb"></i> Insights
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-testimonials">
-                        <i class="fas fa-comments"></i> Testimonials
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-contact">
-                        <i class="fas fa-envelope"></i> Connect
-                    </a>
-                </li>
-            </ul>
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-            <!-- Search bar with Category dropdown as part of the icon -->
-            <div class="d-flex align-items-center">
-                <!-- Category Dropdown -->
-                <select id="category-filter" class="form-control" style="width: 150px; height: 38px;">
-                    <option value="">Select Category</option>
-                    <option value="AML">AML</option>
-                    <option value="Data Science">Data Science</option>
-                    <option value="Technology">Technology</option>
-                </select>
 
-                <!-- Search Input -->
-                <input type="text" id="search-input" class="form-control" placeholder="Search news..." style="width: 250px; height: 38px;" oninput="filterNews()" />
+			<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+				<body onload="incrementCount(10)">
+					<div class="main_container" id="id_main_container">
+					  <div class="container_inner" id="display_div_id">
+					  </div>
+					</div>
+				  </body>
+				</html>
 
-                <!-- Search Button with icon -->
-                <button class="btn btn-primary ml-2" onclick="filterNews()">
-                    <i class="fas fa-search"></i> Search
-                </button>
-
-                <!-- Reset Button -->
-                <button class="btn btn-secondary ml-2" onclick="resetFilters()">Reset</button>
-            </div>
-        </div>
-    </div>
-</nav>
-
-<!-- News Section (where filtered news will be displayed) -->
-<div id="news-container" class="container mt-5">
-    <!-- Example News Item (this will be populated dynamically) -->
-    <div class="news-item">
-        <h4 class="news-title">AML Regulations in 2025</h4>
-        <p class="news-description">AML regulations are evolving rapidly, especially in the context of emerging technologies.</p>
-    </div>
-    <div class="news-item">
-        <h4 class="news-title">Data Science and AI</h4>
-        <p class="news-description">Data Science continues to grow with AI innovations shaping the future of industries.</p>
-    </div>
-    <!-- More articles will appear here -->
-</div>
-
-<script>
-    // Sample news data (to simulate the real data)
-    const newsData = [
-        { title: "AML Regulations in 2025", description: "AML regulations are evolving rapidly, especially in the context of emerging technologies.", category: "AML" },
-        { title: "Data Science and AI", description: "Data Science continues to grow with AI innovations shaping the future of industries.", category: "Data Science" },
-        { title: "Technology Trends 2025", description: "Technology is advancing at a rapid pace, with new trends emerging every year.", category: "Technology" }
-    ];
-
-    // Function to display news articles dynamically
-    function displayNews(news) {
-        const newsContainer = document.getElementById('news-container');
-        newsContainer.innerHTML = ""; // Clear existing content
-
-        news.forEach(article => {
-            const articleDiv = document.createElement("div");
-            articleDiv.classList.add("news-item");
-            articleDiv.innerHTML = `<h4 class="news-title">${article.title}</h4><p class="news-description">${article.description}</p>`;
-            newsContainer.appendChild(articleDiv);
-        });
-    }
-
-    // Function to filter news based on input and category
-    function filterNews() {
-        const searchTerm = document.getElementById('search-input').value.toLowerCase();
-        const category = document.getElementById('category-filter').value;
-
-        // Filter based on search term and category
-        const filteredNews = newsData.filter(article => {
-            const matchesSearch = article.title.toLowerCase().includes(searchTerm) || article.description.toLowerCase().includes(searchTerm);
-            const matchesCategory = category ? article.category === category : true;
-            return matchesSearch && matchesCategory;
-        });
-
-        // Display filtered news
-        displayNews(filteredNews);
-    }
-
-    // Function to reset search and category filter
-    function resetFilters() {
-        document.getElementById('search-input').value = "";
-        document.getElementById('category-filter').value = "";
-        displayNews(newsData); // Display all news
-    }
-
-    // Initial display of all news
-    displayNews(newsData);
-</script>
+			<ul class="navbar-nav">
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-home">
+			            <i class="fas fa-home"></i> Home
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-about">
+			            <i class="fas fa-user"></i> About Me
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-resume">
+			            <i class="fas fa-file-alt"></i> My CV
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-skills">
+			            <i class="fas fa-tools"></i> Skills
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-portfolio">
+			            <i class="fas fa-briefcase"></i> Projects
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-blog">
+			            <i class="fas fa-lightbulb"></i> Insights
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-testimonials">
+			            <i class="fas fa-comments"></i> Testimonials
+			        </a>
+			    </li>
+			    <li class="nav-item">
+			        <a class="nav-link text-white fw-bold" href="#section-contact">
+			            <i class="fas fa-envelope"></i> Connect
+			        </a>
+			    </li>
+			</ul>
+			</div>
+		</div>
+	</nav>
 
 
 
