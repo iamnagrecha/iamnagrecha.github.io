@@ -28,15 +28,21 @@
 
 		<!-- Logo Icon at the Top Left Corner -->
 		<a class="navbar-brand" href="#section-home">
-		    <img src="images/AN.PNG" alt="Logo" height="40">
+		    <img src="images/AN.PNG" alt="Logo" height="40" class="logo">
 		</a>
 		
 		<style>
 		    .navbar-brand {
 		        position: fixed;
-		        top: 10px; /* Adjust as needed */
-		        left: 10px; /* Adjust as needed */
-		        z-index: 1000; /* Ensures it stays above other elements */
+		        top: 10px;
+		        left: 10px;
+		        z-index: 1000;
+		    }
+		
+		    .logo {
+		        display: block;
+		        background-color: transparent; /* Ensures no background color shows behind the logo */
+		        border: none; /* If there’s a border around the image */
 		    }
 		</style>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
