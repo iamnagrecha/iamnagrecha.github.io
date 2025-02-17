@@ -26,10 +26,19 @@
 	
 	    <div class="container">
 
-    	<!-- Logo Icon on the Left -->
-	        <a class="navbar-brand" href="#section-home">
-	            <img src="images/AN.PNG" alt="Logo" height="40">
-	        </a>
+		<!-- Logo Icon at the Top Left Corner -->
+		<a class="navbar-brand" href="#section-home">
+		    <img src="images/AN.PNG" alt="Logo" height="40">
+		</a>
+		
+		<style>
+		    .navbar-brand {
+		        position: fixed;
+		        top: 10px; /* Adjust as needed */
+		        left: 10px; /* Adjust as needed */
+		        z-index: 1000; /* Ensures it stays above other elements */
+		    }
+		</style>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
