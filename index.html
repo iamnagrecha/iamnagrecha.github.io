@@ -28,6 +28,9 @@
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
+		    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+		    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	
 	        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
 	            <ul class="navbar-nav">
@@ -71,32 +74,6 @@
 	                        <i class="fas fa-envelope"></i> Connect
 	                    </a>
 	                </li>
-	
-	                <!-- Add chatbot container in the navbar -->
-	                <li class="nav-item ml-auto">
-	                    <div id="df-chat-container"></div>
-	                </li>
-	            </ul>
-	        </div>
-	    </div>
-	
-	    <!-- Chatbot script integration -->
-	    <script>
-	      (function() {
-	        var dfChatScript = document.createElement('script');
-	        dfChatScript.src = "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1";
-	        dfChatScript.onload = function() {
-	          dfMessenger.render("df-chat-container", {
-	            "chatbotAvatar": "https://www.w3schools.com/w3images/avatar2.png",  // Default avatar URL
-	            "width": "400px",
-	            "height": "500px",
-	            "chatTitle": "Ask me anything!",
-	            "messageLimit": 10
-	          });
-	        };
-	        document.head.appendChild(dfChatScript);
-	      })();
-	    </script>
 	
 	</nav>
 
