@@ -40,11 +40,36 @@
 		    window.location.hash = hash;
 		  });
 		});
-		$("#pb-navbar ul li a[href^='#']").on('click', function(e){
-			if ( navToggler.is(':visible') ) {
-		  	navToggler.click();
-		  }
-		});
+		var OnePageNav = function() {
+		    var navToggler = $('.navbar-toggler');
+		    var navbarCollapse = $('.navbar-collapse');
+		
+		    $(".smoothscroll[href^='#'], #pb-navbar ul li a[href^='#']").on('click', function(e) {
+		        e.preventDefault();
+		        var hash = this.hash;
+		
+		        $('html, body').animate({
+		            scrollTop: $(hash).offset().top
+		        }, 700, 'easeInOutExpo', function(){
+		            window.location.hash = hash;
+		        });
+		
+		        // Close the menu on mobile after clicking a link
+		        if (navToggler.is(':visible')) {
+		            navbarCollapse.collapse('hide'); 
+		        }
+		    });
+		
+		    navToggler.on('click', function() {
+		        if (navbarCollapse.hasClass('show')) {
+		            navbarCollapse.collapse('hide');
+		        }
+		    });
+		
+		    $('body').on('activate.bs.scrollspy', function () {
+		        console.log('nice');
+		    });
+		};
 
 		$('body').on('activate.bs.scrollspy', function () {
 		  console.log('nice');
