@@ -1028,7 +1028,7 @@
         <div class="row">
             <div class="col-md-12 mb-5">
                 <div class="section-heading text-center">
-                    <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/">Medium</a></strong></h2>
+                    <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></strong></h2>
                     <p class="text-lg mb-4">Check out my blogs on Medium, where I share insights, experiences, and ideas.</p>
                 </div>
             </div>
@@ -1064,17 +1064,21 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(mediumFeedUrl)
     .then(response => response.json())
     .then(data => {
-        let blogs = data.items.slice(0, 6); // Fetch latest 6 blogs
+        let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
         let blogHTML = '';
+        let blogCount = 0;
 
         blogs.forEach((blog, index) => {
-            // Start a new carousel item every 2 blogs
-            if (index % 2 === 0) {
+            // Start a new carousel item every 4 blogs
+            if (index % 4 === 0) {
+                if (blogCount > 0) {
+                    blogHTML += `</div></div>`; // Close previous carousel item
+                }
                 blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
             }
 
             blogHTML += `
-                <div class="col-sm-12 col-lg-6 mb-4">
+                <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
                     <div class="blog-entry">
                         <div class="blog-entry-content">
                             <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
@@ -1084,9 +1088,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             `;
 
-            if (index % 2 === 1 || index === blogs.length - 1) { // Close the row after 2 blogs
+            if (index % 4 === 3 || index === blogs.length - 1) { // Close the row after 4 blogs
                 blogHTML += `</div></div>`;
             }
+
+            blogCount++;
         });
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
@@ -1096,23 +1102,28 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <style>
+body {
+    background-color: #121212; /* Dark background for the website */
+    color: #fff; /* White text color for contrast */
+}
+
 .blog-entry {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    background: #1e1e1e; /* Dark background for the blog entry */
     border-radius: 8px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     height: 300px;
 }
 
 .blog-entry:hover {
     transform: scale(1.05); /* Zoom effect on hover */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
 }
 
 .blog-entry h3 {
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
     margin-bottom: 10px;
     font-weight: bold;
@@ -1126,12 +1137,12 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 .blog-entry h3 a:hover {
-    color: #333; /* Change text color on hover */
+    color: #feb47b; /* Change text color on hover */
 }
 
 .blog-entry p {
     font-size: 14px;
-    color: #f9f9f9;
+    color: #f1f1f1;
     margin-top: 10px;
     font-weight: 400;
 }
@@ -1145,6 +1156,7 @@ document.addEventListener("DOMContentLoaded", function() {
     filter: brightness(1.5);
 }
 </style>
+
 
 
 <section class="site-section" id="section-testimonials">
