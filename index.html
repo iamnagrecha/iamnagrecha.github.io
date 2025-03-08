@@ -1068,19 +1068,17 @@ document.addEventListener("DOMContentLoaded", function() {
         let blogHTML = '';
 
         blogs.forEach((blog, index) => {
-            // Check for images in the feed
-            let imageUrl = blog.thumbnail || blog.enclosure?.url || "images/default-blog-image.jpg"; 
-
-            if (index % 2 === 0) { // Start a new carousel item every 2 blogs
+            // Start a new carousel item every 2 blogs
+            if (index % 2 === 0) {
                 blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
             }
 
             blogHTML += `
                 <div class="col-sm-12 col-lg-6 mb-4">
                     <div class="blog-entry">
-                        <img src="${imageUrl}" alt="${blog.title}" class="img-fluid">
-                        <div class="blog-entry-text text-center">
+                        <div class="blog-entry-content">
                             <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                            <p>${blog.description ? blog.description : "Read this blog to explore more."}</p>
                         </div>
                     </div>
                 </div>
@@ -1099,33 +1097,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <style>
 .blog-entry {
-    padding: 15px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    border-radius: 8px;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 300px;
 }
 
-.blog-entry img {
-    max-height: 200px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+.blog-entry:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-.blog-entry-text h3 {
-    margin-top: 10px;
-    font-size: 18px;
+.blog-entry h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.blog-entry-text a {
+.blog-entry h3 a {
+    color: #fff;
     text-decoration: none;
-    color: #333;
+    transition: color 0.3s ease;
 }
 
-.blog-entry-text a:hover {
-    color: #007bff;
+.blog-entry h3 a:hover {
+    color: #333; /* Change text color on hover */
+}
+
+.blog-entry p {
+    font-size: 14px;
+    color: #f9f9f9;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #feb47b; /* Custom arrow color */
+    border-radius: 50%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    filter: brightness(1.5);
 }
 </style>
-
-
 
 
 <section class="site-section" id="section-testimonials">
