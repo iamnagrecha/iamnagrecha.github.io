@@ -1068,7 +1068,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let blogHTML = '';
 
         blogs.forEach((blog, index) => {
-            let imageUrl = blog.thumbnail || blog.enclosure?.url || "images/default-blog-image.jpg"; // Fetch image or fallback to a default image
+            // Check for images in the feed
+            let imageUrl = blog.thumbnail || blog.enclosure?.url || "images/default-blog-image.jpg"; 
+
             if (index % 2 === 0) { // Start a new carousel item every 2 blogs
                 blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
             }
