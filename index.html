@@ -1036,7 +1036,9 @@
 
         <!-- Carousel Wrapper -->
         <div id="blogCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-            <div class="carousel-inner" id="blogCarouselInner"></div>
+            <div class="carousel-inner" id="blogCarouselInner">
+                <!-- Dynamic Content will be inserted here -->
+            </div>
 
             <!-- Controls -->
             <a class="carousel-control-prev" href="#blogCarousel" role="button" data-slide="prev">
@@ -1066,6 +1068,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let blogHTML = '';
 
         blogs.forEach((blog, index) => {
+            let imageUrl = blog.thumbnail || blog.enclosure?.url || "images/default-blog-image.jpg"; // Fetch image or fallback to a default image
             if (index % 2 === 0) { // Start a new carousel item every 2 blogs
                 blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
             }
@@ -1073,7 +1076,7 @@ document.addEventListener("DOMContentLoaded", function() {
             blogHTML += `
                 <div class="col-sm-12 col-lg-6 mb-4">
                     <div class="blog-entry">
-                        <img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">
+                        <img src="${imageUrl}" alt="${blog.title}" class="img-fluid">
                         <div class="blog-entry-text text-center">
                             <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
                         </div>
@@ -1119,6 +1122,7 @@ document.addEventListener("DOMContentLoaded", function() {
     color: #007bff;
 }
 </style>
+
 
 
 
