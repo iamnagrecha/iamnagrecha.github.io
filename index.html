@@ -1069,9 +1069,9 @@ document.addEventListener("DOMContentLoaded", function() {
             let descriptionPreview = blog.description;
             let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
             
-            // Limit the description to the first 500 characters for preview
-            if (descriptionPreview.length > 500) {
-                descriptionPreview = descriptionPreview.substring(0, 500) + "...";
+            // Limit the description to the first 1000 characters for preview
+            if (descriptionPreview.length > 1000) {
+                descriptionPreview = descriptionPreview.substring(0, 1000) + "...";
             }
             
             blogHTML += `
@@ -1093,7 +1093,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
 
-        // Bootstrap carousel will handle the looping functionality automatically
+        // Reinitialize the carousel to avoid looping issues
+        $('#blogCarousel').carousel({
+            interval: 3000,
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
+        });
+
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+            const totalItems = $('#blogCarousel .carousel-item').length;
+            const activeIndex = $('#blogCarousel .carousel-item.active').index();
+            if (activeIndex === totalItems - 1) {
+                // Reset the carousel to the first item to loop smoothly
+                $('#blogCarousel').carousel(0);
+            }
+        });
+
     })
     .catch(error => console.error("Error fetching Medium RSS:", error));
 });
