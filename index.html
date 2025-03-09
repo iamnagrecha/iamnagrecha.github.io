@@ -1066,15 +1066,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let blogHTML = '';
         
         blogs.forEach((blog, index) => {
-            let descriptionPreview = blog.description;
-            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
-            
-            // Limit the description to the first 1500 characters for preview
-            if (descriptionPreview.length > 1500) {
-                let preview = descriptionPreview.substring(0, 1500);
-                let lastSpaceIndex = preview.lastIndexOf(" ");
-                descriptionPreview = preview.substring(0, lastSpaceIndex) + "...";
-            }
+            let descriptionPreview = blog.description; // No truncation or "Read More" logic
             
             blogHTML += `
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
@@ -1083,7 +1075,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <div class="blog-entry">
                                 <div class="blog-entry-content">
                                     <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
+                                    <p class="blog-description">${descriptionPreview}</p>
                                     ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
                                 </div>
                             </div>
@@ -1115,9 +1107,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .catch(error => console.error("Error fetching Medium RSS:", error));
 });
-
 </script>
-
 
 <style>
 body {
@@ -1172,18 +1162,6 @@ body {
     height: 80px; /* Set a height for the description to prevent overflow */
     overflow: hidden; /* Hide the overflowed text */
     text-overflow: ellipsis; /* Show ellipsis when text is too long */
-}
-
-.blog-entry .read-more {
-    font-weight: bold;
-    color: #feb47b;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-}
-
-.blog-entry .read-more:hover {
-    text-decoration: underline;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
