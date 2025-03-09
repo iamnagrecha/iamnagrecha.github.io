@@ -1069,10 +1069,11 @@ document.addEventListener("DOMContentLoaded", function() {
             let descriptionPreview = blog.description;
             let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
             
-            // Limit the description to the first 1000 characters for preview
-            if (descriptionPreview.length > 1000) {
-                descriptionPreview = descriptionPreview.substring(0, 1000) + "...";
-            }
+	if (descriptionPreview.length > 1500) {
+	    let preview = descriptionPreview.substring(0, 1500);
+	    let lastSpaceIndex = preview.lastIndexOf(" ");
+	    descriptionPreview = preview.substring(0, lastSpaceIndex) + "...";
+	}
             
             blogHTML += `
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
