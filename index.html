@@ -1069,11 +1069,12 @@ document.addEventListener("DOMContentLoaded", function() {
             let descriptionPreview = blog.description;
             let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
             
-	if (descriptionPreview.length > 1500) {
-	    let preview = descriptionPreview.substring(0, 1500);
-	    let lastSpaceIndex = preview.lastIndexOf(" ");
-	    descriptionPreview = preview.substring(0, lastSpaceIndex) + "...";
-	}
+            // Limit the description to the first 1500 characters for preview
+            if (descriptionPreview.length > 1500) {
+                let preview = descriptionPreview.substring(0, 1500);
+                let lastSpaceIndex = preview.lastIndexOf(" ");
+                descriptionPreview = preview.substring(0, lastSpaceIndex) + "...";
+            }
             
             blogHTML += `
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
@@ -1094,15 +1095,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
 
-        // Initialize the carousel after content is added
+        // Reinitialize the carousel to avoid looping issues
         $('#blogCarousel').carousel({
             interval: 3000,
-            wrap: true,
-            ride: 'carousel'
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
         });
 
-        // Fix carousel behavior after reaching the last item
-        $('#blogCarousel').on('slid.bs.carousel', function() {
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
             const totalItems = $('#blogCarousel .carousel-item').length;
             const activeIndex = $('#blogCarousel .carousel-item.active').index();
             if (activeIndex === totalItems - 1) {
@@ -1110,9 +1111,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 $('#blogCarousel').carousel(0);
             }
         });
+
     })
     .catch(error => console.error("Error fetching Medium RSS:", error));
 });
+
 </script>
 
 
