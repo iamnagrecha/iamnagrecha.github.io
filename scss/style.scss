@@ -781,8 +781,8 @@ a {
 }
 /* Ensuring circular image with equal width and height */
 img.img-fluid.rounded-circle {
-    width: 200px;  /* You can adjust this size */
-    height: 200px; /* Keep width and height the same for a perfect circle */
+    width: 100px;  /* You can adjust this size */
+    height: 100px; /* Keep width and height the same for a perfect circle */
     object-fit: cover;  /* Ensures the image fits within the circle without distortion */
     border: 5px solid #fff;  /* Optional: adds a border around the image */
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);  /* Optional: adds a shadow effect */
