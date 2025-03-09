@@ -1093,15 +1093,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
 
-        // Reinitialize the carousel to avoid looping issues
+        // Initialize the carousel after content is added
         $('#blogCarousel').carousel({
             interval: 3000,
-            wrap: true, // Ensures the carousel loops properly
-            ride: 'carousel' // Ensures smooth transition when cycling through items
+            wrap: true,
+            ride: 'carousel'
         });
 
-        // Fix the carousel behavior after reaching the last item
-        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+        // Fix carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function() {
             const totalItems = $('#blogCarousel .carousel-item').length;
             const activeIndex = $('#blogCarousel .carousel-item.active').index();
             if (activeIndex === totalItems - 1) {
@@ -1109,11 +1109,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 $('#blogCarousel').carousel(0);
             }
         });
-
     })
     .catch(error => console.error("Error fetching Medium RSS:", error));
 });
 </script>
+
 
 <style>
 body {
