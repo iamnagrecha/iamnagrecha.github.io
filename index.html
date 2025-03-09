@@ -1064,17 +1064,8 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
         let blogHTML = '';
-        let blogCount = 0;
 
         blogs.forEach((blog, index) => {
-            // Start a new carousel item every 2 blogs
-            if (index % 2 === 0) {
-                if (blogCount > 0) {
-                    blogHTML += `</div></div>`; // Close previous carousel item
-                }
-                blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
-            }
-
             // Truncate the content to 1500 characters
             let truncatedDescription = blog.description ? blog.description.substring(0, 1500) : "Read this blog to explore more.";
             
@@ -1082,23 +1073,21 @@ document.addEventListener("DOMContentLoaded", function() {
             let readMoreLink = blog.description && blog.description.length > 1500 ? `<a href="${blog.link}" target="_blank">Read More</a>` : '';
 
             blogHTML += `
-                <div class="col-sm-12 col-md-6 mb-4">
-                    <div class="blog-entry">
-                        <div class="blog-entry-content">
-                            <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                            <p>${truncatedDescription}</p>
-                            ${readMoreLink ? `<p class="read-more">${readMoreLink}</p>` : ''}
-                            ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p>${truncatedDescription}</p>
+                                    ${readMoreLink ? `<p class="read-more">${readMoreLink}</p>` : ''}
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
-
-            if (index % 2 === 1 || index === blogs.length - 1) { // Close the row after 2 blogs
-                blogHTML += `</div></div>`;
-            }
-
-            blogCount++;
         });
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
@@ -1186,7 +1175,15 @@ body {
 .carousel-inner {
     padding: 20px 0;
 }
+
+/* Ensure the carousel shows only one item at a time */
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
+
 
 
 
