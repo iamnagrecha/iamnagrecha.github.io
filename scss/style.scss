@@ -779,3 +779,26 @@ a {
 	letter-spacing: .2rem;
 	color: rgba($white, .5)!important;
 }
+
+/* Styling the profile image to be circular, with hover effects */
+.profile-pic {
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Same as width for a perfect circle */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fills the circle without distortion */
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Soft white border */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Adds soft shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* Hover effect to slightly zoom the image and enhance shadow */
+.profile-pic:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Optional glow effect */
+.profile-pic {
+    border: 5px solid transparent;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2), 0px 0px 15px rgba(0, 150, 255, 0.5); /* Blue glow effect */
+}
