@@ -1064,26 +1064,18 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
         let blogHTML = '';
-
+        
         blogs.forEach((blog, index) => {
-            // Truncate the content to 1500 characters
-            let truncatedDescription = blog.description ? blog.description.substring(0, 1500) : "Read this blog to explore more.";
-            
-            // Add Read More link
-            let readMoreLink = blog.description && blog.description.length > 1500 ? `<a href="${blog.link}" target="_blank">Read More</a>` : '';
+            let truncatedContent = blog.content.slice(0, 1500); // Truncate content to 1500 chars
+            let showReadMore = blog.content.length > 1500;
 
             blogHTML += `
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-12 mb-4">
-                            <div class="blog-entry">
-                                <div class="blog-entry-content">
-                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                                    <p>${truncatedDescription}</p>
-                                    ${readMoreLink ? `<p class="read-more">${readMoreLink}</p>` : ''}
-                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
-                                </div>
-                            </div>
+                    <div class="blog-entry">
+                        <div class="blog-entry-content">
+                            <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                            <p>${truncatedContent}${showReadMore ? '... <a href="' + blog.link + '" target="_blank">Read More</a>' : ''}</p>
+                            ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
                         </div>
                     </div>
                 </div>
@@ -1146,10 +1138,6 @@ body {
     text-align: justify;
 }
 
-.read-more {
-    margin-top: 10px;
-}
-
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-color: #feb47b; /* Custom arrow color */
     border-radius: 50%;
@@ -1176,11 +1164,14 @@ body {
     padding: 20px 0;
 }
 
-/* Ensure the carousel shows only one item at a time */
 .carousel-item {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.carousel-item img {
+    width: 100%;
 }
 </style>
 
