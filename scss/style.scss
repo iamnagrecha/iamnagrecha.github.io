@@ -781,19 +781,13 @@ a {
 }
 
 /* Styling the profile image to be circular, with hover effects */
+/* Circular image styles */
 .profile-pic {
-    width: 200px; /* Adjust size as needed */
-    height: 200px; /* Same as width for a perfect circle */
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Ensure the height matches the width for a perfect circle */
     border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image fills the circle without distortion */
-    border: 5px solid rgba(255, 255, 255, 0.3); /* Soft white border */
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Adds soft shadow for depth */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
-    margin-top: 30px;
-}
-
-/* Optional glow effect */
-.profile-pic {
-    border: 5px solid transparent;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2), 0px 0px 15px rgba(0, 150, 255, 0.5); /* Blue glow effect */
+    object-fit: cover; /* Ensures image maintains aspect ratio and fills circle */
+    border: 5px solid #fff; /* Soft white border around image */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition on hover */
 }
