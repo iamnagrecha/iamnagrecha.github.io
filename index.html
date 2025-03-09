@@ -1066,16 +1066,25 @@ document.addEventListener("DOMContentLoaded", function() {
         let blogHTML = '';
         
         blogs.forEach((blog, index) => {
-            let truncatedContent = blog.content.slice(0, 1500); // Truncate content to 1500 chars
-            let showReadMore = blog.content.length > 1500;
-
+            let descriptionPreview = blog.description;
+            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
+            
+            // Limit the description to the first 1000 characters for preview
+            if (descriptionPreview.length > 1000) {
+                descriptionPreview = descriptionPreview.substring(0, 1000) + "...";
+            }
+            
             blogHTML += `
                 <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                    <div class="blog-entry">
-                        <div class="blog-entry-content">
-                            <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                            <p>${truncatedContent}${showReadMore ? '... <a href="' + blog.link + '" target="_blank">Read More</a>' : ''}</p>
-                            ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1083,6 +1092,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
+
+        // Reinitialize the carousel to avoid looping issues
+        $('#blogCarousel').carousel({
+            interval: 3000,
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
+        });
+
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+            const totalItems = $('#blogCarousel .carousel-item').length;
+            const activeIndex = $('#blogCarousel .carousel-item.active').index();
+            if (activeIndex === totalItems - 1) {
+                // Reset the carousel to the first item to loop smoothly
+                $('#blogCarousel').carousel(0);
+            }
+        });
+
     })
     .catch(error => console.error("Error fetching Medium RSS:", error));
 });
@@ -1105,6 +1132,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: hidden; /* Prevent overflow of long content */
+    margin-bottom: 20px;
 }
 
 .blog-entry:hover {
@@ -1136,6 +1165,21 @@ body {
     margin-top: 10px;
     font-weight: 400;
     text-align: justify;
+    height: 80px; /* Set a height for the description to prevent overflow */
+    overflow: hidden; /* Hide the overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis when text is too long */
+}
+
+.blog-entry .read-more {
+    font-weight: bold;
+    color: #feb47b;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.blog-entry .read-more:hover {
+    text-decoration: underline;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -1164,14 +1208,11 @@ body {
     padding: 20px 0;
 }
 
-.carousel-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.carousel-item img {
-    width: 100%;
+.blog-entry img {
+    object-fit: cover;
+    height: 200px; /* Set a fixed height for all images */
+    width: 100%; /* Make images responsive */
+    border-radius: 8px; /* Rounded corners for the image */
 }
 </style>
 
