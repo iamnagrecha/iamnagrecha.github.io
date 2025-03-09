@@ -1021,7 +1021,6 @@
 
 
 
-	
 <section class="site-section" id="section-blog">
     <div class="container">
         <div class="row">
@@ -1082,7 +1081,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         <div class="blog-entry-content">
                             <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
                             <p>${blog.description ? blog.description : "Read this blog to explore more."}</p>
-                            ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
                         </div>
                     </div>
                 </div>
@@ -1114,10 +1112,10 @@ body {
     text-align: center;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    height: auto; /* Remove fixed height to allow flexibility */
+    height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .blog-entry:hover {
@@ -1148,7 +1146,6 @@ body {
     color: #f1f1f1;
     margin-top: 10px;
     font-weight: 400;
-    text-align: justify;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -1170,7 +1167,7 @@ body {
     border-radius: 8px;
     object-fit: cover;
     max-height: 200px; /* Set a fixed height for the image */
-    margin-top: 10px; /* Space between text and image */
+    margin-bottom: 10px; /* Space between image and text */
 }
 
 .carousel-inner {
