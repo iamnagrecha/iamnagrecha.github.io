@@ -1075,10 +1075,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
             }
 
+            // Get the blog image, default to a placeholder if missing
+            const imageUrl = blog.thumbnail || "https://via.placeholder.com/300x200"; // Placeholder for missing images
+
             blogHTML += `
                 <div class="col-sm-12 col-md-6 mb-4">
                     <div class="blog-entry">
                         <div class="blog-entry-content">
+                            <img src="${imageUrl}" alt="Blog Image" class="img-fluid mb-3">
                             <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
                             <p>${blog.description ? blog.description : "Read this blog to explore more."}</p>
                         </div>
@@ -1174,7 +1178,6 @@ body {
     padding: 20px 0;
 }
 </style>
-
 
 
 
