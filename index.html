@@ -1064,34 +1064,23 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
         let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
         let blogHTML = '';
-        let blogCount = 0;
 
         blogs.forEach((blog, index) => {
-            // Start a new carousel item every 2 blogs
-            if (index % 2 === 0) {
-                if (blogCount > 0) {
-                    blogHTML += `</div></div>`; // Close previous carousel item
-                }
-                blogHTML += `<div class="carousel-item ${index === 0 ? 'active' : ''}"><div class="row justify-content-center">`;
-            }
-
             blogHTML += `
-                <div class="col-sm-12 col-md-6 mb-4">
-                    <div class="blog-entry">
-                        <div class="blog-entry-content">
-                            <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                            <p>${blog.description ? blog.description : "Read this blog to explore more."}</p>
-                            ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p>${blog.description ? blog.description : "Read this blog to explore more."}</p>
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid">` : ""}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
-
-            if (index % 2 === 1 || index === blogs.length - 1) { // Close the row after 2 blogs
-                blogHTML += `</div></div>`;
-            }
-
-            blogCount++;
         });
 
         document.getElementById("blogCarouselInner").innerHTML = blogHTML;
