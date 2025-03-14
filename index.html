@@ -925,7 +925,7 @@
         </div>
 
         <!-- Carousel Wrapper -->
-        <div id="blogCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner" id="blogCarouselInner">
                 <!-- Dynamic Content will be inserted here -->
             </div>
@@ -987,7 +987,7 @@ const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medi
 
         // Reinitialize the carousel to avoid looping issues
         $('#blogCarousel').carousel({
-            interval: 3000,
+            interval: 5000,
             wrap: true, // Ensures the carousel loops properly
             ride: 'carousel' // Ensures smooth transition when cycling through items
         });
