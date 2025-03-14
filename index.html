@@ -23,18 +23,17 @@
 
 
 	<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
-	
 	    <div class="container">
-
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>
 		    
-		    <a class="navbar-brand" href="#section-home">
-	            <img src="images/logo_new.PNG" alt="Logo" height="50">
-	        	</a>
 	
 	        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+	            <!-- Close Button (Visible in Mobile View) -->
+	            <button class="btn btn-danger d-lg-none ms-auto mb-2" id="close-navbar">
+	                ✖ Close
+	            </button>
 	            <ul class="navbar-nav">
 	                <li class="nav-item">
 	                    <a class="nav-link text-white fw-bold" href="#section-home">
@@ -96,7 +95,20 @@
             });
         });
     </script>
+<!-- jQuery Script to Close Navbar -->
+<script>
+    $(document).ready(function () {
+        // Close navbar when clicking on a menu item
+        $('.navbar-nav a').click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
 
+        // Close navbar when clicking the "Close" button
+        $('#close-navbar').click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+    });
+</script>
 
 <section class="site-hero" id="section-home" 
     style="background-image: url('images/infinity.PNG'); background-size: cover; background-position: center;" data-stellar-background-ratio="0.5">
