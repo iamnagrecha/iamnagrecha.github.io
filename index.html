@@ -64,13 +64,13 @@
 			        <i class="fas fa-briefcase"></i> Work
 			    </a>
 			    <div class="dropdown-menu" aria-labelledby="workDropdown">
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="all">All Projects</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="er">Entity Resolution</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="ss">Sanction Screening</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="tm">Transaction Monitoring</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="rs">Risk Scoring</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="ci">CLEAR ID</a>
-			        <a class="dropdown-item" href="javascript:void(0);" data-filter="rr">Regulatory Reporting</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter="*">All Projects</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".er">Entity Resolution</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".ss">Sanction Screening</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".tm">Transaction Monitoring</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".rs">Risk Scoring</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".ci">CLEAR ID</a>
+			        <a class="dropdown-item" href="javascript:void(0);" data-filter=".rr">Regulatory Reporting</a>
 			    </div>
 			</li>
 	                <li class="nav-item">
@@ -195,11 +195,22 @@ document.addEventListener("DOMContentLoaded", function() {
         item.addEventListener('click', function() {
             const filter = item.getAttribute('data-filter'); // Get the filter value from the clicked item
 
-            if (filter === 'all') {
-                document.querySelectorAll('.work-item').forEach(workItem => workItem.style.display = 'block'); // Show all items if the "All" option is selected
+            // Scroll to the work section when any category is selected
+            const workSection = document.getElementById('section-work');
+            window.scrollTo({
+                top: workSection.offsetTop,
+                behavior: 'smooth'
+            });
+
+            // Handle filtering based on the selected category
+            if (filter === '*') {
+                // Show all items if "All Projects" is selected
+                document.querySelectorAll('.single-portfolio').forEach(project => project.style.display = 'block');
             } else {
-                document.querySelectorAll('.work-item').forEach(workItem => workItem.style.display = 'none'); // Hide all work items first
-                document.querySelectorAll('.' + filter).forEach(filteredItem => filteredItem.style.display = 'block'); // Show only items with the selected class
+                // Hide all projects first
+                document.querySelectorAll('.single-portfolio').forEach(project => project.style.display = 'none');
+                // Show only the projects for the selected filter category
+                document.querySelectorAll('.' + filter).forEach(filteredProject => filteredProject.style.display = 'block');
             }
 
             // Close the dropdown after selecting an item
@@ -222,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+
 
 
 
