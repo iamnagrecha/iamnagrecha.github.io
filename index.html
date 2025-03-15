@@ -209,8 +209,10 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // Hide all projects first
                 document.querySelectorAll('.single-portfolio').forEach(project => project.style.display = 'none');
-                // Show only the projects for the selected filter category
-                document.querySelectorAll('.' + filter).forEach(filteredProject => filteredProject.style.display = 'block');
+                // Show only the projects with the selected filter category
+                document.querySelectorAll('.single-portfolio.' + filter).forEach(filteredProject => {
+                    filteredProject.style.display = 'block';
+                });
             }
 
             // Close the dropdown after selecting an item
@@ -233,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+
 
 
 
