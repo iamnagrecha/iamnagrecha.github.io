@@ -50,11 +50,15 @@
 			        <a class="dropdown-item" href="#section-approach">Mindset</a>
 			    </div>
 			</li>
-	                <li class="nav-item">
-	                    <a class="nav-link text-white fw-bold" href="#section-resume">
-	                        <i class="fas fa-file-alt"></i> Resume
-	                    </a>
-	                </li>
+			<li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle text-white fw-bold" href="javascript:void(0);" id="resumeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			        <i class="fas fa-file-alt"></i> Resume
+			    </a>
+			    <div class="dropdown-menu" aria-labelledby="resumeDropdown">
+			        <a class="dropdown-item" href="#academic-background">Education</a>
+			        <a class="dropdown-item" href="#employment-history">Employment</a>
+			    </div>
+			</li>
 			<li class="nav-item">
 			    <a class="nav-link text-white fw-bold" href="#section-work">
 			        <i class="fas fa-briefcase"></i> Work
@@ -259,7 +263,7 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-				<h2 class="mb-5 text-center">Academic Background</h2>
+    				<h2 id="academic-background" class="mb-5 text-center">Academic Background</h2>
 				<div class="resume-item mb-4 p-3 shadow-sm d-flex align-items-center" style="border-radius: 20px; transition: all 0.3s ease;">
 				    <img src="images/lakehead_logo.png" alt="Lakehead University Logo" style="width: 80px; height: 80px; margin-right: 15px; border-radius: 10px;">
 				    <div>
@@ -313,7 +317,8 @@
 				<div class="col-md-6">
 
 
-				<h2 class="mb-5 text-center">Employment History & Accreditations</h2>
+			  <h2 id="employment-history" class="mb-5 text-center">Employment History & Accreditations</h2>
+
 					
 				<div class="resume-item mb-4 p-3 shadow-sm d-flex align-items-center" style="border-radius: 20px; transition: all 0.3s ease;">
 				    <img src="images/alessa_logo.png" alt="Alessa Inc Logo" style="width: 80px; height: 80px; margin-right: 15px; border-radius: 10px;">
