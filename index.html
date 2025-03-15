@@ -132,8 +132,8 @@
 <script>
     $(document).ready(function () {
         // Toggle dropdown on click and close it when an item is selected
-        $('#aboutDropdown').on('click', function (e) {
-            var $el = $(this).next('.dropdown-menu');
+        $('.nav-item.dropdown').on('click', function (e) {
+            var $el = $(this).children('.dropdown-menu');
             var isVisible = $el.is(':visible');
             
             // Close all dropdowns
@@ -147,7 +147,7 @@
 
         // Close the dropdown when an item is selected
         $('.dropdown-item').on('click', function () {
-            $('.dropdown-menu').slideUp('400');
+            $(this).closest('.dropdown-menu').slideUp('400');
         });
 
         // Close the dropdown when clicking anywhere outside
