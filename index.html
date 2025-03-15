@@ -156,8 +156,14 @@
                 $('.dropdown-menu').slideUp('400');
             }
         });
+
+        // Prevent the click event on the dropdown from bubbling to the document
+        $('.nav-item.dropdown').on('click', function (e) {
+            e.stopPropagation();
+        });
     });
 </script>
+
 
 
 <section class="site-hero" id="section-home" 
