@@ -46,7 +46,7 @@
 			        <i class="fas fa-user"></i> About
 			    </a>
 			    <div class="dropdown-menu" aria-labelledby="aboutDropdown">
-			        <a class="dropdown-item" href="#section-expertise">Expertise</a>
+			        <a class="dropdown-item" href="#section-about">About Me</a>
 			        <a class="dropdown-item" href="#section-approach">Mindset</a>
 			    </div>
 			</li>
@@ -125,6 +125,35 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Toggle dropdown on click and close it when an item is selected
+        $('#aboutDropdown').on('click', function (e) {
+            var $el = $(this).next('.dropdown-menu');
+            var isVisible = $el.is(':visible');
+            
+            // Close all dropdowns
+            $('.dropdown-menu').slideUp('400');
+            
+            // If this one isn't visible, show it
+            if (!isVisible) {
+                $el.stop(true, true).slideDown('400');
+            }
+        });
+
+        // Close the dropdown when an item is selected
+        $('.dropdown-item').on('click', function () {
+            $('.dropdown-menu').slideUp('400');
+        });
+
+        // Close the dropdown when clicking anywhere outside
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.nav-item').length) {
+                $('.dropdown-menu').slideUp('400');
+            }
+        });
+    });
+</script>
 
 
 <section class="site-hero" id="section-home" 
