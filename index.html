@@ -103,7 +103,10 @@
         $('.navbar-nav a').click(function () {
             $('.navbar-collapse').collapse('hide');
         });
-
+	.navbar-nav .nav-link {
+	    font-size: 14px; /* Reduce font size */
+	    padding: 8px 12px; /* Adjust spacing for compactness */
+	}
         // Close navbar when clicking the "Close" button
         $('#close-navbar').click(function () {
             $('.navbar-collapse').collapse('hide');
