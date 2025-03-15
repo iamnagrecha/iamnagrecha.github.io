@@ -131,39 +131,47 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Toggle the dropdown on click
-        $('.nav-item.dropdown').on('click', function (e) {
-            // Prevent event from bubbling to document
-            e.stopPropagation();
-
-            // Get the clicked dropdown's menu
-            var $el = $(this).children('.dropdown-menu');
+        // Function to handle opening and closing the dropdown
+        function toggleDropdown(dropdownId) {
+            // Get the target dropdown menu
+            var $el = $(dropdownId).next('.dropdown-menu');
             
-            // Check if the clicked dropdown menu is already visible
+            // Check if the dropdown is visible
             var isVisible = $el.is(':visible');
-
-            // Close all dropdowns first
+            
+            // Close all dropdowns
             $('.dropdown-menu').slideUp('400');
             
-            // If the clicked one is not visible, open it
+            // If this one isn't visible, show it
             if (!isVisible) {
                 $el.stop(true, true).slideDown('400');
             }
+        }
+
+        // Toggle dropdown when clicking the About dropdown
+        $('#aboutDropdown').on('click', function (e) {
+            e.stopPropagation(); // Prevent event from bubbling
+            toggleDropdown('#aboutDropdown');
         });
 
-        // Close the dropdown when an item is selected
-        $('.dropdown-item').on('click', function () {
-            $(this).closest('.dropdown-menu').slideUp('400');
+        // Toggle dropdown when clicking the Resume dropdown
+        $('#resumeDropdown').on('click', function (e) {
+            e.stopPropagation(); // Prevent event from bubbling
+            toggleDropdown('#resumeDropdown');
         });
 
-        // Close the dropdown when clicking anywhere outside
-        $(document).on('click', function (e) {
-            if (!$(e.target).closest('.nav-item').length) {
-                $('.dropdown-menu').slideUp('400');
-            }
+        // Close all dropdowns if clicking anywhere outside
+        $(document).on('click', function () {
+            $('.dropdown-menu').slideUp('400');
+        });
+
+        // Prevent closing dropdowns if clicking inside the dropdown
+        $('.dropdown-menu').on('click', function (e) {
+            e.stopPropagation(); // Prevent the click from propagating up to the document
         });
     });
 </script>
+
 
 
 
