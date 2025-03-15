@@ -59,10 +59,18 @@
 			        <a class="dropdown-item" href="#employment-history">Employment</a>
 			    </div>
 			</li>
-			<li class="nav-item">
-			    <a class="nav-link text-white fw-bold" href="#section-work">
+			<li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle text-white fw-bold" href="javascript:void(0);" id="workDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			        <i class="fas fa-briefcase"></i> Work
 			    </a>
+			    <div class="dropdown-menu" aria-labelledby="workDropdown">
+			        <a class="dropdown-item" href="#section-work" data-filter=".er">Entity Resolution</a>
+			        <a class="dropdown-item" href="#section-work" data-filter=".ss">Sanction Screening</a>
+			        <a class="dropdown-item" href="#section-work" data-filter=".tm">Transaction Monitoring</a>
+			        <a class="dropdown-item" href="#section-work" data-filter=".rs">Risk Scoring</a>
+			        <a class="dropdown-item" href="#section-work" data-filter=".ci">CLEAR ID</a>
+			        <a class="dropdown-item" href="#section-work" data-filter=".rr">Regulatory Reporting</a>
+			    </div>
 			</li>
 	                <li class="nav-item">
 	                    <a class="nav-link text-white fw-bold" href="#section-skills">
@@ -160,6 +168,12 @@
             toggleDropdown('#resumeDropdown');
         });
 
+        // Toggle dropdown when clicking the Work dropdown
+        $('#workDropdown').on('click', function (e) {
+            e.stopPropagation(); // Prevent event from bubbling
+            toggleDropdown('#workDropdown');
+        });
+
         // Close all dropdowns if clicking anywhere outside
         $(document).on('click', function () {
             $('.dropdown-menu').slideUp('400');
@@ -176,6 +190,7 @@
         });
     });
 </script>
+
 
 
 
