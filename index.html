@@ -169,8 +169,14 @@
         $('.dropdown-menu').on('click', function (e) {
             e.stopPropagation(); // Prevent the click from propagating up to the document
         });
+
+        // Close dropdown when an option is selected
+        $('.dropdown-item').on('click', function () {
+            $('.dropdown-menu').slideUp('400'); // Close the dropdown
+        });
     });
 </script>
+
 
 
 
