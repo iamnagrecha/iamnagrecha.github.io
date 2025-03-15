@@ -131,15 +131,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Toggle dropdown on click and close it when an item is selected
+        // Toggle the dropdown on click
         $('.nav-item.dropdown').on('click', function (e) {
+            // Prevent event from bubbling to document
+            e.stopPropagation();
+
+            // Get the clicked dropdown's menu
             var $el = $(this).children('.dropdown-menu');
-            var isVisible = $el.is(':visible');
             
-            // Close all dropdowns
+            // Check if the clicked dropdown menu is already visible
+            var isVisible = $el.is(':visible');
+
+            // Close all dropdowns first
             $('.dropdown-menu').slideUp('400');
             
-            // If this one isn't visible, show it
+            // If the clicked one is not visible, open it
             if (!isVisible) {
                 $el.stop(true, true).slideDown('400');
             }
@@ -156,19 +162,9 @@
                 $('.dropdown-menu').slideUp('400');
             }
         });
-
-        // Prevent the click event on the dropdown from bubbling to the document
-        $('.nav-item.dropdown').on('click', function (e) {
-            e.stopPropagation();
-        });
-
-        // Close the dropdown when another dropdown is clicked
-        $('.nav-item.dropdown').on('click', function () {
-            // Slide up any other open dropdown
-            $('.dropdown-menu').not($(this).children('.dropdown-menu')).slideUp('400');
-        });
     });
 </script>
+
 
 
 
