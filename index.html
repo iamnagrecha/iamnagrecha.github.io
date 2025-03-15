@@ -161,8 +161,15 @@
         $('.nav-item.dropdown').on('click', function (e) {
             e.stopPropagation();
         });
+
+        // Close the dropdown when another dropdown is clicked
+        $('.nav-item.dropdown').on('click', function () {
+            // Slide up any other open dropdown
+            $('.dropdown-menu').not($(this).children('.dropdown-menu')).slideUp('400');
+        });
     });
 </script>
+
 
 
 
