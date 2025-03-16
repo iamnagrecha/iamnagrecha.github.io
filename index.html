@@ -411,7 +411,7 @@ $(document).ready(function() {
                             <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="img-fluid">
                         </div>
                         <div class="timeline-content">
-                            <span class="date text-primary"><span class="icon-calendar"></span> August 2019 - May 2021</span>
+                            <span class="date"><span class="icon-calendar"></span> August 2019 - May 2021</span>
                             <h3 class="mt-2">Master of Science (MSc) in Computer Science</h3>
                             <span class="school d-block">Lakehead University, Thunder Bay, ON, Canada</span>
                             <p>GPA: 84.3/100</p>
@@ -424,7 +424,7 @@ $(document).ready(function() {
                             <img src="images/gtu_logo.png" alt="Gujarat Technological University Logo" class="img-fluid">
                         </div>
                         <div class="timeline-content">
-                            <span class="date text-primary"><span class="icon-calendar"></span> August 2014 - June 2018</span>
+                            <span class="date"><span class="icon-calendar"></span> August 2014 - June 2018</span>
                             <h3 class="mt-2">BEng in Computer Engineering</h3>
                             <span class="school d-block">Gujarat Technological University, India</span>
                             <p>CGPA: 7.77/10</p>
@@ -446,7 +446,7 @@ $(document).ready(function() {
                             <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="img-fluid">
                         </div>
                         <div class="timeline-content">
-                            <span class="date text-primary"><span class="icon-calendar"></span> November 2021 - Current</span>
+                            <span class="date"><span class="icon-calendar"></span> November 2021 - Current</span>
                             <h3 class="mt-2">Intermediate Analytics Consultant</h3>
                             <span class="school d-block">Alessa Inc, Ottawa, Ontario, Canada</span>
                             <span class="school d-block">Permanent Full-time</span>
@@ -459,7 +459,7 @@ $(document).ready(function() {
                             <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="img-fluid">
                         </div>
                         <div class="timeline-content">
-                            <span class="date text-primary"><span class="icon-calendar"></span> May 2021 - August 2021</span>
+                            <span class="date"><span class="icon-calendar"></span> May 2021 - August 2021</span>
                             <h3 class="mt-2">Data Engineer</h3>
                             <span class="school d-block">Narcity Media, Toronto, Ontario, Canada</span>
                             <span class="school d-block">Permanent Full-time</span>
@@ -489,10 +489,10 @@ $(document).ready(function() {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
     }
 
@@ -509,21 +509,17 @@ $(document).ready(function() {
 
     .timeline-item .timeline-content {
         position: relative;
-        padding-left: 150px;
+        padding-left: 130px;
         padding-top: 10px;
-        background: #f4f4f9;
+        background: #f0f0f0;  /* Original stack color */
+        border-left: 3px solid #007BFF;  /* Using original blue color */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
     }
 
-    .timeline-item:hover .timeline-content {
-        transform: scale(1.05);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    }
-
     .timeline-item .date {
-        color: #0056b3;
+        color: #0056b3;  /* Primary color kept intact */
         font-weight: bold;
     }
 
@@ -533,10 +529,16 @@ $(document).ready(function() {
         margin-top: 5px;
     }
 
+    .timeline-item:hover .timeline-content {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
     .timeline-item .mt-2 {
         margin-top: 10px;
     }
 </style>
+
 
 
 	
