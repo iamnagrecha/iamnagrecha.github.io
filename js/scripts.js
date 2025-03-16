@@ -99,3 +99,41 @@ function resetFilters() {
 
 // Fetch the news initially when the page loads
 fetchNews();
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Close navbar when clicking outside in mobile view
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".navbar-collapse") && !event.target.closest(".navbar-toggler")) {
+            let navbar = document.querySelector(".navbar-collapse");
+            if (navbar.classList.contains("show")) {
+                new bootstrap.Collapse(navbar, {
+                    toggle: false
+                }).hide();
+            }
+        }
+    });
+
+    // Handle dropdown clicks (Use Bootstrap's built-in dropdown functionality)
+    document.querySelectorAll(".dropdown-toggle").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.stopPropagation();
+            let dropdownMenu = this.nextElementSibling;
+            let isVisible = dropdownMenu.classList.contains("show");
+
+            // Close all other dropdowns
+            document.querySelectorAll(".dropdown-menu").forEach(menu => menu.classList.remove("show"));
+
+            // Toggle current dropdown
+            if (!isVisible) {
+                dropdownMenu.classList.add("show");
+            }
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".dropdown")) {
+            document.querySelectorAll(".dropdown-menu").forEach(menu => menu.classList.remove("show"));
+        }
+    });
+});
