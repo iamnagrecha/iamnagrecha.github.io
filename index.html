@@ -118,14 +118,43 @@
 
 <!-- CSS for Compact Navbar Links -->
 <style>
-	/* Compact Navbar Links */
-	.navbar-nav .nav-link {
-	    font-size: 14px; /* Reduce font size */
-	    padding: 8px 12px; /* Adjust spacing for compactness */
-	    color: #fff !important; /* Ensure the text color stays white */
-	    font-weight: bold; /* Keep text bold for emphasis */
-	    text-transform: uppercase; /* Capitalize text for modern look */
-	}
+        /* Ensure the navbar itself is compact */
+        .navbar {
+            padding: 0.5rem 1rem; /* Reduced padding */
+            font-size: 1rem; /* Adjust font size */
+            background-color: #333 !important; /* Dark background */
+        }
+
+        /* Compact Navbar Links */
+        .navbar-nav .nav-item .nav-link {
+            font-size: 14px; /* Reduced font size */
+            padding: 6px 12px; /* Reduced padding for more compactness */
+            color: #fff !important; /* Ensure text color is white */
+            font-weight: bold; /* Make text bold */
+            text-transform: uppercase; /* Capitalize text */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        /* Adjust the navbar toggle button */
+        .navbar-toggler {
+            font-size: 18px; /* Adjust size of the toggler */
+            padding: 8px; /* Adjust padding around the toggler */
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                font-size: 14px; /* Reduced font size for mobile */
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 0.5rem; /* Reduced spacing between items */
+            }
+
+            .navbar-toggler {
+                font-size: 20px; /* Slightly larger font for toggler */
+            }
+        }
 
     /* Ensure close button is visible on small screens */
     #close-navbar {
