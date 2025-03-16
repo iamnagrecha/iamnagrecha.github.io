@@ -96,32 +96,46 @@
             });
         });
     </script>
-<!-- jQuery Script to Close Navbar -->
-<script>
-    $(document).ready(function () {
-        // Close navbar when clicking on a menu item
-        $('.navbar-nav a').click(function () {
-            $('.navbar-collapse').collapse('hide');
-        });
-	.navbar-nav .nav-link {
-	    font-size: 14px; /* Reduce font size */
-	    padding: 8px 12px; /* Adjust spacing for compactness */
-	}
-        // Close navbar when clicking the "Close" button
-        $('#close-navbar').click(function () {
-            $('.navbar-collapse').collapse('hide');
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $('.dropdown-toggle').dropdown(); // Initialize Bootstrap dropdowns
-    });
-</script>
+<!-- Load jQuery First -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- jQuery Script to Close Navbar -->
+<script>
+    $(document).ready(function () {
+        // Close navbar when clicking a menu item
+        $('.navbar-nav a').on('click', function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+
+        // Close navbar when clicking the "Close" button
+        $('#close-navbar').on('click', function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+    });
+</script>
+
+<!-- CSS for Compact Navbar Links -->
+<style>
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Reduce font size */
+        padding: 8px 12px; /* Adjust spacing for compactness */
+    }
+
+    /* Ensure close button is visible on small screens */
+    #close-navbar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        background: transparent;
+        color: inherit;
+        border: none;
+        padding: 8px 24px;
+        cursor: pointer;
+    }
+</style>
 
 
 
