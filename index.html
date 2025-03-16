@@ -219,38 +219,32 @@
 		        </footer>
 		    </blockquote>
 		</div>
-		
-		
-
-
-
-
             </div>
         </div>
     </div>
 </section>
 
-			    <!-- Add jQuery (if not already included) -->
+<!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Counter Section -->
 <section class="site-section section-counters text-center">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4 col-xs-12">
-				<p class="counter" data-to="5" data-speed="2000">0</p>
-				<h4>Years Experience</h4>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<p class="counter" data-to="40" data-speed="2000">0</p>       
-				<h4>Projects Completed</h4>      
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<p class="counter" data-to="50" data-speed="2000">0</p>       
-				<h4>Coursework Completed</h4>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="5" data-speed="2000">0</p>
+                <h4>Years Experience</h4>
+            </div>
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="40" data-speed="2000">0</p>       
+                <h4>Projects Completed</h4>      
+            </div>
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="50" data-speed="2000">0</p>       
+                <h4>Coursework Completed</h4>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Counter Script -->
@@ -259,10 +253,12 @@ $(document).ready(function() {
     function startCounter() {
         $('.counter').each(function() {
             var $this = $(this),
-                countTo = $this.attr('data-to'),
+                countTo = parseInt($this.attr('data-to')),
                 speed = parseInt($this.attr('data-speed'));
 
-            $({ countNum: $this.text() }).animate({ countNum: countTo }, {
+            $this.text(0); // Ensure the counter starts from zero
+
+            $({ countNum: 0 }).animate({ countNum: countTo }, {
                 duration: speed,
                 easing: 'swing',
                 step: function() {
@@ -275,17 +271,33 @@ $(document).ready(function() {
         });
     }
 
-    // Trigger counter when the section is in view
-    var triggered = false;
-    $(window).scroll(function() {
+    // Trigger counter once when section enters the viewport
+    $(window).one('scroll', function() {
         var top = $('.section-counters').offset().top - window.innerHeight;
-        if (!triggered && $(window).scrollTop() > top) {
+        if ($(window).scrollTop() > top) {
             startCounter();
-            triggered = true;
         }
     });
 });
 </script>
+
+<!-- CSS for Better Mobile Styling -->
+<style>
+    .section-counters {
+        padding: 40px 0;
+    }
+    .counter {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    h4 {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+    }
+</style>
+
 	
 	
 <section class="site-section " id="section-resume">
