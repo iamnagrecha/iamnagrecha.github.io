@@ -250,6 +250,8 @@
 <!-- Counter Script -->
 <script>
 $(document).ready(function() {
+    var triggered = false; // Flag to ensure counter is triggered only once
+    
     function startCounter() {
         $('.counter').each(function() {
             var $this = $(this),
@@ -271,13 +273,20 @@ $(document).ready(function() {
         });
     }
 
-    // Trigger counter once when section enters the viewport
-    $(window).one('scroll', function() {
+    // Trigger counter when the section is in view
+    function checkCounter() {
         var top = $('.section-counters').offset().top - window.innerHeight;
-        if ($(window).scrollTop() > top) {
+        if (!triggered && $(window).scrollTop() > top) {
             startCounter();
+            triggered = true;
         }
-    });
+    }
+
+    // Trigger on scroll
+    $(window).on('scroll', checkCounter);
+    
+    // Trigger if section is already in view on page load
+    checkCounter();
 });
 </script>
 
