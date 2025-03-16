@@ -23,53 +23,38 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+	    <div class="container">
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+		    
+	
 
-        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
-            <button class="btn d-lg-none ms-auto mb-2" id="close-navbar" style="position: absolute; top: 10px; right: 10px; font-size: 18px; background: transparent; color: inherit; border: none; padding: 8px 24px;">
-                ✖
-            </button>
-
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="#section-home">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i> About
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                        <li><a class="dropdown-item" href="#section-about">About Me</a></li>
-                        <li><a class="dropdown-item" href="#section-approach">Mindset</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="resumeDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-file-alt"></i> Resume
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="resumeDropdown">
-                        <li><a class="dropdown-item" href="#academic-background">Education</a></li>
-                        <li><a class="dropdown-item" href="#employment-history">Employment</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="workDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-briefcase"></i> Work
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="workDropdown">
-                        <li><a class="dropdown-item" href="#" data-filter="*">All Projects</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".er">Entity Resolution</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".ss">Sanction Screening</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".tm">Transaction Monitoring</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".rs">Risk Scoring</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".ci">CLEAR ID</a></li>
-                        <li><a class="dropdown-item" href="#" data-filter=".rr">Regulatory Reporting</a></li>
-                    </ul>
+	    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+		<button class="btn d-lg-none ms-auto mb-2" id="close-navbar" 
+		        style="position: absolute; top: 10px; right: 10px; font-size: 18px; background: transparent; color: inherit; border: none; padding: 8px 24px;">
+		    ✖
+		</button>
+	            <ul class="navbar-nav">
+	                <li class="nav-item">
+	                    <a class="nav-link text-white fw-bold" href="#section-home">
+	                        <i class="fas fa-home"></i> Home
+	                    </a>
+	                </li>
+			<li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle text-white fw-bold" href="#section-about">
+			        <i class="fas fa-user"></i> About
+			    </a>
+			</li>
+			<li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle text-white fw-bold" href="#section-resume">
+			        <i class="fas fa-file-alt"></i> Resume
+			    </a>
+			</li>
+	                <li class="nav-item">
+			    <a class="nav-link text-white fw-bold" href="#section-work">
+			        <i class="fas fa-briefcase"></i> Work
+			    </a>
 			</li>
 	                <li class="nav-item">
 	                    <a class="nav-link text-white fw-bold" href="#section-skills">
@@ -136,122 +121,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Function to handle opening and closing the dropdown
-    function toggleDropdown(dropdownId) {
-        const dropdownMenu = document.querySelector(dropdownId).nextElementSibling;
-        const isVisible = dropdownMenu.style.display === "block";
-        const allDropdowns = document.querySelectorAll('.dropdown-menu');
-        
-        // Close all dropdowns
-        allDropdowns.forEach(menu => {
-            menu.style.display = "none";
-        });
-        
-        // Open the clicked dropdown if it's not already open
-        if (!isVisible) {
-            dropdownMenu.style.display = "block";
-        }
-    }
-
-    // Toggle dropdown when clicking the About dropdown
-    document.getElementById('aboutDropdown').addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent event from bubbling
-        toggleDropdown('#aboutDropdown');
-    });
-
-    // Toggle dropdown when clicking the Resume dropdown
-    document.getElementById('resumeDropdown').addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleDropdown('#resumeDropdown');
-    });
-
-    // Toggle dropdown when clicking the Work dropdown
-    document.getElementById('workDropdown').addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleDropdown('#workDropdown');
-    });
-
-    // Close all dropdowns if clicking anywhere outside
-    document.addEventListener('click', function() {
-        const allDropdowns = document.querySelectorAll('.dropdown-menu');
-        allDropdowns.forEach(menu => {
-            menu.style.display = "none";
-        });
-    });
-
-    // Prevent closing dropdowns if clicking inside the dropdown
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-        menu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    });
-
-    // Close dropdown when an option is selected and filter content
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const filter = item.getAttribute('data-filter'); // Get the filter value from the clicked item
-
-            // Scroll to the work section when any category is selected
-            const workSection = document.getElementById('section-work');
-            window.scrollTo({
-                top: workSection.offsetTop,
-                behavior: 'smooth'
-            });
-
-            // Handle filtering based on the selected category
-            if (filter === '*') {
-                // Show all items if "All Projects" is selected
-                document.querySelectorAll('.single-portfolio').forEach(project => project.style.display = 'block');
-            } else {
-                // Hide all projects first
-                document.querySelectorAll('.single-portfolio').forEach(project => project.style.display = 'none');
-                // Show only the projects with the selected filter category
-                document.querySelectorAll('.single-portfolio.' + filter).forEach(filteredProject => {
-                    filteredProject.style.display = 'block';
-                });
-            }
-
-            // Scroll to the first project in the selected category after filtering
-            const firstFilteredProject = document.querySelector('.single-portfolio.' + filter);
-            if (firstFilteredProject) {
-                window.scrollTo({
-                    top: firstFilteredProject.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-
-            // Close the dropdown after selecting an item
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.style.display = 'none';
-            });
-        });
-    });
-
-    // Optional: if you want to scroll to the section when the dropdown is clicked
-    document.querySelectorAll('.scroll-to-section').forEach(sectionLink => {
-        sectionLink.addEventListener('click', function() {
-            const sectionId = sectionLink.getAttribute('data-target');
-            const section = document.querySelector(sectionId);
-            window.scrollTo({
-                top: section.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Additional feature: Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.style.display = 'none';
-            });
-        }
-    });
-});
-</script>
-
 
 
 
