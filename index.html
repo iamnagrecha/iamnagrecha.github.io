@@ -913,25 +913,62 @@
 	</section> 
 
 	
-	</section> <!-- .section -->
-	<section class="site-section section-counters text-center">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="5" data-speed="2000">5</p>
-					<h4>Years Experience</h4>
-				</div>
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="40" data-speed="2000">40</p>       
-					<h4>Projects Completed</h4>      
-				</div>
-				<div class="col-sm-4 col-xs-12">
-					<p class="counter start" data-to="50" data-speed="2000">50</p>       
-					<h4>Coursework Completed</h4>
-				</div>
+<!-- Add jQuery (if not already included) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Counter Section -->
+<section class="site-section section-counters text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-xs-12">
+				<p class="counter" data-to="5" data-speed="2000">0</p>
+				<h4>Years Experience</h4>
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<p class="counter" data-to="40" data-speed="2000">0</p>       
+				<h4>Projects Completed</h4>      
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<p class="counter" data-to="50" data-speed="2000">0</p>       
+				<h4>Coursework Completed</h4>
 			</div>
 		</div>
-	</section><!-- /.section-counters -->
+	</div>
+</section>
+
+<!-- Counter Script -->
+<script>
+$(document).ready(function() {
+    function startCounter() {
+        $('.counter').each(function() {
+            var $this = $(this),
+                countTo = $this.attr('data-to'),
+                speed = parseInt($this.attr('data-speed'));
+
+            $({ countNum: $this.text() }).animate({ countNum: countTo }, {
+                duration: speed,
+                easing: 'swing',
+                step: function() {
+                    $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                    $this.text(this.countNum);
+                }
+            });
+        });
+    }
+
+    // Trigger counter when the section is in view
+    var triggered = false;
+    $(window).scroll(function() {
+        var top = $('.section-counters').offset().top - window.innerHeight;
+        if (!triggered && $(window).scrollTop() > top) {
+            startCounter();
+            triggered = true;
+        }
+    });
+});
+</script>
 	
 
 
