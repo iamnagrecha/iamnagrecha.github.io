@@ -770,15 +770,17 @@ a {
     background-color: transparent; /* Transparent background */
     transition: all 0.3s ease; /* Smooth transition */
     text-transform: uppercase;
+    color: #fff; /* Set text color to white initially */
 }
 
 /* Hover effect */
 .connect-box:hover {
     border-color: #bac964; /* Highlight the border when hovered */
     background-color: #bac964; /* Change background color on hover */
-    color: #212529; /* Text color when hovered (dark text for contrast) */
+    color: #212529; /* Dark text color when hovered for better contrast */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for effect */
 }
+
 
 /* Ensure text color remains dark when the box is hovered */
 .connect-box:hover {
