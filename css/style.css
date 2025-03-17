@@ -807,7 +807,7 @@ a {
     color: #212529 !important; /* Dark text color to make it readable */
 }
 
-/* Make the section content responsive */
+/* General section content */
 .site-section {
     padding: 60px 0;
 }
@@ -831,6 +831,7 @@ a {
     transition: background-color 0.3s ease;
 }
 
+/* Active filter styles (Desktop and Mobile) */
 .filters li.active {
     background-color: #007bff;
     color: white;
@@ -839,6 +840,20 @@ a {
 .filters li:hover {
     background-color: #007bff;
     color: white;
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+    .filters ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    .filters li {
+        display: inline-block;
+        width: auto; /* Filter items will be laid out horizontally */
+        text-align: center;
+    }
 }
 
 /* Mobile-specific styles */
@@ -855,5 +870,3 @@ a {
         margin-bottom: 10px; /* Space between options */
     }
 }
-
-
