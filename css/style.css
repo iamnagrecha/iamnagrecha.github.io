@@ -761,4 +761,22 @@ a {
 .site-animate.fadeInLeft {
     animation: fadeInLeft 1s ease-out forwards;
 }
+/* Styling for the Connect box */
+.connect-box {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding to create the box */
+    border: 2px solid transparent; /* Initially no border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: transparent; /* Transparent background */
+    transition: all 0.3s ease; /* Smooth transition */
+    text-transform: uppercase;
+}
+
+/* Hover effect */
+.connect-box:hover {
+    border-color: #bac964; /* Highlight the border when hovered */
+    background-color: #bac964; /* Change background color on hover */
+    color: #212529; /* Text color when hovered */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for effect */
+}
 
