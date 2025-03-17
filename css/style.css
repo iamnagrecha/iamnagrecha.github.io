@@ -807,37 +807,3 @@ a {
     color: #212529 !important; /* Dark text color to make it readable */
 }
 
-/* Default (Light Mode) Styles */
-body {
-    background-color: #f8f9fa; /* Light background color */
-    color: #212529; /* Dark text color */
-    transition: all 0.3s ease;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #212529; /* Dark background color */
-    color: #f8f9fa; /* Light text color */
-}
-
-.navbar, .footer, .btn {
-    transition: all 0.3s ease; /* Smooth transition for navbar, footer, and buttons */
-}
-
-body.dark-mode .navbar, body.dark-mode .footer, body.dark-mode .btn {
-    background-color: #343a40; /* Dark background for navbar and footer */
-    color: #f8f9fa; /* Light text for navbar and footer */
-}
-
-body.dark-mode .connect-box {
-    border-color: #bac964;
-    background-color: #bac964;
-    color: #212529;
-}
-
-body.dark-mode .connect-box:hover {
-    border-color: #f8f9fa;
-    background-color: #f8f9fa;
-    color: #212529;
-}
-
