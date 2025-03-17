@@ -99,4 +99,29 @@ function resetFilters() {
 
 // Fetch the news initially when the page loads
 fetchNews();
+<script>
+    // Get the toggle button
+    const toggleButton = document.getElementById('theme-toggle');
+
+    // Check the current theme in localStorage (if any)
+    const currentTheme = localStorage.getItem('theme');
+
+    // Apply the stored theme if it exists
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Add event listener to toggle the theme
+    toggleButton.addEventListener('click', () => {
+        // Toggle the dark mode class on the body
+        document.body.classList.toggle('dark-mode');
+
+        // Save the current theme in localStorage
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+</script>
 
