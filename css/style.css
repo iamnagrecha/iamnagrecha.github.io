@@ -776,7 +776,11 @@ a {
 .connect-box:hover {
     border-color: #bac964; /* Highlight the border when hovered */
     background-color: #bac964; /* Change background color on hover */
-    color: #212529; /* Text color when hovered */
+    color: #212529; /* Text color when hovered (dark text for contrast) */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for effect */
 }
 
+/* Ensure text color remains dark when the box is hovered */
+.connect-box:hover {
+    color: #212529 !important; /* Dark text color to make it readable */
+}
