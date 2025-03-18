@@ -128,32 +128,39 @@
 
 
 <section class="site-hero" id="section-home" 
-    style="background-image: url('images/data.PNG'); background-size: cover; background-position: center;" data-stellar-background-ratio="0.5">
-    <!-- Dark overlay for improved text contrast -->
-    <div class="overlay"></div>
+    style="background-image: url('images/data.PNG'); background-size: cover; background-position: center;" 
+    data-stellar-background-ratio="0.5">
+
+    <!-- Dark overlay with animation -->
+    <div class="overlay" style="animation: pulseOverlay 5s infinite alternate;"></div>
 
     <div class="container">
         <div class="row intro-text align-items-center justify-content-center">
             <div class="col-md-10 text-left pt-5">
                 
-                <!-- Heading with fadeInLeft animation -->
-                <h1 class="site-heading site-animate fadeInLeft">
-                     <strong class="d-block">Abhishek Nagrecha Portfolio</strong>
+                <!-- Heading with enhanced animation -->
+                <h1 class="site-heading site-animate fadeInLeft" style="animation-duration: 1.5s; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+                    <strong class="d-block">Abhishek Nagrecha Portfolio</strong>
                 </h1>
                 
-                <!-- Subheading with fadeInLeft animation and slight delay -->
-                <p class="lead text-white fadeInLeft" style="animation-delay: 0.3s;">
+                <!-- Subheading with slide-in effect -->
+                <p class="lead text-white fadeInUp" style="animation-delay: 0.3s; animation-duration: 1.5s;">
                     <strong>Showcasing expertise in data analytics & compliance</strong>
                 </p>
 
-                <!-- "Find Out More" button with animation and hover effect -->
-		<div class="page-scroll mt-3 text-left">
-		    <a href="#section-about" class="btn btn-primary btn-sm smoothscroll animated bounceInUp"
-		       style="font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; background-color: #bac964; border-color: #bac964; color: #212529; text-align: center; padding: 8px 20px; transition: transform 0.3s, box-shadow 0.3s; text-transform: uppercase;">
-		       Find Out More
-		    </a>
-		</div>
+                <!-- "Find Out More" button with hover bounce effect -->
+                <div class="page-scroll mt-3 text-left">
+                    <a href="#section-about" class="btn btn-primary btn-sm smoothscroll animated zoomIn"
+                       style="animation-duration: 1s; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; 
+                              background-color: #bac964; border-color: #bac964; color: #212529; text-align: center; 
+                              padding: 8px 20px; transition: transform 0.3s, box-shadow 0.3s; text-transform: uppercase;"
+                       onmouseover="this.style.transform='scale(1.1)';"
+                       onmouseout="this.style.transform='scale(1)';">
+                       Find Out More
+                    </a>
+                </div>
 
+                <!-- Additional animated elements -->
                 <section class="animation-box"></section>
 
             </div>
@@ -161,6 +168,12 @@
     </div>
 </section>
 
+<style>
+@keyframes pulseOverlay {
+    from { opacity: 0.5; }
+    to { opacity: 0.7; }
+}
+</style>
 
 
 
