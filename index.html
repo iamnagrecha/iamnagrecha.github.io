@@ -131,37 +131,35 @@
     style="background-image: url('images/data.PNG'); background-size: cover; background-position: center;" 
     data-stellar-background-ratio="0.5">
 
-    <!-- Dark overlay with animation -->
-    <div class="overlay" style="animation: pulseOverlay 5s infinite alternate;"></div>
+    <!-- Dark overlay with a smooth fade-in effect -->
+    <div class="overlay" style="animation: fadeInOverlay 1.5s ease-in;"></div>
 
     <div class="container">
         <div class="row intro-text align-items-center justify-content-center">
             <div class="col-md-10 text-left pt-5">
                 
-                <!-- Heading with enhanced animation -->
-                <h1 class="site-heading site-animate fadeInLeft" style="animation-duration: 1.5s; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+                <!-- Heading with smooth slide-in animation -->
+                <h1 class="site-heading site-animate" style="animation: slideIn 1.2s ease-out;">
                     <strong class="d-block">Abhishek Nagrecha Portfolio</strong>
                 </h1>
                 
-                <!-- Subheading with slide-in effect -->
-                <p class="lead text-white fadeInUp" style="animation-delay: 0.3s; animation-duration: 1.5s;">
+                <!-- Subheading with elegant fade-in effect -->
+                <p class="lead text-white" style="animation: fadeInText 1.5s ease-in-out;">
                     <strong>Showcasing expertise in data analytics & compliance</strong>
                 </p>
 
-                <!-- "Find Out More" button with hover bounce effect -->
+                <!-- "Find Out More" button with smooth hover effect -->
                 <div class="page-scroll mt-3 text-left">
-                    <a href="#section-about" class="btn btn-primary btn-sm smoothscroll animated zoomIn"
-                       style="animation-duration: 1s; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; 
-                              background-color: #bac964; border-color: #bac964; color: #212529; text-align: center; 
-                              padding: 8px 20px; transition: transform 0.3s, box-shadow 0.3s; text-transform: uppercase;"
-                       onmouseover="this.style.transform='scale(1.1)';"
-                       onmouseout="this.style.transform='scale(1)';">
+                    <a href="#section-about" class="btn btn-primary btn-sm smoothscroll"
+                       style="animation: fadeInButton 1.8s ease-in-out; font-size: 1rem; font-weight: 600; 
+                              letter-spacing: 0.5px; background-color: #bac964; border-color: #bac964; 
+                              color: #212529; text-align: center; padding: 8px 20px; 
+                              transition: transform 0.3s ease, box-shadow 0.3s ease; text-transform: uppercase;"
+                       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0px 5px 15px rgba(186, 201, 100, 0.3)';"
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                        Find Out More
                     </a>
                 </div>
-
-                <!-- Additional animated elements -->
-                <section class="animation-box"></section>
 
             </div>
         </div>
@@ -169,12 +167,26 @@
 </section>
 
 <style>
-@keyframes pulseOverlay {
-    from { opacity: 0.5; }
-    to { opacity: 0.7; }
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 0.6; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInButton {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 </style>
-
 
 
 
