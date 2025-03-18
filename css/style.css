@@ -861,3 +861,9 @@ a {
         opacity: 0.9;
     }
 </style>
+
+@media (max-width: 768px) {
+    .col-md-6 {
+        margin-bottom: 40px;
+    }
+}
