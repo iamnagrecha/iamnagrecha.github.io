@@ -87,20 +87,28 @@
     <!-- Scroll-to-Top Arrow -->
     <a href="#section-home" class="scroll-to-home" id="scrollToHome">&#x2191;</a>
 
-    <!-- JavaScript at the Bottom -->
+    <!-- JavaScript (Placed before closing </body> tag) -->
     <script>
-        document.addEventListener("scroll", function () {
+        document.addEventListener("DOMContentLoaded", function () {
             let scrollButton = document.getElementById("scrollToHome");
-            if (window.scrollY > 100) { // Show when scrolling down
-                scrollButton.classList.add("show");
-            } else {
-                scrollButton.classList.remove("show");
-            }
-        });
 
-        document.getElementById("scrollToHome").addEventListener("click", function (event) {
-            event.preventDefault();
-            document.querySelector("#section-home").scrollIntoView({ behavior: "smooth" });
+            document.addEventListener("scroll", function () {
+                if (window.innerWidth < 768) { // Mobile view only
+                    if (window.scrollY > 100) {
+                        scrollButton.classList.add("show");
+                    } else {
+                        scrollButton.classList.remove("show");
+                    }
+                } else {
+                    scrollButton.classList.remove("show"); // Hide on larger screens
+                }
+            });
+
+            // Smooth scrolling
+            scrollButton.addEventListener("click", function (event) {
+                event.preventDefault();
+                document.querySelector("#section-home").scrollIntoView({ behavior: "smooth" });
+            });
         });
     </script>
     <!-- Scripts should be placed at the end -->
