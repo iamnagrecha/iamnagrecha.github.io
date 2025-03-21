@@ -884,11 +884,13 @@ a {
     pointer-events: none; /* Prevent clicks when hidden */
 }
 
+/* Only show when scrolling */
 .scroll-to-home.show {
     opacity: 1;
     pointer-events: auto;
 }
 
+/* Hover and click effects */
 .scroll-to-home:hover {
     background-color: #555;
 }
@@ -897,9 +899,9 @@ a {
     transform: scale(0.9);
 }
 
+/* Hide arrow on larger screens */
 @media (min-width: 768px) {
     .scroll-to-home {
-        display: none; /* Hide on larger screens */
+        display: none !important;
     }
 }
-
