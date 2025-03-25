@@ -869,33 +869,72 @@ a {
 }
 .filters ul {
     list-style: none;
-    padding: 6px 12px;
+    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.6); /* Soft transparent background */
-    backdrop-filter: blur(8px); /* Glassmorphism effect */
-    border-radius: 25px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+    gap: 12px;
+    background: transparent; /* Removed background box */
 }
 
 .filters ul li {
-    padding: 6px 14px;
-    font-size: 13px;
+    padding: 6px 12px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    border-radius: 18px;
     transition: all 0.3s ease;
-    color: #444;
-    background: transparent;
+    color: #333;
+    position: relative;
+    white-space: nowrap; /* Prevents breaking words */
+}
+
+.filters ul li::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #222;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.filters ul li:hover::after,
+.filters ul li.active::after {
+    width: 100%;
 }
 
 .filters ul li:hover,
 .filters ul li.active {
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient effect */
-    color: white;
-    transform: translateY(-1px);
+    color: #222;
     font-weight: 600;
-    box-shadow: 0px 3px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .filters ul {
+        gap: 8px; /* Reduces spacing for smaller screens */
+    }
+
+    .filters ul li {
+        font-size: 13px; /* Slightly smaller text for better fit */
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters ul {
+        flex-direction: column; /* Stack filters vertically on very small screens */
+        align-items: center;
+    }
+
+    .filters ul li {
+        padding: 8px 12px;
+        font-size: 14px;
+        width: 100%; /* Make each item full width for easy selection */
+        text-align: center;
+    }
 }
 
