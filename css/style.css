@@ -889,16 +889,14 @@ a {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #007bff;
+    color: #f39c12; /* Updated yellow color */
     border-radius: 6px;
     background: transparent;
 }
 
 .filters ul li:hover,
 .filters ul li.active {
-    background: #007bff;
+    background: #f39c12; /* Highlight with new yellow color */
     color: white;
     font-weight: 600;
 }
-
-
