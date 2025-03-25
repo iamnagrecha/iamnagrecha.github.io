@@ -867,4 +867,33 @@ a {
         margin-bottom: 40px;
     }
 }
+.filters ul {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    border-radius: 50px;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.filters ul li {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+    color: #333;
+}
+
+.filters ul li:hover,
+.filters ul li.active {
+    background: #007bff;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+}
