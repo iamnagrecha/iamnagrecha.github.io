@@ -872,69 +872,33 @@ a {
     padding: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows wrapping on small screens */
-    gap: 12px;
-    background: transparent; /* Removed background box */
+    gap: 8px;
+    background: transparent;
+    overflow-x: auto; /* Prevents breaking while keeping all items in view */
+    white-space: nowrap; /* Ensures items stay in one line */
+    padding-bottom: 4px; /* Adds a little space for aesthetics */
+}
+
+.filters ul::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for a cleaner look */
 }
 
 .filters ul li {
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #333;
-    position: relative;
-    white-space: nowrap; /* Prevents breaking words */
-}
-
-.filters ul li::after {
-    content: "";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background: #222;
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.filters ul li:hover::after,
-.filters ul li.active::after {
-    width: 100%;
+    color: #007bff;
+    border-radius: 6px;
+    background: transparent;
 }
 
 .filters ul li:hover,
 .filters ul li.active {
-    color: #222;
+    background: #007bff;
+    color: white;
     font-weight: 600;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .filters ul {
-        gap: 8px; /* Reduces spacing for smaller screens */
-    }
-
-    .filters ul li {
-        font-size: 13px; /* Slightly smaller text for better fit */
-        padding: 5px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .filters ul {
-        flex-direction: column; /* Stack filters vertically on very small screens */
-        align-items: center;
-    }
-
-    .filters ul li {
-        padding: 8px 12px;
-        font-size: 14px;
-        width: 100%; /* Make each item full width for easy selection */
-        text-align: center;
-    }
-}
 
