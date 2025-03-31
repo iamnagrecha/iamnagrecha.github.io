@@ -832,7 +832,7 @@ a {
     font-weight: 600;
 }
 #section-testimonials {
-    background-color: #222; /* Dark background for contrast */
+    background-color: #181818; /* Dark background to blend seamlessly with other sections */
     padding: 50px 0;
 }
 
@@ -854,12 +854,12 @@ a {
     max-width: 100%;
     margin: 0 auto;
     border-radius: 10px;
-    background-color: #333; /* Darker background to differentiate carousel */
+    background-color: #1f1f1f; /* Slightly lighter dark background to blend with overall dark theme */
     overflow: hidden;
 }
 
 .testimonial-box {
-    background-color: #444; /* Slightly lighter dark background */
+    background-color: #2a2a2a; /* Lighter dark background to maintain contrast but still blend with the section */
     border-radius: 10px;
     padding: 30px;
     margin: 20px;
@@ -867,7 +867,7 @@ a {
 }
 
 .testimonial-box blockquote {
-    color: #f1f1f1; /* Light color for text */
+    color: #f1f1f1; /* Light text for contrast */
     font-size: 1.15rem;
     line-height: 1.8;
     font-style: italic;
@@ -881,7 +881,7 @@ a {
 }
 
 .carousel-indicators li {
-    background-color: #bac964; /* Light green for indicators */
+    background-color: #bac964; /* Light green to maintain a subtle highlight */
 }
 
 .carousel-indicators .active {
