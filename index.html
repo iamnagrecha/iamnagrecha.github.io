@@ -793,53 +793,84 @@ $(document).ready(function() {
         <div class="row mb-5 text-center">
             <div class="col-md-12">
                 <div class="section-heading">
-			<h2>Technical <span style="color: #bac964;">Skills</span></h2>
+                    <h2>Technical <span style="color: #bac964;">Skills</span></h2>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-lg-3 text-center mb-4">
-                <div class="site-service-item site-animate" data-animate-effect="fadeIn">
-                    <span class="icon">
-                        <span class="icon-laptop2"></span>
-                    </span>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-laptop2"></span></span>
                     <h3>Machine Learning</h3>
                     <p>TensorFlow, PyTorch, Keras, NumPy, NLTK, OpenCV, Predictive and Clustering Models, Explanatory Analysis.</p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3 text-center mb-4">
-                <div class="site-service-item site-animate" data-animate-effect="fadeIn">
-                    <span class="icon">
-                        <span class="icon-code"></span>
-                    </span>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-code"></span></span>
                     <h3>Languages | IDE</h3>
                     <p>Python, R, C++, XML, C#, Java, JSON, PyCharm, Repl.it, Spyder, Eclipse, Code::Blocks, Sublime Text.</p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3 text-center mb-4">
-                <div class="site-service-item site-animate" data-animate-effect="fadeIn">
-                    <span class="icon">
-                        <span class="icon-database2"></span>
-                    </span>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-database2"></span></span>
                     <h3>Database | Web Development</h3>
                     <p>SQL, MongoDB, PostgreSQL, MS Access, Redshift, HTML5, CSS3, JavaScript, PHP.</p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3 text-center mb-4">
-                <div class="site-service-item site-animate" data-animate-effect="fadeIn">
-                    <span class="icon">
-                        <span class="icon-folder-open"></span>
-                    </span>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-folder-open"></span></span>
                     <h3>Tools And Software</h3>
                     <p>AWS, Tableau, Power BI, GitHub, Gurobi Optimizer, MS Visio, Office 365, Visual Studio Code, Android Studio.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        /* Skill Card Styling */
+        .skill-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+            min-height: 180px; /* Ensures uniform height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #bac964;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #ddd;
+            margin: 0;
+        }
+    </style>
 </section>
 
 	<section class="site-section" id="section-portfolio">
