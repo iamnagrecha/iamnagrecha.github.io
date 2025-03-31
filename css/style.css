@@ -831,4 +831,81 @@ a {
     color: black; /* Ensures good readability */
     font-weight: 600;
 }
+#section-testimonials {
+    background-color: #222; /* Dark background for contrast */
+    padding: 50px 0;
+}
 
+#section-testimonials .section-heading h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#section-testimonials .section-heading p {
+    color: #bbb;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+#testimonialCarousel {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #333; /* Darker background to differentiate carousel */
+    overflow: hidden;
+}
+
+.testimonial-box {
+    background-color: #444; /* Slightly lighter dark background */
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-box blockquote {
+    color: #f1f1f1; /* Light color for text */
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.testimonial-box footer {
+    margin-top: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.carousel-indicators li {
+    background-color: #bac964; /* Light green for indicators */
+}
+
+.carousel-indicators .active {
+    background-color: #fff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #bac964; /* Green for control arrows */
+    border-radius: 50%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .testimonial-box {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    #section-testimonials .section-heading h2 {
+        font-size: 2rem;
+    }
+
+    #section-testimonials .section-heading p {
+        font-size: 1rem;
+    }
+}
