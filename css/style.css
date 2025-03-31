@@ -832,56 +832,57 @@ a {
     font-weight: 600;
 }
 #section-testimonials {
-    background-color: #181818; /* Dark background to blend seamlessly with other sections */
-    padding: 50px 0;
+    background-color: #181818; /* Dark background to blend seamlessly */
+    padding: 40px 0; /* Reduced padding for compactness */
 }
 
 #section-testimonials .section-heading h2 {
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 2rem; /* Slightly smaller font size */
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced space */
 }
 
 #section-testimonials .section-heading p {
     color: #bbb;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Smaller font size */
     font-style: italic;
+    margin-bottom: 30px; /* Reduced margin */
 }
 
 #testimonialCarousel {
     max-width: 100%;
     margin: 0 auto;
-    border-radius: 10px;
-    background-color: #1f1f1f; /* Slightly lighter dark background to blend with overall dark theme */
+    border-radius: 8px; /* Slightly smaller border radius */
+    background-color: #1f1f1f; 
     overflow: hidden;
 }
 
 .testimonial-box {
-    background-color: #2a2a2a; /* Lighter dark background to maintain contrast but still blend with the section */
-    border-radius: 10px;
-    padding: 30px;
-    margin: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: #2a2a2a; /* Lighter dark background */
+    border-radius: 8px; /* Smaller border radius */
+    padding: 20px 15px; /* Reduced padding */
+    margin: 10px 0; /* Reduced margin between testimonials */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow */
 }
 
 .testimonial-box blockquote {
-    color: #f1f1f1; /* Light text for contrast */
-    font-size: 1.15rem;
-    line-height: 1.8;
+    color: #f1f1f1; 
+    font-size: 1.1rem; /* Slightly smaller font size */
+    line-height: 1.5; /* Tightened line spacing */
     font-style: italic;
 }
 
 .testimonial-box footer {
-    margin-top: 15px;
+    margin-top: 10px;
     color: #fff;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Smaller font size */
 }
 
 .carousel-indicators li {
-    background-color: #bac964; /* Light green to maintain a subtle highlight */
+    background-color: #bac964; 
 }
 
 .carousel-indicators .active {
@@ -890,22 +891,22 @@ a {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #bac964; /* Green for control arrows */
+    background-color: #bac964; 
     border-radius: 50%;
 }
 
 /* Responsive adjustments */
 @media (max-width: 767px) {
     .testimonial-box {
-        margin: 10px;
-        padding: 20px;
+        margin: 5px 0;
+        padding: 15px 10px; /* Further reduced padding for smaller screens */
     }
 
     #section-testimonials .section-heading h2 {
-        font-size: 2rem;
+        font-size: 1.75rem; /* Smaller font size for mobile */
     }
 
     #section-testimonials .section-heading p {
-        font-size: 1rem;
+        font-size: 0.9rem; /* Smaller font size for mobile */
     }
 }
