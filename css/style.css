@@ -910,3 +910,45 @@ a {
         font-size: 0.9rem; /* Smaller font size for mobile */
     }
 }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    padding: 10px 0;
+    background-color: transparent; /* Ensure the navbar has a transparent background */
+}
+
+.logo {
+    width: 120px;  /* Adjust logo size */
+    height: auto;
+    background: transparent;  /* Remove any background */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    margin-right: auto;  /* Ensure logo stays left-aligned */
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-item {
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 100px;  /* Adjust logo size for mobile */
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+}
