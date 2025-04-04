@@ -923,7 +923,9 @@ body {
 .logo {
     width: 80px;  /* Make the logo smaller */
     height: auto;
-    background: transparent;  /* Remove any background */
+    background: transparent;  /* Ensure no background is set */
+    border: none;  /* Remove any default border */
+    display: block;  /* Ensure the image is not inline and has no extra space */
 }
 
 .navbar-brand {
