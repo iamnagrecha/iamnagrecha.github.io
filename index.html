@@ -801,7 +801,7 @@ $(document).ready(function() {
         <div class="row">
             <!-- TECHNICAL SKILLS -->
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 0.2s;">
+                <div class="skill-card">
                     <span class="icon"><span class="icon-laptop2"></span></span>
                     <h3>Machine Learning & AI</h3>
                     <p>LLMs, Transformers, GANs, TensorFlow, PyTorch, Scikit-Learn, OpenAI APIs, Predictive Models.</p>
@@ -809,7 +809,7 @@ $(document).ready(function() {
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 0.4s;">
+                <div class="skill-card">
                     <span class="icon"><span class="icon-code"></span></span>
                     <h3>Programming & IDEs</h3>
                     <p>Python, R, C++, SQL, Bash, JSON, YAML, PyCharm, VS Code, Jupyter, Google Colab, IntelliJ, Eclipse.</p>
@@ -817,7 +817,7 @@ $(document).ready(function() {
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 0.6s;">
+                <div class="skill-card">
                     <span class="icon"><span class="icon-database2"></span></span>
                     <h3>Databases & Cloud Data</h3>
                     <p>SQL, MongoDB, MS Access, Redshift, Cosmos DB, Firebase, SSMS, HTML5, CSS3.</p>
@@ -825,7 +825,7 @@ $(document).ready(function() {
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 0.8s;">
+                <div class="skill-card">
                     <span class="icon"><span class="icon-folder-open"></span></span>
                     <h3>Cloud & Dev Tools</h3>
                     <p>AWS, Azure, GCP, Tableau, Power BI, GitHub, Docker, Gurobi, Visio, Office 365, VS Code, Jupyter.</p>
@@ -833,16 +833,15 @@ $(document).ready(function() {
             </div>
 
             <!-- SOFT SKILLS -->
+	    <div class="col-md-6 col-lg-3">
+	        <div class="skill-card">
+	            <span class="icon"><span class="icon-chat"></span></span>
+	            <h3>Data Storytelling</h3>
+	            <p>Data visualization, simplifying complex insights. clear communication</p>
+	        </div>
+	    </div>
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 1s;">
-                    <span class="icon"><span class="icon-chat"></span></span>
-                    <h3>Data Storytelling</h3>
-                    <p>Data visualization, simplifying complex insights. Clear communication.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 1.2s;">
+                <div class="skill-card">
                     <span class="icon"><span class="icon-lightbulb"></span></span>
                     <h3>Problem Solving</h3>
                     <p>Critical thinking, creativity, logical analysis, and solution-driven mindset.</p>
@@ -850,103 +849,62 @@ $(document).ready(function() {
             </div>
 
             <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 1.4s;">
-                    <span class="icon"><span class="icon-clock"></span></span>
+                <div class="skill-card">
+		    <span class="icon"><span class="icon-clock"></span></span>
                     <h3>Time Management</h3>
                     <p>Planning, prioritizing, multitasking, and delivering within tight deadlines.</p>
-                    <p>Adapting to changing priorities.</p>
+		    <p>Adapting to changing priorities</p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card" style="animation-delay: 1.6s;">
-                    <span class="icon"><span class="icon-users"></span></span>
-                    <h3>Teamwork</h3>
-                    <p>Supporting colleagues, sharing knowledge, and fostering a positive environment.</p>
-                </div>
-            </div>
+	<div class="col-md-6 col-lg-3">
+	    <div class="skill-card">
+		<span class="icon"><span class="icon-users"></span></span>
+		<h3>Teamwork</h3>
+		<p>Supporting colleagues, sharing knowledge, and fostering a positive environment.</p>
+	    </div>
+	</div>
         </div>
     </div>
+
+    <style>
+        .skill-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #bac964;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #ddd;
+            margin: 0;
+        }
+    </style>
 </section>
-
-<style>
-    .skill-card {
-        background: #1a1a1a;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
-        text-align: center;
-        transition: transform 0.3s ease;
-        min-height: 180px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        opacity: 0; /* Initially hide the cards */
-        transform: translateY(20px); /* Start from slightly below */
-    }
-
-    .skill-card.show {
-        opacity: 1;
-        transform: translateY(0); /* End at normal position */
-    }
-
-    .skill-card:hover {
-        transform: scale(1.05);
-    }
-
-    .icon {
-        font-size: 40px;
-        color: #bac964;
-        margin-bottom: 10px;
-    }
-
-    .skill-card h3 {
-        margin: 5px 0;
-        font-size: 18px;
-    }
-
-    .skill-card p {
-        font-size: 14px;
-        color: #ddd;
-        margin: 0;
-    }
-
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .skill-card {
-        animation: fadeInUp 0.8s ease-out forwards; /* Apply fadeInUp animation */
-    }
-</style>
-
-<script>
-    // IntersectionObserver to reveal skill cards when in view
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Add the 'show' class when the card is in view
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target); // Stop observing once the card is revealed
-            }
-        });
-    }, { threshold: 0.5 }); // 50% of the card should be in view
-
-    // Target all skill cards for observation
-    const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach(card => {
-        observer.observe(card);
-    });
-</script>
 	<section class="site-section" id="section-portfolio">
 		<div class="container">
 			<div class="row">
