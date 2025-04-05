@@ -867,68 +867,86 @@ $(document).ready(function() {
             </div>
         </div>
     </div>
-
-    <style>
-        .skill-card {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
-            text-align: center;
-            transition: transform 0.3s ease;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            opacity: 0; /* Initially hide the cards */
-            transform: translateY(20px); /* Start from slightly below */
-        }
-
-        .skill-card.show {
-            opacity: 1;
-            transform: translateY(0); /* End at normal position */
-        }
-
-        .skill-card:hover {
-            transform: scale(1.05);
-        }
-
-        .icon {
-            font-size: 40px;
-            color: #bac964;
-            margin-bottom: 10px;
-        }
-
-        .skill-card h3 {
-            margin: 5px 0;
-            font-size: 18px;
-        }
-
-        .skill-card p {
-            font-size: 14px;
-            color: #ddd;
-            margin: 0;
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skill-card {
-            animation: fadeInUp 0.8s ease-out forwards; /* Apply fadeInUp animation */
-        }
-    </style>
 </section>
 
+<style>
+    .skill-card {
+        background: #1a1a1a;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
+        text-align: center;
+        transition: transform 0.3s ease;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        opacity: 0; /* Initially hide the cards */
+        transform: translateY(20px); /* Start from slightly below */
+    }
+
+    .skill-card.show {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+
+    .skill-card:hover {
+        transform: scale(1.05);
+    }
+
+    .icon {
+        font-size: 40px;
+        color: #bac964;
+        margin-bottom: 10px;
+    }
+
+    .skill-card h3 {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+
+    .skill-card p {
+        font-size: 14px;
+        color: #ddd;
+        margin: 0;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .skill-card {
+        animation: fadeInUp 0.8s ease-out forwards; /* Apply fadeInUp animation */
+    }
+</style>
+
+<script>
+    // IntersectionObserver to reveal skill cards when in view
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add the 'show' class when the card is in view
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target); // Stop observing once the card is revealed
+            }
+        });
+    }, { threshold: 0.5 }); // 50% of the card should be in view
+
+    // Target all skill cards for observation
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach(card => {
+        observer.observe(card);
+    });
+</script>
 	<section class="site-section" id="section-portfolio">
 		<div class="container">
 			<div class="row">
