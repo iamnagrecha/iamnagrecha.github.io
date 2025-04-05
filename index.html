@@ -833,13 +833,13 @@ $(document).ready(function() {
             </div>
 
             <!-- SOFT SKILLS -->
-	    <div class="col-md-6 col-lg-3">
-	        <div class="skill-card">
-	            <span class="icon"><span class="icon-chat"></span></span>
-	            <h3>Data Storytelling</h3>
-	            <p>Data visualization, simplifying complex insights. clear communication</p>
-	        </div>
-	    </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-chat"></span></span>
+                    <h3>Data Storytelling</h3>
+                    <p>Data visualization, simplifying complex insights. clear communication</p>
+                </div>
+            </div>
             <div class="col-md-6 col-lg-3">
                 <div class="skill-card">
                     <span class="icon"><span class="icon-lightbulb"></span></span>
@@ -850,58 +850,85 @@ $(document).ready(function() {
 
             <div class="col-md-6 col-lg-3">
                 <div class="skill-card">
-		    <span class="icon"><span class="icon-clock"></span></span>
+                    <span class="icon"><span class="icon-clock"></span></span>
                     <h3>Time Management</h3>
                     <p>Planning, prioritizing, multitasking, and delivering within tight deadlines.</p>
-		    <p>Adapting to changing priorities</p>
+                    <p>Adapting to changing priorities</p>
                 </div>
             </div>
 
-	<div class="col-md-6 col-lg-3">
-	    <div class="skill-card">
-		<span class="icon"><span class="icon-users"></span></span>
-		<h3>Teamwork</h3>
-		<p>Supporting colleagues, sharing knowledge, and fostering a positive environment.</p>
-	    </div>
-	</div>
+            <div class="col-md-6 col-lg-3">
+                <div class="skill-card">
+                    <span class="icon"><span class="icon-users"></span></span>
+                    <h3>Teamwork</h3>
+                    <p>Supporting colleagues, sharing knowledge, and fostering a positive environment.</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <style>
         .skill-card {
-            background: #1a1a1a;
-            padding: 20px;
+            background: #2a2a2a; /* Darker background for contrast */
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
+            box-shadow: 0 6px 12px rgba(186, 201, 100, 0.4); /* Enhanced shadow */
             text-align: center;
-            transition: transform 0.3s ease;
-            min-height: 180px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .skill-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(186, 201, 100, 0.6);
         }
 
         .icon {
-            font-size: 40px;
+            font-size: 50px; /* Larger icons for mobile */
             color: #bac964;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .skill-card h3 {
-            margin: 5px 0;
-            font-size: 18px;
+            margin: 10px 0;
+            font-size: 20px; /* Larger text */
+            color: #fff;
         }
 
         .skill-card p {
-            font-size: 14px;
+            font-size: 16px; /* Slightly larger text for readability */
             color: #ddd;
             margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .skill-card {
+                padding: 25px; /* Adjust padding for mobile */
+                min-height: 250px; /* Increase card height on mobile */
+            }
+
+            .icon {
+                font-size: 60px; /* Increase icon size on mobile */
+            }
+
+            .skill-card h3 {
+                font-size: 22px; /* Increase title size on mobile */
+            }
+
+            .skill-card p {
+                font-size: 14px; /* Adjust paragraph text for mobile */
+            }
+
+            /* Stack the skills vertically on mobile */
+            .col-md-6 {
+                width: 100%; /* Ensure cards take full width */
+                padding: 10px;
+            }
         }
     </style>
 </section>
