@@ -193,10 +193,41 @@
 	
 <section class="site-section" id="section-about">
     <div class="container">
-        <div class="row mb-5 align-items-center">
-            <div class="col-lg-6 pr-lg-5 mb-5 mb-lg-0">
-                <img src="images/abhishek.jpg" alt="Profile Picture" class="img-fluid rounded">
-            </div>
+	<div class="row mb-5 align-items-center">
+	    <div class="col-lg-6 pr-lg-5 mb-5 mb-lg-0 d-flex justify-content-center">
+	        <div class="profile-image-wrapper">
+	            <img src="images/abhishek.jpg" alt="Profile Picture" class="img-fluid">
+	        </div>
+	    </div>
+
+		<style>
+    .profile-image-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .profile-image-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #44f1d9; /* neon blue/cyan */
+        z-index: 0;
+        border-radius: 6px;
+    }
+
+    .profile-image-wrapper img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        filter: brightness(0.8) contrast(1.1);
+    }
+</style>
          <div class="col-lg-6 pl-lg-5">
 		<div class="section-heading text-center">
 		    <h2>About <strong style="color: #bac964;">Me</strong></h2>
