@@ -910,3 +910,36 @@ a {
         font-size: 0.9rem; /* Smaller font size for mobile */
     }
 }
+
+<style>
+    .modern-profile-wrapper {
+        position: relative;
+        padding: 14px;
+        background: rgba(186, 201, 100, 0.08); /* subtle tint */
+        border: 2px solid rgba(186, 201, 100, 0.4);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(186, 201, 100, 0.15);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .modern-profile-wrapper:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(186, 201, 100, 0.4);
+        border-color: #bac964;
+    }
+
+    .modern-profile-img {
+        border-radius: 16px;
+        filter: brightness(0.95) contrast(1.05);
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .modern-profile-img:hover {
+        filter: brightness(1.05) contrast(1.1);
+    }
+
+    body {
+        background-color: #0a0f2c; /* rich dark backdrop */
+    }
+</style>
