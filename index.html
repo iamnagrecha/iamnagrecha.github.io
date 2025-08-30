@@ -397,6 +397,7 @@ $(document).ready(function() {
                         <span class="school">Lakehead University, Canada</span>
                         <p>GPA: 84.3/100</p>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -407,6 +408,7 @@ $(document).ready(function() {
                         <span class="school">Gujarat Technological University, India</span>
                         <p>CGPA: 7.77/10</p>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -417,6 +419,7 @@ $(document).ready(function() {
                         <span class="school">Parth School, India</span>
                         <p>Percentile: 94.5/100</p>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -427,6 +430,7 @@ $(document).ready(function() {
                         <span class="school">Delhi Public School, India</span>
                         <p>CGPA: 9.8/10</p>
                     </div>
+                    <span class="duration"></span>
                 </div>
             </div>
 
@@ -442,6 +446,7 @@ $(document).ready(function() {
                         <span class="school">Alessa Inc, Canada</span>
                         <span class="school">Permanent Full-time</span>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -452,6 +457,7 @@ $(document).ready(function() {
                         <span class="school">Narcity Media, Canada</span>
                         <span class="school">Permanent Full-time</span>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -462,6 +468,7 @@ $(document).ready(function() {
                         <span class="school">The Sparks Foundation, Canada</span>
                         <span class="school">Internship</span>
                     </div>
+                    <span class="duration"></span>
                 </div>
 
                 <div class="resume-item">
@@ -472,6 +479,7 @@ $(document).ready(function() {
                         <span class="school">Six IBM Developer Skills Network Badges.</span>
                         <p><a href="https://www.youracclaim.com/users/iamnagrecha" class="text-info">View Dashboard</a></p>
                     </div>
+                    <span class="duration"></span>
                 </div>
             </div>
         </div>
@@ -484,6 +492,7 @@ $(document).ready(function() {
         }
 
         .resume-item {
+            position: relative; /* allow absolute child */
             display: flex;
             align-items: center;
             background: #1a1a1a;
@@ -491,7 +500,7 @@ $(document).ready(function() {
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
             transition: transform 0.3s ease;
-            min-height: 140px; /* Ensures uniform height */
+            min-height: 140px;
             margin-bottom: 20px;
         }
 
@@ -532,6 +541,15 @@ $(document).ready(function() {
             font-size: 14px;
         }
 
+        .duration {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #bac964;
+        }
+
         @media (min-width: 768px) {
             .row {
                 display: flex;
@@ -544,6 +562,33 @@ $(document).ready(function() {
             }
         }
     </style>
+
+    <script>
+        function calculateYears(start, end) {
+            const diffMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+            return (diffMonths / 12).toFixed(1);
+        }
+
+        document.querySelectorAll(".resume-item").forEach(item => {
+            const dateSpan = item.querySelector(".date");
+            const durationSpan = item.querySelector(".duration");
+
+            if (dateSpan && durationSpan) {
+                const text = dateSpan.innerText.trim();
+                const [startStr, endStr] = text.split(" - ");
+
+                const startDate = new Date(startStr + " 1");
+                let endDate = new Date();
+
+                if (endStr && !/present/i.test(endStr)) {
+                    endDate = new Date(endStr + " 1");
+                }
+
+                const years = calculateYears(startDate, endDate);
+                durationSpan.innerText = `${years} yrs`;
+            }
+        });
+    </script>
 </section>
 
 
