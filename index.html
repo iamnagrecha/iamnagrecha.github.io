@@ -386,11 +386,8 @@ $(document).ready(function() {
 
         <div class="row">
             <!-- Academic Background -->
-            <div class="col-md-6 position-relative">
-                <h2 class="mb-5 text-center">
-                    Academic Background
-                    <span class="total-duration" style="position:absolute; right:0; top:0; font-weight:bold; color:#bac964; font-size:1.2rem;"></span>
-                </h2>
+            <div class="col-md-6">
+                <h2 class="mb-5 text-center">Academic Background</h2>
 
                 <div class="resume-item">
                     <img src="images/lakehead_logo.png" alt="Lakehead University Logo">
@@ -417,7 +414,7 @@ $(document).ready(function() {
                 <div class="resume-item">
                     <img src="images/parth_school_logo.png" alt="Parth School Logo">
                     <div>
-                        <span class="date">May 2012 - April 2014</span>
+                        <span class="date">March 2012 - May 2014</span>
                         <h3>Higher Secondary Certificate</h3>
                         <span class="school">Parth School, India</span>
                         <p>Percentile: 94.5/100</p>
@@ -438,11 +435,8 @@ $(document).ready(function() {
             </div>
 
             <!-- Employment History & Certifications -->
-            <div class="col-md-6 position-relative">
-                <h2 class="mb-5 text-center">
-                    Employment History & Certifications
-                    <span class="total-duration" style="position:absolute; right:0; top:0; font-weight:bold; color:#bac964; font-size:1.2rem;"></span>
-                </h2>
+            <div class="col-md-6">
+                <h2 class="mb-5 text-center">Employment History & Certifications</h2>
 
                 <div class="resume-item">
                     <img src="images/alessa_logo.png" alt="Alessa Inc Logo">
@@ -492,29 +486,83 @@ $(document).ready(function() {
     </div>
 
     <style>
-        body { background-color: #121212; color: #ffffff; }
-        .resume-item { position: relative; display: flex; align-items: center; background: #1a1a1a; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3); transition: transform 0.3s ease; min-height: 140px; margin-bottom: 20px; }
-        .resume-item:hover { transform: scale(1.05); }
-        .resume-item img { width: 90px; height: 90px; border-radius: 10px; margin-right: 15px; }
-        .resume-item div { flex-grow: 1; }
-        .date { display: block; color: #bac964; font-size: 14px; margin-bottom: 5px; }
-        h3 { margin: 5px 0; font-size: 18px; }
-        .school { font-size: 14px; color: #ddd; }
-        p { margin: 5px 0; font-size: 14px; }
-        .duration { position: absolute; top: 10px; right: 15px; font-size: 1.2rem; font-weight: bold; color: #bac964; }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .resume-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
+            transition: transform 0.3s ease;
+            min-height: 140px;
+            margin-bottom: 20px;
+        }
+
+        .resume-item:hover {
+            transform: scale(1.05);
+        }
+
+        .resume-item img {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .resume-item div {
+            flex-grow: 1;
+        }
+
+        .date {
+            display: block;
+            color: #bac964;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        .school {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .duration {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #bac964;
+        }
     </style>
 
     <script>
         function formatDuration(totalMonths) {
             const years = Math.floor(totalMonths / 12);
             const months = totalMonths % 12;
+
             if (years === 0) return `${months} mos`;
-            else if (months === 0) return `${years} yr${years>1?"s":""}`;
-            else return `${years} yr${years>1?"s":""} ${months} mos`;
+            else if (months === 0) return `${years} yr${years > 1 ? "s" : ""}`;
+            else return `${years} yr${years > 1 ? "s" : ""} ${months} mos`;
         }
 
         function calculateMonths(start, end) {
-            return (end.getFullYear()-start.getFullYear())*12 + (end.getMonth()-start.getMonth()) + 1;
+            return (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
         }
 
         function animateCounter(element, targetValue, formattedText) {
@@ -522,25 +570,11 @@ $(document).ready(function() {
             const increment = targetValue / 60;
             const interval = setInterval(() => {
                 count += increment;
-                if(count >= targetValue) {
+                if (count >= targetValue) {
                     element.innerText = formattedText;
                     clearInterval(interval);
                 } else {
                     element.innerText = `${count.toFixed(1)} mos`;
-                }
-            }, 16);
-        }
-
-        function animateTotal(element, targetValue) {
-            let count = 0.1;
-            const increment = targetValue / 80;
-            const interval = setInterval(() => {
-                count += increment;
-                if(count >= targetValue) {
-                    element.innerText = `Total: ${formatDuration(targetValue)}`;
-                    clearInterval(interval);
-                } else {
-                    element.innerText = `Total: ${count.toFixed(1)} mos`;
                 }
             }, 16);
         }
@@ -551,30 +585,25 @@ $(document).ready(function() {
         }
 
         function runCounters() {
-            document.querySelectorAll(".col-md-6").forEach(section => {
-                let totalSectionMonths = 0;
-                section.querySelectorAll(".resume-item").forEach(item => {
-                    const dateSpan = item.querySelector(".date");
-                    const durationSpan = item.querySelector(".duration");
-                    if(dateSpan && durationSpan && !durationSpan.dataset.animated) {
-                        if(isElementInViewport(item)) {
-                            const text = dateSpan.innerText.trim();
-                            const [startStr, endStr] = text.split(" - ");
-                            const startDate = new Date(startStr+" 1");
-                            let endDate = new Date();
-                            if(endStr && !/present/i.test(endStr)) endDate = new Date(endStr+" 1");
-                            const totalMonths = calculateMonths(startDate, endDate);
-                            const formatted = formatDuration(totalMonths);
-                            animateCounter(durationSpan, totalMonths, formatted);
-                            durationSpan.dataset.animated = true;
-                            totalSectionMonths += totalMonths;
-                        }
+            document.querySelectorAll(".resume-item").forEach(item => {
+                const dateSpan = item.querySelector(".date");
+                const durationSpan = item.querySelector(".duration");
+
+                if (dateSpan && durationSpan && !durationSpan.dataset.animated) {
+                    if (isElementInViewport(item)) {
+                        const text = dateSpan.innerText.trim();
+                        const [startStr, endStr] = text.split(" - ");
+
+                        const startDate = new Date(startStr + " 1");
+                        let endDate = new Date();
+                        if (endStr && !/present/i.test(endStr)) endDate = new Date(endStr + " 1");
+
+                        const totalMonths = calculateMonths(startDate, endDate);
+                        const formatted = formatDuration(totalMonths);
+
+                        animateCounter(durationSpan, totalMonths, formatted);
+                        durationSpan.dataset.animated = true;
                     }
-                });
-                const totalSpan = section.querySelector(".total-duration");
-                if(totalSpan && !totalSpan.dataset.animated) {
-                    animateTotal(totalSpan, totalSectionMonths);
-                    totalSpan.dataset.animated = true;
                 }
             });
         }
@@ -584,6 +613,8 @@ $(document).ready(function() {
     </script>
 </section>
 
+
+					
 
 
 
