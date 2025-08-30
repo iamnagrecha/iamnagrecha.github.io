@@ -376,7 +376,16 @@ $(document).ready(function() {
 <section class="site-section" id="section-resume">
     <div class="container">
         <div class="row">
-            <!-- Academic Background (Left Column) -->
+            <div class="col-md-12 mb-5">
+                <div class="section-heading text-center">
+                    <h2><strong>Curriculum <span style="color: #bac964;">Vitae</span></strong></h2>
+                    <p class="text-lg mb-4">Showcasing my academic achievements, work history, and certifications</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Academic Background -->
             <div class="col-md-6">
                 <h2 class="mb-5 text-center">Academic Background</h2>
 
@@ -424,10 +433,64 @@ $(document).ready(function() {
                     <span class="duration"></span>
                 </div>
             </div>
+
+            <!-- Employment History & Certifications -->
+            <div class="col-md-6">
+                <h2 class="mb-5 text-center">Employment History & Certifications</h2>
+
+                <div class="resume-item">
+                    <img src="images/alessa_logo.png" alt="Alessa Inc Logo">
+                    <div>
+                        <span class="date">Nov 2021 - Present</span>
+                        <h3>Intermediate Analytics Consultant</h3>
+                        <span class="school">Alessa Inc, Canada</span>
+                        <span class="school">Permanent Full-time</span>
+                    </div>
+                    <span class="duration"></span>
+                </div>
+
+                <div class="resume-item">
+                    <img src="images/nmg_logo.png" alt="Narcity Media Logo">
+                    <div>
+                        <span class="date">May 2021 - Aug 2021</span>
+                        <h3>Data Engineer</h3>
+                        <span class="school">Narcity Media, Canada</span>
+                        <span class="school">Permanent Full-time</span>
+                    </div>
+                    <span class="duration"></span>
+                </div>
+
+                <div class="resume-item">
+                    <img src="images/sparks_logo.png" alt="Sparks Foundation Logo">
+                    <div>
+                        <span class="date">March 2021 - April 2021</span>
+                        <h3>Data Science Intern</h3>
+                        <span class="school">The Sparks Foundation, Canada</span>
+                        <span class="school">Internship</span>
+                    </div>
+                    <span class="duration"></span>
+                </div>
+
+                <div class="resume-item">
+                    <img src="images/credly_logo.png" alt="Certifications Logo">
+                    <div>
+                        <span class="date">October 2020 - Present</span>
+                        <h3>Certifications</h3>
+                        <span class="school">Six IBM Developer Skills Network Badges.</span>
+                        <p><a href="https://www.youracclaim.com/users/iamnagrecha" class="text-info">View Dashboard</a></p>
+                    </div>
+                    <span class="duration"></span>
+                </div>
+            </div>
         </div>
     </div>
 
     <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
         .resume-item {
             position: relative;
             display: flex;
@@ -504,7 +567,7 @@ $(document).ready(function() {
 
         function animateCounter(element, targetValue, formattedText) {
             let count = 0.1;
-            const increment = targetValue / 60; // ~1s animation
+            const increment = targetValue / 60;
             const interval = setInterval(() => {
                 count += increment;
                 if (count >= targetValue) {
@@ -516,26 +579,40 @@ $(document).ready(function() {
             }, 16);
         }
 
-        document.querySelectorAll(".resume-item").forEach(item => {
-            const dateSpan = item.querySelector(".date");
-            const durationSpan = item.querySelector(".duration");
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom >= 0;
+        }
 
-            if (dateSpan && durationSpan) {
-                const text = dateSpan.innerText.trim();
-                const [startStr, endStr] = text.split(" - ");
+        function runCounters() {
+            document.querySelectorAll(".resume-item").forEach(item => {
+                const dateSpan = item.querySelector(".date");
+                const durationSpan = item.querySelector(".duration");
 
-                const startDate = new Date(startStr + " 1");
-                let endDate = new Date();
-                if (endStr && !/present/i.test(endStr)) endDate = new Date(endStr + " 1");
+                if (dateSpan && durationSpan && !durationSpan.dataset.animated) {
+                    if (isElementInViewport(item)) {
+                        const text = dateSpan.innerText.trim();
+                        const [startStr, endStr] = text.split(" - ");
 
-                const totalMonths = calculateMonths(startDate, endDate);
-                const formatted = formatDuration(totalMonths);
+                        const startDate = new Date(startStr + " 1");
+                        let endDate = new Date();
+                        if (endStr && !/present/i.test(endStr)) endDate = new Date(endStr + " 1");
 
-                animateCounter(durationSpan, totalMonths, formatted);
-            }
-        });
+                        const totalMonths = calculateMonths(startDate, endDate);
+                        const formatted = formatDuration(totalMonths);
+
+                        animateCounter(durationSpan, totalMonths, formatted);
+                        durationSpan.dataset.animated = true;
+                    }
+                }
+            });
+        }
+
+        window.addEventListener("scroll", runCounters);
+        window.addEventListener("load", runCounters);
     </script>
 </section>
+
 
 
 
