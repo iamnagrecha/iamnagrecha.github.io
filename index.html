@@ -547,19 +547,11 @@ $(document).ready(function() {
             right: 15px;
             font-size: 1.4rem;
             font-weight: bold;
-            color: #bac964;
-        }
-
-        @media (min-width: 768px) {
-            .row {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .col-md-6 {
-                display: flex;
-                flex-direction: column;
-            }
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
         }
     </style>
 
@@ -581,6 +573,20 @@ $(document).ready(function() {
             return (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
         }
 
+        function animateCounter(element, targetValue, formattedText) {
+            let count = 0.1;
+            const increment = targetValue / 60; // smooth ~1s animation
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= targetValue) {
+                    element.innerText = formattedText;
+                    clearInterval(interval);
+                } else {
+                    element.innerText = `${count.toFixed(1)} mos`;
+                }
+            }, 16);
+        }
+
         document.querySelectorAll(".resume-item").forEach(item => {
             const dateSpan = item.querySelector(".date");
             const durationSpan = item.querySelector(".duration");
@@ -597,11 +603,14 @@ $(document).ready(function() {
                 }
 
                 const totalMonths = calculateMonths(startDate, endDate);
-                durationSpan.innerText = formatDuration(totalMonths);
+                const formatted = formatDuration(totalMonths);
+
+                animateCounter(durationSpan, totalMonths, formatted);
             }
         });
     </script>
 </section>
+
 
 
 
