@@ -492,7 +492,7 @@ $(document).ready(function() {
         }
 
         .resume-item {
-            position: relative; /* allow absolute child */
+            position: relative;
             display: flex;
             align-items: center;
             background: #1a1a1a;
@@ -564,9 +564,21 @@ $(document).ready(function() {
     </style>
 
     <script>
-        function calculateYears(start, end) {
-            const diffMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-            return (diffMonths / 12).toFixed(1);
+        function formatDuration(totalMonths) {
+            const years = Math.floor(totalMonths / 12);
+            const months = totalMonths % 12;
+
+            if (years === 0) {
+                return `${months} mos`;
+            } else if (months === 0) {
+                return `${years} yr${years > 1 ? "s" : ""}`;
+            } else {
+                return `${years} yr${years > 1 ? "s" : ""} ${months} mos`;
+            }
+        }
+
+        function calculateMonths(start, end) {
+            return (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
         }
 
         document.querySelectorAll(".resume-item").forEach(item => {
@@ -584,8 +596,8 @@ $(document).ready(function() {
                     endDate = new Date(endStr + " 1");
                 }
 
-                const years = calculateYears(startDate, endDate);
-                durationSpan.innerText = `${years} yrs`;
+                const totalMonths = calculateMonths(startDate, endDate);
+                durationSpan.innerText = formatDuration(totalMonths);
             }
         });
     </script>
