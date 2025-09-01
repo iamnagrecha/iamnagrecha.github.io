@@ -550,10 +550,29 @@ $(document).ready(function() {
             color: #bac964;
         }
 
-        /* Mobile font size tweak */
+        /* Tablet */
         @media (max-width: 768px) {
             .duration {
                 font-size: 1rem;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            .school, p, .date {
+                font-size: 13px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .duration {
+                font-size: 0.9rem;
+            }
+            h3 {
+                font-size: 14px;
+            }
+            .school, p, .date {
+                font-size: 12px;
             }
         }
     </style>
@@ -572,38 +591,14 @@ $(document).ready(function() {
             return (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
         }
 
-        function animateCounter(element, targetValue, formattedText) {
-            let count = 0.1;
-            const increment = targetValue / 60;
-            const interval = setInterval(() => {
-                count += increment;
-                if (count >= targetValue) {
-                    element.innerText = formattedText;
-                    clearInterval(interval);
-                } else {
-                    element.innerText = `${count.toFixed(1)} mos`;
-                }
-            }, 16);
-        }
-
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return rect.top < window.innerHeight && rect.bottom >= 0;
-        }
-
-        // Robust cross-browser parser
         function parseDate(str) {
             if (!str || /present/i.test(str)) return new Date(); // Handle "Present"
-
             const parts = str.trim().split(" ");
             if (parts.length < 2) return new Date();
-
             const monthStr = parts[0];
             const yearStr = parts[1];
-
             const month = new Date(`${monthStr} 1, 2000`).getMonth();
             const year = parseInt(yearStr, 10);
-
             return new Date(year, month, 1);
         }
 
@@ -613,25 +608,16 @@ $(document).ready(function() {
                 const durationSpan = item.querySelector(".duration");
 
                 if (dateSpan && durationSpan) {
-                    if (force || !durationSpan.dataset.animated) {
-                        if (isElementInViewport(item) || force) {
-                            const text = dateSpan.innerText.trim();
-                            const [startStr, endStr] = text.split(" - ");
+                    const text = dateSpan.innerText.trim();
+                    const [startStr, endStr] = text.split(" - ");
+                    const startDate = parseDate(startStr);
+                    const endDate = parseDate(endStr);
+                    const totalMonths = calculateMonths(startDate, endDate);
+                    const formatted = formatDuration(totalMonths);
 
-                            const startDate = parseDate(startStr);
-                            const endDate = parseDate(endStr);
-
-                            const totalMonths = calculateMonths(startDate, endDate);
-                            const formatted = formatDuration(totalMonths);
-
-                            if (!durationSpan.dataset.animated) {
-                                animateCounter(durationSpan, totalMonths, formatted);
-                                durationSpan.dataset.animated = true;
-                            } else if (/present/i.test(endStr)) {
-                                // Auto-update Present roles
-                                durationSpan.innerText = formatted;
-                            }
-                        }
+                    if (!durationSpan.dataset.animated || /present/i.test(endStr)) {
+                        durationSpan.innerText = formatted;
+                        durationSpan.dataset.animated = true;
                     }
                 }
             });
@@ -648,13 +634,13 @@ $(document).ready(function() {
 
             setTimeout(() => {
                 updateDurations(true);
-                scheduleMidnightUpdate(); // schedule next day
+                scheduleMidnightUpdate();
             }, msUntilMidnight);
         }
 
         window.addEventListener("scroll", () => updateDurations(false));
         window.addEventListener("load", () => {
-            updateDurations(false);
+            updateDurations(true);
             scheduleMidnightUpdate();
         });
     </script>
