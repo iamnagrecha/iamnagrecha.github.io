@@ -584,6 +584,22 @@ $(document).ready(function() {
             return rect.top < window.innerHeight && rect.bottom >= 0;
         }
 
+        // Robust cross-browser parser
+        function parseDate(str) {
+            if (!str || /present/i.test(str)) return new Date(); // Handle "Present"
+
+            const parts = str.trim().split(" ");
+            if (parts.length < 2) return new Date();
+
+            const monthStr = parts[0];
+            const yearStr = parts[1];
+
+            const month = new Date(`${monthStr} 1, 2000`).getMonth();
+            const year = parseInt(yearStr, 10);
+
+            return new Date(year, month, 1);
+        }
+
         function runCounters() {
             document.querySelectorAll(".resume-item").forEach(item => {
                 const dateSpan = item.querySelector(".date");
@@ -594,9 +610,8 @@ $(document).ready(function() {
                         const text = dateSpan.innerText.trim();
                         const [startStr, endStr] = text.split(" - ");
 
-                        const startDate = new Date(startStr + " 1");
-                        let endDate = new Date();
-                        if (endStr && !/present/i.test(endStr)) endDate = new Date(endStr + " 1");
+                        const startDate = parseDate(startStr);
+                        const endDate = parseDate(endStr);
 
                         const totalMonths = calculateMonths(startDate, endDate);
                         const formatted = formatDuration(totalMonths);
@@ -612,9 +627,6 @@ $(document).ready(function() {
         window.addEventListener("load", runCounters);
     </script>
 </section>
-
-
-					
 
 
 
