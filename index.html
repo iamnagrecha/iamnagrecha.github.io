@@ -485,7 +485,7 @@ $(document).ready(function() {
         </div>
     </div>
 
-    <style>
+  <style>
         body {
             background-color: #121212;
             color: #ffffff;
@@ -549,6 +549,13 @@ $(document).ready(function() {
             font-weight: bold;
             color: #bac964;
         }
+
+        /* Mobile font size tweak */
+        @media (max-width: 768px) {
+            .duration {
+                font-size: 1rem;
+            }
+        }
     </style>
 
     <script>
@@ -600,34 +607,58 @@ $(document).ready(function() {
             return new Date(year, month, 1);
         }
 
-        function runCounters() {
+        function updateDurations(force = false) {
             document.querySelectorAll(".resume-item").forEach(item => {
                 const dateSpan = item.querySelector(".date");
                 const durationSpan = item.querySelector(".duration");
 
-                if (dateSpan && durationSpan && !durationSpan.dataset.animated) {
-                    if (isElementInViewport(item)) {
-                        const text = dateSpan.innerText.trim();
-                        const [startStr, endStr] = text.split(" - ");
+                if (dateSpan && durationSpan) {
+                    if (force || !durationSpan.dataset.animated) {
+                        if (isElementInViewport(item) || force) {
+                            const text = dateSpan.innerText.trim();
+                            const [startStr, endStr] = text.split(" - ");
 
-                        const startDate = parseDate(startStr);
-                        const endDate = parseDate(endStr);
+                            const startDate = parseDate(startStr);
+                            const endDate = parseDate(endStr);
 
-                        const totalMonths = calculateMonths(startDate, endDate);
-                        const formatted = formatDuration(totalMonths);
+                            const totalMonths = calculateMonths(startDate, endDate);
+                            const formatted = formatDuration(totalMonths);
 
-                        animateCounter(durationSpan, totalMonths, formatted);
-                        durationSpan.dataset.animated = true;
+                            if (!durationSpan.dataset.animated) {
+                                animateCounter(durationSpan, totalMonths, formatted);
+                                durationSpan.dataset.animated = true;
+                            } else if (/present/i.test(endStr)) {
+                                // Auto-update Present roles
+                                durationSpan.innerText = formatted;
+                            }
+                        }
                     }
                 }
             });
         }
 
-        window.addEventListener("scroll", runCounters);
-        window.addEventListener("load", runCounters);
+        function scheduleMidnightUpdate() {
+            const now = new Date();
+            const msUntilMidnight = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate() + 1,
+                0, 0, 0
+            ) - now;
+
+            setTimeout(() => {
+                updateDurations(true);
+                scheduleMidnightUpdate(); // schedule next day
+            }, msUntilMidnight);
+        }
+
+        window.addEventListener("scroll", () => updateDurations(false));
+        window.addEventListener("load", () => {
+            updateDurations(false);
+            scheduleMidnightUpdate();
+        });
     </script>
 </section>
-
 
 
 
