@@ -217,19 +217,19 @@
                 <p class="mb-2"><strong>🎓 Academic Highlights:</strong></p>
                 <div class="timeline-animated academic-timeline mb-4">
                     <div class="timeline-item" title="Junior High School">
-                        <span class="timeline-icon">🏫</span>
+                        <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
                         <span class="timeline-text">Delhi Public School</span>
                     </div>
 					<div class="timeline-item" title="Higher Secondary Certificate">
-                        <span class="timeline-icon">🏫</span>
-                        <span class="timeline-text">Parth School of Science & Competition</span>
+                        <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
+                        <span class="timeline-text">Parth School</span>
                     </div>
                     <div class="timeline-item" title="Bachelors in Computer Engineering">
-                        <span class="timeline-icon">🎓</span>
+                        <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
                         <span class="timeline-text">Gujarat Technological University</span>
                     </div>
                     <div class="timeline-item" title="Master’s in Computer Science">
-                        <span class="timeline-icon">🎓</span>
+                        <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
                         <span class="timeline-text">Lakehead University</span>
                     </div>
                 </div>
@@ -238,28 +238,28 @@
                 <p class="mb-2"><strong>💻 Career Highlights:</strong></p>
                 <div class="timeline-animated career-timeline mb-4">
                     <div class="timeline-item" title="Data Science Intern -> ML & analytics projects">
-                        <span class="timeline-icon">🧑‍💻</span>
+                        <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
                         <span class="timeline-text">Sparks Foundation</span>
                     </div>
                     <div class="timeline-item" title="Data Collection Clerk -> Data gathering & cleaning using telephonic interviews">
-                        <span class="timeline-icon">📝</span>
+                        <img src="images/parth_school_logo.png" alt="Malatest Logo" class="timeline-icon">
                         <span class="timeline-text">R.A Malatest & Associates</span>
                     </div>
                     <div class="timeline-item" title="Data Engineer -> ETL & data pipelines">
-                        <span class="timeline-icon">🔧</span>
+                        <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
                         <span class="timeline-text">Narcity Media Group</span>
                     </div>
                     <div class="timeline-item" title="Intermediate Technical Analyst -> AML solution implementation & API testing">
-                        <span class="timeline-icon">💻</span>
+                        <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                         <span class="timeline-text">Alessa Inc</span>
                     </div>
                     <div class="timeline-item" title="Intermediate Analytic Consultant -> Automated AML pipelines & cloud analytics">
-                        <span class="timeline-icon">🚀</span>
-                        <span class="timeline-text">Alessa Inc)</span>
+                        <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
+                        <span class="timeline-text">Alessa Inc</span>
                     </div>
                     <div class="timeline-item" title="Data Analytics Specialist -> Optimized workflows & scaled analytics for top clients">
-                        <span class="timeline-icon">📊</span>
-                        <span class="timeline-text">Alessa Inc</span>
+                        <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
+                        <span class="timeline-text">Alessa/Valsoft</span>
                     </div>
                 </div>
             </div>
@@ -296,11 +296,11 @@
             text-align: center;
             width: 120px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        .timeline-animated .timeline-item:hover .timeline-text {
-            font-weight: bold;
-            color: #bac964;
+        .timeline-animated .timeline-item:hover {
+            transform: scale(1.1);
         }
 
         /* Tooltip animation */
@@ -326,18 +326,14 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Emoji icons natural */
+        /* Image icons */
         .timeline-animated .timeline-icon {
-            background-color: transparent;
-            color: inherit;
-            font-size: 1.5rem;
-            width: auto;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
             border-radius: 50%;
             margin-bottom: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .timeline-animated .timeline-text {
@@ -355,6 +351,11 @@
             .timeline-animated .timeline-item {
                 width: 100px;
                 margin: 10px;
+            }
+
+            .timeline-animated .timeline-icon {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
