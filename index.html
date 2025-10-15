@@ -195,33 +195,44 @@
 <section class="site-section" id="section-about">
     <div class="container">
         <div class="row mb-5 align-items-center">
-            <!-- Image on left -->
+            <!-- Profile Image -->
             <div class="col-lg-5 d-flex justify-content-center mb-4 mb-lg-0">
                 <div class="modern-profile-wrapper" style="width: 250px; height: 250px;">
                     <img src="images/abhishek.jpg" alt="Profile Picture" class="img-fluid rounded-circle shadow">
                 </div>
             </div>
 
-            <!-- Text on right -->
+            <!-- Text -->
             <div class="col-lg-7 pl-lg-4">
                 <div class="section-heading text-center text-lg-start mb-4">
                     <h2>About <strong style="color: #bac964;">Me</strong></h2>
                 </div>
-                
+
                 <p class="lead mb-4">
                     🚀 I’m a <strong>Data Analytics & Compliance Specialist</strong> with 5+ years of experience in AML solutions, transaction monitoring, and risk scoring.  
                     I help financial institutions turn <strong>data into automation-driven compliance solutions</strong> and thrive through change.
                 </p>
 
-                <p class="mb-4">
-                    🎓 <strong>Master’s in Computer Science</strong> – Lakehead University, Canada<br>
-                    🧠 Final Project: Deep CNN for COVID-19 detection using CT scans.<br>
-                    Skills: Python, R, SQL, Tableau, Power BI, Machine Learning, Cloud Analytics
-                </p>
+                <!-- Academic Highlights -->
+                <p class="mb-2"><strong>🎓 Academic Highlights:</strong></p>
+                <div class="timeline-animated academic-timeline mb-4">
+                    <div class="timeline-item" title="High School">
+                        <span class="timeline-icon">🏫</span>
+                        <span class="timeline-text">Delhi Public School</span>
+                    </div>
+                    <div class="timeline-item" title="Bachelors in Computer Engineering">
+                        <span class="timeline-icon">🎓</span>
+                        <span class="timeline-text">GTU</span>
+                    </div>
+                    <div class="timeline-item" title="Master’s in Computer Science">
+                        <span class="timeline-icon">🎓</span>
+                        <span class="timeline-text">Lakehead University</span>
+                    </div>
+                </div>
 
-                <!-- Horizontal Career Timeline with Animated Tooltips -->
+                <!-- Career Highlights -->
                 <p class="mb-2"><strong>💻 Career Highlights:</strong></p>
-                <div class="career-timeline-animated mb-4">
+                <div class="timeline-animated career-timeline mb-4">
                     <div class="timeline-item" title="ML & analytics projects">
                         <span class="timeline-icon">🧑‍💻</span>
                         <span class="timeline-text">Sparks Foundation</span>
@@ -247,10 +258,13 @@
                         <span class="timeline-text">Alessa/Valsoft</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
     <style>
-        /* Horizontal Timeline with Animated Tooltips */
-        .career-timeline-animated {
+        /* Shared Timeline Styles */
+        .timeline-animated {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -258,7 +272,7 @@
             margin-top: 20px;
         }
 
-        .career-timeline-animated::before {
+        .timeline-animated::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -269,7 +283,7 @@
             z-index: 0;
         }
 
-        .timeline-item {
+        .timeline-animated .timeline-item {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -280,13 +294,13 @@
             cursor: pointer;
         }
 
-        .timeline-item:hover .timeline-text {
+        .timeline-animated .timeline-item:hover .timeline-text {
             font-weight: bold;
             color: #bac964;
         }
 
-        /* Tooltip styling with smooth animation */
-        .timeline-item[title]::after {
+        /* Tooltip animation */
+        .timeline-animated .timeline-item[title]::after {
             content: attr(title);
             position: absolute;
             bottom: 60px;
@@ -303,14 +317,14 @@
             transition: all 0.3s ease;
         }
 
-        .timeline-item:hover::after {
+        .timeline-animated .timeline-item:hover::after {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Keep emoji icons natural color */
-        .timeline-icon {
-            background-color: transparent; /* no forced yellow */
+        /* Emoji icons natural */
+        .timeline-animated .timeline-icon {
+            background-color: transparent;
             color: inherit;
             font-size: 1.5rem;
             width: auto;
@@ -322,19 +336,19 @@
             margin-bottom: 5px;
         }
 
-        .timeline-text {
+        .timeline-animated .timeline-text {
             font-size: 0.8rem;
             line-height: 1.2;
         }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
-            .career-timeline-animated {
+            .timeline-animated {
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .timeline-item {
+            .timeline-animated .timeline-item {
                 width: 100px;
                 margin: 10px;
             }
