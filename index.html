@@ -214,38 +214,32 @@
                     I help financial institutions turn <strong>data into automation-driven compliance solutions</strong> and thrive through change.
                 </p>
 
-                <p class="mb-4">
-                    🎓 <strong>Master’s in Computer Science</strong> – Lakehead University, Canada<br>
-                    🧠 Final Project: Deep CNN for COVID-19 detection using CT scans.<br>
-                    Skills: Python, R, SQL, Tableau, Power BI, Machine Learning, Cloud Analytics
-                </p>
-
-                <!-- Horizontal Career Timeline -->
+                <!-- Compact Horizontal Career Timeline -->
                 <p class="mb-2"><strong>💻 Career Highlights:</strong></p>
-                <div class="career-timeline-horizontal mb-4">
+                <div class="career-timeline-compact mb-4">
                     <div class="timeline-item">
                         <span class="timeline-icon">🧑‍💻</span>
-                        <span class="timeline-text">Data Science Intern – Sparks Foundation</span>
+                        <span class="timeline-text">Sparks Foundation</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-icon">📝</span>
-                        <span class="timeline-text">Data Collection Clerk – R.A Malatest & Associates</span>
+                        <span class="timeline-text">R.A Malatest & Associates</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-icon">🔧</span>
-                        <span class="timeline-text">Data Engineer – Narcity Media Group</span>
+                        <span class="timeline-text">Narcity Media Group</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-icon">💻</span>
-                        <span class="timeline-text">Tech Analyst – Alessa Inc.</span>
+                        <span class="timeline-text">Alessa Inc. (Tech Analyst)</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-icon">🚀</span>
-                        <span class="timeline-text">Implementation & Analytics Specialist – Alessa Inc.</span>
+                        <span class="timeline-text">Alessa Inc. (Implementation & Analytics)</span>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-icon">📊</span>
-                        <span class="timeline-text">Data Analytics Specialist – Alessa/Valsoft</span>
+                        <span class="timeline-text">Alessa/Valsoft (Data Analytics Specialist)</span>
                     </div>
                 </div>
 
@@ -264,15 +258,16 @@
     </div>
 
     <style>
-        /* Horizontal Timeline */
-        .career-timeline-horizontal {
+        /* Compact Horizontal Timeline */
+        .career-timeline-compact {
             display: flex;
-            overflow-x: auto;
-            padding: 20px 0;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
+            margin-top: 20px;
         }
 
-        .career-timeline-horizontal::before {
+        .career-timeline-compact::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -287,11 +282,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 150px;
-            margin: 0 20px;
             position: relative;
             z-index: 1;
             text-align: center;
+            width: 120px;
         }
 
         .timeline-icon {
@@ -304,35 +298,24 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .timeline-text {
-            font-size: 0.9rem;
-        }
-
-        /* Scrollbar styling for horizontal timeline */
-        .career-timeline-horizontal::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .career-timeline-horizontal::-webkit-scrollbar-thumb {
-            background: #bac964;
-            border-radius: 3px;
-        }
-
-        .career-timeline-horizontal::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            font-size: 0.8rem;
+            line-height: 1.2;
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .career-timeline-horizontal {
-                flex-wrap: nowrap;
+            .career-timeline-compact {
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .timeline-item {
-                min-width: 120px;
+                width: 100px;
+                margin: 10px;
             }
         }
     </style>
