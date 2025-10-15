@@ -214,32 +214,32 @@
                     I help financial institutions turn <strong>data into automation-driven compliance solutions</strong> and thrive through change.
                 </p>
 
-                <!-- Compact Horizontal Career Timeline -->
+                <!-- Horizontal Career Timeline with Animated Tooltips -->
                 <p class="mb-2"><strong>💻 Career Highlights:</strong></p>
-                <div class="career-timeline-compact mb-4">
-                    <div class="timeline-item">
+                <div class="career-timeline-animated mb-4">
+                    <div class="timeline-item" title="ML & analytics projects">
                         <span class="timeline-icon">🧑‍💻</span>
                         <span class="timeline-text">Sparks Foundation</span>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" title="Data gathering & cleaning">
                         <span class="timeline-icon">📝</span>
                         <span class="timeline-text">R.A Malatest & Associates</span>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" title="ETL & data pipelines">
                         <span class="timeline-icon">🔧</span>
                         <span class="timeline-text">Narcity Media Group</span>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" title="AML solution implementation & API testing">
                         <span class="timeline-icon">💻</span>
                         <span class="timeline-text">Alessa Inc. (Tech Analyst)</span>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" title="Automated AML pipelines & cloud analytics">
                         <span class="timeline-icon">🚀</span>
                         <span class="timeline-text">Alessa Inc. (Implementation & Analytics)</span>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" title="Optimized workflows & scaled analytics for top clients">
                         <span class="timeline-icon">📊</span>
-                        <span class="timeline-text">Alessa/Valsoft (Data Analytics Specialist)</span>
+                        <span class="timeline-text">Alessa/Valsoft</span>
                     </div>
                 </div>
 
@@ -258,8 +258,8 @@
     </div>
 
     <style>
-        /* Compact Horizontal Timeline */
-        .career-timeline-compact {
+        /* Horizontal Timeline with Animated Tooltips */
+        .career-timeline-animated {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -267,7 +267,7 @@
             margin-top: 20px;
         }
 
-        .career-timeline-compact::before {
+        .career-timeline-animated::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -286,6 +286,35 @@
             z-index: 1;
             text-align: center;
             width: 120px;
+            cursor: pointer;
+        }
+
+        .timeline-item:hover .timeline-text {
+            font-weight: bold;
+            color: #bac964;
+        }
+
+        /* Tooltip styling with animation */
+        .timeline-item[title]::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #bac964;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         .timeline-icon {
@@ -308,7 +337,7 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .career-timeline-compact {
+            .career-timeline-animated {
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -320,6 +349,8 @@
         }
     </style>
 </section>
+
+					
 <!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
