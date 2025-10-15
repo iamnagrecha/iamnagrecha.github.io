@@ -226,27 +226,27 @@
             <div class="timeline-item" title="High School">
                 <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
                 <span class="timeline-text">Delhi Public School</span>
-                <span class="timeline-date">2005 - 2010</span>
+                <span class="timeline-date">2005 - 2012</span>
             </div>
             <div class="timeline-item" title="Higher Secondary Certificate">
                 <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
                 <span class="timeline-text">Parth School</span>
-                <span class="timeline-date">2010 - 2012</span>
+                <span class="timeline-date">2012 - 2014</span>
             </div>
             <div class="timeline-item" title="Bachelors in Computer Engineering">
                 <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
                 <span class="timeline-text">Gujarat Technological University</span>
-                <span class="timeline-date">2012 - 2016</span>
+                <span class="timeline-date">2014 - 2018</span>
             </div>
             <div class="timeline-item" title="Master’s in Computer Science">
                 <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
                 <span class="timeline-text">Lakehead University</span>
-                <span class="timeline-date">2017 - 2019</span>
+                <span class="timeline-date">2019 - 2021</span>
             </div>
             <div class="timeline-item" title="Six IBM Developer Skills Network Badges">
                 <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
                 <span class="timeline-text">Certifications</span>
-                <span class="timeline-date">2020</span>
+                <span class="timeline-date">2019 - Present</span>
                 <p style="font-size: 0.8rem; margin-top: 2px;">
                     <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="text-info">View Dashboard</a>
                 </p>
@@ -259,36 +259,37 @@
             <div class="timeline-item" title="Data Science Intern">
                 <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
                 <span class="timeline-text">Sparks Foundation</span>
-                <span class="timeline-date">2016</span>
+                <span class="timeline-date">2021</span>
             </div>
             <div class="timeline-item" title="Data Collection Clerk">
                 <img src="images/parth_school_logo.png" alt="Malatest Logo" class="timeline-icon">
                 <span class="timeline-text">R.A Malatest & Associates</span>
-                <span class="timeline-date">2016 - 2017</span>
+                <span class="timeline-date">2021 - 2021</span>
             </div>
             <div class="timeline-item" title="Data Engineer">
                 <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
                 <span class="timeline-text">Narcity Media Group</span>
-                <span class="timeline-date">2017 - 2019</span>
+                <span class="timeline-date">2021 - 2021</span>
             </div>
             <div class="timeline-item" title="Intermediate Technical Analyst">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-date">2019 - 2021</span>
+                <span class="timeline-date">2021 - 2022</span>
             </div>
             <div class="timeline-item" title="Intermediate Analytic Consultant">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-date">2021 - 2022</span>
+                <span class="timeline-date">2022 - 2025</span>
             </div>
             <div class="timeline-item" title="Data Analytics Specialist">
                 <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa/Valsoft</span>
-                <span class="timeline-date">2022 - Present</span>
+                <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-date">2025 - Present</span>
             </div>
         </div>
     </div>
 
+    <!-- Styles -->
     <style>
         /* Timeline Container */
         .timeline-animated {
@@ -298,17 +299,31 @@
             position: relative;
             margin-top: 30px;
             flex-wrap: wrap;
+            opacity: 0; /* initial hidden for scroll animation */
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
 
+        .timeline-animated.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline Line */
         .timeline-animated::before {
             content: '';
             position: absolute;
-            top: 50%; /* line passes through icons */
+            top: 50%;
             left: 5%;
-            width: 90%;
+            width: 0; /* start width for animation */
             height: 3px;
             background-color: #bac964;
             z-index: 0;
+            transition: width 1s ease-out;
+        }
+
+        .timeline-animated.active::before {
+            width: 90%; /* animate full width */
         }
 
         /* Timeline Items */
@@ -329,37 +344,18 @@
             transform: scale(1.15);
         }
 
-        /* Tooltip */
-        .timeline-animated .timeline-item[title]::after {
-            content: attr(title);
+        /* Circle Connectors */
+        .timeline-animated .timeline-item::before {
+            content: '';
             position: absolute;
-            bottom: calc(100% + 10px);
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
             background-color: #bac964;
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 6px;
-            white-space: nowrap;
-            font-size: 0.85rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-animated .timeline-item:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Icons */
-        .timeline-animated .timeline-icon {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
             border-radius: 50%;
-            margin-bottom: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            z-index: 2;
         }
 
         /* Text & Dates */
@@ -376,27 +372,18 @@
             display: block;
         }
 
-        /* Circle Connectors */
-        .timeline-animated .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            background-color: #bac964;
+        /* Icons */
+        .timeline-animated .timeline-icon {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
             border-radius: 50%;
-            z-index: 2;
+            margin-bottom: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .timeline-animated {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
             .timeline-animated .timeline-item {
                 width: 100px;
                 margin: 15px 8px;
@@ -417,10 +404,31 @@
 
             .timeline-animated::before {
                 left: 2%;
+                width: 0;
+            }
+
+            .timeline-animated.active::before {
                 width: 96%;
             }
         }
     </style>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const timelines = document.querySelectorAll('.timeline-animated');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            timelines.forEach(timeline => observer.observe(timeline));
+        });
+    </script>
 </section>
 					
 					
