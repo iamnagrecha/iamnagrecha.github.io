@@ -309,22 +309,23 @@
             transform: translateY(0);
         }
 
-        /* Timeline Line */
-        .timeline-animated::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 5%;
-            width: 0; /* start width for animation */
-            height: 3px;
-            background-color: #bac964;
-            z-index: 0;
-            transition: width 1s ease-out;
-        }
-
-        .timeline-animated.active::before {
-            width: 90%; /* animate full width */
-        }
+		/* Timeline Line as Dotted */
+		.timeline-animated::before {
+		    content: '';
+		    position: absolute;
+		    top: 40%; /* keep aligned with icons */
+		    left: 5%;
+		    width: 0;
+		    height: 0; /* height 0 because we use border-top */
+		    border-top: 3px dotted #bac964; /* dotted line */
+		    z-index: 0;
+		    transition: width 1s ease-out;
+		}
+		
+		.timeline-animated.active::before {
+		    width: 90%;
+		    border-top: 3px dotted #bac964;
+		}
 
         /* Timeline Items */
         .timeline-animated .timeline-item {
