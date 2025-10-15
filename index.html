@@ -205,37 +205,51 @@
 
             <!-- Text on right -->
             <div class="col-lg-7 pl-lg-4">
-                <div class="section-heading text-center text-lg-start">
+                <div class="section-heading text-center text-lg-start mb-4">
                     <h2>About <strong style="color: #bac964;">Me</strong></h2>
                 </div>
                 
-                <p class="lead">
+                <p class="lead mb-4">
                     🚀 I’m a <strong>Data Analytics & Compliance Specialist</strong> with 5+ years of experience in AML solutions, transaction monitoring, and risk scoring.  
                     I help financial institutions turn <strong>data into automation-driven compliance solutions</strong> and thrive through change.
                 </p>
 
-                <p>
+                <p class="mb-4">
                     🎓 <strong>Master’s in Computer Science</strong> – Lakehead University, Canada<br>
                     🧠 Final Project: Deep CNN for COVID-19 detection using CT scans.<br>
                     Skills: Python, R, SQL, Tableau, Power BI, Machine Learning, Cloud Analytics
                 </p>
 
-                <p>
-                    💻 <strong>Career Highlights:</strong><br>
-                    🧑‍💻 Data Science Intern – Sparks Foundation | ML & analytics projects<br>
-                    📝 Data Collection Clerk – R.A Malatest & Associates | Data gathering & cleaning<br>
-                    🔧 Data Engineer – Narcity Media Group | ETL & data pipelines<br>
-                    💻 Tech Analyst – Alessa Inc. | AML solution implementation & API testing<br>
-                    🚀 Implementation & Analytics Specialist – Alessa Inc. | Automated AML pipelines & cloud analytics<br>
-                    📊 Data Analytics Specialist – Alessa/Valsoft | Optimized workflows & scaled analytics for top clients
-                </p>
+                <!-- Horizontal Career Timeline -->
+                <p class="mb-2"><strong>💻 Career Highlights:</strong></p>
+                <div class="career-timeline-horizontal mb-4">
+                    <div class="timeline-item">
+                        <span class="timeline-icon">🧑‍💻</span>
+                        <span class="timeline-text">Data Science Intern – Sparks Foundation</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-icon">📝</span>
+                        <span class="timeline-text">Data Collection Clerk – R.A Malatest & Associates</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-icon">🔧</span>
+                        <span class="timeline-text">Data Engineer – Narcity Media Group</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-icon">💻</span>
+                        <span class="timeline-text">Tech Analyst – Alessa Inc.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-icon">🚀</span>
+                        <span class="timeline-text">Implementation & Analytics Specialist – Alessa Inc.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-icon">📊</span>
+                        <span class="timeline-text">Data Analytics Specialist – Alessa/Valsoft</span>
+                    </div>
+                </div>
 
-                <p>
-                    🏦 AML & Compliance | 📊 Data Analytics | ☁ Cloud & Big Data<br>
-                    🚀 Automation | 🔍 API Testing | 📢 Consulting & Insights
-                </p>
-
-                <div class="brain-container">
+                <div class="brain-container mt-4">
                     <blockquote class="blockquote text-center text-lg-start p-3 rounded-3 shadow-sm">
                         <p class="mb-1 fst-italic">
                             "Keep going—small steps lead to big success."
@@ -248,8 +262,81 @@
             </div>
         </div>
     </div>
-</section>
 
+    <style>
+        /* Horizontal Timeline */
+        .career-timeline-horizontal {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .career-timeline-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #bac964;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 150px;
+            margin: 0 20px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .timeline-icon {
+            background-color: #bac964;
+            color: #fff;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+
+        .timeline-text {
+            font-size: 0.9rem;
+        }
+
+        /* Scrollbar styling for horizontal timeline */
+        .career-timeline-horizontal::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .career-timeline-horizontal::-webkit-scrollbar-thumb {
+            background: #bac964;
+            border-radius: 3px;
+        }
+
+        .career-timeline-horizontal::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .career-timeline-horizontal {
+                flex-wrap: nowrap;
+            }
+
+            .timeline-item {
+                min-width: 120px;
+            }
+        }
+    </style>
+</section>
 <!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
