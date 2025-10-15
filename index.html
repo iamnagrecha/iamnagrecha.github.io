@@ -192,7 +192,6 @@
 
 
 
-	
 <section class="site-section" id="section-about">
     <div class="container">
         <div class="row mb-5 align-items-center">
@@ -212,6 +211,12 @@
                 <p class="lead mb-4">
                     🚀 I’m a <strong>Data Analytics & Compliance Specialist</strong> with 5+ years of experience in AML solutions, transaction monitoring, and risk scoring.  
                     I help financial institutions turn <strong>data into automation-driven compliance solutions</strong> and thrive through change.
+                </p>
+
+                <p class="mb-4">
+                    🎓 <strong>Master’s in Computer Science</strong> – Lakehead University, Canada<br>
+                    🧠 Final Project: Deep CNN for COVID-19 detection using CT scans.<br>
+                    Skills: Python, R, SQL, Tableau, Power BI, Machine Learning, Cloud Analytics
                 </p>
 
                 <!-- Horizontal Career Timeline with Animated Tooltips -->
@@ -242,20 +247,6 @@
                         <span class="timeline-text">Alessa/Valsoft</span>
                     </div>
                 </div>
-
-                <div class="brain-container mt-4">
-                    <blockquote class="blockquote text-center text-lg-start p-3 rounded-3 shadow-sm">
-                        <p class="mb-1 fst-italic">
-                            "Keep going—small steps lead to big success."
-                        </p>
-                        <footer class="blockquote-footer fw-bold">
-                            Abhishek Nagrecha
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <style>
         /* Horizontal Timeline with Animated Tooltips */
@@ -294,7 +285,7 @@
             color: #bac964;
         }
 
-        /* Tooltip styling with animation */
+        /* Tooltip styling with smooth animation */
         .timeline-item[title]::after {
             content: attr(title);
             position: absolute;
@@ -317,12 +308,13 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Keep emoji icons natural color */
         .timeline-icon {
-            background-color: #bac964;
-            color: #fff;
-            font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
+            background-color: transparent; /* no forced yellow */
+            color: inherit;
+            font-size: 1.5rem;
+            width: auto;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -349,7 +341,6 @@
         }
     </style>
 </section>
-
 					
 <!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
