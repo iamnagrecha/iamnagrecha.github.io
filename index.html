@@ -290,7 +290,7 @@ $(document).ready(function () {
         </div>
     </div>
 
-  <style>
+<style>
 /* Timeline container */
 .timeline-animated {
     display: flex;
@@ -300,7 +300,7 @@ $(document).ready(function () {
     margin-top: 30px;
 }
 
-/* Timeline items start hidden and offscreen */
+/* Timeline items start hidden and slightly down */
 .timeline-item {
     display: flex;
     flex-direction: column;
@@ -310,22 +310,14 @@ $(document).ready(function () {
     cursor: pointer;
     width: 140px;
     opacity: 0;
-    transform: translateY(30px) translateX(0);
+    transform: translateY(30px);
     transition: all 0.6s ease-out;
 }
 
-/* Slide in from left or right while fading in */
+/* Fade in and move up when in view */
 .timeline-item.show {
     opacity: 1;
-    transform: translateY(0) translateX(0);
-}
-
-/* Add alternating left/right slide */
-.timeline-item:nth-child(odd).show {
-    transform: translateY(0) translateX(-20px);
-}
-.timeline-item:nth-child(even).show {
-    transform: translateY(0) translateX(20px);
+    transform: translateY(0);
 }
 
 /* Mobile adjustments */
@@ -334,7 +326,7 @@ $(document).ready(function () {
     .timeline-icon { width: 50px; height: 50px; }
 }
 
-/* Keep your existing styles */
+/* Icons and text styling */
 .timeline-icon {
     width: 80px;
     height: 80px;
@@ -349,6 +341,37 @@ $(document).ready(function () {
 </style>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Scroll animation with stagger for each timeline-item
+    const timelines = document.querySelectorAll('.timeline-animated');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                const items = entry.target.querySelectorAll('.timeline-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show'); // fade in + move up
+                    }, index * 200); // 200ms delay between items
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    timelines.forEach(timeline => observer.observe(timeline));
+
+    // Click to toggle extra info
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const extra = item.querySelector('.timeline-extra');
+            const visible = extra.style.display === 'block';
+            document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
+            extra.style.display = visible ? 'none' : 'block';
+        });
+    });
+});
+</script>
 document.addEventListener('DOMContentLoaded', function () {
     // Scroll animation with stagger for each timeline-item
     const timelines = document.querySelectorAll('.timeline-animated');
