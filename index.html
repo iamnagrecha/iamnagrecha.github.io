@@ -47,15 +47,16 @@
 
 <style>
 @media (max-width: 768px) {
+    /* Mobile-only adjustments */
     .navbar-collapse .navbar-nav {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-        gap: 0.6rem 0.8rem; /* spacing between items */
-        justify-items: center;
-        padding: 0.8rem;
-        background: #ffffff; /* optional clean background */
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem 0.6rem;
+        justify-items: center; /* only mobile */
+        padding: 0.5rem;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
     }
 
     .navbar-collapse .nav-item {
@@ -66,19 +67,22 @@
     .navbar-collapse .nav-link {
         display: inline-block;
         width: 100%;
-        font-size: 0.85rem;
+        font-size: 0.7rem;
         font-weight: 500;
         color: #333;
-        padding: 0.5rem 0;
-        border-radius: 8px;
+        padding: 0.35rem 0;
+        border-radius: 6px;
         background: #f7f7f7;
         transition: all 0.2s ease-in-out;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .navbar-collapse .nav-link:hover {
-        background: #007bff;
+    .navbar-collapse .nav-link:hover,
+    .navbar-collapse .nav-link:focus,
+    .navbar-collapse .nav-link:active {
+        background: #bac964; /* light green hover like desktop */
         color: #fff;
-        box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+        box-shadow: none;
     }
 
     .navbar-toggler {
@@ -86,7 +90,28 @@
         outline: none;
     }
 }
-</style>
+
+/* Desktop view retains default Bootstrap center alignment */
+@media (min-width: 769px) {
+    .navbar-collapse .navbar-nav {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 1rem;
+    }
+
+    .navbar-collapse .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        background: none;
+        border-radius: 0;
+        color: #fff; /* as in your desktop theme */
+    }
+
+    .navbar-collapse .nav-link:hover {
+        background: none; /* keep desktop hover as before */
+        color: #bac964; /* or your desktop hover color */
+    }
+}
 
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
