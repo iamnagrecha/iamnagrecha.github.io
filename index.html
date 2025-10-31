@@ -354,37 +354,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         item.classList.add('show'); // fade in + move up
                     }, index * 200); // 200ms delay between items
                 });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    timelines.forEach(timeline => observer.observe(timeline));
-
-    // Click to toggle extra info
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const extra = item.querySelector('.timeline-extra');
-            const visible = extra.style.display === 'block';
-            document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
-            extra.style.display = visible ? 'none' : 'block';
-        });
-    });
-});
-</script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Scroll animation with stagger for each timeline-item
-    const timelines = document.querySelectorAll('.timeline-animated');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                const items = entry.target.querySelectorAll('.timeline-item');
-                items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('show'); // show each item with delay
-                    }, index * 200); // 200ms delay between items
-                });
                 observer.unobserve(entry.target); // stop observing after first trigger
             }
         });
