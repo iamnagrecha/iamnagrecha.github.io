@@ -49,22 +49,41 @@
 @media (max-width: 768px) {
     .navbar-collapse .navbar-nav {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-        gap: 0.3rem 0.5rem; /* vertical & horizontal spacing */
-        justify-items: center; /* center each item */
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        gap: 0.6rem 0.8rem; /* spacing between items */
+        justify-items: center;
+        padding: 0.8rem;
+        background: #ffffff; /* optional clean background */
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     .navbar-collapse .nav-item {
-        flex: none;
         width: 100%;
         text-align: center;
-        margin: 0;
     }
 
     .navbar-collapse .nav-link {
-        display: block;
-        padding: 0.3rem 0;
-        font-size: 0.65rem; /* smaller text so all 8 items fit */
+        display: inline-block;
+        width: 100%;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #333;
+        padding: 0.5rem 0;
+        border-radius: 8px;
+        background: #f7f7f7;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .navbar-collapse .nav-link:hover {
+        background: #007bff;
+        color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    }
+
+    .navbar-toggler {
+        border: none;
+        outline: none;
     }
 }
 </style>
