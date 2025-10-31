@@ -210,7 +210,7 @@
 
         <!-- Academic Highlights -->
         <p class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
-        <div class="timeline-animated academic-timeline mb-5 justify-content-center">
+        <div class="timeline-animated academic-timeline mb-5">
             <div class="timeline-item" title="Primary School">
                 <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
                 <span class="timeline-text">DonBosco School</span>
@@ -248,7 +248,7 @@
 
         <!-- Career Highlights -->
         <p class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
-        <div class="timeline-animated career-timeline mb-5 justify-content-center">
+        <div class="timeline-animated career-timeline mb-5">
             <div class="timeline-item" title="Data Science Intern">
                 <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
                 <span class="timeline-text">Sparks Foundation</span>
@@ -284,7 +284,6 @@
 
     <!-- Styles -->
     <style>
-        /* Timeline Container */
         .timeline-animated {
             display: flex;
             justify-content: center;
@@ -298,12 +297,9 @@
             width: 100%;
         }
 
-        .timeline-animated.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .timeline-animated.active { opacity: 1; transform: translateY(0); }
 
-        /* Horizontal Dotted Line (Desktop) */
+        /* Desktop horizontal line */
         .timeline-animated::before {
             content: '';
             position: absolute;
@@ -317,11 +313,8 @@
             transform: translateY(-50%);
         }
 
-        .timeline-animated.active::before {
-            width: 90%;
-        }
+        .timeline-animated.active::before { width: 90%; }
 
-        /* Timeline Items */
         .timeline-animated .timeline-item {
             display: flex;
             flex-direction: column;
@@ -335,11 +328,8 @@
             margin: 20px;
         }
 
-        .timeline-animated .timeline-item:hover {
-            transform: scale(1.15);
-        }
+        .timeline-animated .timeline-item:hover { transform: scale(1.15); }
 
-        /* Connectors */
         .timeline-animated .timeline-item::before {
             content: '';
             position: absolute;
@@ -353,7 +343,6 @@
             z-index: 2;
         }
 
-        /* Text & Dates */
         .timeline-animated .timeline-text {
             font-size: 0.95rem;
             line-height: 1.3;
@@ -367,7 +356,6 @@
             display: block;
         }
 
-        /* Icons */
         .timeline-animated .timeline-icon {
             width: 70px;
             height: 70px;
@@ -388,36 +376,38 @@
                 flex-direction: column;
                 align-items: center;
                 position: relative;
-                width: 100%;
+                width: 0;
+                margin: 0 auto;
                 padding-left: 0;
             }
 
-            /* Vertical dotted line centered through icons */
+            /* Vertical line */
             .timeline-animated::before {
                 content: '';
                 position: absolute;
                 top: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 0;
+                width: 3px;
                 height: 100%;
-                border-left: 3px dotted #bac964;
+                background: #bac964;
                 z-index: 0;
                 border-top: none !important;
             }
 
             .timeline-animated .timeline-item {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
                 width: auto;
                 margin: 40px 0;
-                position: relative;
-                z-index: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                z-index: 1;
             }
 
-            /* Dot connectors on vertical line */
             .timeline-animated .timeline-item::before {
                 top: 0;
                 left: 50%;
@@ -430,10 +420,11 @@
                 height: 60px;
             }
 
+            /* Always show text/details on mobile */
             .timeline-animated .timeline-text,
             .timeline-animated .timeline-date {
-                font-size: 0.9rem;
                 display: block;
+                font-size: 0.9rem;
             }
         }
     </style>
