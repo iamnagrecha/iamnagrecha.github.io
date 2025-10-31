@@ -49,13 +49,13 @@
 @media (max-width: 768px) {
     .navbar-collapse .navbar-nav {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.4rem 0.6rem;
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+        gap: 0.3rem 0.5rem; /* tighter spacing */
         justify-items: center;
-        padding: 0.5rem;
+        padding: 0.4rem;
         background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     }
 
     .navbar-collapse .nav-item {
@@ -66,11 +66,11 @@
     .navbar-collapse .nav-link {
         display: inline-block;
         width: 100%;
-        font-size: 0.7rem; /* smaller text */
+        font-size: 0.65rem; /* smaller text */
         font-weight: 500;
         color: #333;
-        padding: 0.35rem 0; /* less height */
-        border-radius: 6px;
+        padding: 0.25rem 0; /* reduced vertical padding */
+        border-radius: 5px; /* slightly smaller rounded corners */
         background: #f7f7f7;
         transition: all 0.2s ease-in-out;
         -webkit-tap-highlight-color: transparent; /* removes blue tap flash */
@@ -79,7 +79,7 @@
     .navbar-collapse .nav-link:hover,
     .navbar-collapse .nav-link:focus,
     .navbar-collapse .nav-link:active {
-        background: #bac964; /* same light green hover */
+        background: #bac964; /* light green hover */
         color: #fff;
         box-shadow: none;
     }
