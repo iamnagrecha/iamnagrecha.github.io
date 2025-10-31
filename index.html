@@ -211,30 +211,36 @@
         <!-- Academic Highlights -->
         <p class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
         <div class="timeline-animated academic-timeline mb-5 justify-content-center">
-            <div class="timeline-item" title="Primary School">
+            <div class="timeline-item">
                 <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
-                <div class="timeline-click-text">DonBosco School | Apr 2000 - Mar 2005</div>
+                <span class="timeline-text">DonBosco School</span>
+                <div class="timeline-extra">Apr 2000 - Mar 2005</div>
             </div>
-            <div class="timeline-item" title="High School">
+            <div class="timeline-item">
                 <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
-                <div class="timeline-click-text">Delhi Public School | Apr 2005 - Feb 2012</div>
+                <span class="timeline-text">Delhi Public School</span>
+                <div class="timeline-extra">Apr 2005 - Feb 2012</div>
             </div>
-            <div class="timeline-item" title="Higher Secondary Certificate">
+            <div class="timeline-item">
                 <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
-                <div class="timeline-click-text">Parth School | Apr 2012 - Mar 2014</div>
+                <span class="timeline-text">Parth School</span>
+                <div class="timeline-extra">Apr 2012 - Mar 2014</div>
             </div>
-            <div class="timeline-item" title="Bachelors in Computer Engineering">
+            <div class="timeline-item">
                 <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
-                <div class="timeline-click-text">GTU | May 2014 - Jun 2018</div>
+                <span class="timeline-text">GTU</span>
+                <div class="timeline-extra">May 2014 - Jun 2018</div>
             </div>
-            <div class="timeline-item" title="Master’s in Computer Science">
+            <div class="timeline-item">
                 <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
-                <div class="timeline-click-text">Lakehead University | Sep 2019 - Apr 2021</div>
+                <span class="timeline-text">Lakehead University</span>
+                <div class="timeline-extra">Sep 2019 - Apr 2021</div>
             </div>
-            <div class="timeline-item" title="Certifications">
+            <div class="timeline-item">
                 <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
-                <div class="timeline-click-text">
-                    Certifications | 2019 - Present
+                <span class="timeline-text">Certifications</span>
+                <div class="timeline-extra">
+                    2019 - Present
                     <br>
                     <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="text-info">View Dashboard</a>
                 </div>
@@ -244,91 +250,80 @@
         <!-- Career Highlights -->
         <p class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
         <div class="timeline-animated career-timeline mb-5 justify-content-center">
-            <div class="timeline-item" title="Data Science Intern">
+            <div class="timeline-item">
                 <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
-                <div class="timeline-click-text">Sparks Foundation | Apr 2021</div>
+                <span class="timeline-text">Sparks Foundation</span>
+                <div class="timeline-extra">Data Science Intern | Apr 2021</div>
             </div>
-            <div class="timeline-item" title="Data Collection Clerk">
+            <div class="timeline-item">
                 <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
-                <div class="timeline-click-text">R.A Malatest & Associates | Feb 2021 - May 2021</div>
+                <span class="timeline-text">R.A Malatest & Associates</span>
+                <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
             </div>
-            <div class="timeline-item" title="Data Engineer">
+            <div class="timeline-item">
                 <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
-                <div class="timeline-click-text">Narcity Media Group | May 2021 - Aug 2021</div>
+                <span class="timeline-text">Narcity Media Group</span>
+                <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
             </div>
-            <div class="timeline-item" title="Intermediate Technical Analyst">
+            <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <div class="timeline-click-text">Alessa Inc | Nov 2021 - Oct 2022</div>
+                <span class="timeline-text">Alessa Inc</span>
+                <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
             </div>
-            <div class="timeline-item" title="Intermediate Analytic Consultant">
+            <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <div class="timeline-click-text">Alessa Inc | Oct 2022 - Jun 2025</div>
+                <span class="timeline-text">Alessa Inc</span>
+                <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
             </div>
-            <div class="timeline-item" title="Data Analytics Specialist">
+            <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
-                <div class="timeline-click-text">Alessa Inc | Jun 2025 - Present</div>
+                <span class="timeline-text">Alessa Inc</span>
+                <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
             </div>
         </div>
     </div>
 
-    <!-- Styles -->
     <style>
-        /* Timeline Container */
         .timeline-animated {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            flex-wrap: wrap;
             position: relative;
             margin-top: 30px;
-            flex-wrap: wrap;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease-out;
         }
-
         .timeline-animated.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Timeline Line as Dotted */
         .timeline-animated::before {
             content: '';
             position: absolute;
             top: 40%;
             left: 5%;
             width: 0;
-            height: 0;
             border-top: 3px dotted #bac964;
             z-index: 0;
             transition: width 1s ease-out;
         }
-
         .timeline-animated.active::before {
             width: 90%;
-            border-top: 3px dotted #bac964;
         }
-
-        /* Timeline Items */
-        .timeline-animated .timeline-item {
+        .timeline-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            z-index: 1;
-            text-align: center;
-            width: 140px;
-            cursor: pointer;
             margin: 20px;
+            cursor: pointer;
+            width: 140px;
         }
-
-        /* Remove hover scale */
-        .timeline-animated .timeline-item:hover {
-            transform: none;
+        .timeline-item:hover {
+            transform: none; /* remove hover */
         }
-
-        /* Circle Connectors */
-        .timeline-animated .timeline-item::before {
+        .timeline-item::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -340,18 +335,27 @@
             border-radius: 50%;
             z-index: 2;
         }
-
-        /* Click text (hidden by default) */
-        .timeline-click-text {
-            display: none;
-            font-size: 0.9rem;
-            margin-top: 6px;
+        .timeline-text {
+            font-size: 0.95rem;
             font-weight: 500;
-            line-height: 1.2;
+            margin-top: 6px;
         }
-
-        /* Icons */
-        .timeline-animated .timeline-icon {
+        .timeline-extra {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-bottom: 8px;
+            z-index: 10;
+        }
+        .timeline-icon {
             width: 70px;
             height: 70px;
             object-fit: contain;
@@ -359,35 +363,13 @@
             margin-bottom: 8px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.2);
         }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .timeline-animated .timeline-item {
-                width: 100px;
-                margin: 15px 8px;
-            }
-
-            .timeline-animated .timeline-icon {
-                width: 50px;
-                height: 50px;
-            }
-
-            .timeline-animated .timeline-text {
-                font-size: 0.8rem;
-            }
-
-            .timeline-animated .timeline-date {
-                font-size: 0.75rem;
-            }
-
-            /* Remove dotted line on small screens */
-            .timeline-animated::before {
-                display: none;
-            }
+            .timeline-item { width: 100px; margin: 15px 8px; }
+            .timeline-icon { width: 50px; height: 50px; }
+            .timeline-animated::before { display: none; }
         }
     </style>
 
-    <!-- Scroll Animation Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Scroll animation
@@ -402,18 +384,13 @@
             }, { threshold: 0.3 });
             timelines.forEach(timeline => observer.observe(timeline));
 
-            // Click to show text
-            const items = document.querySelectorAll('.timeline-item');
-            items.forEach(item => {
+            // Click to toggle extra text
+            document.querySelectorAll('.timeline-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const text = item.querySelector('.timeline-click-text');
-                    if (text.style.display === 'block') {
-                        text.style.display = 'none';
-                    } else {
-                        // hide other open texts
-                        document.querySelectorAll('.timeline-click-text').forEach(t => t.style.display = 'none');
-                        text.style.display = 'block';
-                    }
+                    const extra = item.querySelector('.timeline-extra');
+                    const visible = extra.style.display === 'block';
+                    document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
+                    extra.style.display = visible ? 'none' : 'block';
                 });
             });
         });
