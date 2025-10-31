@@ -214,31 +214,37 @@
             <div class="timeline-item">
                 <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
                 <span class="timeline-text">DonBosco School</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2000 - Mar 2005</div>
             </div>
             <div class="timeline-item">
                 <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
                 <span class="timeline-text">Delhi Public School</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2005 - Feb 2012</div>
             </div>
             <div class="timeline-item">
                 <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
                 <span class="timeline-text">Parth School</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2012 - Mar 2014</div>
             </div>
             <div class="timeline-item">
                 <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
                 <span class="timeline-text">GTU</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">May 2014 - Jun 2018</div>
             </div>
             <div class="timeline-item">
                 <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
                 <span class="timeline-text">Lakehead University</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Sep 2019 - Apr 2021</div>
             </div>
             <div class="timeline-item">
                 <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
                 <span class="timeline-text">Certifications</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">
                     2019 - Present
                     <br>
@@ -253,31 +259,37 @@
             <div class="timeline-item">
                 <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
                 <span class="timeline-text">Sparks Foundation</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Science Intern | Apr 2021</div>
             </div>
             <div class="timeline-item">
                 <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
                 <span class="timeline-text">R.A Malatest & Associates</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
             </div>
             <div class="timeline-item">
                 <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
                 <span class="timeline-text">Narcity Media Group</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
             </div>
             <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
             </div>
             <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
             </div>
             <div class="timeline-item">
                 <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
             </div>
         </div>
@@ -320,9 +332,6 @@
             cursor: pointer;
             width: 140px;
         }
-        .timeline-item:hover {
-            transform: none; /* remove hover */
-        }
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -335,13 +344,21 @@
             border-radius: 50%;
             z-index: 2;
         }
-		.timeline-text {
-		    font-size: 0.95rem;
-		    font-weight: 500;
-		    margin-top: 6px;
-		    text-align: center;      /* center wrapped lines */
-		    width: 100%;             /* ensures it takes full item width */
-		}
+        .timeline-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 6px;
+            text-align: center;
+            width: 100%;
+            word-break: break-word; /* ensures proper centering for wrapped names */
+        }
+        .timeline-hint {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 3px;
+            text-align: center;
+            display: block;
+        }
         .timeline-extra {
             display: none;
             position: absolute;
@@ -353,9 +370,12 @@
             padding: 6px 10px;
             font-size: 0.85rem;
             border-radius: 6px;
-            white-space: nowrap;
+            white-space: normal;
+            text-align: center;
+            max-width: 200px;
             margin-bottom: 8px;
             z-index: 10;
+            word-break: break-word;
         }
         .timeline-icon {
             width: 70px;
