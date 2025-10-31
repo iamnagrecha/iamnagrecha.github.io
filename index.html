@@ -381,12 +381,6 @@
             .timeline-animated .timeline-item {
                 width: 100px;
                 margin: 15px 8px;
-                cursor: default; /* remove hover pointer */
-                transition: none; /* disable transform on hover */
-            }
-
-            .timeline-animated .timeline-item:hover {
-                transform: none; /* remove hover effect */
             }
 
             .timeline-animated .timeline-icon {
@@ -402,16 +396,9 @@
                 font-size: 0.75rem;
             }
 
-            /* Horizontal connector for mobile */
+            /* Remove dotted line on small screens */
             .timeline-animated::before {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 50%;
-                left: 5%;
-                width: 90%;
-                border-top: 2px solid #bac964; /* solid horizontal line */
-                z-index: 0;
+                display: none;
             }
         }
     </style>
