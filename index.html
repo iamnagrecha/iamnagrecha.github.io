@@ -52,7 +52,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 0.1rem 0.15rem;
         justify-items: center;
-        padding: 0.2rem; /* slightly more padding to avoid cut-off */
+        padding: 0.15rem; /* minimal but works */
         background: #fff;
         border-radius: 3px;
         box-shadow: 0 0.5px 1px rgba(0,0,0,0.02);
@@ -66,14 +66,13 @@
     .navbar-collapse .nav-link {
         display: inline-block;
         width: 100%;
-        font-size: 0.5rem;
+        font-size: 0.55rem;
         font-weight: 500;
         color: #333;
-        padding: 0.15rem 0; /* slightly more vertical padding */
+        padding: 0.2rem 0; /* small but enough for touch */
         border-radius: 2px;
         background: #f7f7f7;
         transition: all 0.1s ease-in-out;
-        -webkit-tap-highlight-color: transparent;
         line-height: 1.1;
     }
 
@@ -82,25 +81,25 @@
     .navbar-collapse .nav-link:active {
         background: #bac964; 
         color: #fff;
-        box-shadow: none;
     }
 
-    /* Ensure toggle button is visible */
+    /* Keep toggler (X) properly visible */
     .navbar-toggler {
         border: none;
         outline: none;
-        padding: 0.4rem 0.5rem; /* slightly larger for X icon */
-        font-size: 0.9rem; /* scale icon properly */
-        z-index: 1050; /* ensure it sits above menu */
+        padding: 0.3rem 0.4rem; /* small but enough for X icon */
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1051; /* above menu */
     }
 
-    /* Allow toggle icon to fully show */
+    /* Keep collapse animation smooth */
     .navbar-collapse {
-        overflow: visible;
+        overflow: hidden; /* required for smooth slide up/down */
+        transition: height 0.25s ease-out;
     }
 }
 </style>
-
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
