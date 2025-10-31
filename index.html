@@ -50,12 +50,12 @@
     .navbar-collapse .navbar-nav {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* 2 items per row */
-        gap: 0.2rem 0.4rem; /* tighter spacing */
+        gap: 0.15rem 0.25rem; /* tighter spacing */
         justify-items: center;
-        padding: 0.3rem;
-        background: #ffffff;
-        border-radius: 6px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        padding: 0.2rem; /* smaller padding */
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
 
     .navbar-collapse .nav-item {
@@ -66,20 +66,20 @@
     .navbar-collapse .nav-link {
         display: inline-block;
         width: 100%;
-        font-size: 0.6rem; /* smaller text */
+        font-size: 0.55rem; /* smaller text */
         font-weight: 500;
         color: #333;
-        padding: 0.2rem 0; /* very short vertical padding */
-        border-radius: 4px; /* smaller rounded corners */
+        padding: 0.15rem 0; /* very short vertical padding */
+        border-radius: 3px; /* smaller rounded corners */
         background: #f7f7f7;
-        transition: all 0.2s ease-in-out;
-        -webkit-tap-highlight-color: transparent; /* removes blue tap flash */
+        transition: all 0.15s ease-in-out;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .navbar-collapse .nav-link:hover,
     .navbar-collapse .nav-link:focus,
     .navbar-collapse .nav-link:active {
-        background: #bac964; /* light green hover */
+        background: #bac964; 
         color: #fff;
         box-shadow: none;
     }
@@ -87,6 +87,7 @@
     .navbar-toggler {
         border: none;
         outline: none;
+        padding: 0.25rem 0.4rem; /* smaller toggle button */
     }
 }
 </style>
