@@ -193,7 +193,7 @@
         <div class="row mb-5">
             <div class="col text-center">
                 <div class="section-heading mb-4">
-                    <h2>About <strong style="color: #bac964;">Me</strong></h2>
+                    <h2>About <span style="color: #bac964;">Me</span></h2>
                 </div>
             </div>
         </div>
@@ -292,7 +292,7 @@
             position: relative;
             margin-top: 30px;
             flex-wrap: wrap;
-            opacity: 0; /* initial hidden for scroll animation */
+            opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease-out;
         }
@@ -302,23 +302,23 @@
             transform: translateY(0);
         }
 
-		/* Timeline Line as Dotted */
-		.timeline-animated::before {
-		    content: '';
-		    position: absolute;
-		    top: 40%; /* keep aligned with icons */
-		    left: 5%;
-		    width: 0;
-		    height: 0; /* height 0 because we use border-top */
-		    border-top: 3px dotted #bac964; /* dotted line */
-		    z-index: 0;
-		    transition: width 1s ease-out;
-		}
-		
-		.timeline-animated.active::before {
-		    width: 90%;
-		    border-top: 3px dotted #bac964;
-		}
+        /* Horizontal Dotted Line (Desktop) */
+        .timeline-animated::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 0;
+            height: 0;
+            border-top: 3px dotted #bac964;
+            z-index: 0;
+            transition: width 1s ease-out;
+            transform: translateY(-50%);
+        }
+
+        .timeline-animated.active::before {
+            width: 90%;
+        }
 
         /* Timeline Items */
         .timeline-animated .timeline-item {
@@ -338,7 +338,7 @@
             transform: scale(1.15);
         }
 
-        /* Circle Connectors */
+        /* Connectors */
         .timeline-animated .timeline-item::before {
             content: '';
             position: absolute;
@@ -374,35 +374,59 @@
             border-radius: 50%;
             margin-bottom: 8px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: box-shadow 0.3s ease;
         }
 
-        /* Responsive */
+        .timeline-animated .timeline-icon:hover {
+            box-shadow: 0 4px 10px rgba(186,201,100,0.5);
+        }
+
+        /* Mobile (Vertical Timeline) */
         @media (max-width: 768px) {
-            .timeline-animated .timeline-item {
-                width: 100px;
-                margin: 15px 8px;
-            }
-
-            .timeline-animated .timeline-icon {
-                width: 50px;
-                height: 50px;
-            }
-
-            .timeline-animated .timeline-text {
-                font-size: 0.8rem;
-            }
-
-            .timeline-animated .timeline-date {
-                font-size: 0.75rem;
+            .timeline-animated {
+                flex-direction: column;
+                align-items: center;
+                position: relative;
             }
 
             .timeline-animated::before {
-                left: 2%;
-                width: 0;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 3px;
+                height: 0;
+                border-left: 3px dotted #bac964;
+                transition: height 1s ease-out;
             }
 
             .timeline-animated.active::before {
-                width: 96%;
+                height: 100%;
+            }
+
+            .timeline-animated .timeline-item {
+                width: 80%;
+                margin: 20px 0;
+            }
+
+            .timeline-animated .timeline-item::before {
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .timeline-animated .timeline-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .timeline-animated .timeline-text {
+                font-size: 0.9rem;
+            }
+
+            .timeline-animated .timeline-date {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -413,7 +437,7 @@
             const timelines = document.querySelectorAll('.timeline-animated');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if(entry.isIntersecting){
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                         observer.unobserve(entry.target);
                     }
