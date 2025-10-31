@@ -310,16 +310,9 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .timeline-animated::before {
-            content: '';
-            position: absolute;
-            top: 40%;
-            left: 5%;
-            width: 0;
-            border-top: 3px dotted #bac964;
-            z-index: 0;
-            transition: width 1s ease-out;
-        }
+		.timeline-animated::before {
+		    display: none;
+		}
         .timeline-animated.active::before {
             width: 90%;
         }
