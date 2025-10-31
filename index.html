@@ -381,58 +381,62 @@
             box-shadow: 0 4px 10px rgba(186,201,100,0.5);
         }
 
-        /* Mobile (Vertical Timeline) */
-        @media (max-width: 768px) {
-            .timeline-animated {
-                flex-direction: column;
-                align-items: center;
-                position: relative;
-            }
+      @media (max-width: 768px) {
+    .timeline-animated {
+        flex-direction: column;
+        align-items: center; /* center items horizontally */
+        position: relative;
+        padding-left: 0; /* remove any default padding that pushes line left */
+    }
 
-            /* Remove horizontal line, show only vertical */
-            .timeline-animated::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0; /* no horizontal line */
-                height: 0;
-                border-top: none;
-                border-left: 3px dotted #bac964; /* vertical dotted line */
-                transition: height 1s ease-out;
-                z-index: 0;
-            }
+    /* Vertical dotted line through center of icons */
+    .timeline-animated::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%; /* center line horizontally */
+        transform: translateX(-50%);
+        width: 0; /* vertical only */
+        height: 100%; /* cover all items */
+        border-left: 3px dotted #bac964;
+        z-index: 0;
+    }
 
-            .timeline-animated.active::before {
-                height: 100%; /* animate vertical line growth */
-            }
+    .timeline-animated .timeline-item {
+        width: 80%;
+        margin: 25px 0;
+        position: relative;
+        z-index: 1; /* ensures icons sit above vertical line */
+        text-align: center;
+    }
 
-            .timeline-animated .timeline-item {
-                width: 80%;
-                margin: 25px 0;
-            }
+    /* Dot connectors on vertical line */
+    .timeline-animated .timeline-item::before {
+        top: 50%;
+        left: 50%; /* align to vertical line */
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
 
-            /* Dot connectors align on the vertical line */
-            .timeline-animated .timeline-item::before {
-                top: 0;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+    /* Icon sizing */
+    .timeline-animated .timeline-icon {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
 
-            .timeline-animated .timeline-icon {
-                width: 60px;
-                height: 60px;
-            }
+    /* Tooltip/hover text */
+    .timeline-animated .timeline-item:hover .timeline-text,
+    .timeline-animated .timeline-item:hover .timeline-date {
+        display: block;
+    }
 
-            .timeline-animated .timeline-text {
-                font-size: 0.9rem;
-            }
-
-            .timeline-animated .timeline-date {
-                font-size: 0.8rem;
-            }
-        }
+    .timeline-animated .timeline-text,
+    .timeline-animated .timeline-date {
+        font-size: 0.9rem;
+        display: block; /* ensure text is always visible or on hover */
+    }
+}
     </style>
 
     <!-- Scroll Animation Script -->
