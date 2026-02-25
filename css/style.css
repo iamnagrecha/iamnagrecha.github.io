@@ -967,11 +967,13 @@ a {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-radius: 24px;
-    padding: 35px;
+    padding: 30px;
     height: 100%;
     transition: all 0.35s ease;
     border: 1px solid rgba(255,255,255,0.08);
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .testimonial-card:hover {
@@ -983,7 +985,7 @@ a {
     color: #e2e8f0;
     font-size: 15px;
     line-height: 1.7;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .quote-icon {
@@ -1007,5 +1009,25 @@ a {
 .author-role {
     font-size: 13px;
     color: #94a3b8;
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Responsive spacing */
+@media (max-width: 991px) {
+    .testimonial-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .testimonial-card {
+        margin-bottom: 20px;
+    }
 }
 </style>
