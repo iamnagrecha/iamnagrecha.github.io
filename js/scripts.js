@@ -100,3 +100,5 @@ function resetFilters() {
 // Fetch the news initially when the page loads
 fetchNews();
 
+
+
