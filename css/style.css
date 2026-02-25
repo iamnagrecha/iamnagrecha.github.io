@@ -1035,3 +1035,42 @@ a {
     background: #22d3ee;
 }
 </style>
+
+
+.testimonial-slide {
+    display: none;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 24px;
+    padding: 50px 30px 30px 30px;
+    color: #e2e8f0;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.testimonial-slide.active {
+    display: block;
+    animation: fadeSlide 0.8s ease-in-out;
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto 10px auto;
+    border: 3px solid #bac964;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: #bac964; /* accent color */
+    margin-top: 10px;
+}
+
+.highlight {
+    color: #bac964; /* highlight key phrases */
+    font-weight: 500;
+}
