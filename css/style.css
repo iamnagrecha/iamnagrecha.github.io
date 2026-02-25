@@ -950,7 +950,6 @@ a {
     background: linear-gradient(135deg, #0f172a, #1e293b);
     padding: 100px 0;
     position: relative;
-    overflow: hidden;
 }
 
 .section-heading h2 {
@@ -962,72 +961,77 @@ a {
     color: #22d3ee;
 }
 
-.testimonial-card {
+.testimonial-slider {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-slide {
+    display: none;
     background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-radius: 24px;
-    padding: 30px;
-    height: 100%;
-    transition: all 0.35s ease;
-    border: 1px solid rgba(255,255,255,0.08);
-    position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-}
-
-.testimonial-text {
+    padding: 40px 30px;
     color: #e2e8f0;
-    font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.testimonial-slide.active {
+    display: block;
+    animation: fadeSlide 0.8s ease-in-out;
+}
+
+@keyframes fadeSlide {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
 }
 
 .quote-icon {
     font-size: 60px;
     color: rgba(255,255,255,0.08);
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 15px;
+    left: 20px;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 25px;
 }
 
 .testimonial-author {
-    margin-top: auto;
-}
-
-.author-name {
     font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 2px;
+    margin-top: 15px;
 }
 
-.author-role {
-    font-size: 13px;
+.testimonial-role {
+    font-size: 14px;
     color: #94a3b8;
+    margin-top: 2px;
 }
 
-/* Fade-in animation */
-.fade-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.slider-controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-/* Responsive spacing */
-@media (max-width: 991px) {
-    .testimonial-card {
-        margin-bottom: 20px;
-    }
+.control-dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 767px) {
-    .testimonial-card {
-        margin-bottom: 20px;
-    }
+.control-dot.active {
+    background: #22d3ee;
 }
 </style>
