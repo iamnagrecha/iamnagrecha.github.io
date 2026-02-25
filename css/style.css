@@ -1023,16 +1023,16 @@ a {
 }
 
 .control-dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(255,255,255,0.4);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.4); /* inactive dot */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .control-dot.active {
-    background: #22d3ee;
+  background: #bac964; /* active dot uses accent color */
 }
 </style>
 
