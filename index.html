@@ -1219,9 +1219,9 @@ body {
 
         <div class="row g-4">
 
-            <!-- 1 -->
+            <!-- Testimonial 1 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         Abhishek is a detail oriented Consultant who works diligently to fully comprehend the client's requirements and align them with solution capabilities. He approaches everything with positivity and creates a strong virtual team environment. Any team would be lucky to have him.
@@ -1233,9 +1233,9 @@ body {
                 </div>
             </div>
 
-            <!-- 2 -->
+            <!-- Testimonial 2 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         I have worked on a large challenging project with Abhishek and he demonstrated dedication and patience in tackling difficult issues. He takes initiative and completes tasks diligently. I look forward to working with him again.
@@ -1247,9 +1247,9 @@ body {
                 </div>
             </div>
 
-            <!-- 3 -->
+            <!-- Testimonial 3 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         Abhishek consistently delivered high-quality implementation work across all project stages — requirements gathering, development, testing, and troubleshooting. Having him on the team allows planning with greater confidence and accuracy.
@@ -1261,9 +1261,9 @@ body {
                 </div>
             </div>
 
-            <!-- 4 -->
+            <!-- Testimonial 4 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         Working alongside Abhishek has been effortless. He understands problems deeply, adds value proactively, and builds trust with clients. His technical skills and consulting mindset make him a key contributor on any engagement.
@@ -1275,9 +1275,9 @@ body {
                 </div>
             </div>
 
-            <!-- 5 -->
+            <!-- Testimonial 5 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         During his MSc research at Lakehead University, Abhishek demonstrated leadership, discipline, and strong machine learning expertise. He contributed significantly to deep learning research and coauthored academic work with professionalism and dedication.
@@ -1289,9 +1289,9 @@ body {
                 </div>
             </div>
 
-            <!-- 6 -->
+            <!-- Testimonial 6 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         Abhishek has been a driving force in client engagement, delivering high-level data analytic solutions across banking, gaming, and manufacturing sectors while managing strict timelines effectively.
@@ -1303,9 +1303,9 @@ body {
                 </div>
             </div>
 
-            <!-- 7 -->
+            <!-- Testimonial 7 -->
             <div class="col-lg-4 col-md-6">
-                <div class="testimonial-card d-flex flex-column">
+                <div class="testimonial-card">
                     <div class="quote-icon">“</div>
                     <p class="testimonial-text">
                         Abhishek is a highly proficient Data Analytic Specialist. He consistently delivers accurate, high-quality analysis, communicates insights clearly to technical and non-technical audiences, and is a dependable collaborative team player.
@@ -1320,6 +1320,20 @@ body {
         </div>
     </div>
 </section>
+
+<!-- Optional JS: fade-in on scroll -->
+<script>
+const cards = document.querySelectorAll('.testimonial-card');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('fade-in');
+        }
+    });
+},{ threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 
 
 <!-- Include Bootstrap JS and dependencies -->
