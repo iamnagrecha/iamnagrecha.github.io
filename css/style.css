@@ -1082,9 +1082,34 @@ body.light-mode {
   background-color: #ffffff !important;
   color: #212529 !important;
 }
-body.light-mode .navbar { background-color: #f8f9fa !important; }
-body.light-mode .site-hero .overlay { opacity: 0.3 !important; }
-body.light-mode section { background-color: #ffffff !important; color: #212529 !important; }
-body.light-mode p, body.light-mode h1, body.light-mode h2, body.light-mode h3,
-body.light-mode h4, body.light-mode li { color: #212529 !important; }
-body.light-mode .card, body.light-mode .well { background-color: #f8f9fa !important; border-color: #dee2e6 !important; }
+body.light-mode {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+body.light-mode .navbar {
+  background-color: #1a1a2e !important;
+}
+body.light-mode .site-hero .overlay {
+  opacity: 0.3 !important;
+}
+body.light-mode section {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+body.light-mode p,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode li {
+  color: #212529 !important;
+}
+body.light-mode .card,
+body.light-mode .well {
+  background-color: #ffffff !important;
+  border-color: #dee2e6 !important;
+}
+body.light-mode .skills-section,
+body.light-mode [class*="skill"] {
+  background-color: #f0f0f0 !important;
+}
