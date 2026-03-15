@@ -1074,4 +1074,21 @@ a {
     color: #bac964; /* highlight key phrases */
     font-weight: 500;
 }
+/* Force consistent dropdown styling always */
+.dropdown-menu {
+    background-color: #1a1a2e !important;
+    border: 1px solid #bac964 !important;
+    border-radius: 8px !important;
+}
 
+.dropdown-item {
+    color: rgba(255,255,255,0.8) !important;
+    background-color: transparent !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: #bac964 !important;
+    color: #212529 !important;
+}
