@@ -1149,3 +1149,33 @@ a {
         color: #fff !important;
     }
 }
+/* Fix mobile dropdown visibility */
+@media (max-width: 991.98px) {
+    .site-navbar .navbar-nav > li > a {
+        color: #fff !important;
+    }
+
+    .dropdown-menu.show {
+        display: block !important;
+    }
+
+    .dropdown-item {
+        color: rgba(255,255,255,0.75) !important;
+        background-color: transparent !important;
+        display: block !important;
+    }
+
+    /* Fix the yellow block — Consulting dropdown background */
+    .navbar-collapse .dropdown-menu {
+        background-color: #111827 !important;
+        border-left: 3px solid #bac964 !important;
+        border-top: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+    }
+
+    .dropdown-item:hover {
+        background-color: #bac964 !important;
+        color: #212529 !important;
+    }
+}
