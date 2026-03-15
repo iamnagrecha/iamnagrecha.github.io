@@ -1113,3 +1113,39 @@ body.light-mode .skills-section,
 body.light-mode [class*="skill"] {
   background-color: #f0f0f0 !important;
 }
+/* Stats / counter section */
+body.light-mode .site-counter,
+body.light-mode [class*="counter"],
+body.light-mode [class*="facts"],
+body.light-mode [class*="stat"] {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+}
+body.light-mode .site-counter h2,
+body.light-mode .site-counter p,
+body.light-mode [class*="counter"] h2,
+body.light-mode [class*="counter"] p {
+  color: #ffffff !important;
+}
+
+/* About section text */
+body.light-mode [class*="about"] h2,
+body.light-mode [class*="about"] p,
+body.light-mode [class*="about"] span {
+  color: #212529 !important;
+}
+
+/* Contact form inputs */
+body.light-mode input,
+body.light-mode textarea {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+  border-color: #ced4da !important;
+}
+
+/* Connect section */
+body.light-mode [class*="contact"],
+body.light-mode [class*="connect"] {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
