@@ -1074,3 +1074,13 @@ a {
     color: #bac964; /* highlight key phrases */
     font-weight: 500;
 }
+body.dark-mode {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+body.dark-mode .navbar { background-color: #161b22 !important; }
+body.dark-mode .site-hero .overlay { opacity: 0.8 !important; }
+body.dark-mode section { background-color: #0d1117 !important; color: #e6edf3 !important; }
+body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+body.dark-mode h4, body.dark-mode li { color: #e6edf3 !important; }
+body.dark-mode .card, body.dark-mode .well { background-color: #161b22 !important; border-color: #30363d !important; }
