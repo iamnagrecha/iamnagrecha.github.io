@@ -84,89 +84,89 @@
 </nav>
 
 <style>
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
     .navbar-collapse .navbar-nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.1rem 0.15rem;
-        justify-items: center;
-        padding: 0.15rem;
-        background: #fff;
-        border-radius: 3px;
-        box-shadow: 0 0.5px 1px rgba(0,0,0,0.02);
+        display: flex !important;
+        flex-direction: column !important;
+        background: #1a1a2e !important;
+        padding: 8px !important;
+        gap: 4px !important;
     }
 
     .navbar-collapse .nav-item {
-        width: 100%;
-        text-align: center;
+        width: 100% !important;
     }
 
     .navbar-collapse .nav-link {
-        display: inline-block;
-        width: 100%;
-        font-size: 0.55rem;
-        font-weight: 500;
-        color: #333;
-        padding: 0.2rem 0;
-        border-radius: 2px;
-        background: #f7f7f7;
-        transition: all 0.1s ease-in-out;
-        line-height: 1.1;
+        display: block !important;
+        width: 100% !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        color: #fff !important;
+        padding: 8px 12px !important;
+        border-radius: 4px !important;
+        background: #2a2a3e !important;
+        text-align: left !important;
+        letter-spacing: 0.05em !important;
     }
 
     .navbar-collapse .nav-link:hover,
-    .navbar-collapse .nav-link:focus,
     .navbar-collapse .nav-link:active {
-        background: #bac964; 
-        color: #fff;
+        background: #bac964 !important;
+        color: #212529 !important;
     }
 
-    .navbar-toggler {
-        border: none;
-        outline: none;
-        padding: 0.3rem 0.4rem;
-        font-size: 0.9rem;
-        position: relative;
-        z-index: 1051;
+    .dropdown-toggle::after {
+        border-top-color: #bac964 !important;
     }
 
-    .navbar-collapse {
-        overflow: hidden;
-        transition: height 0.25s ease-out;
-    }
-
-    /* Dropdown mobile fixes */
     .dropdown-menu {
+        display: none;
         position: static !important;
-        float: none;
-        background-color: #111 !important;
+        float: none !important;
+        background-color: #111827 !important;
         border: none !important;
         border-left: 3px solid #bac964 !important;
-        padding: 0 !important;
-        margin: 0 0 4px 6px !important;
         border-radius: 0 !important;
+        padding: 4px 0 !important;
+        margin: 2px 0 2px 12px !important;
         box-shadow: none !important;
+        width: calc(100% - 12px) !important;
+    }
+
+    .dropdown-menu.show {
+        display: block !important;
     }
 
     .dropdown-item {
-        font-size: 11px !important;
-        padding: 5px 12px !important;
-        color: rgba(255,255,255,0.7) !important;
+        font-size: 0.72rem !important;
+        padding: 7px 14px !important;
+        color: rgba(255,255,255,0.75) !important;
+        background-color: transparent !important;
         text-align: left !important;
+        white-space: normal !important;
     }
 
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-item:active {
         background-color: #bac964 !important;
         color: #212529 !important;
     }
 
-    .nav-item.dropdown {
-        grid-column: span 2;
+    .navbar-toggler {
+        border: none !important;
+        outline: none !important;
+        z-index: 1051 !important;
+    }
+
+    .navbar-collapse {
+        overflow-y: auto !important;
+        max-height: 80vh !important;
     }
 }
 
 /* Desktop dropdown styles */
-@media (min-width: 769px) {
+@media (min-width: 992px) {
     .dropdown-menu {
         background-color: #1a1a2e;
         border: 1px solid #bac964;
@@ -191,6 +191,7 @@
     }
 }
 </style>
+
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
