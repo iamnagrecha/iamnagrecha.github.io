@@ -225,46 +225,7 @@ $(document).ready(function () {
   </div>
 </div>
 
-<script>
-async function askAI() {
-  const input = document.getElementById('ai-q');
-  const msgs = document.getElementById('ai-msgs');
-  const q = input.value.trim();
-  if (!q) return;
-  input.value = '';
 
-  const uBubble = document.createElement('div');
-  uBubble.style.cssText = 'align-self:flex-end;background:#bac964;color:#212529;border-radius:12px;padding:10px 14px;max-width:85%;font-size:13px;line-height:1.5;';
-  uBubble.textContent = q;
-  msgs.appendChild(uBubble);
-
-  const aBubble = document.createElement('div');
-  aBubble.style.cssText = 'background:#f5f5f5;border-radius:12px;padding:10px 14px;max-width:85%;font-size:13px;line-height:1.5;color:#555;';
-  aBubble.textContent = 'Thinking…';
-  msgs.appendChild(aBubble);
-  msgs.scrollTop = msgs.scrollHeight;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: 'You are a helpful assistant on Abhishek Nagrecha\'s portfolio website. He is an MSc-qualified financial crime and AML consultant in Canada specializing in data-driven detection and prevention of financial crime, AML compliance, transaction monitoring, and regulatory compliance. Answer visitor questions concisely and professionally. For meetings, direct them to the Schedule a Meeting button.',
-        messages: [{ role: 'user', content: q }]
-      })
-    });
-    const data = await res.json();
-    aBubble.style.color = '#333';
-    aBubble.textContent = data.content?.[0]?.text || 'Sorry, no response received.';
-  } catch(e) {
-    aBubble.textContent = 'Connection error. Please try again.';
-  }
-  msgs.scrollTop = msgs.scrollHeight;
-}
-document.getElementById('ai-q').addEventListener('keydown', e => { if(e.key==='Enter') askAI(); });
-</script>
 
 <section class="site-section" id="section-about">
     <div class="container">
