@@ -122,24 +122,6 @@ $(document).ready(function () {
     });
 });
 </script>
-<script>
-  function toggleTheme() {
-    const btn = document.getElementById('theme-toggle');
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    btn.textContent = isLight ? '🌙' : '☀️';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  }
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-    document.getElementById('theme-toggle').textContent = '🌙';
-  }
-</script>
-
-
-
-
-
 
 
 
