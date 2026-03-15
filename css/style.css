@@ -1078,9 +1078,13 @@ body.dark-mode {
   background-color: #0d1117 !important;
   color: #e6edf3 !important;
 }
-body.dark-mode .navbar { background-color: #161b22 !important; }
-body.dark-mode .site-hero .overlay { opacity: 0.8 !important; }
-body.dark-mode section { background-color: #0d1117 !important; color: #e6edf3 !important; }
-body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
-body.dark-mode h4, body.dark-mode li { color: #e6edf3 !important; }
-body.dark-mode .card, body.dark-mode .well { background-color: #161b22 !important; border-color: #30363d !important; }
+body.light-mode {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+body.light-mode .navbar { background-color: #f8f9fa !important; }
+body.light-mode .site-hero .overlay { opacity: 0.3 !important; }
+body.light-mode section { background-color: #ffffff !important; color: #212529 !important; }
+body.light-mode p, body.light-mode h1, body.light-mode h2, body.light-mode h3,
+body.light-mode h4, body.light-mode li { color: #212529 !important; }
+body.light-mode .card, body.light-mode .well { background-color: #f8f9fa !important; border-color: #dee2e6 !important; }
