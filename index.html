@@ -35,10 +35,43 @@
 
       <ul class="navbar-nav mx-auto text-center">
         <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-home">Home</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-about">About</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-work">Consulting</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-about" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-about">About Me</a>
+            <a class="dropdown-item" href="#section-about">Learning Milestones</a>
+            <a class="dropdown-item" href="#section-about">Professional Journey</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-work" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Consulting</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-work" data-filter="*" onclick="triggerFilter(this,'#section-work')">All Projects</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".er" onclick="triggerFilter(this,'#section-work')">Entity Resolution</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".ss" onclick="triggerFilter(this,'#section-work')">Sanction Screening</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".tm" onclick="triggerFilter(this,'#section-work')">Transaction Monitoring</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".rs" onclick="triggerFilter(this,'#section-work')">Risk Scoring</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".rr" onclick="triggerFilter(this,'#section-work')">Regulatory Reporting</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".cm" onclick="triggerFilter(this,'#section-work')">Case Management</a>
+          </div>
+        </li>
+
         <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-portfolio">Academic</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-portfolio" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academic</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-portfolio" data-filter="*" onclick="triggerFilter(this,'#section-portfolio')">All Projects</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".da" onclick="triggerFilter(this,'#section-portfolio')">Data Science</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".ml" onclick="triggerFilter(this,'#section-portfolio')">Machine Learning</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".cv" onclick="triggerFilter(this,'#section-portfolio')">Computer Vision</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".nl" onclick="triggerFilter(this,'#section-portfolio')">NLP</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".nw" onclick="triggerFilter(this,'#section-portfolio')">Networks</a>
+          </div>
+        </li>
+
         <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-blog">Insights</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-testimonials">Testimonials</a></li>
         <li class="nav-item"><a class="nav-link text-white fw-bold connect-box" href="#section-contact">Connect</a></li>
@@ -57,7 +90,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 0.1rem 0.15rem;
         justify-items: center;
-        padding: 0.15rem; /* minimal but works */
+        padding: 0.15rem;
         background: #fff;
         border-radius: 3px;
         box-shadow: 0 0.5px 1px rgba(0,0,0,0.02);
@@ -74,7 +107,7 @@
         font-size: 0.55rem;
         font-weight: 500;
         color: #333;
-        padding: 0.2rem 0; /* small but enough for touch */
+        padding: 0.2rem 0;
         border-radius: 2px;
         background: #f7f7f7;
         transition: all 0.1s ease-in-out;
@@ -88,20 +121,73 @@
         color: #fff;
     }
 
-    /* Keep toggler (X) properly visible */
     .navbar-toggler {
         border: none;
         outline: none;
-        padding: 0.3rem 0.4rem; /* small but enough for X icon */
+        padding: 0.3rem 0.4rem;
         font-size: 0.9rem;
         position: relative;
-        z-index: 1051; /* above menu */
+        z-index: 1051;
     }
 
-    /* Keep collapse animation smooth */
     .navbar-collapse {
-        overflow: hidden; /* required for smooth slide up/down */
+        overflow: hidden;
         transition: height 0.25s ease-out;
+    }
+
+    /* Dropdown mobile fixes */
+    .dropdown-menu {
+        position: static !important;
+        float: none;
+        background-color: #111 !important;
+        border: none !important;
+        border-left: 3px solid #bac964 !important;
+        padding: 0 !important;
+        margin: 0 0 4px 6px !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .dropdown-item {
+        font-size: 11px !important;
+        padding: 5px 12px !important;
+        color: rgba(255,255,255,0.7) !important;
+        text-align: left !important;
+    }
+
+    .dropdown-item:hover {
+        background-color: #bac964 !important;
+        color: #212529 !important;
+    }
+
+    .nav-item.dropdown {
+        grid-column: span 2;
+    }
+}
+
+/* Desktop dropdown styles */
+@media (min-width: 769px) {
+    .dropdown-menu {
+        background-color: #1a1a2e;
+        border: 1px solid #bac964;
+        border-radius: 8px;
+        padding: 6px 0;
+        margin-top: 4px;
+    }
+
+    .dropdown-item {
+        color: rgba(255,255,255,0.8);
+        font-size: 13px;
+        padding: 7px 18px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #bac964;
+        color: #212529;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
     }
 }
 </style>
@@ -113,7 +199,13 @@
 <!-- Navbar Close Script -->
 <script>
 $(document).ready(function () {
-    $('.navbar-nav a').on('click', function () {
+    // Close navbar when non-dropdown links are clicked
+    $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Close navbar when dropdown items are clicked
+    $('.dropdown-item').on('click', function () {
         $('.navbar-collapse').collapse('hide');
     });
 
@@ -121,6 +213,18 @@ $(document).ready(function () {
         $('.navbar-collapse').collapse('hide');
     });
 });
+
+function triggerFilter(el, section) {
+    var filter = el.getAttribute('data-filter');
+    var target = document.querySelector(section);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(function() {
+        var filterBtn = document.querySelector('.filters li[data-filter="' + filter + '"]');
+        if (filterBtn) filterBtn.click();
+    }, 800);
+}
 </script>
 
 
@@ -1448,7 +1552,7 @@ cards.forEach(card => observer.observe(card));
     <h3 class="mb-4">Approach</h3>
     <p>
         <i class="fas fa-envelope"></i>
-        <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#cfaeada7a6bca7aaa4e1a1aea8bdaaaca7aee1aea18fa8a2aea6a3e1aca0a2"><span class="__cf_email__" data-cfemail="88e9eae0e1fbe0ede3a6e6e9effaedebe0e9a6e9e6c8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span></a>
     </p>
 
     <h3 class="mb-4">Location</h3>
@@ -1490,7 +1594,7 @@ cards.forEach(card => observer.observe(card));
     }
 </style>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 	function sendMail(event) {
 		event.preventDefault(); // Prevent actual form submission
 
@@ -1573,12 +1677,4 @@ cards.forEach(card => observer.observe(card));
 	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 	<script src="js/custom.js"></script>
-	<script src="js/script.js"></script>
-
-
-	<!-- Google Map -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    	<script src="js/google-map.js"></script> -->
-
-    </body>
-    </html>
+	
