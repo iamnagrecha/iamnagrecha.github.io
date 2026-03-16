@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Modern font upgrade: Syne (display) + DM Sans (body) -->
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<!-- Original font restored: Nunito Sans -->
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Favicon using maple_leaf image -->
@@ -37,8 +37,8 @@
   --border:     rgba(186,201,100,0.14);
   --radius:     14px;
   --radius-sm:  8px;
-  --font-display: 'Syne', sans-serif;
-  --font-body:    'DM Sans', sans-serif;
+  --font-display: 'Nunito Sans', sans-serif;
+  --font-body:    'Nunito Sans', sans-serif;
 }
 
 /* Base */
@@ -860,9 +860,9 @@ function triggerFilter(el, section) {
 /* ---- UNIVERSAL HEADING REVEAL ANIMATION ---- */
 .section-heading h2 {
   font-size: clamp(1.7rem, 4vw, 2.7rem) !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   color: #fff !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: 0em !important;
   line-height: 1.2 !important;
 }
 
@@ -959,9 +959,8 @@ function triggerFilter(el, section) {
 @media (max-width: 575px) {
   .section-heading h2 {
     font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
-    letter-spacing: -0.01em !important;
+    letter-spacing: 0em !important;
     line-height: 1.25 !important;
-    /* Prevent long words overflowing on narrow screens */
     overflow-wrap: break-word;
     word-break: break-word;
   }
