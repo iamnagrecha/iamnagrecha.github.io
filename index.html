@@ -223,15 +223,38 @@
   -webkit-backdrop-filter: blur(14px) !important;
   border-bottom: 1px solid rgba(186,201,100,0.14) !important;
 }
-/* ── Connect button: dark text on hover so it's readable ── */
-.connect-box {
-  border: 1px solid #bac964 !important;
-  border-radius: 6px !important;
-  padding: 5px 14px !important;
+/* ── Nav links: reset size/weight so heading styles don't bleed in ── */
+.site-navbar .nav-link,
+.site-navbar .navbar-nav .nav-link {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.78) !important;
+  line-height: 1 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  transition: color 0.2s ease !important;
+}
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus {
   color: #bac964 !important;
   background: transparent !important;
 }
-.connect-box:hover {
+/* ── Connect button: dark text on hover so it's readable ── */
+.connect-box,
+.site-navbar .connect-box {
+  border: 1px solid #bac964 !important;
+  border-radius: 6px !important;
+  padding: 6px 16px !important;
+  color: #bac964 !important;
+  background: transparent !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+}
+.connect-box:hover,
+.site-navbar .connect-box:hover {
   background: #bac964 !important;
   color: #111111 !important;
   border-color: #bac964 !important;
@@ -366,26 +389,21 @@ function triggerFilter(el, section) {
 <!-- Scroll Reveal -->
 <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 <script>
-  ScrollReveal().reveal('section', {
-    delay: 200,
-    distance: '40px',
-    duration: 800,
-    easing: 'ease-in-out',
-    origin: 'bottom',
-    reset: false
-  });
-
-  ScrollReveal().reveal('.navbar', {
+  ScrollReveal().reveal('.single-portfolio, .blog-entry, .testimonial-card', {
     delay: 100,
     distance: '20px',
     duration: 600,
-    origin: 'top'
+    easing: 'ease-in-out',
+    origin: 'bottom',
+    interval: 80
   });
 
-  ScrollReveal().reveal('h1, h2, h3', {
-    delay: 300,
-    distance: '30px',
+  /* Only reveal section headings, never navbar elements */
+  ScrollReveal().reveal('.site-section h2, .site-section h3, #section-testimonials h2', {
+    delay: 200,
+    distance: '24px',
     duration: 700,
+    easing: 'ease-in-out',
     origin: 'left'
   });
 
