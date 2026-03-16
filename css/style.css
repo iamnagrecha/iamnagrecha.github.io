@@ -1191,3 +1191,17 @@ a {
         max-height: 80vh !important;
     }
 }
+/* Fix dropdown item text color — overrides global a{color} */
+.navbar-collapse .dropdown-item,
+.navbar-collapse .dropdown-item a,
+.dropdown-menu .dropdown-item {
+    color: rgba(255,255,255,0.85) !important;
+    -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+}
+
+.navbar-collapse .dropdown-item:hover,
+.dropdown-menu .dropdown-item:hover {
+    color: #212529 !important;
+    -webkit-text-fill-color: #212529 !important;
+    background-color: #bac964 !important;
+}
