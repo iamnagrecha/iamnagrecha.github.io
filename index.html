@@ -417,14 +417,18 @@ function triggerFilter(el, section) {
   color: #fff !important;
   letter-spacing: -0.02em !important;
   line-height: 1.2 !important;
+}
+
+/* Only animate when JS has confirmed observer support */
+.sh-animate .section-heading h2 {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.65s cubic-bezier(.23,1,.32,1) 0.05s,
               transform 0.65s cubic-bezier(.23,1,.32,1) 0.05s;
 }
 .section-heading h2.sh-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Gold accent spans */
@@ -451,13 +455,17 @@ function triggerFilter(el, section) {
   color: #bac964;
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+/* Only animate eyebrow when JS confirms observer */
+.sh-animate .sec-eyebrow {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .sec-eyebrow.sh-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Animated gold divider under every section heading */
@@ -564,7 +572,6 @@ function triggerFilter(el, section) {
 
 <script>
 (function() {
-  /* Map of section IDs → eyebrow text */
   var eyebrows = {
     'section-about':        'Who I Am',
     'section-work':         'Client Portfolio',
@@ -574,22 +581,41 @@ function triggerFilter(el, section) {
     'section-contact':      'Let\'s Talk'
   };
 
+  function revealAll() {
+    document.querySelectorAll('.section-heading h2, .sec-eyebrow').forEach(function(el) {
+      el.classList.add('sh-visible');
+    });
+  }
+
   function init() {
-    /* Inject eyebrow labels before each section-heading h2 */
+    /* Inject eyebrow labels */
     Object.keys(eyebrows).forEach(function(id) {
       var section = document.getElementById(id);
       if (!section) return;
       var h2 = section.querySelector('.section-heading h2');
       if (!h2) return;
+      if (h2.previousElementSibling && h2.previousElementSibling.classList.contains('sec-eyebrow')) return;
       var eyebrow = document.createElement('span');
       eyebrow.className = 'sec-eyebrow';
       eyebrow.textContent = eyebrows[id];
       h2.parentNode.insertBefore(eyebrow, h2);
     });
 
-    /* Animate headings + eyebrows on scroll
-       Lower threshold on mobile — less of the element fits on screen */
-    var threshold = window.innerWidth < 768 ? 0.1 : 0.2;
+    /* If IntersectionObserver not supported, just show everything */
+    if (!('IntersectionObserver' in window)) {
+      revealAll();
+      return;
+    }
+
+    /* Mark body so CSS opacity:0 animation rules kick in */
+    document.body.classList.add('sh-animate');
+
+    var targets = document.querySelectorAll('.section-heading h2, .sec-eyebrow');
+
+    /* Hard fallback: reveal everything after 1.5s regardless */
+    var safetyTimer = setTimeout(revealAll, 1500);
+
+    var threshold = window.innerWidth < 768 ? 0.05 : 0.15;
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) {
@@ -599,7 +625,8 @@ function triggerFilter(el, section) {
           io.unobserve(el);
         }
       });
-    }, { threshold: threshold });
+    }, { threshold: threshold, rootMargin: '0px 0px -20px 0px' });
+
     targets.forEach(function(el) { io.observe(el); });
   }
 
