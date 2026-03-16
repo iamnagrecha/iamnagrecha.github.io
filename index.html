@@ -70,7 +70,7 @@ p, li, span, td, th, label, input, textarea, select {
 
 /* ---- NAVBAR ---- */
 .site-navbar {
-  background: rgba(13,13,18,0.92) !important;
+  background: rgba(13,13,18,0.96) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border-bottom: 1px solid var(--border) !important;
@@ -88,16 +88,29 @@ p, li, span, td, th, label, input, textarea, select {
 .site-navbar .nav-link:hover,
 .site-navbar .nav-link:focus {
   color: var(--gold) !important;
+  background: transparent !important;
 }
+/* Connect button — gold border, dark text on hover */
 .connect-box {
   border: 1px solid var(--gold) !important;
   border-radius: 6px !important;
   padding: 5px 14px !important;
   color: var(--gold) !important;
+  background: transparent !important;
 }
 .connect-box:hover {
   background: var(--gold) !important;
-  color: #111 !important;
+  color: #111111 !important;
+  border-color: var(--gold) !important;
+}
+/* Kill Bootstrap's own .bg-light, .navbar-light overrides */
+.navbar.site-navbar,
+.navbar.site-navbar.navbar-dark {
+  background: rgba(13,13,18,0.96) !important;
+}
+/* Eyebrow labels — gold, not blue */
+.sec-eyebrow {
+  color: var(--gold) !important;
 }
 
 /* ---- COUNTER SECTION ---- */
@@ -311,7 +324,24 @@ p, li, span, td, th, label, input, textarea, select {
   font-size: 0.78rem !important;
 }
 
-/* ---- SCROLLBAR ---- */
+/* ---- SMOOTH GLOBAL TRANSITIONS ---- */
+/* Every clickable/hoverable element gets a smooth base transition */
+a, button, input, textarea,
+.nav-link, .dropdown-item, .btn,
+.single-portfolio, .timeline-item,
+.filters ul li, .social-item {
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+/* Images soften on hover */
+.single-portfolio img,
+.blog-entry img {
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+.single-portfolio:hover img { transform: scale(1.04) !important; }
+
+/* Smooth page scroll anchor jumps */
+html { scroll-behavior: smooth; }
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -469,7 +499,7 @@ p, li, span, td, th, label, input, textarea, select {
 
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
-<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
+<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -785,35 +815,75 @@ function triggerFilter(el, section) {
 <!-- Scroll Reveal -->
 <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 <script>
-  ScrollReveal().reveal('section', {
-    delay: 200,
-    distance: '40px',
-    duration: 800,
-    easing: 'ease-in-out',
-    origin: 'bottom',
-    reset: false
-  });
-
-  ScrollReveal().reveal('.navbar', {
-    delay: 100,
-    distance: '20px',
-    duration: 600,
-    origin: 'top'
-  });
-
-  ScrollReveal().reveal('h1, h2, h3', {
-    delay: 300,
-    distance: '30px',
+  /* Base config — smooth cubic easing */
+  ScrollReveal({ 
+    easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
     duration: 700,
+    distance: '28px',
+    reset: false,
+    mobile: true
+  });
+
+  /* Sections slide up gently */
+  ScrollReveal().reveal('.site-section, #section-testimonials', {
+    delay: 80,
+    distance: '32px',
+    duration: 750,
+    origin: 'bottom',
+    interval: 0
+  });
+
+  /* Headings from left */
+  ScrollReveal().reveal('h1, h2, h3', {
+    delay: 120,
+    distance: '24px',
+    duration: 650,
     origin: 'left'
   });
 
-  ScrollReveal().reveal('.card, .well, img', {
-    delay: 200,
-    distance: '30px',
-    duration: 700,
+  /* Cards and images stagger up */
+  ScrollReveal().reveal('.card, .well, .single-portfolio, .blog-entry, .testimonial-card', {
+    delay: 100,
+    distance: '24px',
+    duration: 650,
+    origin: 'bottom',
+    interval: 80
+  });
+
+  /* Counter numbers pop up */
+  ScrollReveal().reveal('.counter, .section-counters h4', {
+    delay: 100,
+    distance: '20px',
+    duration: 600,
+    origin: 'bottom',
+    interval: 120
+  });
+
+  /* Timeline items from bottom */
+  ScrollReveal().reveal('.timeline-item', {
+    delay: 80,
+    distance: '20px',
+    duration: 550,
     origin: 'bottom',
     interval: 100
+  });
+
+  /* About intro bullets from right */
+  ScrollReveal().reveal('.lead, .about-bullets > div', {
+    delay: 150,
+    distance: '20px',
+    duration: 600,
+    origin: 'right',
+    interval: 80
+  });
+
+  /* Filter tabs fade in */
+  ScrollReveal().reveal('.filters ul li', {
+    delay: 60,
+    distance: '12px',
+    duration: 450,
+    origin: 'bottom',
+    interval: 40
   });
 </script>
 	
@@ -826,7 +896,7 @@ function triggerFilter(el, section) {
 #section-testimonials {
   position: relative;
   background: #0d0d12;
-  overflow: hidden;
+  overflow-x: hidden; /* only block horizontal bleed, not vertical scroll-reveal */
 }
 
 /* Animated grid overlay on every section */
@@ -899,7 +969,7 @@ function triggerFilter(el, section) {
   font-size: 0.68rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #bac964;
+  color: var(--gold);
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -1884,7 +1954,6 @@ $(document).ready(function() {
 }
 #section-skills {
   position: relative;
-  overflow: hidden;
   overflow-x: hidden;
   padding: 90px 0 100px;
   background: #0d0d12;
