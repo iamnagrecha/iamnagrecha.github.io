@@ -386,35 +386,7 @@ function triggerFilter(el, section) {
 }
 </style>
 
-<!-- Scroll Reveal -->
-<script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-<script>
-  ScrollReveal().reveal('.single-portfolio, .blog-entry, .testimonial-card', {
-    delay: 100,
-    distance: '20px',
-    duration: 600,
-    easing: 'ease-in-out',
-    origin: 'bottom',
-    interval: 80
-  });
-
-  /* Only reveal section headings, never navbar elements */
-  ScrollReveal().reveal('.site-section h2, .site-section h3, #section-testimonials h2', {
-    delay: 200,
-    distance: '24px',
-    duration: 700,
-    easing: 'ease-in-out',
-    origin: 'left'
-  });
-
-  ScrollReveal().reveal('.card, .well, img', {
-    delay: 200,
-    distance: '30px',
-    duration: 700,
-    origin: 'bottom',
-    interval: 100
-  });
-</script>
+<!-- ScrollReveal removed - was hiding navbar items and sections -->
 	
 <!-- ============================================================
      GLOBAL SECTION CONSISTENCY — Dark BG + Grid + Heading Style
