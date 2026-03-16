@@ -11,45 +11,8 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Preconnect to speed up external resources -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-	<link rel="preconnect" href="https://code.jquery.com">
-
-	<!-- Fonts: display=swap so text shows immediately while font loads -->
-	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<!-- FontAwesome: load non-blocking -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
-	<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
-
-	<style>
-	/* ── MOBILE PERFORMANCE: disable heavy animations on small screens ── */
-	@media (max-width: 767px) {
-	  /* Kill grid background drift — saves GPU on mobile */
-	  .site-section::before,
-	  #section-testimonials::before,
-	  .skills-bg-grid {
-	    animation: none !important;
-	  }
-	  /* Disable parallax hero image on mobile */
-	  .site-hero {
-	    background-attachment: scroll !important;
-	  }
-	  /* Reduce shimmer/pulse animations */
-	  .sk-card--featured::before,
-	  .skills-divider,
-	  .section-heading::after {
-	    animation: none !important;
-	  }
-	  /* Faster, simpler card reveals on mobile */
-	  .sk-card {
-	    transition: transform 0.2s ease, border-color 0.2s ease !important;
-	  }
-	}
-	/* Ensure body is visible immediately — no FOUC */
-	body { opacity: 1 !important; visibility: visible !important; }
-	</style>
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
     <!-- Favicon using maple_leaf image -->
@@ -324,7 +287,9 @@
 </style>
 
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
-<!-- jQuery and Bootstrap loaded once at bottom of page -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!-- Navbar Close Script -->
 <script>
@@ -750,37 +715,37 @@ function triggerFilter(el, section) {
         <p class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
         <div class="timeline-animated academic-timeline mb-5 justify-content-center">
             <div class="timeline-item">
-                <img loading="lazy" src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
+                <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
                 <span class="timeline-text">DonBosco School</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2000 - Mar 2005</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
+                <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
                 <span class="timeline-text">Delhi Public School</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2005 - Feb 2012</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
+                <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
                 <span class="timeline-text">Parth School</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Apr 2012 - Mar 2014</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
+                <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
                 <span class="timeline-text">GTU</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">May 2014 - Jun 2018</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
+                <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
                 <span class="timeline-text">Lakehead University</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Sep 2019 - Apr 2021</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
+                <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
                 <span class="timeline-text">Certifications</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">
@@ -795,37 +760,37 @@ function triggerFilter(el, section) {
         <p class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
         <div class="timeline-animated career-timeline mb-5 justify-content-center">
             <div class="timeline-item">
-                <img loading="lazy" src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
+                <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
                 <span class="timeline-text">Sparks Foundation</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Science Intern | Apr 2021</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
+                <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
                 <span class="timeline-text">R.A Malatest & Associates</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
+                <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
                 <span class="timeline-text">Narcity Media Group</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
             </div>
             <div class="timeline-item">
-                <img loading="lazy" src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
                 <span class="timeline-text">Alessa Inc</span>
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
@@ -919,7 +884,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					
 					
 <!-- Add jQuery (if not already included) -->
-<!-- jquery loaded once at bottom -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Counter Section -->
 <section class="site-section section-counters text-center">
@@ -1039,7 +1004,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/panges_small.PNG" alt="">
+                            <img class="image img-fluid" src="images/panges_small.PNG" alt="">
                         </div>
                         <a href="images/p1.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1057,7 +1022,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/caa.PNG" alt="">
+                            <img class="image img-fluid" src="images/caa.PNG" alt="">
                         </div>
                         <a href="images/p2.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1075,7 +1040,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/pbi.PNG" alt="">
+                            <img class="image img-fluid" src="images/pbi.PNG" alt="">
                         </div>
                         <a href="images/p2.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1093,7 +1058,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/iqpc_1.PNG" alt="IQPC Corporate">
+                            <img class="image img-fluid" src="images/iqpc_1.PNG" alt="IQPC Corporate">
                         </div>
                         <a href="images/iqpc.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1111,7 +1076,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/cicsanew.PNG" alt="CICSA Credit Union">
+                            <img class="image img-fluid" src="images/cicsanew.PNG" alt="CICSA Credit Union">
                         </div>
                         <a href="images/cicsa.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1129,7 +1094,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/Inspira.png" alt="Inspira Financial">
+                            <img class="image img-fluid" src="images/Inspira.png" alt="Inspira Financial">
                         </div>
                         <a href="images/cicsa.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1146,7 +1111,7 @@ $(document).ready(function() {
 		    <div class="relative">
 		        <div class="thumb">
 		            <div class="overlay overlay-bg"></div>
-		            <img loading="lazy" class="image img-fluid" src="images/lynk1.PNG" alt="Lynk - Digital Payments">
+		            <img class="image img-fluid" src="images/lynk1.PNG" alt="Lynk - Digital Payments">
 		        </div>
 		        <a href="images/lynk.jpg" class="img-pop-up">  
 		            <div class="middle">
@@ -1164,7 +1129,7 @@ $(document).ready(function() {
 		    <div class="relative">
 		        <div class="thumb">
 		            <div class="overlay overlay-bg"></div>
-		            <img loading="lazy" class="image img-fluid" src="images/coin.PNG" alt="Coinsquare">
+		            <img class="image img-fluid" src="images/coin.PNG" alt="Coinsquare">
 		        </div>
 		        <a href="images/coinsquare.jpg" class="img-pop-up">  
 		            <div class="middle">
@@ -1181,7 +1146,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/pinnacle.PNG" alt="">
+                            <img class="image img-fluid" src="images/pinnacle.PNG" alt="">
                         </div>
                         <a href="images/p3.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1198,7 +1163,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/ppay.PNG" alt="CICSA Credit Union">
+                            <img class="image img-fluid" src="images/ppay.PNG" alt="CICSA Credit Union">
                         </div>
                         <a href="images/cicsa.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1215,7 +1180,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/brinks.PNG" alt="">
+                            <img class="image img-fluid" src="images/brinks.PNG" alt="">
                         </div>
                         <a href="images/p4.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1233,7 +1198,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/ct.PNG" alt="">
+                            <img class="image img-fluid" src="images/ct.PNG" alt="">
                         </div>
                         <a href="images/p5.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1251,7 +1216,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/fairstone.PNG" alt="">
+                            <img class="image img-fluid" src="images/fairstone.PNG" alt="">
                         </div>
                         <a href="images/p6.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1269,7 +1234,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/wedbush.PNG" alt="">
+                            <img class="image img-fluid" src="images/wedbush.PNG" alt="">
                         </div>
                         <a href="images/p7.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1287,7 +1252,7 @@ $(document).ready(function() {
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
-                            <img loading="lazy" class="image img-fluid" src="images/in1.PNG" alt="">
+                            <img class="image img-fluid" src="images/in1.PNG" alt="">
                         </div>
                         <a href="images/p8.jpg" class="img-pop-up">  
                             <div class="middle">
@@ -1800,7 +1765,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p1.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1817,7 +1782,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p5.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1835,7 +1800,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p2.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1851,7 +1816,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p6.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1869,7 +1834,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p5.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1886,7 +1851,7 @@ $(document).ready(function() {
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
-								<img loading="lazy" class="image img-fluid" src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="">
+								<img class="image img-fluid" src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="">
 							</div>
 							<a href="images/p5.jpg" class="img-pop-up">  
 								<div class="middle">
@@ -1937,70 +1902,67 @@ $(document).ready(function() {
 </section>
 
 <!-- Include Bootstrap JS and dependencies -->
-<!-- jquery loaded once at bottom -->
-<!-- bootstrap loaded once at bottom -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-// Lazy-load Medium blogs only when section is visible — never blocks page load
-(function() {
-  var loaded = false;
-  var blogSection = document.getElementById('section-blog');
-  if (!blogSection) return;
+document.addEventListener("DOMContentLoaded", function() {
+const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha" + "&timestamp=" + new Date().getTime();
 
-  function fetchBlogs() {
-    if (loaded) return;
-    loaded = true;
+    fetch(mediumFeedUrl)
+    .then(response => response.json())
+    .then(data => {
+        let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
+        let blogHTML = '';
+        
+        blogs.forEach((blog, index) => {
+            let descriptionPreview = blog.description;
+            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
+            
+            // Limit the description to the first 800 characters for preview
+            if (descriptionPreview.length > 800) {
+                descriptionPreview = descriptionPreview.substring(0, 800) + "...";
+            }
+            
+            blogHTML += `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
 
-    // On mobile fetch fewer items for speed
-    var maxItems = window.innerWidth < 768 ? 6 : 12;
-    var mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha";
+        document.getElementById("blogCarouselInner").innerHTML = blogHTML;
 
-    // 5s timeout so a slow API never stalls the page
-    var controller = new AbortController();
-    var timer = setTimeout(function() { controller.abort(); }, 5000);
+        // Reinitialize the carousel to avoid looping issues
+        $('#blogCarousel').carousel({
+            interval: 5000,
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
+        });
 
-    fetch(mediumFeedUrl, { signal: controller.signal })
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      clearTimeout(timer);
-      var blogs = data.items.slice(0, maxItems);
-      var blogHTML = '';
-      blogs.forEach(function(blog, index) {
-        var desc = blog.description || '';
-        if (desc.length > 500) desc = desc.substring(0, 500) + '...';
-        blogHTML += '<div class="carousel-item ' + (index === 0 ? 'active' : '') + '">' +
-          '<div class="row justify-content-center"><div class="col-sm-12 col-md-6 mb-4">' +
-          '<div class="blog-entry"><div class="blog-entry-content">' +
-          '<h3><a href="' + blog.link + '" target="_blank" rel="noopener">' + blog.title + '</a></h3>' +
-          '<p class="blog-description">' + desc + ' <a href="' + blog.link + '" target="_blank" class="read-more">Read More</a></p>' +
-          (blog.thumbnail ? '<img loading="lazy" src="' + blog.thumbnail + '" alt="' + blog.title + '" class="img-fluid blog-img">' : '') +
-          '</div></div></div></div></div>';
-      });
-      document.getElementById('blogCarouselInner').innerHTML = blogHTML;
-      if (typeof $ !== 'undefined') {
-        $('#blogCarousel').carousel({ interval: 5000, wrap: true });
-      }
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+            const totalItems = $('#blogCarousel .carousel-item').length;
+            const activeIndex = $('#blogCarousel .carousel-item.active').index();
+            if (activeIndex === totalItems - 1) {
+                // Reset the carousel to the first item to loop smoothly
+                $('#blogCarousel').carousel(0);
+            }
+        });
+
     })
-    .catch(function(e) {
-      if (e.name !== 'AbortError') console.warn('Blog fetch failed:', e);
-      document.getElementById('blogCarouselInner').innerHTML =
-        '<div class="carousel-item active"><div class="row justify-content-center"><div class="col-12 text-center py-4">' +
-        '<p style="color:rgba(255,255,255,0.5)">Visit <a href="https://iamnagrecha.medium.com" target="_blank" style="color:#bac964">Medium</a> to read the latest posts.</p>' +
-        '</div></div></div>';
-    });
-  }
-
-  // Use IntersectionObserver to only fetch when blog section is visible
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) { fetchBlogs(); io.disconnect(); }
-    }, { threshold: 0.1 });
-    io.observe(blogSection);
-  } else {
-    // Fallback: fetch after page load
-    window.addEventListener('load', fetchBlogs);
-  }
-})();
+    .catch(error => console.error("Error fetching Medium RSS:", error));
+});
 </script>
 
 <style>
@@ -2130,7 +2092,7 @@ body {
               <p class="testimonial-text">
                 <span class="highlight">Abhishek is a detail-oriented Consultant</span> who works diligently to fully comprehend the client's requirements and align them with solution capabilities. He approaches everything with positivity and creates a strong virtual team environment. Any team would be lucky to have him.
               </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Michel Caluori">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Michel Caluori">
         <div class="testimonial-author">Michel Caluori</div>
         <div class="testimonial-role">Director, Professional Services – Alessa Inc.</div>
       </div>
@@ -2141,7 +2103,7 @@ body {
               <p class="testimonial-text">
                 I have worked on a <span class="highlight">large challenging project</span> with Abhishek and he demonstrated <span class="highlight">dedication and patience in tackling difficult issues</span>. He takes initiative and completes tasks diligently.
               </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Nino Marshania">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Nino Marshania">
         <div class="testimonial-author">Nino Marshania</div>
         <div class="testimonial-role">Senior Project Manager – Alessa Inc.</div>
       </div>
@@ -2152,7 +2114,7 @@ body {
               <p class="testimonial-text">
                 Abhishek and I worked together on multiple projects. He was always <span class="highlight">dedicated to completing tasks on time and with high quality</span>, and <span class="highlight">supported team collaboration effectively</span>.
               </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Marius Lihet">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Marius Lihet">
         <div class="testimonial-author">Marius Lihet</div>
         <div class="testimonial-role">Project Manager – Alessa Inc.</div>
       </div>
@@ -2163,7 +2125,7 @@ body {
               <p class="testimonial-text">
                 Working alongside Abhishek has been effortless. He <span class="highlight">understands problems deeply</span> and <span class="highlight">builds trust with clients</span>. His <span class="highlight">technical skills and consulting mindset</span> make him a key contributor on any engagement.
               </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Luis Guzman">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Luis Guzman">
         <div class="testimonial-author">Luis Guzman</div>
         <div class="testimonial-role">Project Manager – Alessa Inc.</div>
       </div>
@@ -2174,7 +2136,7 @@ body {
               <p class="testimonial-text">
                 During his MSc research at Lakehead University, <span class="highlight">Abhishek demonstrated leadership and strong machine learning expertise</span>. He contributed significantly to deep learning research and coauthored academic work with professionalism.
               </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Thiago Eustaquio Alves de Oliveira">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Thiago Eustaquio Alves de Oliveira">
         <div class="testimonial-author">Thiago Eustaquio Alves de Oliveira</div>
         <div class="testimonial-role">Associate Professor – Lakehead University</div>
       </div>
@@ -2185,7 +2147,7 @@ body {
 		  <p class="testimonial-text">
 			<span class="highlight">Abhishek has been a driving force in client engagement</span>, delivering high-level data analytic solutions while <span class="highlight">managing strict timelines effectively</span>.
 		  </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Joel Borch">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Joel Borch">
         <div class="testimonial-author">Joel Borch</div>
         <div class="testimonial-role">AML Senior Project Manager – Alessa Inc.</div>
       </div>
@@ -2196,7 +2158,7 @@ body {
 		  <p class="testimonial-text">
 			<span class="highlight">Abhishek is a highly proficient Data Analytic Specialist</span>. He consistently delivers accurate analysis and is a dependable, collaborative team player.
 		  </p>
-        <img loading="lazy" class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Andrae Duhaney">
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Andrae Duhaney">
         <div class="testimonial-author">Andrae Duhaney</div>
         <div class="testimonial-role">Director of Product Management – Alessa Inc.</div>
       </div>
@@ -2265,8 +2227,8 @@ cards.forEach(card => observer.observe(card));
 
 
 <!-- Include Bootstrap JS and dependencies -->
-<!-- jquery loaded once at bottom -->
-<!-- bootstrap loaded once at bottom -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <section class="site-section" id="section-contact">
@@ -2417,23 +2379,16 @@ cards.forEach(card => observer.observe(card));
 
 
 	<script src="js/vendor/jquery.min.js"></script>
-	<script src="js/vendor/jquery-migrate-3.0.1.min.js" defer></script>
-	<script src="js/vendor/popper.min.js" defer></script>
-	<script src="js/vendor/bootstrap.min.js" defer></script>
-	<script src="js/vendor/jquery.easing.1.3.js" defer></script>
+	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/vendor/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
 
-	<!-- Stellar parallax: desktop only — skip on mobile for performance -->
-	<script>
-	if (window.innerWidth >= 768) {
-	  var s = document.createElement('script');
-	  s.src = 'js/vendor/jquery.stellar.min.js';
-	  s.defer = true;
-	  document.head.appendChild(s);
-	}
-	</script>
+	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.waypoints.min.js" defer></script>
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
-	<script src="js/custom.js" defer></script>
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
 	
