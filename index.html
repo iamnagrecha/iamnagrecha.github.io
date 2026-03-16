@@ -370,6 +370,247 @@ function triggerFilter(el, section) {
   });
 </script>
 	
+<!-- ============================================================
+     GLOBAL SECTION CONSISTENCY — Dark BG + Grid + Heading Style
+     ============================================================ -->
+<style>
+/* Apply dark background + animated grid to all main sections */
+.site-section,
+#section-testimonials {
+  position: relative;
+  background: #0d0d12;
+  overflow: hidden;
+}
+
+/* Animated grid overlay on every section */
+.site-section::before,
+#section-testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(186,201,100,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186,201,100,0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: sectionGridDrift 22s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes sectionGridDrift {
+  0%   { transform: translate(0,0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+/* Lift all section content above the grid layer */
+.site-section .container,
+.site-section > .row,
+#section-testimonials .container,
+#section-testimonials > .row {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- UNIVERSAL HEADING REVEAL ANIMATION ---- */
+.section-heading h2 {
+  font-size: clamp(1.7rem, 4vw, 2.7rem) !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(.23,1,.32,1) 0.05s,
+              transform 0.65s cubic-bezier(.23,1,.32,1) 0.05s;
+}
+.section-heading h2.sh-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold accent spans */
+.section-heading h2 span[style*="color"] {
+  color: #bac964 !important;
+  position: relative;
+  display: inline-block;
+}
+.section-heading h2 span[style*="color"]::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, #bac964, transparent);
+  border-radius: 2px;
+}
+
+/* Eyebrow label — injected via JS */
+.sec-eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #bac964;
+  font-weight: 700;
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.sec-eyebrow.sh-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated gold divider under every section heading */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  animation: pulseBarGlobal 2.5s ease-in-out infinite;
+}
+@keyframes pulseBarGlobal {
+  0%, 100% { width: 52px; opacity: 1; }
+  50%       { width: 90px; opacity: 0.6; }
+}
+
+/* Sub-paragraphs in headings */
+.section-heading p {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 0.95rem !important;
+  margin-top: 14px !important;
+}
+
+/* ============================================================
+   GLOBAL MOBILE OVERRIDES
+   ============================================================ */
+
+/* Reduce grid cell size on mobile so it doesn't look too coarse */
+@media (max-width: 767px) {
+  .site-section::before,
+  #section-testimonials::before {
+    background-size: 32px 32px;
+    animation: sectionGridDriftMobile 18s linear infinite;
+  }
+  @keyframes sectionGridDriftMobile {
+    0%   { transform: translate(0,0); }
+    100% { transform: translate(32px, 32px); }
+  }
+}
+
+/* Heading font — clamp already scales, but tighten letter-spacing on small screens */
+@media (max-width: 575px) {
+  .section-heading h2 {
+    font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.25 !important;
+    /* Prevent long words overflowing on narrow screens */
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+/* Eyebrow label — smaller tracking on tiny screens */
+@media (max-width: 575px) {
+  .sec-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+/* Divider pulse — keep it narrow on mobile so it doesn't look odd */
+@media (max-width: 575px) {
+  .section-heading::after {
+    width: 40px !important;
+    animation: pulseBarMobile 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseBarMobile {
+    0%, 100% { width: 40px; opacity: 1; }
+    50%       { width: 65px; opacity: 0.6; }
+  }
+}
+
+/* Ensure sections don't cause horizontal overflow on mobile */
+.site-section,
+#section-testimonials {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Respect users who prefer reduced motion — kill all animations */
+@media (prefers-reduced-motion: reduce) {
+  .site-section::before,
+  #section-testimonials::before {
+    animation: none;
+  }
+  .section-heading h2 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .sec-eyebrow {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .section-heading::after,
+  .skills-divider {
+    animation: none !important;
+  }
+}
+</style>
+
+<script>
+(function() {
+  /* Map of section IDs → eyebrow text */
+  var eyebrows = {
+    'section-about':        'Who I Am',
+    'section-work':         'Client Portfolio',
+    'section-portfolio':    'University Work',
+    'section-blog':         'Thoughts & Writing',
+    'section-testimonials': 'Kind Words',
+    'section-contact':      'Let\'s Talk'
+  };
+
+  function init() {
+    /* Inject eyebrow labels before each section-heading h2 */
+    Object.keys(eyebrows).forEach(function(id) {
+      var section = document.getElementById(id);
+      if (!section) return;
+      var h2 = section.querySelector('.section-heading h2');
+      if (!h2) return;
+      var eyebrow = document.createElement('span');
+      eyebrow.className = 'sec-eyebrow';
+      eyebrow.textContent = eyebrows[id];
+      h2.parentNode.insertBefore(eyebrow, h2);
+    });
+
+    /* Animate headings + eyebrows on scroll
+       Lower threshold on mobile — less of the element fits on screen */
+    var threshold = window.innerWidth < 768 ? 0.1 : 0.2;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var delay = el.classList.contains('sec-eyebrow') ? 0 : 120;
+          setTimeout(function() { el.classList.add('sh-visible'); }, delay);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: threshold });
+    targets.forEach(function(el) { io.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 <section class="site-section" id="section-about">
     <div class="container">
         <!-- Section Heading -->
