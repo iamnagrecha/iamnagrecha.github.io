@@ -1074,85 +1074,90 @@ a {
     color: #bac964; /* highlight key phrases */
     font-weight: 500;
 }
-/* Force consistent dropdown styling always */
-.dropdown-menu {
-    background-color: #1a1a2e !important;
-    border: 1px solid #bac964 !important;
-    border-radius: 8px !important;
-}
-
-.dropdown-item {
-    color: rgba(255,255,255,0.8) !important;
-    background-color: transparent !important;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus,
-.dropdown-item:active {
-    background-color: #bac964 !important;
-    color: #212529 !important;
-}
-/* ── Mobile navbar fixes ── */
-@media (max-width: 991.98px) {
-    .navbar-collapse .navbar-nav {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.1rem 0.15rem !important;
-        background: #1a1a2e !important;
-        padding: 0.5rem !important;
-    }
-
-    .navbar-collapse .nav-link {
-        font-size: 0.55rem !important;
-        color: #fff !important;
-        background: #2a2a3e !important;
-        padding: 0.2rem 0 !important;
-        text-align: center !important;
-        border-radius: 2px !important;
-        white-space: normal !important;
-    }
-
-    .navbar-collapse .nav-link:hover {
-        background: #bac964 !important;
-        color: #212529 !important;
-    }
-
-    /* Dropdown items on mobile */
-    .nav-item.dropdown {
-        grid-column: span 2 !important;
-    }
-
+/* ── Desktop dropdown styles ── */
+@media (min-width: 992px) {
     .dropdown-menu {
-        background-color: #111 !important;
-        border: none !important;
-        border-left: 3px solid #bac964 !important;
-        border-radius: 0 !important;
-        margin: 0 0 4px 6px !important;
-        padding: 0 !important;
+        background-color: #1a1a2e !important;
+        border: 1px solid #bac964 !important;
+        border-radius: 8px !important;
+        padding: 6px 0 !important;
+        margin-top: 4px !important;
     }
 
     .dropdown-item {
-        font-size: 11px !important;
-        padding: 6px 12px !important;
-        color: rgba(255,255,255,0.7) !important;
-        text-align: left !important;
+        color: rgba(255,255,255,0.8) !important;
         background-color: transparent !important;
+        font-size: 13px !important;
+        padding: 7px 18px !important;
     }
 
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-item:focus,
+    .dropdown-item:active {
         background-color: #bac964 !important;
         color: #212529 !important;
     }
 
-    /* Fix site-navbar overriding colors */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* ── Mobile navbar ── */
+@media (max-width: 991.98px) {
+
     .site-navbar .navbar-nav > li > a {
         color: #fff !important;
     }
-}
-/* Fix mobile dropdown visibility */
-@media (max-width: 991.98px) {
-    .site-navbar .navbar-nav > li > a {
+
+    .navbar-collapse .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        background: #1a1a2e !important;
+        padding: 8px !important;
+        gap: 4px !important;
+    }
+
+    .navbar-collapse .nav-item {
+        width: 100% !important;
+    }
+
+    .navbar-collapse .nav-link {
+        display: block !important;
+        width: 100% !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
         color: #fff !important;
+        padding: 8px 12px !important;
+        border-radius: 4px !important;
+        background: #2a2a3e !important;
+        text-align: left !important;
+        letter-spacing: 0.05em !important;
+        white-space: normal !important;
+    }
+
+    .navbar-collapse .nav-link:hover,
+    .navbar-collapse .nav-link:active {
+        background: #bac964 !important;
+        color: #212529 !important;
+    }
+
+    .dropdown-toggle::after {
+        border-top-color: #bac964 !important;
+    }
+
+    .dropdown-menu {
+        display: none !important;
+        position: static !important;
+        float: none !important;
+        background-color: #111827 !important;
+        border: none !important;
+        border-left: 3px solid #bac964 !important;
+        border-radius: 0 !important;
+        padding: 4px 0 !important;
+        margin: 2px 0 2px 12px !important;
+        box-shadow: none !important;
+        width: calc(100% - 12px) !important;
     }
 
     .dropdown-menu.show {
@@ -1160,22 +1165,29 @@ a {
     }
 
     .dropdown-item {
+        font-size: 0.72rem !important;
+        padding: 7px 14px !important;
         color: rgba(255,255,255,0.75) !important;
         background-color: transparent !important;
+        text-align: left !important;
+        white-space: normal !important;
         display: block !important;
     }
 
-    /* Fix the yellow block — Consulting dropdown background */
-    .navbar-collapse .dropdown-menu {
-        background-color: #111827 !important;
-        border-left: 3px solid #bac964 !important;
-        border-top: none !important;
-        border-right: none !important;
-        border-bottom: none !important;
-    }
-
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-item:active {
         background-color: #bac964 !important;
         color: #212529 !important;
+    }
+
+    .navbar-toggler {
+        border: none !important;
+        outline: none !important;
+        z-index: 1051 !important;
+    }
+
+    .navbar-collapse {
+        overflow-y: auto !important;
+        max-height: 80vh !important;
     }
 }
