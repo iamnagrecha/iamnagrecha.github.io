@@ -36,10 +36,10 @@
       </button>
 
       <ul class="navbar-nav mx-auto text-center">
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-about" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+          <a class="nav-link dropdown-toggle" href="#section-about" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#section-about">About Me</a>
             <a class="dropdown-item" href="#section-about">Learning Milestones</a>
@@ -48,7 +48,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-work" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Consulting</a>
+          <a class="nav-link dropdown-toggle" href="#section-work" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Consulting</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#section-work" data-filter="*" onclick="triggerFilter(this,'#section-work')">All Projects</a>
             <a class="dropdown-item" href="#section-work" data-filter=".er" onclick="triggerFilter(this,'#section-work')">Entity Resolution</a>
@@ -60,10 +60,10 @@
           </div>
         </li>
 
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section-skills">Skills</a></li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link text-white fw-bold dropdown-toggle" href="#section-portfolio" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academic</a>
+          <a class="nav-link dropdown-toggle" href="#section-portfolio" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academic</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#section-portfolio" data-filter="*" onclick="triggerFilter(this,'#section-portfolio')">All Projects</a>
             <a class="dropdown-item" href="#section-portfolio" data-filter=".da" onclick="triggerFilter(this,'#section-portfolio')">Data Science</a>
@@ -74,9 +74,9 @@
           </div>
         </li>
 
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-blog">Insights</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#section-testimonials">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link text-white fw-bold connect-box" href="#section-contact">Connect</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section-blog">Insights</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section-testimonials">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link connect-box" href="#section-contact">Connect</a></li>
       </ul>
     </div>  <!-- ← collapse div closes here -->
 
@@ -223,25 +223,44 @@
   -webkit-backdrop-filter: blur(14px) !important;
   border-bottom: 1px solid rgba(186,201,100,0.14) !important;
 }
-/* ── Nav links: reset size/weight so heading styles don't bleed in ── */
+
+/* ── Nav links: ALWAYS fully visible, no dimming ever ── */
 .site-navbar .nav-link,
-.site-navbar .navbar-nav .nav-link {
+.site-navbar .navbar-nav .nav-link,
+.site-navbar .nav-item .nav-link,
+.site-navbar .nav-item.active .nav-link,
+.site-navbar .nav-item .nav-link.active,
+#pb-navbar .nav-link,
+#pb-navbar .navbar-nav .nav-link {
   font-size: 0.78rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.07em !important;
   text-transform: uppercase !important;
-  color: rgba(255,255,255,0.78) !important;
+  color: rgba(255,255,255,0.9) !important;
   line-height: 1 !important;
   padding-top: 8px !important;
   padding-bottom: 8px !important;
-  transition: color 0.2s ease !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
+
+/* Active section in nav gets gold highlight */
+.site-navbar .nav-item.active > .nav-link,
+.site-navbar .nav-link.active {
+  color: #bac964 !important;
+  opacity: 1 !important;
+}
+
+/* Hover state */
 .site-navbar .nav-link:hover,
-.site-navbar .nav-link:focus {
+.site-navbar .nav-link:focus,
+#pb-navbar .nav-link:hover {
   color: #bac964 !important;
   background: transparent !important;
+  opacity: 1 !important;
 }
-/* ── Connect button: dark text on hover so it's readable ── */
+
+/* ── Connect button ── */
 .connect-box,
 .site-navbar .connect-box {
   border: 1px solid #bac964 !important;
@@ -252,6 +271,7 @@
   font-size: 0.78rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.07em !important;
+  opacity: 1 !important;
 }
 .connect-box:hover,
 .site-navbar .connect-box:hover {
@@ -259,7 +279,8 @@
   color: #111111 !important;
   border-color: #bac964 !important;
 }
-/* ── Eyebrow labels: gold, not blue ── */
+
+/* ── Eyebrow labels: gold ── */
 .sec-eyebrow {
   color: #bac964 !important;
 }
