@@ -223,32 +223,39 @@
 <script>
 $(document).ready(function () {
 
-    // Close navbar when regular links are clicked
+    // Close navbar when regular links clicked
     $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
         $('.navbar-collapse').collapse('hide');
     });
 
-    // Close navbar after dropdown item is clicked (with delay for filter to fire)
+    // Close navbar after dropdown item clicked (delay so filter fires first)
     $('.dropdown-item').on('click', function () {
         setTimeout(function() {
             $('.navbar-collapse').collapse('hide');
         }, 900);
     });
 
-    // Close navbar when X button is clicked
+    // Close navbar when X button clicked
     $('#close-navbar').on('click', function () {
         $('.navbar-collapse').collapse('hide');
     });
 
-    // On mobile, prevent dropdown-toggle from accidentally closing navbar
+    // On mobile: stop dropdown-toggle from bubbling and closing navbar
+    // Instead manually toggle the dropdown-menu
     $('.dropdown-toggle').on('click', function (e) {
         if ($(window).width() < 992) {
+            e.preventDefault();
             e.stopPropagation();
+            var $menu = $(this).next('.dropdown-menu');
+            // Close all other open dropdowns first
+            $('.dropdown-menu.show').not($menu).removeClass('show');
+            // Toggle this one
+            $menu.toggleClass('show');
         }
     });
 });
 
-// Filter trigger function for Consulting and Academic dropdowns
+// Filter trigger for Consulting and Academic dropdowns
 function triggerFilter(el, section) {
     var filter = el.getAttribute('data-filter');
     var target = document.querySelector(section);
