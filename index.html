@@ -963,123 +963,474 @@ $(document).ready(function() {
     </div> <!-- End container -->
 </section>
 		
+<!-- SKILLS SECTION -->
 <section class="site-section" id="section-skills">
-    <div class="container">
-        <div class="row mb-5 text-center">
-            <div class="col-md-12">
-                <div class="section-heading">
-		<h2>Core <span style="color: #bac964;">Skills</span> & Personal <span style="color: #bac964;">Strengths</span></h2>
-                </div>
-            </div>
-        </div>
+  <div class="skills-bg-grid"></div>
 
-        <div class="row">
-            <!-- TECHNICAL SKILLS -->
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-                    <span class="icon"><span class="icon-laptop2"></span></span>
-                    <h3>Machine Learning & AI</h3>
-                    <p>LLMs, Transformers, GANs, TensorFlow, PyTorch, Scikit-Learn, OpenAI APIs, Predictive Models.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-                    <span class="icon"><span class="icon-code"></span></span>
-                    <h3>Programming & IDEs</h3>
-                    <p>Python, R, C++, SQL, Bash, JSON, YAML, PyCharm, VS Code, Jupyter, Google Colab, IntelliJ, Eclipse.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-                    <span class="icon"><span class="icon-database2"></span></span>
-                    <h3>Databases & Cloud Data</h3>
-                    <p>SQL, MongoDB, MS Access, Redshift, Cosmos DB, Firebase, SSMS, HTML5, CSS3.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-                    <span class="icon"><span class="icon-folder-open"></span></span>
-                    <h3>Cloud & Dev Tools</h3>
-                    <p>AWS, Azure, GCP, Tableau, Power BI, GitHub, Docker, Gurobi, Visio, Office 365, VS Code, Jupyter.</p>
-                </div>
-            </div>
-
-            <!-- SOFT SKILLS -->
-	    <div class="col-md-6 col-lg-3">
-	        <div class="skill-card">
-	            <span class="icon"><span class="icon-chat"></span></span>
-	            <h3>Data Storytelling</h3>
-	            <p>Data visualization, simplifying complex insights. clear communication</p>
-	        </div>
-	    </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-                    <span class="icon"><span class="icon-lightbulb"></span></span>
-                    <h3>Problem Solving</h3>
-                    <p>Critical thinking, creativity, logical analysis, and solution-driven mindset.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="skill-card">
-		    <span class="icon"><span class="icon-clock"></span></span>
-                    <h3>Time Management</h3>
-                    <p>Planning, prioritizing, multitasking, and delivering within tight deadlines.</p>
-		    <p>Adapting to changing priorities</p>
-                </div>
-            </div>
-
-	<div class="col-md-6 col-lg-3">
-	    <div class="skill-card">
-		<span class="icon"><span class="icon-users"></span></span>
-		<h3>Teamwork</h3>
-		<p>Supporting colleagues, sharing knowledge, and fostering a positive environment.</p>
-	    </div>
-	</div>
-        </div>
+  <div class="container skills-container">
+    <div class="row mb-2 text-center">
+      <div class="col-md-12">
+        <p class="skills-eyebrow">What I Bring to the Table</p>
+        <h2 class="skills-heading">Core <span class="skills-accent">Skills</span> &amp; <span class="skills-accent">Strengths</span></h2>
+        <div class="skills-divider"></div>
+      </div>
     </div>
 
-    <style>
-        .skill-card {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(186, 201, 100, 0.3);
-            text-align: center;
-            transition: transform 0.3s ease;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    <!-- SKILL CARDS GRID -->
+    <div class="skills-grid">
 
-        .skill-card:hover {
-            transform: scale(1.05);
-        }
+      <!-- AML & COMPLIANCE -->
+      <div class="sk-card sk-card--featured" data-index="0">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">01</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="sk-card__title">AML &amp; Compliance</h3>
+        <p class="sk-card__desc">Transaction Monitoring · Sanction Screening · Entity Resolution · Risk Scoring · FINTRAC STRs · LCTRs · CNBV Regulatory Reporting · CLEARID</p>
+        <div class="sk-card__tags">
+          <span>FinCrime</span><span>Regulatory</span><span>Risk</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
 
-        .icon {
-            font-size: 40px;
-            color: #bac964;
-            margin-bottom: 10px;
-        }
+      <!-- PROGRAMMING & DATA -->
+      <div class="sk-card" data-index="1">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">02</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3 class="sk-card__title">Programming &amp; Data</h3>
+        <p class="sk-card__desc">Python · SQL · R · Bash · JSON · YAML · REST APIs · Swagger · Postman · Pipeline Automation · Data Cleaning &amp; Transformation</p>
+        <div class="sk-card__tags">
+          <span>Python</span><span>SQL</span><span>APIs</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
 
-        .skill-card h3 {
-            margin: 5px 0;
-            font-size: 18px;
-        }
+      <!-- CLOUD & DATABASES -->
+      <div class="sk-card" data-index="2">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">03</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <h3 class="sk-card__title">Cloud &amp; Databases</h3>
+        <p class="sk-card__desc">Azure · Cosmos DB · AWS · GCP · MongoDB · SQL Server · Redshift · Firebase · Batch &amp; Real-Time Pipelines</p>
+        <div class="sk-card__tags">
+          <span>Azure</span><span>CosmosDB</span><span>Cloud</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
 
-        .skill-card p {
-            font-size: 14px;
-            color: #ddd;
-            margin: 0;
-        }
-    </style>
+      <!-- ANALYTICS & BI -->
+      <div class="sk-card" data-index="3">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">04</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3 class="sk-card__title">Analytics &amp; BI</h3>
+        <p class="sk-card__desc">Power BI · Tableau · Google Analytics · Google Tag Manager · Scikit-Learn · TensorFlow · Predictive Modelling · ML Models</p>
+        <div class="sk-card__tags">
+          <span>Power BI</span><span>Tableau</span><span>ML</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- DATA ENGINEERING -->
+      <div class="sk-card" data-index="4">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">05</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3 class="sk-card__title">Data Engineering</h3>
+        <p class="sk-card__desc">Event Tracking · Custom Data Layers · GTM Implementation · Automated AML Pipelines · Structured &amp; Unstructured Dataset Management</p>
+        <div class="sk-card__tags">
+          <span>GTM</span><span>Pipelines</span><span>ETL</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- CLIENT DELIVERY -->
+      <div class="sk-card" data-index="5">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">06</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h3 class="sk-card__title">Client Delivery</h3>
+        <p class="sk-card__desc">End-to-End Implementations · Stakeholder Engagement · Cross-Functional Collaboration · Technical-to-Business Translation</p>
+        <div class="sk-card__tags">
+          <span>30+ Clients</span><span>Global</span><span>Delivery</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- DATA STORYTELLING -->
+      <div class="sk-card" data-index="6">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">07</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <h3 class="sk-card__title">Data Storytelling</h3>
+        <p class="sk-card__desc">Visual Dashboards · Concise Reports · Presentations that turn complex AML analytics into clear, actionable insights for any audience</p>
+        <div class="sk-card__tags">
+          <span>Insights</span><span>Viz</span><span>Comms</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- PROBLEM SOLVING -->
+      <div class="sk-card" data-index="7">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">08</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3 class="sk-card__title">Problem Solving</h3>
+        <p class="sk-card__desc">Creative &amp; Open-Minded · Workflow Optimisation · Delivering Under Pressure · Scalable Solutions for Global Financial Institutions</p>
+        <div class="sk-card__tags">
+          <span>Creative</span><span>Strategic</span><span>Agile</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+    </div><!-- end skills-grid -->
+  </div>
 </section>
+
+<style>
+/* ============================================================
+   SKILLS — MOBILE OVERRIDES
+   ============================================================ */
+@media (max-width: 767px) {
+  #section-skills {
+    padding: 60px 0 70px;
+  }
+
+  .skills-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .skills-heading {
+    font-size: 1.65rem;
+  }
+
+  .skills-eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .sk-card {
+    padding: 22px 18px 20px;
+    border-radius: 14px;
+  }
+
+  .sk-card__icon-wrap {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    border-radius: 11px;
+    margin-bottom: 12px;
+  }
+
+  .sk-card__title {
+    font-size: 0.92rem;
+  }
+
+  .sk-card__desc {
+    font-size: 0.74rem;
+    line-height: 1.6;
+  }
+
+  .sk-card__tags span {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+  }
+
+  .sk-card__number {
+    font-size: 0.62rem;
+    top: 13px;
+    right: 14px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .skills-grid {
+    gap: 12px;
+  }
+  .sk-card {
+    padding: 18px 14px 16px;
+  }
+}
+#section-skills {
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
+  padding: 90px 0 100px;
+  background: #0d0d12;
+}
+
+/* Animated grid background */
+.skills-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(186,201,100,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186,201,100,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridDrift {
+  0%   { transform: translate(0,0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+/* Eyebrow label */
+.skills-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #bac964;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Heading */
+.skills-heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.skills-accent {
+  color: #bac964;
+  position: relative;
+}
+.skills-accent::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, #bac964, transparent);
+}
+
+/* Animated divider */
+.skills-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054);
+  border-radius: 2px;
+  margin: 0 auto 52px;
+  animation: pulseBar 2.5s ease-in-out infinite;
+}
+@keyframes pulseBar {
+  0%, 100% { width: 60px; opacity: 1; }
+  50%       { width: 100px; opacity: 0.6; }
+}
+
+/* ---- GRID LAYOUT ---- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* prevent grid from blowing out container on mobile */
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) { .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+@media (max-width: 575px)  { .skills-grid { grid-template-columns: 1fr; gap: 14px; } }
+
+/* ---- CARD BASE ---- */
+.sk-card {
+  position: relative;
+  background: linear-gradient(145deg, #141418, #1c1c24);
+  border: 1px solid rgba(186,201,100,0.12);
+  border-radius: 18px;
+  padding: 28px 22px 24px;
+  overflow: hidden;
+  cursor: default;
+  /* prevent card from overflowing its grid column */
+  min-width: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.4s cubic-bezier(.23,1,.32,1),
+              border-color 0.3s ease,
+              box-shadow 0.4s ease;
+  /* staggered entrance */
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+/* On mobile: disable hover lift (no hover on touch) and activate highlight on tap instead */
+@media (max-width: 767px) {
+  .sk-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .sk-card:active {
+    transform: scale(0.98);
+    border-color: rgba(186,201,100,0.5);
+    box-shadow: 0 8px 24px rgba(186,201,100,0.12);
+  }
+  .sk-card:active .sk-card__line { width: 100%; }
+  .sk-card:active .sk-card__icon-wrap {
+    background: rgba(186,201,100,0.18);
+    transform: rotate(-6deg) scale(1.1);
+  }
+}
+.sk-card.sk-visible {
+  animation: cardReveal 0.6s cubic-bezier(.23,1,.32,1) forwards;
+}
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sk-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  border-color: rgba(186,201,100,0.55);
+  box-shadow: 0 20px 48px rgba(186,201,100,0.15), 0 0 0 1px rgba(186,201,100,0.2);
+}
+
+/* Featured card — slightly taller accent */
+.sk-card--featured {
+  border-color: rgba(186,201,100,0.3);
+  background: linear-gradient(145deg, #17191f, #1e2129);
+}
+.sk-card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054, #bac964);
+  background-size: 200%;
+  animation: shimmerBar 3s linear infinite;
+}
+@keyframes shimmerBar {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* Glowing orb on hover */
+.sk-card__glow {
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(186,201,100,0.18) 0%, transparent 70%);
+  top: -40px; right: -40px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.sk-card:hover .sk-card__glow { opacity: 1; }
+
+/* Card number */
+.sk-card__number {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(186,201,100,0.35);
+  font-family: 'Courier New', monospace;
+}
+
+/* Icon wrap */
+.sk-card__icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(186,201,100,0.1);
+  border: 1px solid rgba(186,201,100,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #bac964;
+  margin-bottom: 16px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.sk-card:hover .sk-card__icon-wrap {
+  background: rgba(186,201,100,0.18);
+  transform: rotate(-6deg) scale(1.1);
+}
+
+/* Title */
+.sk-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+
+/* Description */
+.sk-card__desc {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 14px;
+}
+
+/* Tag chips */
+.sk-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.sk-card__tags span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bac964;
+  background: rgba(186,201,100,0.08);
+  border: 1px solid rgba(186,201,100,0.2);
+  border-radius: 20px;
+  padding: 3px 9px;
+  transition: background 0.2s ease;
+}
+.sk-card:hover .sk-card__tags span {
+  background: rgba(186,201,100,0.16);
+}
+
+/* Bottom accent line */
+.sk-card__line {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #bac964, transparent);
+  border-radius: 0 0 18px 18px;
+  transition: width 0.45s cubic-bezier(.23,1,.32,1);
+}
+.sk-card:hover .sk-card__line { width: 100%; }
+</style>
+
+<script>
+(function () {
+  const cards = document.querySelectorAll('.sk-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = (parseInt(card.dataset.index) || 0) * 90;
+        setTimeout(() => card.classList.add('sk-visible'), delay);
+        io.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+})();
+</script>
 	<section class="site-section" id="section-portfolio">
 		<div class="container">
 			<div class="row">
