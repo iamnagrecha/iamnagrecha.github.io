@@ -11,14 +11,461 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+	<!-- Modern font upgrade: Syne (display) + DM Sans (body) -->
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 
     <!-- Favicon using maple_leaf image -->
     <link rel="icon" href="images/maple_leaf.png" type="images/png">
-	
-</head>
+
+<style>
+/* ============================================================
+   MODERN DESIGN SYSTEM — Global Override
+   ============================================================ */
+
+/* CSS Variables */
+:root {
+  --gold:       #bac964;
+  --gold-light: #d4e07a;
+  --gold-dim:   rgba(186,201,100,0.15);
+  --dark:       #0d0d12;
+  --dark-2:     #141418;
+  --dark-3:     #1c1c24;
+  --dark-4:     #242430;
+  --text:       #ffffff;
+  --text-muted: rgba(255,255,255,0.52);
+  --border:     rgba(186,201,100,0.14);
+  --radius:     14px;
+  --radius-sm:  8px;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+/* Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fix any blue strong/link color leaking into headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display) !important;
+  color: var(--text) !important;
+}
+h2 strong, h3 strong { color: var(--text) !important; }
+h2 a, h3 a { color: var(--text) !important; text-decoration: none !important; }
+h2 a:hover, h3 a:hover { color: var(--gold) !important; }
+
+p, li, span, td, th, label, input, textarea, select {
+  font-family: var(--font-body) !important;
+}
+
+/* ---- NAVBAR ---- */
+.site-navbar {
+  background: rgba(13,13,18,0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 10px 0 !important;
+}
+.site-navbar .nav-link {
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.75) !important;
+  transition: color 0.2s ease !important;
+}
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus {
+  color: var(--gold) !important;
+}
+.connect-box {
+  border: 1px solid var(--gold) !important;
+  border-radius: 6px !important;
+  padding: 5px 14px !important;
+  color: var(--gold) !important;
+}
+.connect-box:hover {
+  background: var(--gold) !important;
+  color: #111 !important;
+}
+
+/* ---- COUNTER SECTION ---- */
+.section-counters {
+  background: var(--dark-2) !important;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 0 !important;
+}
+.counter {
+  font-family: var(--font-display) !important;
+  font-size: 3.2rem !important;
+  font-weight: 800 !important;
+  color: var(--gold) !important;
+  line-height: 1 !important;
+}
+.section-counters h4 {
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin-top: 8px !important;
+}
+
+/* ---- FILTER TABS (Consulting + Academic) ---- */
+.filters ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 36px !important;
+}
+.filters ul li {
+  font-family: var(--font-body) !important;
+  font-size: 0.73rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-radius: 30px !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  background: transparent !important;
+}
+.filters ul li:hover,
+.filters ul li.active {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #111 !important;
+}
+
+/* ---- PORTFOLIO CARDS ---- */
+.single-portfolio .p-inner {
+  background: var(--dark-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 12px 14px !important;
+  margin-top: 0 !important;
+}
+.single-portfolio .button {
+  font-family: var(--font-body) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: rgba(255,255,255,0.8) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+.single-portfolio .button:hover { color: var(--gold) !important; }
+.single-portfolio .thumb { border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important; overflow: hidden !important; }
+
+/* ---- BLOG CARDS ---- */
+.blog-entry {
+  background: var(--dark-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 24px !important;
+  transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+.blog-entry:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(186,201,100,0.4) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3) !important;
+}
+.blog-entry h3 a { color: var(--text) !important; }
+.blog-entry h3 a:hover { color: var(--gold) !important; }
+.blog-entry p { color: var(--text-muted) !important; }
+.blog-entry .read-more { color: var(--gold) !important; font-weight: 600 !important; }
+
+/* ---- TESTIMONIALS ---- */
+#section-testimonials { padding: 80px 0 !important; }
+.testimonial-card,
+.testimonial-slide {
+  background: var(--dark-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+}
+.quote-icon {
+  color: var(--gold) !important;
+  font-family: var(--font-display) !important;
+  opacity: 0.7;
+}
+.testimonial-text { color: rgba(255,255,255,0.8) !important; font-size: 0.95rem !important; }
+.highlight { color: var(--gold) !important; font-weight: 600 !important; }
+.testimonial-author { color: var(--text) !important; font-weight: 700 !important; font-family: var(--font-display) !important; }
+.testimonial-role { color: var(--text-muted) !important; font-size: 0.8rem !important; }
+
+/* ---- CONTACT FORM ---- */
+.site-form h3 {
+  font-family: var(--font-display) !important;
+  font-size: 1.3rem !important;
+  color: var(--text) !important;
+  margin-bottom: 28px !important;
+}
+.site-form .form-control {
+  background: var(--dark-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  padding: 12px 16px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.site-form .form-control:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(186,201,100,0.12) !important;
+  outline: none !important;
+  background: var(--dark-4) !important;
+}
+.site-form .form-control::placeholder { color: var(--text-muted) !important; }
+.site-form .btn-secondary {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: #111 !important;
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 28px !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+.site-form .btn-secondary:hover {
+  background: var(--gold-light) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ---- CONTACT APPROACH / MAP ---- */
+#section-contact h3 {
+  font-family: var(--font-display) !important;
+  font-size: 1rem !important;
+  color: var(--gold) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 10px !important;
+}
+#section-contact a { color: var(--gold) !important; }
+#section-contact iframe {
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--dark-2) !important;
+  border-top: 1px solid var(--border) !important;
+  padding: 32px 0 !important;
+}
+.site-footer p, .site-footer a {
+  font-family: var(--font-body) !important;
+  font-size: 0.8rem !important;
+  color: var(--text-muted) !important;
+}
+.social-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 50% !important;
+  color: var(--text-muted) !important;
+  font-size: 1rem !important;
+  margin: 0 4px !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+}
+.social-item:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ---- ABOUT SECTION INTRO BULLETS ---- */
+.lead { color: rgba(255,255,255,0.85) !important; font-family: var(--font-body) !important; }
+
+/* ---- TIMELINE ---- */
+.timeline-text { color: rgba(255,255,255,0.8) !important; font-family: var(--font-body) !important; }
+.timeline-extra {
+  background: var(--dark-3) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+  font-size: 0.78rem !important;
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ---- SELECTION ---- */
+::selection { background: var(--gold); color: #111; }
+
+/* ---- MOBILE — Comprehensive Overrides ---- */
+
+/* ── Navbar toggler: make hamburger icon visible on dark bg ── */
+@media (max-width: 991px) {
+  .navbar-toggler {
+    border: 1px solid rgba(186,201,100,0.5) !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(186,201,100,1)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+  /* Backdrop-filter fallback for older mobile browsers */
+  .site-navbar {
+    background: rgba(13,13,18,0.98) !important;
+  }
+  /* Nav links need bigger tap targets */
+  .site-navbar .nav-link {
+    padding: 12px 16px !important;
+    font-size: 0.88rem !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .connect-box {
+    margin: 4px 16px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── Counters: stack vertically, stay readable ── */
+@media (max-width: 767px) {
+  .section-counters { padding: 40px 0 !important; }
+  .counter { font-size: 2.6rem !important; }
+  .section-counters h4 { font-size: 0.65rem !important; letter-spacing: 0.12em !important; }
+  .section-counters .col-12 { margin-bottom: 28px !important; }
+  .section-counters .col-12:last-child { margin-bottom: 0 !important; }
+}
+
+/* ── Filter tabs: smaller text + tighter gaps on mobile ── */
+@media (max-width: 767px) {
+  .filters ul {
+    gap: 6px !important;
+    margin: 0 0 24px !important;
+    padding: 0 4px !important;
+  }
+  .filters ul li {
+    font-size: 0.65rem !important;
+    padding: 5px 11px !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+
+/* ── Portfolio grid: full width on smallest screens ── */
+@media (max-width: 480px) {
+  .single-portfolio { width: 100% !important; }
+}
+
+/* ── Blog cards: no hover lift on touch (use active instead) ── */
+@media (max-width: 767px) {
+  .blog-entry:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .blog-entry:active {
+    border-color: rgba(186,201,100,0.4) !important;
+    transform: scale(0.99) !important;
+  }
+  .blog-entry { padding: 18px !important; }
+}
+
+/* ── Testimonials: tighten padding ── */
+@media (max-width: 767px) {
+  #section-testimonials { padding: 56px 0 !important; }
+  .testimonial-text { font-size: 0.88rem !important; }
+  .testimonial-slide {
+    padding: 20px 16px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* ── Contact: stack form + info vertically, full-width inputs ── */
+@media (max-width: 767px) {
+  #section-contact .col-md-7,
+  #section-contact .col-md-5 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .site-form .form-control {
+    font-size: 16px !important; /* Prevents iOS auto-zoom on input focus */
+    padding: 12px 14px !important;
+    width: 100% !important;
+  }
+  .site-form .btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 13px 20px !important;
+  }
+  #section-contact iframe {
+    height: 220px !important;
+    margin-top: 16px !important;
+  }
+}
+
+/* ── Footer social icons: bigger tap targets ── */
+@media (max-width: 767px) {
+  .social-item {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.1rem !important;
+    margin: 0 6px !important;
+  }
+  .social-item:hover { transform: none !important; }
+  .social-item:active {
+    border-color: var(--gold) !important;
+    color: var(--gold) !important;
+  }
+}
+
+/* ── Typography: base size down on small screens ── */
+@media (max-width: 575px) {
+  body { font-size: 14px !important; }
+  .counter { font-size: 2.2rem !important; }
+  .lead { font-size: 0.92rem !important; }
+  .site-form h3 { font-size: 1.1rem !important; }
+}
+
+/* ── Prevent any component causing horizontal scroll ── */
+@media (max-width: 767px) {
+  .filters, .filters ul, .section-counters .row,
+  #section-contact .container, .site-footer .container {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .blog-entry, .social-item, .site-form .btn-secondary,
+  .filters ul li, .single-portfolio {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
 
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
@@ -2197,7 +2644,7 @@ cards.forEach(card => observer.observe(card));
         <div class="row">
             <div class="col-md-12 mb-5">
                 <div class="section-heading text-center">
-                    <h2>Connect <strong>with <span style="color: #bac964;">Me</span></strong></h2>
+                    <h2>Connect with <span style="color: #bac964;">Me</span></h2>
                 </div>
             </div>
 
