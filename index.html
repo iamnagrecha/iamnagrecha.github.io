@@ -2379,25 +2379,14 @@ cards.forEach(card => observer.observe(card));
 
 
 <style>
-#section-contact { padding: 90px 0 0; }
+#section-contact { padding: 60px 0 0; }
 
-.connect-email-bar {
-  display: flex; align-items: center; justify-content: center;
-  gap: 10px; margin-bottom: 48px;
-  flex-wrap: wrap; text-align: center;
-}
-.connect-email-bar a {
-  color: #bac964; font-size: 1rem; font-weight: 600;
-  text-decoration: none; letter-spacing: 0.02em;
-  word-break: break-all;
-}
-.connect-email-bar a:hover { text-decoration: underline; color: #d4e070; }
-.connect-email-bar i { color: #bac964; font-size: 1.1rem; flex-shrink: 0; }
+
 
 .connect-social-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px; margin-bottom: 56px;
+  gap: 14px; margin-bottom: 40px;
 }
 @media (max-width: 767px) {
   .connect-social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -2474,19 +2463,13 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
 <section class="site-section" id="section-contact">
   <div class="container">
 
-    <div class="row mb-4">
+    <div class="row mb-2">
       <div class="col text-center">
         <div class="section-heading">
           <h2>Connect <strong>with <span style="color:#bac964;">Me</span></strong></h2>
           <div class="section-divider"></div>
         </div>
       </div>
-    </div>
-
-    <!-- Email -->
-    <div class="connect-email-bar">
-      <i class="fas fa-envelope"></i>
-      <a href="/cdn-cgi/l/email-protection#e485868c8d978c818fca8a85839681878c85ca858aa48389858d88ca878b89"><span class="__cf_email__" data-cfemail="39585b51504a515c521757585e4b5c5a5158175857795e54585055175a5654">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
