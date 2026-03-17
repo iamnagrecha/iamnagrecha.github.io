@@ -1779,390 +1779,200 @@ $(document).ready(function() {
 	
 
 
-<!-- ======================== INSIGHTS / BLOG SECTION ======================== -->
-<style>
-#section-blog {
-  padding: 90px 0 70px;
-}
-
-/* --- Section header --- */
-#section-blog .section-heading h2 a {
-  color: inherit;
-  text-decoration: none;
-}
-#section-blog .section-heading h2 a:hover {
-  color: #bac964;
-}
-
-/* --- View all link --- */
-.blog-view-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #bac964;
-  text-decoration: none;
-  border: 1px solid rgba(186,201,100,0.35);
-  border-radius: 30px;
-  padding: 8px 20px;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-  margin-top: 10px;
-}
-.blog-view-all:hover {
-  background: rgba(186,201,100,0.1);
-  border-color: #bac964;
-  color: #fff;
-  text-decoration: none;
-  transform: translateY(-2px);
-}
-.blog-view-all svg { width: 14px; height: 14px; }
-
-/* --- Grid --- */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-@media (max-width: 991px) {
-  .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-}
-@media (max-width: 575px) {
-  .blog-grid { grid-template-columns: 1fr; gap: 16px; }
-}
-
-/* --- Card --- */
-.blog-card {
-  background: #161819;
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-.blog-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(186,201,100,0.45);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(186,201,100,0.15);
-  text-decoration: none;
-  color: inherit;
-}
-
-/* --- Card image --- */
-.blog-card__img-wrap {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #1e2025;
-  flex-shrink: 0;
-  position: relative;
-}
-.blog-card__img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease;
-}
-.blog-card:hover .blog-card__img-wrap img {
-  transform: scale(1.05);
-}
-
-/* placeholder when no image */
-.blog-card__img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a1c22, #232630);
-  color: rgba(186,201,100,0.25);
-  font-size: 2.5rem;
-}
-
-/* --- Card body --- */
-.blog-card__body {
-  padding: 20px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-/* date + reading time */
-.blog-card__meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 10px;
-}
-.blog-card__meta-dot {
-  width: 3px; height: 3px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  flex-shrink: 0;
-}
-
-/* title */
-.blog-card__title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.45;
-  margin: 0 0 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  transition: color 0.2s;
-}
-.blog-card:hover .blog-card__title { color: #bac964; }
-
-/* excerpt */
-.blog-card__excerpt {
-  font-size: 0.78rem;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.45);
-  margin: 0 0 16px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  flex: 1;
-}
-
-/* Read on Medium link */
-.blog-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #bac964;
-  margin-top: auto;
-  transition: gap 0.2s;
-  text-decoration: none;
-}
-.blog-card:hover .blog-card__cta { gap: 10px; }
-.blog-card__cta svg { width: 12px; height: 12px; flex-shrink: 0; }
-
-/* --- Loading skeleton --- */
-.blog-skeleton {
-  background: #161819;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
-  overflow: hidden;
-}
-.blog-skeleton__img {
-  width: 100%; aspect-ratio: 16/9;
-  background: linear-gradient(90deg, #1e2025 25%, #252830 50%, #1e2025 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.4s infinite;
-}
-.blog-skeleton__body { padding: 20px; }
-.blog-skeleton__line {
-  height: 10px; border-radius: 6px; margin-bottom: 10px;
-  background: linear-gradient(90deg, #1e2025 25%, #252830 50%, #1e2025 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.4s infinite;
-}
-.blog-skeleton__line--short { width: 45%; }
-.blog-skeleton__line--med   { width: 80%; }
-.blog-skeleton__line--full  { width: 100%; }
-@keyframes shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* --- Error state --- */
-.blog-error {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 60px 20px;
-  color: rgba(255,255,255,0.35);
-  font-size: 0.9rem;
-}
-.blog-error a { color: #bac964; text-decoration: none; }
-.blog-error a:hover { text-decoration: underline; }
-</style>
-
 <section class="site-section" id="section-blog">
-  <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="section-heading text-center">
+                    <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></strong></h2>
+                    <div class="section-divider"></div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Heading row -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-heading text-center">
-          <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank" rel="noopener">Medium</a></strong></h2>
-          <div class="section-divider"></div>
+        <!-- Carousel Wrapper -->
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <div class="carousel-inner" id="blogCarouselInner">
+                <!-- Dynamic Content will be inserted here -->
+            </div>
+
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#blogCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#blogCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <div class="text-center mt-2">
-          <a href="https://iamnagrecha.medium.com/" target="_blank" rel="noopener" class="blog-view-all">
-            View all articles
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 8h10M9 4l4 4-4 4"/>
-            </svg>
-          </a>
-        </div>
-      </div>
     </div>
-
-    <!-- Card grid — populated by JS -->
-    <div class="blog-grid" id="blogGrid">
-      <!-- Skeleton placeholders -->
-      <div class="blog-skeleton">
-        <div class="blog-skeleton__img"></div>
-        <div class="blog-skeleton__body">
-          <div class="blog-skeleton__line blog-skeleton__line--short"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--med"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-        </div>
-      </div>
-      <div class="blog-skeleton">
-        <div class="blog-skeleton__img"></div>
-        <div class="blog-skeleton__body">
-          <div class="blog-skeleton__line blog-skeleton__line--short"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--med"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-        </div>
-      </div>
-      <div class="blog-skeleton">
-        <div class="blog-skeleton__img"></div>
-        <div class="blog-skeleton__body">
-          <div class="blog-skeleton__line blog-skeleton__line--short"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--med"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-          <div class="blog-skeleton__line blog-skeleton__line--full"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </section>
 
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-(function () {
-  /* ---- helpers ---- */
-  function stripHtml(html) {
-    var tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
-  }
+document.addEventListener("DOMContentLoaded", function() {
+const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha" + "&timestamp=" + new Date().getTime();
 
-  function formatDate(dateStr) {
-    try {
-      var d = new Date(dateStr);
-      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-    } catch(e) { return ''; }
-  }
-
-  function readTime(text) {
-    var words = text.trim().split(/\s+/).length;
-    var mins = Math.max(1, Math.round(words / 200));
-    return mins + ' min read';
-  }
-
-  function getThumbnail(blog) {
-    // Try thumbnail first
-    if (blog.thumbnail && blog.thumbnail.startsWith('http')) return blog.thumbnail;
-    // Try to extract first <img> from description
-    var tmp = document.createElement('div');
-    tmp.innerHTML = blog.description || '';
-    var img = tmp.querySelector('img');
-    if (img && img.src) return img.src;
-    return null;
-  }
-
-  /* ---- render ---- */
-  function renderCards(blogs) {
-    var grid = document.getElementById('blogGrid');
-    if (!blogs || !blogs.length) {
-      grid.innerHTML = '<div class="blog-error">Couldn\'t load articles right now. <a href="https://iamnagrecha.medium.com/" target="_blank">Visit Medium directly →</a></div>';
-      return;
-    }
-
-    var html = '';
-    blogs.forEach(function(blog) {
-      var thumb = getThumbnail(blog);
-      var plainText = stripHtml(blog.description || '');
-      var excerpt = plainText.length > 180 ? plainText.substring(0, 180).trim() + '…' : plainText;
-      var dateStr = formatDate(blog.pubDate);
-      var rt = readTime(plainText);
-
-      var imgBlock = thumb
-        ? '<img src="' + thumb + '" alt="' + blog.title.replace(/"/g,'') + '" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=&quot;blog-card__img-placeholder&quot;>✍</div>\'">'
-        : '<div class="blog-card__img-placeholder">✍</div>';
-
-      html += '<a class="blog-card" href="' + blog.link + '" target="_blank" rel="noopener">'
-        + '  <div class="blog-card__img-wrap">' + imgBlock + '</div>'
-        + '  <div class="blog-card__body">'
-        + '    <div class="blog-card__meta">'
-        + (dateStr ? '<span>' + dateStr + '</span><span class="blog-card__meta-dot"></span>' : '')
-        + '      <span>' + rt + '</span>'
-        + '    </div>'
-        + '    <div class="blog-card__title">' + blog.title + '</div>'
-        + (excerpt ? '<div class="blog-card__excerpt">' + excerpt + '</div>' : '')
-        + '    <span class="blog-card__cta">Read on Medium'
-        + '      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>'
-        + '    </span>'
-        + '  </div>'
-        + '</a>';
-    });
-
-    grid.innerHTML = html;
-
-    /* fade-in on scroll */
-    if ('IntersectionObserver' in window) {
-      var cards = grid.querySelectorAll('.blog-card');
-      cards.forEach(function(c) {
-        c.style.opacity = '0';
-        c.style.transform = 'translateY(20px)';
-        c.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      });
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry, i) {
-          if (entry.isIntersecting) {
-            setTimeout(function() {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }, 80 * Array.from(cards).indexOf(entry.target));
-            io.unobserve(entry.target);
-          }
+    fetch(mediumFeedUrl)
+    .then(response => response.json())
+    .then(data => {
+        let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
+        let blogHTML = '';
+        
+        blogs.forEach((blog, index) => {
+            let descriptionPreview = blog.description;
+            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
+            
+            // Limit the description to the first 800 characters for preview
+            if (descriptionPreview.length > 800) {
+                descriptionPreview = descriptionPreview.substring(0, 800) + "...";
+            }
+            
+            blogHTML += `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         });
-      }, { threshold: 0.1 });
-      cards.forEach(function(c) { io.observe(c); });
-    }
-  }
 
-  /* ---- fetch ---- */
-  document.addEventListener('DOMContentLoaded', function() {
-    var url = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha&api_key=&count=9&t=' + Date.now();
-    fetch(url)
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        renderCards((data.items || []).slice(0, 9));
-      })
-      .catch(function() {
-        renderCards(null);
-      });
-  });
-})();
+        document.getElementById("blogCarouselInner").innerHTML = blogHTML;
+
+        // Reinitialize the carousel to avoid looping issues
+        $('#blogCarousel').carousel({
+            interval: 5000,
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
+        });
+
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+            const totalItems = $('#blogCarousel .carousel-item').length;
+            const activeIndex = $('#blogCarousel .carousel-item.active').index();
+            if (activeIndex === totalItems - 1) {
+                // Reset the carousel to the first item to loop smoothly
+                $('#blogCarousel').carousel(0);
+            }
+        });
+
+    })
+    .catch(error => console.error("Error fetching Medium RSS:", error));
+});
 </script>
+
+<style>
+body {
+    background-color: #121212; /* Dark background for the website */
+    color: #fff; /* White text color for contrast */
+}
+
+.blog-entry {
+    background: #1e1e1e; /* Dark background for the blog entry */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: auto; /* Remove fixed height to allow flexibility */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Prevent overflow of long content */
+    margin-bottom: 20px;
+}
+
+.blog-entry:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.blog-entry h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.blog-entry h3 a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-entry h3 a:hover {
+    color: #feb47b; /* Change text color on hover */
+}
+
+.blog-entry p {
+    font-size: 14px;
+    color: #f1f1f1;
+    margin-top: 10px;
+    font-weight: 400;
+    text-align: justify;
+    height: 80px; /* Set a height for the description to prevent overflow */
+    overflow: hidden; /* Hide the overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis when text is too long */
+}
+
+.blog-entry .read-more {
+    font-weight: bold;
+    color: #feb47b;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.blog-entry .read-more:hover {
+    text-decoration: underline;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #feb47b; /* Custom arrow color */
+    border-radius: 50%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    filter: brightness(1.5);
+}
+
+.blog-entry-content {
+    padding: 10px;
+}
+
+.blog-entry img {
+    max-width: 100%; /* Ensure image fits the width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 200px; /* Set a fixed height for the image */
+    margin-top: 10px; /* Space between text and image */
+}
+
+.carousel-inner {
+    padding: 20px 0;
+}
+
+.blog-entry img {
+    object-fit: cover;
+    height: 200px; /* Set a fixed height for all images */
+    width: 100%; /* Make images responsive */
+    border-radius: 8px; /* Rounded corners for the image */
+}
+</style>
 
 
 
@@ -2435,7 +2245,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="/cdn-cgi/l/email-protection#e485868c8d978c818fca8a85839681878c85ca858aa48389858d88ca878b89"><span class="__cf_email__" data-cfemail="39585b51504a515c521757585e4b5c5a5158175857795e54585055175a5654">[email&#160;protected]</span></a>
+      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
     </div>
 
     <!-- Social cards -->
@@ -2452,7 +2262,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="/cdn-cgi/l/email-protection#0c6d6e64657f64696722626d6b7e696f646d226d624c6b616d6560226f6361" class="connect-social-card">
+      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2478,7 +2288,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2505,4 +2315,10 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<scrip
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
+	
