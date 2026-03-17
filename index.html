@@ -956,8 +956,9 @@ $(document).ready(function() {
   transition: color 0.2s;
 }
 .single-portfolio:hover .p-inner .button { color: #bac964 !important; }
-.single-portfolio { transition: transform 0.3s ease; }
-.single-portfolio:hover { transform: translateY(-6px); }
+/* Lift via margin instead of transform so Isotope's transform isn't affected */
+.single-portfolio { transition: margin-top 0.25s ease; }
+.single-portfolio:hover { margin-top: -6px; margin-bottom: 6px; }
 @media (max-width:575px) {
   .single-portfolio { padding: 7px; }
   .single-portfolio .p-inner .button { font-size: 0.76rem; }
