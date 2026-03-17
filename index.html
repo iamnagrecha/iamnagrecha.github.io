@@ -899,6 +899,58 @@ $(document).ready(function() {
 
 
 	
+<style>
+.single-portfolio { padding: 10px; }
+.pf-card {
+  position: relative; border-radius: 14px; overflow: hidden;
+  background: #13141a; border: 1px solid rgba(186,201,100,0.1);
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), border-color 0.3s, box-shadow 0.35s;
+}
+.pf-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(186,201,100,0.55); box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(186,201,100,0.2); }
+.pf-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg,#bac964,#e2f054,#bac964); background-size:200%;
+  opacity:0; transition:opacity 0.3s; z-index:2; animation: pfShimmer 2.5s linear infinite;
+}
+.pf-card:hover::before { opacity:1; }
+@keyframes pfShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.pf-card__img { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#1a1c22; }
+.pf-card__img img { width:100%; height:100%; object-fit:contain; display:block; padding:12px; background:#fff; }
+.pf-card:hover .pf-card__img img { transform:none; }
+.pf-card__overlay {
+  position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%);
+  opacity:0; transition:opacity 0.35s; display:flex; align-items:flex-end;
+  justify-content:center; padding-bottom:14px; z-index:1;
+}
+.pf-card:hover .pf-card__overlay { opacity:1; }
+.pf-card__overlay-btn {
+  font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  color:#111; background:#bac964; border-radius:20px; padding:6px 16px; text-decoration:none;
+}
+.pf-card__overlay-btn:hover { background:#d4e070; color:#111; text-decoration:none; }
+.pf-card__footer { padding:12px 14px 14px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.pf-card__name { font-size:0.82rem; font-weight:700; color:#fff; line-height:1.3; flex:1; }
+.pf-card__arrow {
+  width:28px; height:28px; border-radius:50%; border:1px solid rgba(186,201,100,0.3);
+  display:flex; align-items:center; justify-content:center; color:#bac964;
+  font-size:0.75rem; flex-shrink:0; transition:background 0.2s, border-color 0.2s; text-decoration:none;
+}
+.pf-card:hover .pf-card__arrow { background:#bac964; border-color:#bac964; color:#111; }
+.single-portfolio { opacity:0; transform:translateY(28px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.single-portfolio.pf-visible { opacity:1; transform:translateY(0); }
+@media (max-width:575px) { .single-portfolio{padding:7px;} .pf-card__name{font-size:0.76rem;} }
+</style>
+<script>
+(function() {
+  var pfItems = document.querySelectorAll('.single-portfolio');
+  if (!('IntersectionObserver' in window)) { pfItems.forEach(function(el){el.classList.add('pf-visible');}); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if(entry.isIntersecting){entry.target.classList.add('pf-visible');io.unobserve(entry.target);} });
+  }, {threshold:0.08});
+  pfItems.forEach(function(el){io.observe(el);});
+})();
+</script>
+
 <section class="site-section" id="section-work">
     <div class="container">
         <div class="row">
@@ -919,281 +971,2048 @@ $(document).ready(function() {
 				<li data-filter=".cm">Case Management</li>
             </ul>
         </div>
-
         <div class="filters-content">
             <div class="row grid">
-                <!-- Pangea Money Transfer -->
-                <div class="single-portfolio col-sm-4 col-md-4 all tm rr">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/panges_small.PNG" alt="">
-                        </div>
-                        <a href="images/p1.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://pangeamoneytransfer.com/" class="button">Pangea Money Transfer</a>
-                    </div>
-                </div>
-
-                <!-- Christie's Auctions -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/caa.PNG" alt="">
-                        </div>
-                        <a href="images/p2.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.christies.com/en" class="button">Christie's Auctions</a>
-                    </div>
-                </div>
-
-				<!-- Pets Best Insurance -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/pbi.PNG" alt="">
-                        </div>
-                        <a href="images/p2.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.petsbest.com/" class="button">Pets Best Insurance</a>
-                    </div>
-                </div>
-
-                <!-- IQPC Corporate -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/iqpc_1.PNG" alt="IQPC Corporate">
-                        </div>
-                        <a href="images/iqpc.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.iqpc.com/" class="button">IQPC Corporate</a>
-                    </div>
-                </div>
-
-	       <!-- CICSA Credit Union -->
-                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/cicsanew.PNG" alt="CICSA Credit Union">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.creditunion.ky/" class="button">CICSA Credit Union</a>
-                    </div>
-                </div>
-
-			   <!-- Millennium Trust -->
-                <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/Inspira.png" alt="Inspira Financial">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://inspirafinancial.com/" class="button">Inspira Financial</a>
-                    </div>
-                </div>
-	    <!-- Lynk - Digital Payments -->
-		<div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr">
-		    <div class="relative">
-		        <div class="thumb">
-		            <div class="overlay overlay-bg"></div>
-		            <img class="image img-fluid" src="images/lynk1.PNG" alt="Lynk - Digital Payments">
-		        </div>
-		        <a href="images/lynk.jpg" class="img-pop-up">  
-		            <div class="middle">
-		                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-		            </div>
-		        </a>
-		    </div>
-		    <div class="p-inner">
-		        <a href="https://www.lynk.us/about-us" class="button">Lynk - Digital Payments</a>
-		    </div>
-		</div>
-
-	    <!-- Coinsquare -->
-		<div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-		    <div class="relative">
-		        <div class="thumb">
-		            <div class="overlay overlay-bg"></div>
-		            <img class="image img-fluid" src="images/coin.PNG" alt="Coinsquare">
-		        </div>
-		        <a href="images/coinsquare.jpg" class="img-pop-up">  
-		            <div class="middle">
-		                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-		            </div>
-		        </a>
-		    </div>
-		    <div class="p-inner">
-		        <a href="https://www.coinsquare.com/en-ca" class="button">Coinsquare</a>
-		    </div>
-		</div>
-                <!-- Pinnacle Pets -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/pinnacle.PNG" alt="">
-                        </div>
-                        <a href="images/p3.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.pinnaclepetgroup.com/" class="button">Pinnacle Pets</a>
-                    </div>
-                </div>
-			   <!-- Patient Pay -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/ppay.PNG" alt="CICSA Credit Union">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.patientpay.com/" class="button">Patient Pay</a>
-                    </div>
-                </div>
-                <!-- Brinks Canada -->
-                <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/brinks.PNG" alt="">
-                        </div>
-                        <a href="images/p4.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://ca.brinks.com/" class="button">Brinks Canada</a>
-                    </div>
-                </div>
-
-                <!-- Canadian Tire Financial Services -->
-                <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/ct.PNG" alt="">
-                        </div>
-                        <a href="images/p5.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.ctfs.com/" class="button">Canadian Tire Financial Services</a>
-                    </div>
-                </div>
-
-                <!-- Fairstone Bank of Canada -->
-                <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/fairstone.PNG" alt="">
-                        </div>
-                        <a href="images/p6.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.fairstone.ca/" class="button">Fairstone Bank of Canada</a>
-                    </div>
-                </div>
-
-                <!-- Wedbush Securities -->
-                <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/wedbush.PNG" alt="">
-                        </div>
-                        <a href="images/p7.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://www.wedbush.com/" class="button">Wedbush Securities</a>
-                    </div>
-                </div>
-
-                <!-- Ingles -->
-                <div class="single-portfolio col-sm-4 col-md-4 all rr tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/in1.PNG" alt="">
-                        </div>
-                        <a href="images/p8.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-inner">
-                        <a href="https://shop.ingles-markets.com/" class="button">Ingles</a>
-                    </div>
-                </div>
-
-            </div> <!-- End row -->
-        </div> <!-- End filters-content -->
-    </div> <!-- End container -->
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/panges_small.PNG" alt="Pangea Money Transfer"><div class="pf-card__overlay"><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pangea Money Transfer</span><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/caa.PNG" alt="Christie's Auctions"><div class="pf-card__overlay"><a href="https://www.christies.com/en" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Christie's Auctions</span><a href="https://www.christies.com/en" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pbi.PNG" alt="Pets Best Insurance"><div class="pf-card__overlay"><a href="https://www.petsbest.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pets Best Insurance</span><a href="https://www.petsbest.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/iqpc_1.PNG" alt="IQPC Corporate"><div class="pf-card__overlay"><a href="https://www.iqpc.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">IQPC Corporate</span><a href="https://www.iqpc.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/cicsanew.PNG" alt="CICSA Credit Union"><div class="pf-card__overlay"><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">CICSA Credit Union</span><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/Inspira.png" alt="Inspira Financial"><div class="pf-card__overlay"><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Inspira Financial</span><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/lynk1.PNG" alt="Lynk Digital Payments"><div class="pf-card__overlay"><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Lynk Digital Payments</span><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/coin.PNG" alt="Coinsquare"><div class="pf-card__overlay"><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Coinsquare</span><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pinnacle.PNG" alt="Pinnacle Pets"><div class="pf-card__overlay"><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pinnacle Pets</span><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/ppay.PNG" alt="Patient Pay"><div class="pf-card__overlay"><a href="https://www.patientpay.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Patient Pay</span><a href="https://www.patientpay.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm"><div class="pf-card"><div class="pf-card__img"><img src="images/brinks.PNG" alt="Brinks Canada"><div class="pf-card__overlay"><a href="https://ca.brinks.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Brinks Canada</span><a href="https://ca.brinks.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr"><div class="pf-card"><div class="pf-card__img"><img src="images/ct.PNG" alt="Canadian Tire Financial Services"><div class="pf-card__overlay"><a href="https://www.ctfs.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Canadian Tire Financial Services</span><a href="https://www.ctfs.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs"><div class="pf-card"><div class="pf-card__img"><img src="images/fairstone.PNG" alt="Fairstone Bank of Canada"><div class="pf-card__overlay"><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Fairstone Bank of Canada</span><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er"><div class="pf-card"><div class="pf-card__img"><img src="images/wedbush.PNG" alt="Wedbush Securities"><div class="pf-card__overlay"><a href="https://www.wedbush.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Wedbush Securities</span><a href="https://www.wedbush.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/in1.PNG" alt="Ingles"><div class="pf-card__overlay"><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Ingles</span><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+            </div>
+        </div>
+    </div>
 </section>
 		
-<!-- SKILLS SECTION -->
+
+<section class="site-section" id="section-skills">
+  <div class="skills-bg-grid"></div>
+
+  <div class="container skills-container">
+    <div class="row mb-2 text-center">
+      <div class="col-md-12">
+        <h2 class="skills-heading">Core <span class="skills-accent">Skills</span> &amp; <span class="skills-accent">Strengths</span></h2>
+        <div class="skills-divider"></div>
+      </div>
+    </div>
+
+    <!-- SKILL CARDS GRID -->
+    <div class="skills-grid">
+
+      <!-- AML & COMPLIANCE -->
+      <div class="sk-card sk-card--featured" data-index="0">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">01</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="sk-card__title">AML &amp; Compliance</h3>
+        <p class="sk-card__desc">Transaction Monitoring · Sanction Screening · Entity Resolution · Risk Scoring · FINTRAC STRs · LCTRs · CNBV Regulatory Reporting · CLEARID</p>
+        <div class="sk-card__tags">
+          <span>FinCrime</span><span>Regulatory</span><span>Risk</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- PROGRAMMING & DATA -->
+      <div class="sk-card" data-index="1">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">02</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3 class="sk-card__title">Programming &amp; Data</h3>
+        <p class="sk-card__desc">Python · SQL · R · Bash · JSON · YAML · REST APIs · Swagger · Postman · Pipeline Automation · Data Cleaning &amp; Transformation</p>
+        <div class="sk-card__tags">
+          <span>Python</span><span>SQL</span><span>APIs</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- CLOUD & DATABASES -->
+      <div class="sk-card" data-index="2">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">03</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <h3 class="sk-card__title">Cloud &amp; Databases</h3>
+        <p class="sk-card__desc">Azure · Cosmos DB · AWS · GCP · MongoDB · SQL Server · Redshift · Firebase · Batch &amp; Real-Time Pipelines</p>
+        <div class="sk-card__tags">
+          <span>Azure</span><span>CosmosDB</span><span>Cloud</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- ANALYTICS & BI -->
+      <div class="sk-card" data-index="3">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">04</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3 class="sk-card__title">Analytics &amp; BI</h3>
+        <p class="sk-card__desc">Power BI · Tableau · Google Analytics · Google Tag Manager · Scikit-Learn · TensorFlow · Predictive Modelling · ML Models</p>
+        <div class="sk-card__tags">
+          <span>Power BI</span><span>Tableau</span><span>ML</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- DATA ENGINEERING -->
+      <div class="sk-card" data-index="4">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">05</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3 class="sk-card__title">Data Engineering</h3>
+        <p class="sk-card__desc">Event Tracking · Custom Data Layers · GTM Implementation · Automated AML Pipelines · Structured &amp; Unstructured Dataset Management</p>
+        <div class="sk-card__tags">
+          <span>GTM</span><span>Pipelines</span><span>ETL</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- CLIENT DELIVERY -->
+      <div class="sk-card" data-index="5">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">06</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h3 class="sk-card__title">Client Delivery</h3>
+        <p class="sk-card__desc">End-to-End Implementations · Stakeholder Engagement · Cross-Functional Collaboration · Technical-to-Business Translation</p>
+        <div class="sk-card__tags">
+          <span>30+ Clients</span><span>Global</span><span>Delivery</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- DATA STORYTELLING -->
+      <div class="sk-card" data-index="6">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">07</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <h3 class="sk-card__title">Data Storytelling</h3>
+        <p class="sk-card__desc">Visual Dashboards · Concise Reports · Presentations that turn complex AML analytics into clear, actionable insights for any audience</p>
+        <div class="sk-card__tags">
+          <span>Insights</span><span>Viz</span><span>Comms</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+      <!-- PROBLEM SOLVING -->
+      <div class="sk-card" data-index="7">
+        <div class="sk-card__glow"></div>
+        <div class="sk-card__number">08</div>
+        <div class="sk-card__icon-wrap">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3 class="sk-card__title">Problem Solving</h3>
+        <p class="sk-card__desc">Creative &amp; Open-Minded · Workflow Optimisation · Delivering Under Pressure · Scalable Solutions for Global Financial Institutions</p>
+        <div class="sk-card__tags">
+          <span>Creative</span><span>Strategic</span><span>Agile</span>
+        </div>
+        <div class="sk-card__line"></div>
+      </div>
+
+    </div><!-- end skills-grid -->
+  </div>
+</section>
+
+<style>
+/* ============================================================
+   SKILLS — MOBILE OVERRIDES
+   ============================================================ */
+@media (max-width: 767px) {
+  #section-skills {
+    padding: 60px 0 70px;
+  }
+
+  .skills-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .skills-heading {
+    font-size: 1.65rem;
+  }
+
+
+  .sk-card {
+    padding: 22px 18px 20px;
+    border-radius: 14px;
+  }
+
+  .sk-card__icon-wrap {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    border-radius: 11px;
+    margin-bottom: 12px;
+  }
+
+  .sk-card__title {
+    font-size: 0.92rem;
+  }
+
+  .sk-card__desc {
+    font-size: 0.74rem;
+    line-height: 1.6;
+  }
+
+  .sk-card__tags span {
+    font-size: 0.6rem;
+    padding: 2px 7px;
+  }
+
+  .sk-card__number {
+    font-size: 0.62rem;
+    top: 13px;
+    right: 14px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .skills-grid {
+    gap: 12px;
+  }
+  .sk-card {
+    padding: 18px 14px 16px;
+  }
+}
+#section-skills {
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
+  padding: 90px 0 100px;
+  background: #0d0d12;
+}
+
+/* Animated grid background */
+.skills-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(186,201,100,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186,201,100,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridDrift 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridDrift {
+  0%   { transform: translate(0,0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+/* Heading */
+.skills-heading {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.skills-accent {
+  color: #bac964;
+  position: relative;
+}
+.skills-accent::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, #bac964, transparent);
+}
+
+/* Animated divider */
+.skills-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054);
+  border-radius: 2px;
+  margin: 0 auto 52px;
+  animation: pulseBar 2.5s ease-in-out infinite;
+}
+@keyframes pulseBar {
+  0%, 100% { width: 60px; opacity: 1; }
+  50%       { width: 100px; opacity: 0.6; }
+}
+
+/* ---- GRID LAYOUT ---- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* prevent grid from blowing out container on mobile */
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) { .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+@media (max-width: 575px)  { .skills-grid { grid-template-columns: 1fr; gap: 14px; } }
+
+/* ---- CARD BASE ---- */
+.sk-card {
+  position: relative;
+  background: linear-gradient(145deg, #141418, #1c1c24);
+  border: 1px solid rgba(186,201,100,0.12);
+  border-radius: 18px;
+  padding: 28px 22px 24px;
+  overflow: hidden;
+  cursor: default;
+  /* prevent card from overflowing its grid column */
+  min-width: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.4s cubic-bezier(.23,1,.32,1),
+              border-color 0.3s ease,
+              box-shadow 0.4s ease;
+  /* staggered entrance */
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+/* On mobile: disable hover lift (no hover on touch) and activate highlight on tap instead */
+@media (max-width: 767px) {
+  .sk-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .sk-card:active {
+    transform: scale(0.98);
+    border-color: rgba(186,201,100,0.5);
+    box-shadow: 0 8px 24px rgba(186,201,100,0.12);
+  }
+  .sk-card:active .sk-card__line { width: 100%; }
+  .sk-card:active .sk-card__icon-wrap {
+    background: rgba(186,201,100,0.18);
+    transform: rotate(-6deg) scale(1.1);
+  }
+}
+.sk-card.sk-visible {
+  animation: cardReveal 0.6s cubic-bezier(.23,1,.32,1) forwards;
+}
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sk-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  border-color: rgba(186,201,100,0.55);
+  box-shadow: 0 20px 48px rgba(186,201,100,0.15), 0 0 0 1px rgba(186,201,100,0.2);
+}
+
+/* Featured card — slightly taller accent */
+.sk-card--featured {
+  border-color: rgba(186,201,100,0.3);
+  background: linear-gradient(145deg, #17191f, #1e2129);
+}
+.sk-card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054, #bac964);
+  background-size: 200%;
+  animation: shimmerBar 3s linear infinite;
+}
+@keyframes shimmerBar {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* Glowing orb on hover */
+.sk-card__glow {
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(186,201,100,0.18) 0%, transparent 70%);
+  top: -40px; right: -40px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.sk-card:hover .sk-card__glow { opacity: 1; }
+
+/* Card number */
+.sk-card__number {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(186,201,100,0.35);
+  font-family: 'Courier New', monospace;
+}
+
+/* Icon wrap */
+.sk-card__icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(186,201,100,0.1);
+  border: 1px solid rgba(186,201,100,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #bac964;
+  margin-bottom: 16px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.sk-card:hover .sk-card__icon-wrap {
+  background: rgba(186,201,100,0.18);
+  transform: rotate(-6deg) scale(1.1);
+}
+
+/* Title */
+.sk-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+
+/* Description */
+.sk-card__desc {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 14px;
+}
+
+/* Tag chips */
+.sk-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.sk-card__tags span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bac964;
+  background: rgba(186,201,100,0.08);
+  border: 1px solid rgba(186,201,100,0.2);
+  border-radius: 20px;
+  padding: 3px 9px;
+  transition: background 0.2s ease;
+}
+.sk-card:hover .sk-card__tags span {
+  background: rgba(186,201,100,0.16);
+}
+
+/* Bottom accent line */
+.sk-card__line {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #bac964, transparent);
+  border-radius: 0 0 18px 18px;
+  transition: width 0.45s cubic-bezier(.23,1,.32,1);
+}
+.sk-card:hover .sk-card__line { width: 100%; }
+</style>
+
+<script>
+(function () {
+  const cards = document.querySelectorAll('.sk-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = (parseInt(card.dataset.index) || 0) * 90;
+        setTimeout(() => card.classList.add('sk-visible'), delay);
+        io.unobserve(card);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+})();
+</script>
+
+<section class="site-section" id="section-portfolio">
+	<div class="container">
+		<div class="row">
+			<div class="section-heading text-center col-md-12">
+				<h2><strong>Academic <span style="color: #bac964;">Projects</span></strong></h2>
+				<div class="section-divider"></div>
+			</div>
+		</div>
+		<div class="filters">
+			<ul>
+				<li class="active" data-filter="*">All</li>
+				<li data-filter=".da">Data Science</li>
+				<li data-filter=".ml">Machine Learning</li>
+				<li data-filter=".cv">Computer Vision</li>
+				<li data-filter=".nl">NLP</li>
+				<li data-filter=".nw">Networks</li>
+			</ul>
+		</div>
+		<div class="filters-content">
+			<div class="row grid">
+                <div class="single-portfolio col-sm-4 all nl"><div class="pf-card"><div class="pf-card__img"><img src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="Text Summarization"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Text Summarization of Clinical Discharge Summaries</span><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all ml"><div class="pf-card"><div class="pf-card__img"><img src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="ML Bank Telemarketing"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">ML Models for Bank Telemarketing</span><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all cv"><div class="pf-card"><div class="pf-card__img"><img src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="Alzheimer Detection"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Early Identification of Dementia Using Deep Learning</span><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all da"><div class="pf-card"><div class="pf-card__img"><img src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="Tableau IMDB"><div class="pf-card__overlay"><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__overlay-btn">View Dashboard</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Tableau Dashboards — IMDB Movies EDA</span><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all nw"><div class="pf-card"><div class="pf-card__img"><img src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="VANET Simulation"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">VANET Simulation Using Veins</span><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all nw"><div class="pf-card"><div class="pf-card__img"><img src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="SDN Cloud Computing"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">SDN and Cloud Computing</span><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+			</div>
+		</div>
+	</div>
+</section>
+	
+
+
+<section class="site-section" id="section-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="section-heading text-center">
+                    <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></strong></h2>
+                    <div class="section-divider"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Wrapper -->
+        <div id="blogCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <div class="carousel-inner" id="blogCarouselInner">
+                <!-- Dynamic Content will be inserted here -->
+            </div>
+
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#blogCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#blogCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha" + "&timestamp=" + new Date().getTime();
+
+    fetch(mediumFeedUrl)
+    .then(response => response.json())
+    .then(data => {
+        let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
+        let blogHTML = '';
+        
+        blogs.forEach((blog, index) => {
+            let descriptionPreview = blog.description;
+            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
+            
+            // Limit the description to the first 800 characters for preview
+            if (descriptionPreview.length > 800) {
+                descriptionPreview = descriptionPreview.substring(0, 800) + "...";
+            }
+            
+            blogHTML += `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-6 mb-4">
+                            <div class="blog-entry">
+                                <div class="blog-entry-content">
+                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
+                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById("blogCarouselInner").innerHTML = blogHTML;
+
+        // Reinitialize the carousel to avoid looping issues
+        $('#blogCarousel').carousel({
+            interval: 5000,
+            wrap: true, // Ensures the carousel loops properly
+            ride: 'carousel' // Ensures smooth transition when cycling through items
+        });
+
+        // Fix the carousel behavior after reaching the last item
+        $('#blogCarousel').on('slid.bs.carousel', function (e) {
+            const totalItems = $('#blogCarousel .carousel-item').length;
+            const activeIndex = $('#blogCarousel .carousel-item.active').index();
+            if (activeIndex === totalItems - 1) {
+                // Reset the carousel to the first item to loop smoothly
+                $('#blogCarousel').carousel(0);
+            }
+        });
+
+    })
+    .catch(error => console.error("Error fetching Medium RSS:", error));
+});
+</script>
+
+<style>
+body {
+    background-color: #121212; /* Dark background for the website */
+    color: #fff; /* White text color for contrast */
+}
+
+.blog-entry {
+    background: #1e1e1e; /* Dark background for the blog entry */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: auto; /* Remove fixed height to allow flexibility */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Prevent overflow of long content */
+    margin-bottom: 20px;
+}
+
+.blog-entry:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.blog-entry h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.blog-entry h3 a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-entry h3 a:hover {
+    color: #feb47b; /* Change text color on hover */
+}
+
+.blog-entry p {
+    font-size: 14px;
+    color: #f1f1f1;
+    margin-top: 10px;
+    font-weight: 400;
+    text-align: justify;
+    height: 80px; /* Set a height for the description to prevent overflow */
+    overflow: hidden; /* Hide the overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis when text is too long */
+}
+
+.blog-entry .read-more {
+    font-weight: bold;
+    color: #feb47b;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.blog-entry .read-more:hover {
+    text-decoration: underline;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #feb47b; /* Custom arrow color */
+    border-radius: 50%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    filter: brightness(1.5);
+}
+
+.blog-entry-content {
+    padding: 10px;
+}
+
+.blog-entry img {
+    max-width: 100%; /* Ensure image fits the width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 200px; /* Set a fixed height for the image */
+    margin-top: 10px; /* Space between text and image */
+}
+
+.carousel-inner {
+    padding: 20px 0;
+}
+
+.blog-entry img {
+    object-fit: cover;
+    height: 200px; /* Set a fixed height for all images */
+    width: 100%; /* Make images responsive */
+    border-radius: 8px; /* Rounded corners for the image */
+}
+</style>
+
+
+
+
+<section id="section-testimonials">
+  <div class="container">
+    <!-- Heading -->
+    <div class="row mb-5">
+      <div class="col text-center">
+        <div class="section-heading">
+          <h2 class="text-white">What Others <span style="color: #bac964;">Say</span></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider -->
+    <div class="testimonial-slider">
+
+      <!-- Slide 1 -->
+      <div class="testimonial-slide active">
+        <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                <span class="highlight">Abhishek is a detail-oriented Consultant</span> who works diligently to fully comprehend the client's requirements and align them with solution capabilities. He approaches everything with positivity and creates a strong virtual team environment. Any team would be lucky to have him.
+              </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Michel Caluori">
+        <div class="testimonial-author">Michel Caluori</div>
+        <div class="testimonial-role">Director, Professional Services – Alessa Inc.</div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                I have worked on a <span class="highlight">large challenging project</span> with Abhishek and he demonstrated <span class="highlight">dedication and patience in tackling difficult issues</span>. He takes initiative and completes tasks diligently.
+              </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Nino Marshania">
+        <div class="testimonial-author">Nino Marshania</div>
+        <div class="testimonial-role">Senior Project Manager – Alessa Inc.</div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                Abhishek and I worked together on multiple projects. He was always <span class="highlight">dedicated to completing tasks on time and with high quality</span>, and <span class="highlight">supported team collaboration effectively</span>.
+              </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Marius Lihet">
+        <div class="testimonial-author">Marius Lihet</div>
+        <div class="testimonial-role">Project Manager – Alessa Inc.</div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                Working alongside Abhishek has been effortless. He <span class="highlight">understands problems deeply</span> and <span class="highlight">builds trust with clients</span>. His <span class="highlight">technical skills and consulting mindset</span> make him a key contributor on any engagement.
+              </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Luis Guzman">
+        <div class="testimonial-author">Luis Guzman</div>
+        <div class="testimonial-role">Project Manager – Alessa Inc.</div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                During his MSc research at Lakehead University, <span class="highlight">Abhishek demonstrated leadership and strong machine learning expertise</span>. He contributed significantly to deep learning research and coauthored academic work with professionalism.
+              </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Thiago Eustaquio Alves de Oliveira">
+        <div class="testimonial-author">Thiago Eustaquio Alves de Oliveira</div>
+        <div class="testimonial-role">Associate Professor – Lakehead University</div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+		  <p class="testimonial-text">
+			<span class="highlight">Abhishek has been a driving force in client engagement</span>, delivering high-level data analytic solutions while <span class="highlight">managing strict timelines effectively</span>.
+		  </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Joel Borch">
+        <div class="testimonial-author">Joel Borch</div>
+        <div class="testimonial-role">AML Senior Project Manager – Alessa Inc.</div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="testimonial-slide">
+        <div class="quote-icon">“</div>
+		  <p class="testimonial-text">
+			<span class="highlight">Abhishek is a highly proficient Data Analytic Specialist</span>. He consistently delivers accurate analysis and is a dependable, collaborative team player.
+		  </p>
+        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Andrae Duhaney">
+        <div class="testimonial-author">Andrae Duhaney</div>
+        <div class="testimonial-role">Director of Product Management – Alessa Inc.</div>
+      </div>
+
+    </div>
+
+    <!-- Slider dots -->
+    <div class="slider-controls mt-4">
+      <span class="control-dot active" data-slide="0"></span>
+      <span class="control-dot" data-slide="1"></span>
+      <span class="control-dot" data-slide="2"></span>
+      <span class="control-dot" data-slide="3"></span>
+      <span class="control-dot" data-slide="4"></span>
+      <span class="control-dot" data-slide="5"></span>
+      <span class="control-dot" data-slide="6"></span>
+    </div>
+
+  </div>
+</section>
+	
+<script>
+const slides = document.querySelectorAll('.testimonial-slide');
+const dots = document.querySelectorAll('.control-dot');
+let current = 0;
+
+// Function to show a slide
+function showSlide(index) {
+    slides.forEach((slide,i) => {
+        slide.classList.remove('active');
+        dots[i].classList.remove('active');
+        if(i===index){
+            slide.classList.add('active');
+            dots[i].classList.add('active');
+        }
+    });
+}
+
+// Auto slide every 8 seconds
+setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}, 8000);
+
+// Click on dots
+dots.forEach(dot => {
+    dot.addEventListener('click', e => {
+        current = parseInt(dot.getAttribute('data-slide'));
+        showSlide(current);
+    });
+});
+</script>
+
+<!-- Optional JS: fade-in on scroll -->
+<script>
+const cards = document.querySelectorAll('.testimonial-card');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('fade-in');
+        }
+    });
+},{ threshold: 0.2 });
+
+cards.forEach(card => observer.observe(card));
+</script>
+
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<style>
+#section-contact { padding: 90px 0 0; }
+
+.connect-email-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 48px;
+  flex-wrap: wrap; text-align: center;
+}
+.connect-email-bar a {
+  color: #bac964; font-size: 1rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.02em;
+  word-break: break-all;
+}
+.connect-email-bar a:hover { text-decoration: underline; color: #d4e070; }
+.connect-email-bar i { color: #bac964; font-size: 1.1rem; flex-shrink: 0; }
+
+.connect-social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 56px;
+}
+@media (max-width: 767px) {
+  .connect-social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+@media (max-width: 400px) {
+  .connect-social-grid { grid-template-columns: 1fr; }
+}
+.connect-social-card {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 16px;
+  border: 1px solid rgba(186,201,100,0.25);
+  border-radius: 12px;
+  background: rgba(186,201,100,0.04);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  text-align: center;
+}
+.connect-social-card i { font-size: 1.2rem; color: #bac964; width: 20px; text-align: center; flex-shrink: 0; }
+.connect-social-card .x-icon {
+  font-style: normal; font-weight: 800; font-size: 1.1rem;
+  color: #bac964; width: 20px; text-align: center; flex-shrink: 0;
+}
+.connect-social-card:hover {
+  background: rgba(186,201,100,0.12); border-color: #bac964;
+  color: #fff; transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(186,201,100,0.12);
+  text-decoration: none;
+}
+
+.connect-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(186,201,100,0.2), transparent);
+  margin-bottom: 48px;
+}
+
+.connect-form-wrap { max-width: 600px; margin: 0 auto; }
+.connect-form-wrap h3 {
+  font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 24px; text-align: center;
+}
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.cf-row.full { grid-template-columns: 1fr; }
+@media (max-width: 575px) { .cf-row { grid-template-columns: 1fr; } }
+.cf-input {
+  width: 100%; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+  padding: 13px 16px; color: #fff; font-size: 0.9rem;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+  caret-color: #bac964;
+}
+.cf-input::placeholder { color: rgba(255,255,255,0.3); }
+.cf-input:focus { border-color: #bac964; background: rgba(186,201,100,0.07); }
+textarea.cf-input { resize: vertical; min-height: 120px; }
+.cf-submit {
+  display: block; width: 100%; margin-top: 18px; padding: 14px;
+  background: #bac964; color: #111; border: none; border-radius: 8px;
+  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.cf-submit:hover { background: #d4e070; transform: translateY(-2px); }
+
+.connect-footer {
+  margin-top: 72px; padding: 22px 0;
+  border-top: 1px solid rgba(186,201,100,0.1);
+  text-align: center; color: rgba(255,255,255,0.28);
+  font-size: 0.78rem; letter-spacing: 0.06em;
+}
+</style>
+
+<section class="site-section" id="section-contact">
+  <div class="container">
+
+    <div class="row mb-4">
+      <div class="col text-center">
+        <div class="section-heading">
+          <h2>Connect <strong>with <span style="color:#bac964;">Me</span></strong></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="connect-email-bar">
+      <i class="fas fa-envelope"></i>
+      <a href="/cdn-cgi/l/email-protection#3f5e5d57564c575a5411515e584d5a5c575e115e517f58525e5653115c5052"><span class="__cf_email__" data-cfemail="70111218190318151b5e1e111702151318115e111e30171d11191c5e131f1d">[email&#160;protected]</span></a>
+    </div>
+
+    <!-- Social cards -->
+    <div class="connect-social-grid">
+      <a href="https://www.linkedin.com/in/iamnagrecha/" target="_blank" class="connect-social-card">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/iamnagrecha" target="_blank" class="connect-social-card">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://iamnagrecha.medium.com/" target="_blank" class="connect-social-card">
+        <i class="fab fa-medium-m"></i> Medium
+      </a>
+      <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
+        <span class="x-icon">&#120143;</span> X / Twitter
+      </a>
+      <a href="/cdn-cgi/l/email-protection#cfaeada7a6bca7aaa4e1a1aea8bdaaaca7aee1aea18fa8a2aea6a3e1aca0a2" class="connect-social-card">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
+        <i class="fas fa-calendar-alt"></i> Schedule a Call
+      </a>
+    </div>
+
+    <div class="connect-divider"></div>
+
+    <!-- Form -->
+    <div class="connect-form-wrap">
+      <h3>Or send a message</h3>
+      <div class="cf-row">
+        <input id="cf-name" type="text" class="cf-input" placeholder="Your Name">
+        <input id="cf-email" type="email" class="cf-input" placeholder="Your Email">
+      </div>
+      <div class="cf-row full">
+        <textarea id="cf-message" class="cf-input" placeholder="Your message..."></textarea>
+      </div>
+      <button class="cf-submit" onclick="cfSend()">Send Message</button>
+    </div>
+
+  </div>
+
+  <div class="connect-footer">
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+  </div>
+</section>
+
+<script>
+function cfSend() {
+  var name    = document.getElementById('cf-name').value.trim();
+  var replyTo = document.getElementById('cf-email').value.trim();
+  var message = document.getElementById('cf-message').value.trim();
+  if (!name || !replyTo || !message) {
+    alert('Please fill in all fields before sending.');
+    return;
+  }
+  var mailto = 'mailto:abhishek.nagrecha.an@gmail.com'
+    + '?subject=' + encodeURIComponent('Message from ' + name)
+    + '&body='    + encodeURIComponent('Name: ' + name + '\nEmail: ' + replyTo + '\n\n' + message);
+  window.location.href = mailto;
+}
+</script>
+
+	<script src="js/vendor/jquery.min.js"></script>
+	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/vendor/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+
+	<script src="js/vendor/jquery.easing.1.3.js"></script>
+
+	<scr
+<!-- SKILLS SECTION -->lang="en">
+<head>
+	<title>Abhishek Nagrecha,MSc</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Favicon using maple_leaf image -->
+    <link rel="icon" href="images/maple_leaf.png" type="images/png">
+	
+</head>
+
+<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+
+<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <button class="btn d-lg-none ms-auto mb-2" id="close-navbar" 
+        style="position: fixed; top: 10px; right: 10px; z-index: 10001; font-size: 18px; 
+               background: transparent; color: #fff; border: none; padding: 8px 24px;">
+        ✖
+      </button>
+
+      <ul class="navbar-nav mx-auto text-center">
+        <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-about">About Me</a>
+            <a class="dropdown-item" href="#section-learning">Learning Milestones</a>
+            <a class="dropdown-item" href="#section-journey">Professional Journey</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#section-work" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Consulting</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-work" data-filter="*" onclick="triggerFilter(this,'#section-work')">All Projects</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".er" onclick="triggerFilter(this,'#section-work')">Entity Resolution</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".ss" onclick="triggerFilter(this,'#section-work')">Sanction Screening</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".tm" onclick="triggerFilter(this,'#section-work')">Transaction Monitoring</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".rs" onclick="triggerFilter(this,'#section-work')">Risk Scoring</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".rr" onclick="triggerFilter(this,'#section-work')">Regulatory Reporting</a>
+            <a class="dropdown-item" href="#section-work" data-filter=".cm" onclick="triggerFilter(this,'#section-work')">Case Management</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#section-skills">Skills</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#section-portfolio" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academic</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#section-portfolio" data-filter="*" onclick="triggerFilter(this,'#section-portfolio')">All Projects</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".da" onclick="triggerFilter(this,'#section-portfolio')">Data Science</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".ml" onclick="triggerFilter(this,'#section-portfolio')">Machine Learning</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".cv" onclick="triggerFilter(this,'#section-portfolio')">Computer Vision</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".nl" onclick="triggerFilter(this,'#section-portfolio')">NLP</a>
+            <a class="dropdown-item" href="#section-portfolio" data-filter=".nw" onclick="triggerFilter(this,'#section-portfolio')">Networks</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#section-blog">Insights</a></li>
+        <li class="nav-item"><a class="nav-link" href="#section-testimonials">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link connect-box" href="#section-contact">Connect</a></li>
+      </ul>
+    </div>  <!-- ← collapse div closes here -->
+
+
+
+  </div>  <!-- ← container div closes here -->
+</nav>
+
+<style>
+@media (max-width: 991.98px) {
+
+    #navbarsExample09 {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #1a1a2e !important;
+        z-index: 9999 !important;
+        overflow-y: auto !important;
+        padding: 60px 20px 20px 20px !important;
+    }
+
+    .navbar-collapse .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .navbar-collapse .nav-item {
+        width: 100% !important;
+    }
+
+    .navbar-collapse .nav-link {
+        display: block !important;
+        width: 100% !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        color: #fff !important;
+        padding: 10px 14px !important;
+        border-radius: 6px !important;
+        background: #2a2a3e !important;
+        text-align: left !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    .navbar-collapse .nav-link:hover {
+        background: #bac964 !important;
+        color: #212529 !important;
+    }
+
+    .dropdown-toggle::after {
+        float: right !important;
+        margin-top: 6px !important;
+        border-top-color: #bac964 !important;
+    }
+
+    .dropdown-menu {
+        display: none !important;
+        position: static !important;
+        float: none !important;
+        background: #111827 !important;
+        border: none !important;
+        border-left: 3px solid #bac964 !important;
+        border-radius: 0 !important;
+        padding: 4px 0 !important;
+        margin: 4px 0 4px 16px !important;
+        box-shadow: none !important;
+        width: calc(100% - 16px) !important;
+    }
+
+    .dropdown-menu.show {
+        display: block !important;
+    }
+
+    .dropdown-item {
+        display: block !important;
+        font-size: 0.78rem !important;
+        padding: 8px 16px !important;
+        color: rgba(255,255,255,0.8) !important;
+        background: transparent !important;
+        text-align: left !important;
+        white-space: normal !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:active {
+        background: #bac964 !important;
+        color: #212529 !important;
+    }
+
+    .navbar-toggler {
+        z-index: 10000 !important;
+        border: none !important;
+        outline: none !important;
+    }
+
+    #close-navbar {
+        z-index: 10000 !important;
+    }
+
+    .site-navbar .navbar-nav > li > a {
+        color: #fff !important;
+        padding: 10px 14px !important;
+    }
+}
+
+/* Desktop dropdown styles */
+@media (min-width: 992px) {
+    .dropdown-menu {
+        background-color: #1a1a2e;
+        border: 1px solid #bac964;
+        border-radius: 8px;
+        padding: 6px 0;
+        margin-top: 4px;
+    }
+    .dropdown-item {
+        color: rgba(255,255,255,0.8);
+        font-size: 13px;
+        padding: 7px 18px;
+    }
+    .dropdown-item:hover {
+        background-color: #bac964;
+        color: #212529;
+    }
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+</style>
+
+<style>
+/* ── Navbar: force dark background, override Bootstrap bg-light ── */
+.site-navbar,
+.navbar.site-navbar {
+  background: rgba(13,13,18,0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(186,201,100,0.14) !important;
+}
+
+/* ── Nav links: ALWAYS fully visible, no dimming ever ── */
+.site-navbar .nav-link,
+.site-navbar .navbar-nav .nav-link,
+.site-navbar .nav-item .nav-link,
+.site-navbar .nav-item.active .nav-link,
+.site-navbar .nav-item .nav-link.active,
+#pb-navbar .nav-link,
+#pb-navbar .navbar-nav .nav-link {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.9) !important;
+  line-height: 1 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Active section in nav gets gold highlight */
+.site-navbar .nav-item.active > .nav-link,
+.site-navbar .nav-link.active {
+  color: #bac964 !important;
+  opacity: 1 !important;
+}
+
+/* Hover state */
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus,
+#pb-navbar .nav-link:hover {
+  color: #bac964 !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+/* ── Connect button ── */
+.connect-box,
+.site-navbar .connect-box {
+  border: 1px solid #bac964 !important;
+  border-radius: 6px !important;
+  padding: 6px 16px !important;
+  color: #bac964 !important;
+  background: transparent !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  opacity: 1 !important;
+}
+.connect-box:hover,
+.site-navbar .connect-box:hover {
+  background: #bac964 !important;
+  color: #111111 !important;
+  border-color: #bac964 !important;
+}
+
+
+</style>
+
+<!-- Scripts (your original Bootstrap 4 + jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Navbar Close Script -->
+<script>
+$(document).ready(function () {
+
+    // Close navbar when regular (non-dropdown) links clicked
+    $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Close navbar after dropdown item clicked (delay so scroll/filter fires first)
+    $('.dropdown-item').on('click', function () {
+        // Close all open dropdown menus immediately
+        $('.dropdown-menu').removeClass('show');
+        $('.nav-item.dropdown').removeClass('show');
+        setTimeout(function() {
+            $('.navbar-collapse').collapse('hide');
+        }, 150);
+    });
+
+    // Close navbar when X button clicked
+    $('#close-navbar').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Dropdown toggle — mobile: manually show/hide; desktop: let Bootstrap handle hover
+    $('.dropdown-toggle').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $menu = $(this).next('.dropdown-menu');
+        var $parent = $(this).closest('.nav-item.dropdown');
+        // Close all other open dropdowns first
+        $('.nav-item.dropdown').not($parent).removeClass('show');
+        $('.dropdown-menu').not($menu).removeClass('show');
+        // Toggle this one
+        $parent.toggleClass('show');
+        $menu.toggleClass('show');
+    });
+
+    // Close dropdowns when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.nav-item.dropdown').length) {
+            $('.nav-item.dropdown').removeClass('show');
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+});
+
+// Filter trigger for Consulting and Academic dropdowns
+function triggerFilter(el, section) {
+    var filter = el.getAttribute('data-filter');
+    var target = document.querySelector(section);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(function() {
+        var filterBtn = document.querySelector('.filters li[data-filter="' + filter + '"]');
+        if (filterBtn) filterBtn.click();
+    }, 800);
+}
+</script>
+
+
+
+<section class="site-hero" id="section-home" 
+    style="background-image: url('images/data.PNG'); background-size: cover; background-position: center;" 
+    data-stellar-background-ratio="0.5">
+
+    <!-- Dark overlay with a smooth fade-in effect -->
+    <div class="overlay" style="animation: fadeInOverlay 1.5s ease-in;"></div>
+
+    <div class="container">
+        <div class="row intro-text align-items-center justify-content-center">
+            <div class="col-md-10 text-left pt-5">
+                
+                <!-- Heading with smooth slide-in animation -->
+                <h1 class="site-heading site-animate" style="animation: slideIn 1.2s ease-out;">
+                    <strong class="d-block">Abhishek Nagrecha, MSc</strong>
+                    <span class="d-block" style="color: #bac964; font-size: 0.55em; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px;">AI &amp; Data Science Specialist</span>
+                </h1>
+                
+                <!-- Subheading with elegant fade-in effect -->
+                <p class="lead text-white" style="animation: fadeInText 1.5s ease-in-out;">
+                    <strong>Turning financial data into compliance intelligence</strong>
+                </p>
+
+		<!-- "Schedule a Meeting" button linking to Google Meet booking -->
+		<div class="page-scroll mt-3 text-left">
+		    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true" 
+		       target="_blank"
+		       class="btn btn-primary btn-sm"
+		       style="animation: fadeInButton 1.8s ease-in-out; font-size: 1rem; font-weight: 600; 
+		              letter-spacing: 0.5px; background-color: #bac964; border-color: #bac964; 
+		              color: #212529; text-align: center; padding: 8px 20px; 
+		              transition: transform 0.3s ease, box-shadow 0.3s ease; text-transform: uppercase;"
+		       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0px 5px 15px rgba(186, 201, 100, 0.3)';"
+		       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+		       Schedule a Meeting
+		    </a>
+		</div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 0.6; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInButton {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<!-- ScrollReveal removed - was hiding navbar items and sections -->
+	
+<!-- ============================================================
+     GLOBAL SECTION CONSISTENCY — Dark BG + Grid + Heading Style
+     ============================================================ -->
+<style>
+/* Apply dark background + animated grid to all main sections */
+.site-section,
+#section-testimonials {
+  position: relative;
+  background: #0d0d12;
+  overflow: hidden;
+}
+
+/* Animated grid overlay on every section */
+.site-section::before,
+#section-testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(186,201,100,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186,201,100,0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: sectionGridDrift 22s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes sectionGridDrift {
+  0%   { transform: translate(0,0); }
+  100% { transform: translate(48px, 48px); }
+}
+
+/* Lift all section content above the grid layer */
+.site-section .container,
+.site-section > .row,
+#section-testimonials .container,
+#section-testimonials > .row {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- UNIVERSAL HEADING REVEAL ANIMATION ---- */
+.section-heading h2 {
+  font-size: clamp(1.7rem, 4vw, 2.7rem) !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+}
+
+/* Only animate when JS has confirmed observer support */
+.sh-animate .section-heading h2 {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(.23,1,.32,1) 0.05s,
+              transform 0.65s cubic-bezier(.23,1,.32,1) 0.05s;
+}
+.section-heading h2.sh-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Gold accent spans */
+.section-heading h2 span[style*="color"] {
+  color: #bac964 !important;
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated gold divider — added via .section-divider sibling element */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054);
+  border-radius: 2px;
+  margin: 12px auto 0;
+  animation: pulseBarGlobal 2.5s ease-in-out infinite;
+}
+@keyframes pulseBarGlobal {
+  0%, 100% { width: 60px; opacity: 1; }
+  50%       { width: 100px; opacity: 0.6; }
+}
+
+/* Sub-paragraphs in headings */
+.section-heading p {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 0.95rem !important;
+  margin-top: 14px !important;
+}
+
+/* ============================================================
+   GLOBAL MOBILE OVERRIDES
+   ============================================================ */
+
+/* Reduce grid cell size on mobile so it doesn't look too coarse */
+@media (max-width: 767px) {
+  .site-section::before,
+  #section-testimonials::before {
+    background-size: 32px 32px;
+    animation: sectionGridDriftMobile 18s linear infinite;
+  }
+  @keyframes sectionGridDriftMobile {
+    0%   { transform: translate(0,0); }
+    100% { transform: translate(32px, 32px); }
+  }
+}
+
+/* Heading font — clamp already scales, but tighten letter-spacing on small screens */
+@media (max-width: 575px) {
+  .section-heading h2 {
+    font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.25 !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+/* Divider pulse — keep it narrow on mobile so it doesn't look odd */
+@media (max-width: 575px) {
+  .section-divider {
+    width: 40px !important;
+    animation: pulseBarMobile 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseBarMobile {
+    0%, 100% { width: 40px; opacity: 1; }
+    50%       { width: 65px; opacity: 0.6; }
+  }
+}
+
+/* Ensure sections don't cause horizontal overflow on mobile */
+.site-section,
+#section-testimonials {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Respect users who prefer reduced motion — kill all animations */
+@media (prefers-reduced-motion: reduce) {
+  .site-section::before,
+  #section-testimonials::before {
+    animation: none;
+  }
+  .section-heading h2 {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .section-divider,
+  .skills-divider {
+    animation: none !important;
+  }
+}
+</style>
+
+<script>
+(function() {
+  function revealAll() {
+    document.querySelectorAll('.section-heading h2').forEach(function(el) {
+      el.classList.add('sh-visible');
+    });
+  }
+  function init() {
+    if (!('IntersectionObserver' in window)) { revealAll(); return; }
+    document.body.classList.add('sh-animate');
+    var targets = document.querySelectorAll('.section-heading h2');
+    var safetyTimer = setTimeout(revealAll, 1500);
+    var threshold = window.innerWidth < 768 ? 0.05 : 0.15;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          setTimeout(function() { e.target.classList.add('sh-visible'); }, 120);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: threshold, rootMargin: '0px 0px -20px 0px' });
+    targets.forEach(function(el) { io.observe(el); });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+})();
+</script>
+
+<section class="site-section" id="section-about">
+    <div class="container">
+        <!-- Section Heading -->
+        <div class="row mb-5">
+            <div class="col text-center">
+                <div class="section-heading mb-4">
+                    <h2>About <span style="color: #bac964;">Me</span></h2>
+                    <div class="section-divider"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="row mb-5">
+            <div class="col text-center">
+                <p class="lead mb-4" style="font-size: 1.15rem;">
+                    I help financial institutions <strong>detect, prevent, and report financial crime</strong> &mdash; using data, automation, and deep AML expertise.
+                </p>
+                <div style="display: inline-flex; flex-direction: column; gap: 14px; text-align: left; max-width: 600px; width: 100%;">
+                    <div style="display: flex; align-items: flex-start; gap: 14px;">
+                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#127919;</span>
+                        <p style="margin: 0; font-size: 1rem;"><strong>5+ years</strong> designing AML solutions &mdash; transaction monitoring, risk scoring, sanction screening &amp; regulatory reporting</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 14px;">
+                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#127974;</span>
+                        <p style="margin: 0; font-size: 1rem;"><strong>30+ global clients</strong> including banks, fintechs, credit unions &amp; securities firms across North America</p>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 14px;">
+                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#129302;</span>
+                        <p style="margin: 0; font-size: 1rem;"><strong>Data-driven approach</strong> &mdash; turning complex compliance requirements into automated, scalable solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Highlights -->
+        <p id="section-learning" class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
+        <div class="timeline-animated academic-timeline mb-5 justify-content-center">
+            <div class="timeline-item">
+                <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
+                <span class="timeline-text">DonBosco School</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Apr 2000 - Mar 2005</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
+                <span class="timeline-text">Delhi Public School</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Apr 2005 - Feb 2012</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
+                <span class="timeline-text">Parth School</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Apr 2012 - Mar 2014</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
+                <span class="timeline-text">GTU</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">May 2014 - Jun 2018</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
+                <span class="timeline-text">Lakehead University</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Sep 2019 - Apr 2021</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
+                <span class="timeline-text">Certifications</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">
+                    2019 - Present
+                    <br>
+                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="text-info">View Dashboard</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Highlights -->
+        <p id="section-journey" class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
+        <div class="timeline-animated career-timeline mb-5 justify-content-center">
+            <div class="timeline-item">
+                <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
+                <span class="timeline-text">Sparks Foundation</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Data Science Intern | Apr 2021</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
+                <span class="timeline-text">R.A Malatest & Associates</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
+                <span class="timeline-text">Narcity Media Group</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
+                <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
+                <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
+            </div>
+            <div class="timeline-item">
+                <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
+                <span class="timeline-text">Alessa Inc</span>
+                <span class="timeline-hint">Click for details</span>
+                <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
+            </div>
+        </div>
+    </div>
+
+<style>
+/* Timeline container */
+.timeline-animated {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* Timeline items start hidden and slightly down */
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    cursor: pointer;
+    width: 140px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* Fade in and move up when in view */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .timeline-item { width: 100px; margin: 15px 8px; }
+    .timeline-icon { width: 50px; height: 50px; }
+}
+
+/* Icons and text styling */
+.timeline-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+.timeline-text { font-size: 0.95rem; font-weight: 500; margin-top: 6px; text-align: center; width: 100%; word-break: break-word; }
+.timeline-hint { font-size: 0.7rem; color: #999; margin-top: 3px; text-align: center; display: block; }
+.timeline-extra { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; padding: 6px 10px; font-size: 0.85rem; border-radius: 6px; white-space: nowrap; margin-bottom: 8px; z-index: 10; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Scroll animation with stagger for each timeline-item
+    const timelines = document.querySelectorAll('.timeline-animated');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                const items = entry.target.querySelectorAll('.timeline-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show'); // fade in + move up
+                    }, index * 200); // 200ms delay between items
+                });
+                observer.unobserve(entry.target); // stop observing after first trigger
+            }
+        });
+    }, { threshold: 0.3 });
+
+    timelines.forEach(timeline => observer.observe(timeline));
+
+    // Click to toggle extra info
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const extra = item.querySelector('.timeline-extra');
+            const visible = extra.style.display === 'block';
+            document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
+            extra.style.display = visible ? 'none' : 'block';
+        });
+    });
+});
+</script>
+</section>
+					
+					
+<!-- Add jQuery (if not already included) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Counter Section -->
+<section class="site-section section-counters text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="5" data-speed="2000">0</p>
+                <h4>YEARS EXPERIENCE</h4>
+            </div>
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="30" data-speed="2000">0</p>       
+                <h4>CLIENTS SERVED</h4>      
+            </div>
+
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="16" data-speed="2000">0</p>       
+                <h4>CERTIFICATIONS ACHIEVED</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Counter Script -->
+<script>
+$(document).ready(function() {
+    var triggered = false; // Flag to ensure counter is triggered only once
+    
+    function startCounter() {
+        $('.counter').each(function() {
+            var $this = $(this),
+                countTo = parseInt($this.attr('data-to')),
+                speed = parseInt($this.attr('data-speed'));
+
+            $this.text(0); // Ensure the counter starts from zero
+
+            $({ countNum: 0 }).animate({ countNum: countTo }, {
+                duration: speed,
+                easing: 'swing',
+                step: function() {
+                    $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                    $this.text(this.countNum);
+                }
+            });
+        });
+    }
+
+    // Trigger counter when the section is in view
+    function checkCounter() {
+        var top = $('.section-counters').offset().top - window.innerHeight;
+        if (!triggered && $(window).scrollTop() > top) {
+            startCounter();
+            triggered = true;
+        }
+    }
+
+    // Trigger on scroll
+    $(window).on('scroll', checkCounter);
+    
+    // Trigger if section is already in view on page load
+    checkCounter();
+});
+</script>
+
+<!-- CSS for Better Mobile Styling -->
+<style>
+    .section-counters {
+        padding: 40px 0;
+    }
+    .counter {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    h4 {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+    }
+</style>
+
+	
+
+
+
+
+
+
+
+	
+<style>
+.single-portfolio { padding: 10px; }
+.pf-card {
+  position: relative; border-radius: 14px; overflow: hidden;
+  background: #13141a; border: 1px solid rgba(186,201,100,0.1);
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), border-color 0.3s, box-shadow 0.35s;
+}
+.pf-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(186,201,100,0.55); box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(186,201,100,0.2); }
+.pf-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg,#bac964,#e2f054,#bac964); background-size:200%;
+  opacity:0; transition:opacity 0.3s; z-index:2; animation: pfShimmer 2.5s linear infinite;
+}
+.pf-card:hover::before { opacity:1; }
+@keyframes pfShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.pf-card__img { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#1a1c22; }
+.pf-card__img img { width:100%; height:100%; object-fit:contain; display:block; padding:12px; background:#fff; }
+.pf-card:hover .pf-card__img img { transform:none; }
+.pf-card__overlay {
+  position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%);
+  opacity:0; transition:opacity 0.35s; display:flex; align-items:flex-end;
+  justify-content:center; padding-bottom:14px; z-index:1;
+}
+.pf-card:hover .pf-card__overlay { opacity:1; }
+.pf-card__overlay-btn {
+  font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  color:#111; background:#bac964; border-radius:20px; padding:6px 16px; text-decoration:none;
+}
+.pf-card__overlay-btn:hover { background:#d4e070; color:#111; text-decoration:none; }
+.pf-card__footer { padding:12px 14px 14px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.pf-card__name { font-size:0.82rem; font-weight:700; color:#fff; line-height:1.3; flex:1; }
+.pf-card__arrow {
+  width:28px; height:28px; border-radius:50%; border:1px solid rgba(186,201,100,0.3);
+  display:flex; align-items:center; justify-content:center; color:#bac964;
+  font-size:0.75rem; flex-shrink:0; transition:background 0.2s, border-color 0.2s; text-decoration:none;
+}
+.pf-card:hover .pf-card__arrow { background:#bac964; border-color:#bac964; color:#111; }
+.single-portfolio { opacity:0; transform:translateY(28px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.single-portfolio.pf-visible { opacity:1; transform:translateY(0); }
+@media (max-width:575px) { .single-portfolio{padding:7px;} .pf-card__name{font-size:0.76rem;} }
+</style>
+<script>
+(function() {
+  var pfItems = document.querySelectorAll('.single-portfolio');
+  if (!('IntersectionObserver' in window)) { pfItems.forEach(function(el){el.classList.add('pf-visible');}); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if(entry.isIntersecting){entry.target.classList.add('pf-visible');io.unobserve(entry.target);} });
+  }, {threshold:0.08});
+  pfItems.forEach(function(el){io.observe(el);});
+})();
+</script>
+
+<section class="site-section" id="section-work">
+    <div class="container">
+        <div class="row">
+            <div class="section-heading text-center col-md-12">
+		<h2><strong>Global Client <span style="color: #bac964;">Projects</span></strong></h2>
+                <div class="section-divider"></div>
+            </div>
+        </div>
+        <div class="filters text-center">
+            <ul>
+                <li class="active" data-filter="*">All</li>
+                <li data-filter=".er">Entity Resolution</li>
+                <li data-filter=".ss">Sanction Screening</li>
+                <li data-filter=".tm">Transaction Monitoring</li>
+                <li data-filter=".rs">Risk Scoring</li>
+                <li data-filter=".ci">CLEAR ID</li>
+                <li data-filter=".rr">Regulatory Reporting</li>
+				<li data-filter=".cm">Case Management</li>
+            </ul>
+        </div>
+        <div class="filters-content">
+            <div class="row grid">
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/panges_small.PNG" alt="Pangea Money Transfer"><div class="pf-card__overlay"><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pangea Money Transfer</span><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/caa.PNG" alt="Christie's Auctions"><div class="pf-card__overlay"><a href="https://www.christies.com/en" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Christie's Auctions</span><a href="https://www.christies.com/en" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pbi.PNG" alt="Pets Best Insurance"><div class="pf-card__overlay"><a href="https://www.petsbest.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pets Best Insurance</span><a href="https://www.petsbest.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/iqpc_1.PNG" alt="IQPC Corporate"><div class="pf-card__overlay"><a href="https://www.iqpc.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">IQPC Corporate</span><a href="https://www.iqpc.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/cicsanew.PNG" alt="CICSA Credit Union"><div class="pf-card__overlay"><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">CICSA Credit Union</span><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/Inspira.png" alt="Inspira Financial"><div class="pf-card__overlay"><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Inspira Financial</span><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/lynk1.PNG" alt="Lynk Digital Payments"><div class="pf-card__overlay"><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Lynk Digital Payments</span><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/coin.PNG" alt="Coinsquare"><div class="pf-card__overlay"><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Coinsquare</span><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pinnacle.PNG" alt="Pinnacle Pets"><div class="pf-card__overlay"><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pinnacle Pets</span><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/ppay.PNG" alt="Patient Pay"><div class="pf-card__overlay"><a href="https://www.patientpay.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Patient Pay</span><a href="https://www.patientpay.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm"><div class="pf-card"><div class="pf-card__img"><img src="images/brinks.PNG" alt="Brinks Canada"><div class="pf-card__overlay"><a href="https://ca.brinks.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Brinks Canada</span><a href="https://ca.brinks.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr"><div class="pf-card"><div class="pf-card__img"><img src="images/ct.PNG" alt="Canadian Tire Financial Services"><div class="pf-card__overlay"><a href="https://www.ctfs.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Canadian Tire Financial Services</span><a href="https://www.ctfs.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs"><div class="pf-card"><div class="pf-card__img"><img src="images/fairstone.PNG" alt="Fairstone Bank of Canada"><div class="pf-card__overlay"><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Fairstone Bank of Canada</span><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er"><div class="pf-card"><div class="pf-card__img"><img src="images/wedbush.PNG" alt="Wedbush Securities"><div class="pf-card__overlay"><a href="https://www.wedbush.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Wedbush Securities</span><a href="https://www.wedbush.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/in1.PNG" alt="Ingles"><div class="pf-card__overlay"><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Ingles</span><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+		
+
 <section class="site-section" id="section-skills">
   <div class="skills-bg-grid"></div>
 
@@ -2245,7 +4064,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#3f5e5d57564c575a5411515e584d5a5c575e115e517f58525e5653115c5052"><span class="__cf_email__" data-cfemail="70111218190318151b5e1e111702151318115e111e30171d11191c5e131f1d">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -2262,7 +4081,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#cfaeada7a6bca7aaa4e1a1aea8bdaaaca7aee1aea18fa8a2aea6a3e1aca0a2" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2288,7 +4107,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2315,10 +4134,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
