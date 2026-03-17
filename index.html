@@ -39,11 +39,11 @@
         <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#section-about" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#section-about">About Me</a>
-            <a class="dropdown-item" href="#section-about">Learning Milestones</a>
-            <a class="dropdown-item" href="#section-about">Professional Journey</a>
+            <a class="dropdown-item" href="#section-learning">Learning Milestones</a>
+            <a class="dropdown-item" href="#section-journey">Professional Journey</a>
           </div>
         </li>
 
@@ -292,16 +292,19 @@
 <script>
 $(document).ready(function () {
 
-    // Close navbar when regular links clicked
+    // Close navbar when regular (non-dropdown) links clicked
     $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
         $('.navbar-collapse').collapse('hide');
     });
 
-    // Close navbar after dropdown item clicked (delay so filter fires first)
+    // Close navbar after dropdown item clicked (delay so scroll/filter fires first)
     $('.dropdown-item').on('click', function () {
+        // Close all open dropdown menus immediately
+        $('.dropdown-menu').removeClass('show');
+        $('.nav-item.dropdown').removeClass('show');
         setTimeout(function() {
             $('.navbar-collapse').collapse('hide');
-        }, 900);
+        }, 150);
     });
 
     // Close navbar when X button clicked
@@ -309,17 +312,25 @@ $(document).ready(function () {
         $('.navbar-collapse').collapse('hide');
     });
 
-    // On mobile: stop dropdown-toggle from bubbling and closing navbar
-    // Instead manually toggle the dropdown-menu
+    // Dropdown toggle — mobile: manually show/hide; desktop: let Bootstrap handle hover
     $('.dropdown-toggle').on('click', function (e) {
-        if ($(window).width() < 992) {
-            e.preventDefault();
-            e.stopPropagation();
-            var $menu = $(this).next('.dropdown-menu');
-            // Close all other open dropdowns first
-            $('.dropdown-menu.show').not($menu).removeClass('show');
-            // Toggle this one
-            $menu.toggleClass('show');
+        e.preventDefault();
+        e.stopPropagation();
+        var $menu = $(this).next('.dropdown-menu');
+        var $parent = $(this).closest('.nav-item.dropdown');
+        // Close all other open dropdowns first
+        $('.nav-item.dropdown').not($parent).removeClass('show');
+        $('.dropdown-menu').not($menu).removeClass('show');
+        // Toggle this one
+        $parent.toggleClass('show');
+        $menu.toggleClass('show');
+    });
+
+    // Close dropdowns when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.nav-item.dropdown').length) {
+            $('.nav-item.dropdown').removeClass('show');
+            $('.dropdown-menu').removeClass('show');
         }
     });
 });
@@ -624,7 +635,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Academic Highlights -->
-        <p class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
+        <p id="section-learning" class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
         <div class="timeline-animated academic-timeline mb-5 justify-content-center">
             <div class="timeline-item">
                 <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
@@ -669,7 +680,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Career Highlights -->
-        <p class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
+        <p id="section-journey" class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
         <div class="timeline-animated career-timeline mb-5 justify-content-center">
             <div class="timeline-item">
                 <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
