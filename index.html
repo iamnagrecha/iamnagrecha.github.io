@@ -899,11 +899,144 @@ $(document).ready(function() {
 
 
 	
+<style>
+/* ── Portfolio card reskin ── */
+.single-portfolio {
+  padding: 10px;
+}
+.pf-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #13141a;
+  border: 1px solid rgba(186,201,100,0.1);
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+  cursor: pointer;
+}
+.pf-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  border-color: rgba(186,201,100,0.55);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(186,201,100,0.2);
+}
+.pf-card__img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #1a1c22;
+}
+.pf-card__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.pf-card:hover .pf-card__img img { transform: scale(1.07); }
+
+/* gold shimmer top bar on hover */
+.pf-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #bac964, #e2f054, #bac964);
+  background-size: 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  animation: pfShimmer 2.5s linear infinite;
+}
+.pf-card:hover::before { opacity: 1; }
+@keyframes pfShimmer {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* overlay on hover */
+.pf-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+  z-index: 1;
+}
+.pf-card:hover .pf-card__overlay { opacity: 1; }
+.pf-card__overlay-btn {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+  background: #bac964;
+  border-radius: 20px;
+  padding: 6px 16px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.pf-card__overlay-btn:hover { background: #d4e070; color: #111; text-decoration: none; }
+
+/* card footer */
+.pf-card__footer {
+  padding: 12px 14px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pf-card__name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  flex: 1;
+}
+.pf-card__arrow {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(186,201,100,0.3);
+  display: flex; align-items: center; justify-content: center;
+  color: #bac964;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pf-card:hover .pf-card__arrow {
+  background: #bac964;
+  border-color: #bac964;
+  color: #111;
+}
+
+/* stagger entrance */
+.single-portfolio {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.single-portfolio.pf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* mobile */
+@media (max-width: 575px) {
+  .single-portfolio { padding: 7px; }
+  .pf-card__name { font-size: 0.76rem; }
+}
+</style>
+
 <section class="site-section" id="section-work">
     <div class="container">
         <div class="row">
             <div class="section-heading text-center col-md-12">
-		<h2><strong>Global Client <span style="color: #bac964;">Projects</span></strong></h2>
+                <h2><strong>Global Client <span style="color: #bac964;">Projects</span></strong></h2>
                 <div class="section-divider"></div>
             </div>
         </div>
@@ -916,282 +1049,230 @@ $(document).ready(function() {
                 <li data-filter=".rs">Risk Scoring</li>
                 <li data-filter=".ci">CLEAR ID</li>
                 <li data-filter=".rr">Regulatory Reporting</li>
-				<li data-filter=".cm">Case Management</li>
+                <li data-filter=".cm">Case Management</li>
             </ul>
         </div>
-
         <div class="filters-content">
             <div class="row grid">
-                <!-- Pangea Money Transfer -->
+
                 <div class="single-portfolio col-sm-4 col-md-4 all tm rr">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/panges_small.PNG" alt="">
-                        </div>
-                        <a href="images/p1.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/panges_small.PNG" alt="Pangea Money Transfer">
+                      <div class="pf-card__overlay"><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://pangeamoneytransfer.com/" class="button">Pangea Money Transfer</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Pangea Money Transfer</span>
+                      <a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- Christie's Auctions -->
                 <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/caa.PNG" alt="">
-                        </div>
-                        <a href="images/p2.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/caa.PNG" alt="Christie's Auctions">
+                      <div class="pf-card__overlay"><a href="https://www.christies.com/en" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.christies.com/en" class="button">Christie's Auctions</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Christie's Auctions</span>
+                      <a href="https://www.christies.com/en" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-				<!-- Pets Best Insurance -->
                 <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/pbi.PNG" alt="">
-                        </div>
-                        <a href="images/p2.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/pbi.PNG" alt="Pets Best Insurance">
+                      <div class="pf-card__overlay"><a href="https://www.petsbest.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.petsbest.com/" class="button">Pets Best Insurance</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Pets Best Insurance</span>
+                      <a href="https://www.petsbest.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- IQPC Corporate -->
                 <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/iqpc_1.PNG" alt="IQPC Corporate">
-                        </div>
-                        <a href="images/iqpc.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/iqpc_1.PNG" alt="IQPC Corporate">
+                      <div class="pf-card__overlay"><a href="https://www.iqpc.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.iqpc.com/" class="button">IQPC Corporate</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">IQPC Corporate</span>
+                      <a href="https://www.iqpc.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-	       <!-- CICSA Credit Union -->
                 <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/cicsanew.PNG" alt="CICSA Credit Union">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/cicsanew.PNG" alt="CICSA Credit Union">
+                      <div class="pf-card__overlay"><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.creditunion.ky/" class="button">CICSA Credit Union</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">CICSA Credit Union</span>
+                      <a href="https://www.creditunion.ky/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-			   <!-- Millennium Trust -->
                 <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/Inspira.png" alt="Inspira Financial">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/Inspira.png" alt="Inspira Financial">
+                      <div class="pf-card__overlay"><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://inspirafinancial.com/" class="button">Inspira Financial</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Inspira Financial</span>
+                      <a href="https://inspirafinancial.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
-	    <!-- Lynk - Digital Payments -->
-		<div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr">
-		    <div class="relative">
-		        <div class="thumb">
-		            <div class="overlay overlay-bg"></div>
-		            <img class="image img-fluid" src="images/lynk1.PNG" alt="Lynk - Digital Payments">
-		        </div>
-		        <a href="images/lynk.jpg" class="img-pop-up">  
-		            <div class="middle">
-		                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-		            </div>
-		        </a>
-		    </div>
-		    <div class="p-inner">
-		        <a href="https://www.lynk.us/about-us" class="button">Lynk - Digital Payments</a>
-		    </div>
-		</div>
 
-	    <!-- Coinsquare -->
-		<div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-		    <div class="relative">
-		        <div class="thumb">
-		            <div class="overlay overlay-bg"></div>
-		            <img class="image img-fluid" src="images/coin.PNG" alt="Coinsquare">
-		        </div>
-		        <a href="images/coinsquare.jpg" class="img-pop-up">  
-		            <div class="middle">
-		                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-		            </div>
-		        </a>
-		    </div>
-		    <div class="p-inner">
-		        <a href="https://www.coinsquare.com/en-ca" class="button">Coinsquare</a>
-		    </div>
-		</div>
-                <!-- Pinnacle Pets -->
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/lynk1.PNG" alt="Lynk - Digital Payments">
+                      <div class="pf-card__overlay"><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Lynk Digital Payments</span>
+                      <a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/coin.PNG" alt="Coinsquare">
+                      <div class="pf-card__overlay"><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Coinsquare</span>
+                      <a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/pinnacle.PNG" alt="">
-                        </div>
-                        <a href="images/p3.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/pinnacle.PNG" alt="Pinnacle Pets">
+                      <div class="pf-card__overlay"><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.pinnaclepetgroup.com/" class="button">Pinnacle Pets</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Pinnacle Pets</span>
+                      <a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
-			   <!-- Patient Pay -->
+
                 <div class="single-portfolio col-sm-4 col-md-4 all ss tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/ppay.PNG" alt="CICSA Credit Union">
-                        </div>
-                        <a href="images/cicsa.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/ppay.PNG" alt="Patient Pay">
+                      <div class="pf-card__overlay"><a href="https://www.patientpay.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.patientpay.com/" class="button">Patient Pay</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Patient Pay</span>
+                      <a href="https://www.patientpay.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
-                <!-- Brinks Canada -->
+
                 <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/brinks.PNG" alt="">
-                        </div>
-                        <a href="images/p4.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/brinks.PNG" alt="Brinks Canada">
+                      <div class="pf-card__overlay"><a href="https://ca.brinks.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://ca.brinks.com/" class="button">Brinks Canada</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Brinks Canada</span>
+                      <a href="https://ca.brinks.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- Canadian Tire Financial Services -->
                 <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/ct.PNG" alt="">
-                        </div>
-                        <a href="images/p5.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/ct.PNG" alt="Canadian Tire Financial Services">
+                      <div class="pf-card__overlay"><a href="https://www.ctfs.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.ctfs.com/" class="button">Canadian Tire Financial Services</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Canadian Tire Financial Services</span>
+                      <a href="https://www.ctfs.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- Fairstone Bank of Canada -->
                 <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/fairstone.PNG" alt="">
-                        </div>
-                        <a href="images/p6.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/fairstone.PNG" alt="Fairstone Bank of Canada">
+                      <div class="pf-card__overlay"><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.fairstone.ca/" class="button">Fairstone Bank of Canada</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Fairstone Bank of Canada</span>
+                      <a href="https://www.fairstone.ca/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- Wedbush Securities -->
                 <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/wedbush.PNG" alt="">
-                        </div>
-                        <a href="images/p7.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/wedbush.PNG" alt="Wedbush Securities">
+                      <div class="pf-card__overlay"><a href="https://www.wedbush.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://www.wedbush.com/" class="button">Wedbush Securities</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Wedbush Securities</span>
+                      <a href="https://www.wedbush.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-                <!-- Ingles -->
                 <div class="single-portfolio col-sm-4 col-md-4 all rr tm">
-                    <div class="relative">
-                        <div class="thumb">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="image img-fluid" src="images/in1.PNG" alt="">
-                        </div>
-                        <a href="images/p8.jpg" class="img-pop-up">  
-                            <div class="middle">
-                                <div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-                            </div>
-                        </a>
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/in1.PNG" alt="Ingles">
+                      <div class="pf-card__overlay"><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
                     </div>
-                    <div class="p-inner">
-                        <a href="https://shop.ingles-markets.com/" class="button">Ingles</a>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Ingles</span>
+                      <a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
                     </div>
+                  </div>
                 </div>
 
-            </div> <!-- End row -->
-        </div> <!-- End filters-content -->
-    </div> <!-- End container -->
+            </div><!-- End row -->
+        </div><!-- End filters-content -->
+    </div><!-- End container -->
 </section>
+
+<script>
+(function() {
+  var pfItems = document.querySelectorAll('#section-work .single-portfolio, #section-portfolio .single-portfolio');
+  if (!('IntersectionObserver' in window)) {
+    pfItems.forEach(function(el) { el.classList.add('pf-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('pf-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  pfItems.forEach(function(el) { io.observe(el); });
+})();
+</script>
 		
 <!-- SKILLS SECTION -->
 <section class="site-section" id="section-skills">
@@ -1647,134 +1728,109 @@ $(document).ready(function() {
   cards.forEach(c => io.observe(c));
 })();
 </script>
-	<section class="site-section" id="section-portfolio">
-		<div class="container">
-			<div class="row">
-				<div class="section-heading text-center col-md-12">
-					<h2><strong>Academic <span style="color: #bac964;">Projects</span></strong></h2>
-					<div class="section-divider"></div>
-				</div>
-			</div>
-			<div class="filters">
-				<ul>
-					<li class="active" data-filter="*">All</li>
-					<li data-filter=".da">Data Science</li>
-					<li data-filter=".ml">Machine Learning</li>
-					<li data-filter=".cv">Computer Vision</li>
-					<li data-filter=".nl">NLP</li>
-					<li data-filter=".nw">Networks</li>
+<section class="site-section" id="section-portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="section-heading text-center col-md-12">
+                <h2><strong>Academic <span style="color: #bac964;">Projects</span></strong></h2>
+                <div class="section-divider"></div>
+            </div>
+        </div>
+        <div class="filters">
+            <ul>
+                <li class="active" data-filter="*">All</li>
+                <li data-filter=".da">Data Science</li>
+                <li data-filter=".ml">Machine Learning</li>
+                <li data-filter=".cv">Computer Vision</li>
+                <li data-filter=".nl">NLP</li>
+                <li data-filter=".nw">Networks</li>
+            </ul>
+        </div>
+        <div class="filters-content">
+            <div class="row grid">
 
-				</ul>
-			</div>
-			
-			<div class="filters-content">
-				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all nl">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p1.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							                               
-						</div>
-						<div class="p-inner">
-							<a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" class="button">Text Summarization of Clinical Discharge Summaries</h4></a>
-						</div>
-					</div>
+                <div class="single-portfolio col-sm-4 all nl">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="Text Summarization">
+                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Text Summarization of Clinical Discharge Summaries</span>
+                      <a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
 
-					<div class="single-portfolio col-sm-4 all ml">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p5.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>                                
-						</div>
-						<div class="p-inner">
-							<a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" class="button">Machine Learning Models for Bank Telemarketing</h4>
-							</a>
-						</div>
-					</div>
+                <div class="single-portfolio col-sm-4 all ml">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="ML Bank Telemarketing">
+                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">ML Models for Bank Telemarketing</span>
+                      <a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="single-portfolio col-sm-4 all cv">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="Alzheimer Detection">
+                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Early Identification of Dementia Using Deep Learning</span>
+                      <a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
 
-					<div class="single-portfolio col-sm-4 all cv">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p2.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>                                 
-						</div>
-						<div class="p-inner">
-							<a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" class="button">Early Identification of Demantia Using Deep Learning Techniques</h4></a>
-						</div>
-					</div>
+                <div class="single-portfolio col-sm-4 all da">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="Tableau IMDB">
+                      <div class="pf-card__overlay"><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__overlay-btn">View Dashboard</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">Tableau Dashboards — IMDB Movies EDA</span>
+                      <a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
 
-					<div class="single-portfolio col-sm-4 all da">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p6.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>
-							</a>                                
-						</div>
-						<div class="p-inner">
-							<a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" class="button">Tableau Dashboards for Statistical Data Analysis of IMDB Movies </h4>
-							</a>
-						</div>
-					</div>
+                <div class="single-portfolio col-sm-4 all nw">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="VANET Simulation">
+                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">VANET Simulation Using Veins</span>
+                      <a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
 
-					<div class="single-portfolio col-sm-4 all nw">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p5.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>                                
-						</div>
-						<div class="p-inner">
-							<a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" class="button">VANET Simulation Using Veins</h4>
-							</a>
-						</div>
-					</div>
-					
-					<div class="single-portfolio col-sm-4 all nw">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="">
-							</div>
-							<a href="images/p5.jpg" class="img-pop-up">  
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="images/preview.png" alt=""></div>
-								</div>                                
-						</div>
-						<div class="p-inner">
-							<a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" class="button">SDN and Cloud Computing</h4>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> 
+                <div class="single-portfolio col-sm-4 all nw">
+                  <div class="pf-card">
+                    <div class="pf-card__img">
+                      <img src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="SDN Cloud Computing">
+                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
+                    </div>
+                    <div class="pf-card__footer">
+                      <span class="pf-card__name">SDN and Cloud Computing</span>
+                      <a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__arrow">&#8599;</a>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
 	
 
@@ -2242,12 +2298,6 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       </div>
     </div>
 
-    <!-- Email -->
-    <div class="connect-email-bar">
-      <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
-    </div>
-
     <!-- Social cards -->
     <div class="connect-social-grid">
       <a href="https://www.linkedin.com/in/iamnagrecha/" target="_blank" class="connect-social-card">
@@ -2262,7 +2312,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#78191a10110b101d135616191f0a1d1b1019561916381f15191114561b1715" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2288,7 +2338,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2315,10 +2365,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
