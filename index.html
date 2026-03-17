@@ -2137,153 +2137,176 @@ cards.forEach(card => observer.observe(card));
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
-<section class="site-section" id="section-contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <div class="section-heading text-center">
-                    <h2>Connect <strong>with <span style="color: #bac964;">Me</span></strong></h2>
-                    <div class="section-divider"></div>
-                </div>
-            </div>
-
-            <div class="col-md-7 mb-5 mb-md-0">
-                <form action="mailto:abhishek.nagrecha.an@gmail.com" method="post" enctype="text/plain" class="site-form">
-                    <h3 class="mb-5">Get In Touch</h3>
-                    <div class="form-group">
-                        <input type="text" class="form-control px-2 py-3" placeholder="Full Name" name="Full Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control px-2 py-3" placeholder="Email ID" name="Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" class="form-control px-2 py-3" placeholder="Phone" name="Phone">
-                    </div>
-                    <div class="form-group mb-5">
-                        <textarea class="form-control px-2 py-3" cols="5" rows="3" placeholder="Write a Message" name="Message"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-secondary px-4 py-2 btn-sm px-3 py-2" value="Send Message">
-                    </div>
-                </form>
-            </div>
-		
-<div class="col-md-5 pl-md-5">
-    <h3 class="mb-4">Approach</h3>
-    <p>
-        <i class="fas fa-envelope"></i>
-        <a href="/cdn-cgi/l/email-protection#cfaeada7a6bca7aaa4e1a1aea8bdaaaca7aee1aea18fa8a2aea6a3e1aca0a2"><span class="__cf_email__" data-cfemail="88e9eae0e1fbe0ede3a6e6e9effaedebe0e9a6e9e6c8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span></a>
-    </p>
-
-    <h3 class="mb-4">Location</h3>
-    
-    <div class="mt-4">
-        <iframe 
-            width="100%" 
-            height="300" 
-            style="border:0;" 
-            loading="lazy" 
-            allowfullscreen 
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.634416839881!2d-75.82498892402433!3d45.3503397411166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce1f7ae85994a1%3A0xb8c5cd3c290b9b9e!2s3100%20Carling%20Ave%2C%20Ottawa%2C%20ON%20K2B%206J6%2C%20Canada!5e0!3m2!1sen!2sca!4v1715796134123">
-        </iframe>
-    </div>
-</div>
-</section>
-
-
 <style>
-    .site-form input, 
-    .site-form textarea {
-        color: white !important; /* White text when typing */
-        background-color: rgba(255, 255, 255, 0.2); /* Light background */
-        border: 1px solid #ccc; /* Subtle border */
-        caret-color: white; /* Ensures cursor visibility */
-    }
+#section-contact { padding: 90px 0 0; }
 
-    .site-form input::placeholder,
-    .site-form textarea::placeholder {
-        color: rgba(255, 255, 255, 0.6); /* Light gray placeholder */
-    }
+.connect-email-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 48px;
+  flex-wrap: wrap; text-align: center;
+}
+.connect-email-bar a {
+  color: #bac964; font-size: 1rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.02em;
+  word-break: break-all;
+}
+.connect-email-bar a:hover { text-decoration: underline; color: #d4e070; }
+.connect-email-bar i { color: #bac964; font-size: 1.1rem; flex-shrink: 0; }
 
-    .site-form input:focus,
-    .site-form textarea:focus {
-        background-color: rgba(255, 255, 255, 0.3); /* Slightly brighter on focus */
-        border-color: #fff; /* White border on focus */
-        outline: none; /* Removes default browser focus outline */
-    }
+.connect-social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 56px;
+}
+@media (max-width: 767px) {
+  .connect-social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+@media (max-width: 400px) {
+  .connect-social-grid { grid-template-columns: 1fr; }
+}
+.connect-social-card {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 16px;
+  border: 1px solid rgba(186,201,100,0.25);
+  border-radius: 12px;
+  background: rgba(186,201,100,0.04);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  text-align: center;
+}
+.connect-social-card i { font-size: 1.2rem; color: #bac964; width: 20px; text-align: center; flex-shrink: 0; }
+.connect-social-card .x-icon {
+  font-style: normal; font-weight: 800; font-size: 1.1rem;
+  color: #bac964; width: 20px; text-align: center; flex-shrink: 0;
+}
+.connect-social-card:hover {
+  background: rgba(186,201,100,0.12); border-color: #bac964;
+  color: #fff; transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(186,201,100,0.12);
+  text-decoration: none;
+}
+
+.connect-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(186,201,100,0.2), transparent);
+  margin-bottom: 48px;
+}
+
+.connect-form-wrap { max-width: 600px; margin: 0 auto; }
+.connect-form-wrap h3 {
+  font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.18em;
+  margin-bottom: 24px; text-align: center;
+}
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.cf-row.full { grid-template-columns: 1fr; }
+@media (max-width: 575px) { .cf-row { grid-template-columns: 1fr; } }
+.cf-input {
+  width: 100%; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+  padding: 13px 16px; color: #fff; font-size: 0.9rem;
+  outline: none; transition: border-color 0.2s, background 0.2s;
+  caret-color: #bac964;
+}
+.cf-input::placeholder { color: rgba(255,255,255,0.3); }
+.cf-input:focus { border-color: #bac964; background: rgba(186,201,100,0.07); }
+textarea.cf-input { resize: vertical; min-height: 120px; }
+.cf-submit {
+  display: block; width: 100%; margin-top: 18px; padding: 14px;
+  background: #bac964; color: #111; border: none; border-radius: 8px;
+  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.cf-submit:hover { background: #d4e070; transform: translateY(-2px); }
+
+.connect-footer {
+  margin-top: 72px; padding: 22px 0;
+  border-top: 1px solid rgba(186,201,100,0.1);
+  text-align: center; color: rgba(255,255,255,0.28);
+  font-size: 0.78rem; letter-spacing: 0.06em;
+}
 </style>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-	function sendMail(event) {
-		event.preventDefault(); // Prevent actual form submission
+<section class="site-section" id="section-contact">
+  <div class="container">
 
-		// Get form values
-		let name = document.getElementById('name').value;
-		let email = document.getElementById('email').value;
-		let phone = document.getElementById('phone').value;
-		let message = document.getElementById('message').value;
+    <div class="row mb-4">
+      <div class="col text-center">
+        <div class="section-heading">
+          <h2>Connect <strong>with <span style="color:#bac964;">Me</span></strong></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+    </div>
 
-		// Construct email link
-		let mailtoLink = `mailto:abhishek.nagrecha.an@gmail.com?subject=New Contact Form Submission&body=
-		Name: ${encodeURIComponent(name)}%0A
-		Email: ${encodeURIComponent(email)}%0A
-		Phone: ${encodeURIComponent(phone)}%0A%0A
-		Message:%0A${encodeURIComponent(message)}`;
+    <!-- Email -->
+    <div class="connect-email-bar">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+    </div>
 
-		// Open email client
-		window.location.href = mailtoLink;
-	}
+    <!-- Social cards -->
+    <div class="connect-social-grid">
+      <a href="https://www.linkedin.com/in/iamnagrecha/" target="_blank" class="connect-social-card">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/iamnagrecha" target="_blank" class="connect-social-card">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://iamnagrecha.medium.com/" target="_blank" class="connect-social-card">
+        <i class="fab fa-medium-m"></i> Medium
+      </a>
+      <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
+        <span class="x-icon">&#120143;</span> X / Twitter
+      </a>
+      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
+        <i class="fas fa-calendar-alt"></i> Schedule a Call
+      </a>
+    </div>
+
+    <div class="connect-divider"></div>
+
+    <!-- Form -->
+    <div class="connect-form-wrap">
+      <h3>Or send a message</h3>
+      <div class="cf-row">
+        <input id="cf-name" type="text" class="cf-input" placeholder="Your Name">
+        <input id="cf-email" type="email" class="cf-input" placeholder="Your Email">
+      </div>
+      <div class="cf-row full">
+        <textarea id="cf-message" class="cf-input" placeholder="Your message..."></textarea>
+      </div>
+      <button class="cf-submit" onclick="cfSend()">Send Message</button>
+    </div>
+
+  </div>
+
+  <div class="connect-footer">
+    <p style="margin:0;">&copy; <script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+  </div>
+</section>
+
+<script>
+function cfSend() {
+  var name    = document.getElementById('cf-name').value.trim();
+  var replyTo = document.getElementById('cf-email').value.trim();
+  var message = document.getElementById('cf-message').value.trim();
+  if (!name || !replyTo || !message) {
+    alert('Please fill in all fields before sending.');
+    return;
+  }
+  var mailto = 'mailto:abhishek.nagrecha.an@gmail.com'
+    + '?subject=' + encodeURIComponent('Message from ' + name)
+    + '&body='    + encodeURIComponent('Name: ' + name + '\nEmail: ' + replyTo + '\n\n' + message);
+  window.location.href = mailto;
+}
 </script>
-
-
-
-	<footer class="site-footer">
-		<div class="container">
-
-			<div class="row mb-5">
-				<p class="col-12 text-center">
-				<!-- Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Abhishek Nagrecha</a> -->
-			</p>
-			</div>
-			
-			<div class="row mb-5">
-				<div class="col-md-12 text-center">
-					<div class="row">
-						<div class="col-md-12 mb-5">
-							<div class="section-heading text-center">
-								<h2> <strong></strong></h2>
-						</div>
-		
-					<p>
-						<a href="https://www.linkedin.com/in/iamnagrecha/" class="social-item"><span class="icon-linkedin2"></span></a>
-						<a href="https://github.com/iamnagrecha" class="social-item"><span class="icon-github2"></span></a>
-					        <a href="https://x.com/iamnagrecha" class="social-item"><span >X</span></a>
-						<a href="https://mail.google.com/mail/u/4/#inbox" class="social-item"</a><span class="icon-mail"></span></a>
-						<!-- <a href="https://public.tableau.com/profile/abhishek.nagrecha#!/" class="social-item"</a><span class="icon-viz"></span></a> -->
-
-
-
-					</p>
-				</div>
-			</div>
-			<footer class="site-footer">
-				<div class="container">
-		
-					<div class="row mb-5">
-						<p class="col-12 text-center">
-						Copyright &copy; <script>document.write(new Date().getFullYear());</script> All Rights Reserved | Abhishek Nagrecha</a>
-					</p>
-
-					</div>
-						
-					
-		</div>
-	</footer>
-
-
-
 
 	<script src="js/vendor/jquery.min.js"></script>
 	<script src="js/vendor/jquery-migrate-3.0.1.min.js"></script>
