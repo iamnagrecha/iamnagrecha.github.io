@@ -900,136 +900,48 @@ $(document).ready(function() {
 
 	
 <style>
-/* ── Portfolio card reskin ── */
-.single-portfolio {
-  padding: 10px;
-}
+.single-portfolio { padding: 10px; }
 .pf-card {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #13141a;
-  border: 1px solid rgba(186,201,100,0.1);
-  transition: transform 0.35s cubic-bezier(.23,1,.32,1),
-              border-color 0.3s ease,
-              box-shadow 0.35s ease;
+  position: relative; border-radius: 14px; overflow: hidden;
+  background: #13141a; border: 1px solid rgba(186,201,100,0.1);
+  transition: transform 0.35s cubic-bezier(.23,1,.32,1), border-color 0.3s, box-shadow 0.35s;
   cursor: pointer;
 }
-.pf-card:hover {
-  transform: translateY(-7px) scale(1.02);
-  border-color: rgba(186,201,100,0.55);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(186,201,100,0.2);
-}
-.pf-card__img {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: #1a1c22;
-}
-.pf-card__img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease;
-}
-.pf-card:hover .pf-card__img img { transform: scale(1.07); }
-
-/* gold shimmer top bar on hover */
+.pf-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(186,201,100,0.55); box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(186,201,100,0.2); }
 .pf-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #bac964, #e2f054, #bac964);
-  background-size: 200%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg,#bac964,#e2f054,#bac964); background-size:200%;
+  opacity:0; transition:opacity 0.3s; z-index:2;
   animation: pfShimmer 2.5s linear infinite;
 }
-.pf-card:hover::before { opacity: 1; }
-@keyframes pfShimmer {
-  0% { background-position: 0%; }
-  100% { background-position: 200%; }
-}
-
-/* overlay on hover */
+.pf-card:hover::before { opacity:1; }
+@keyframes pfShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.pf-card__img { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#1a1c22; }
+.pf-card__img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.45s ease; }
+.pf-card:hover .pf-card__img img { transform:scale(1.07); }
 .pf-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 16px;
-  z-index: 1;
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%);
+  opacity:0; transition:opacity 0.35s; display:flex; align-items:flex-end;
+  justify-content:center; padding-bottom:14px; z-index:1;
 }
-.pf-card:hover .pf-card__overlay { opacity: 1; }
+.pf-card:hover .pf-card__overlay { opacity:1; }
 .pf-card__overlay-btn {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #111;
-  background: #bac964;
-  border-radius: 20px;
-  padding: 6px 16px;
-  text-decoration: none;
-  transition: background 0.2s;
+  font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  color:#111; background:#bac964; border-radius:20px; padding:6px 16px; text-decoration:none;
 }
-.pf-card__overlay-btn:hover { background: #d4e070; color: #111; text-decoration: none; }
-
-/* card footer */
-.pf-card__footer {
-  padding: 12px 14px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.pf-card__name {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.01em;
-  line-height: 1.3;
-  flex: 1;
-}
+.pf-card__overlay-btn:hover { background:#d4e070; color:#111; text-decoration:none; }
+.pf-card__footer { padding:12px 14px 14px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.pf-card__name { font-size:0.82rem; font-weight:700; color:#fff; line-height:1.3; flex:1; }
 .pf-card__arrow {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(186,201,100,0.3);
-  display: flex; align-items: center; justify-content: center;
-  color: #bac964;
-  font-size: 0.75rem;
-  flex-shrink: 0;
-  transition: background 0.2s, border-color 0.2s;
+  width:28px; height:28px; border-radius:50%; border:1px solid rgba(186,201,100,0.3);
+  display:flex; align-items:center; justify-content:center; color:#bac964; font-size:0.75rem;
+  flex-shrink:0; transition:background 0.2s, border-color 0.2s; text-decoration:none;
 }
-.pf-card:hover .pf-card__arrow {
-  background: #bac964;
-  border-color: #bac964;
-  color: #111;
-}
-
-/* stagger entrance */
-.single-portfolio {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-.single-portfolio.pf-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* mobile */
-@media (max-width: 575px) {
-  .single-portfolio { padding: 7px; }
-  .pf-card__name { font-size: 0.76rem; }
-}
+.pf-card:hover .pf-card__arrow { background:#bac964; border-color:#bac964; color:#111; }
+.single-portfolio { opacity:0; transform:translateY(28px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.single-portfolio.pf-visible { opacity:1; transform:translateY(0); }
+@media (max-width:575px) { .single-portfolio{padding:7px;} .pf-card__name{font-size:0.76rem;} }
 </style>
 
 <section class="site-section" id="section-work">
@@ -1054,223 +966,34 @@ $(document).ready(function() {
         </div>
         <div class="filters-content">
             <div class="row grid">
-
-                <div class="single-portfolio col-sm-4 col-md-4 all tm rr">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/panges_small.PNG" alt="Pangea Money Transfer">
-                      <div class="pf-card__overlay"><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Pangea Money Transfer</span>
-                      <a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/caa.PNG" alt="Christie's Auctions">
-                      <div class="pf-card__overlay"><a href="https://www.christies.com/en" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Christie's Auctions</span>
-                      <a href="https://www.christies.com/en" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/pbi.PNG" alt="Pets Best Insurance">
-                      <div class="pf-card__overlay"><a href="https://www.petsbest.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Pets Best Insurance</span>
-                      <a href="https://www.petsbest.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/iqpc_1.PNG" alt="IQPC Corporate">
-                      <div class="pf-card__overlay"><a href="https://www.iqpc.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">IQPC Corporate</span>
-                      <a href="https://www.iqpc.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/cicsanew.PNG" alt="CICSA Credit Union">
-                      <div class="pf-card__overlay"><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">CICSA Credit Union</span>
-                      <a href="https://www.creditunion.ky/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/Inspira.png" alt="Inspira Financial">
-                      <div class="pf-card__overlay"><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Inspira Financial</span>
-                      <a href="https://inspirafinancial.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/lynk1.PNG" alt="Lynk - Digital Payments">
-                      <div class="pf-card__overlay"><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Lynk Digital Payments</span>
-                      <a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/coin.PNG" alt="Coinsquare">
-                      <div class="pf-card__overlay"><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Coinsquare</span>
-                      <a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/pinnacle.PNG" alt="Pinnacle Pets">
-                      <div class="pf-card__overlay"><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Pinnacle Pets</span>
-                      <a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss tm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/ppay.PNG" alt="Patient Pay">
-                      <div class="pf-card__overlay"><a href="https://www.patientpay.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Patient Pay</span>
-                      <a href="https://www.patientpay.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/brinks.PNG" alt="Brinks Canada">
-                      <div class="pf-card__overlay"><a href="https://ca.brinks.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Brinks Canada</span>
-                      <a href="https://ca.brinks.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/ct.PNG" alt="Canadian Tire Financial Services">
-                      <div class="pf-card__overlay"><a href="https://www.ctfs.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Canadian Tire Financial Services</span>
-                      <a href="https://www.ctfs.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/fairstone.PNG" alt="Fairstone Bank of Canada">
-                      <div class="pf-card__overlay"><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Fairstone Bank of Canada</span>
-                      <a href="https://www.fairstone.ca/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/wedbush.PNG" alt="Wedbush Securities">
-                      <div class="pf-card__overlay"><a href="https://www.wedbush.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Wedbush Securities</span>
-                      <a href="https://www.wedbush.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 col-md-4 all rr tm">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/in1.PNG" alt="Ingles">
-                      <div class="pf-card__overlay"><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Ingles</span>
-                      <a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-            </div><!-- End row -->
-        </div><!-- End filters-content -->
-    </div><!-- End container -->
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/panges_small.PNG" alt="Pangea Money Transfer"><div class="pf-card__overlay"><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pangea Money Transfer</span><a href="https://pangeamoneytransfer.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/caa.PNG" alt="Christie's Auctions"><div class="pf-card__overlay"><a href="https://www.christies.com/en" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Christie's Auctions</span><a href="https://www.christies.com/en" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pbi.PNG" alt="Pets Best Insurance"><div class="pf-card__overlay"><a href="https://www.petsbest.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pets Best Insurance</span><a href="https://www.petsbest.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/iqpc_1.PNG" alt="IQPC Corporate"><div class="pf-card__overlay"><a href="https://www.iqpc.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">IQPC Corporate</span><a href="https://www.iqpc.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/cicsanew.PNG" alt="CICSA Credit Union"><div class="pf-card__overlay"><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">CICSA Credit Union</span><a href="https://www.creditunion.ky/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/Inspira.png" alt="Inspira Financial"><div class="pf-card__overlay"><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Inspira Financial</span><a href="https://inspirafinancial.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm rr"><div class="pf-card"><div class="pf-card__img"><img src="images/lynk1.PNG" alt="Lynk Digital Payments"><div class="pf-card__overlay"><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Lynk Digital Payments</span><a href="https://www.lynk.us/about-us" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/coin.PNG" alt="Coinsquare"><div class="pf-card__overlay"><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Coinsquare</span><a href="https://www.coinsquare.com/en-ca" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss"><div class="pf-card"><div class="pf-card__img"><img src="images/pinnacle.PNG" alt="Pinnacle Pets"><div class="pf-card__overlay"><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Pinnacle Pets</span><a href="https://www.pinnaclepetgroup.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm"><div class="pf-card"><div class="pf-card__img"><img src="images/ppay.PNG" alt="Patient Pay"><div class="pf-card__overlay"><a href="https://www.patientpay.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Patient Pay</span><a href="https://www.patientpay.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all ss tm rr rs cm"><div class="pf-card"><div class="pf-card__img"><img src="images/brinks.PNG" alt="Brinks Canada"><div class="pf-card__overlay"><a href="https://ca.brinks.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Brinks Canada</span><a href="https://ca.brinks.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rs tm ss er rr"><div class="pf-card"><div class="pf-card__img"><img src="images/ct.PNG" alt="Canadian Tire Financial Services"><div class="pf-card__overlay"><a href="https://www.ctfs.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Canadian Tire Financial Services</span><a href="https://www.ctfs.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr ss tm rs"><div class="pf-card"><div class="pf-card__img"><img src="images/fairstone.PNG" alt="Fairstone Bank"><div class="pf-card__overlay"><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Fairstone Bank of Canada</span><a href="https://www.fairstone.ca/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all tm rr rs ci er"><div class="pf-card"><div class="pf-card__img"><img src="images/wedbush.PNG" alt="Wedbush Securities"><div class="pf-card__overlay"><a href="https://www.wedbush.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Wedbush Securities</span><a href="https://www.wedbush.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 col-md-4 all rr tm"><div class="pf-card"><div class="pf-card__img"><img src="images/in1.PNG" alt="Ingles"><div class="pf-card__overlay"><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__overlay-btn">Visit Site</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Ingles</span><a href="https://shop.ingles-markets.com/" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>
 (function() {
-  var pfItems = document.querySelectorAll('#section-work .single-portfolio, #section-portfolio .single-portfolio');
-  if (!('IntersectionObserver' in window)) {
-    pfItems.forEach(function(el) { el.classList.add('pf-visible'); });
-    return;
-  }
+  var pfItems = document.querySelectorAll('.single-portfolio');
+  if (!('IntersectionObserver' in window)) { pfItems.forEach(function(el){el.classList.add('pf-visible');}); return; }
   var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('pf-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  pfItems.forEach(function(el) { io.observe(el); });
+    entries.forEach(function(entry) { if(entry.isIntersecting){entry.target.classList.add('pf-visible');io.unobserve(entry.target);} });
+  }, {threshold:0.08});
+  pfItems.forEach(function(el){io.observe(el);});
 })();
 </script>
 		
@@ -1748,85 +1471,12 @@ $(document).ready(function() {
         </div>
         <div class="filters-content">
             <div class="row grid">
-
-                <div class="single-portfolio col-sm-4 all nl">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="Text Summarization">
-                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Text Summarization of Clinical Discharge Summaries</span>
-                      <a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 all ml">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="ML Bank Telemarketing">
-                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">ML Models for Bank Telemarketing</span>
-                      <a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 all cv">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="Alzheimer Detection">
-                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Early Identification of Dementia Using Deep Learning</span>
-                      <a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 all da">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="Tableau IMDB">
-                      <div class="pf-card__overlay"><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__overlay-btn">View Dashboard</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">Tableau Dashboards — IMDB Movies EDA</span>
-                      <a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 all nw">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="VANET Simulation">
-                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">VANET Simulation Using Veins</span>
-                      <a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="single-portfolio col-sm-4 all nw">
-                  <div class="pf-card">
-                    <div class="pf-card__img">
-                      <img src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="SDN Cloud Computing">
-                      <div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div>
-                    </div>
-                    <div class="pf-card__footer">
-                      <span class="pf-card__name">SDN and Cloud Computing</span>
-                      <a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__arrow">&#8599;</a>
-                    </div>
-                  </div>
-                </div>
-
+                <div class="single-portfolio col-sm-4 all nl"><div class="pf-card"><div class="pf-card__img"><img src="images/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg" alt="Text Summarization"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Text Summarization of Clinical Discharge Summaries</span><a href="https://github.com/AbhishekNagrecha/Text-Summarization-and-Classification-of-Clinical-Discharge-Summaries-using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all ml"><div class="pf-card"><div class="pf-card__img"><img src="images/aditya-vyas-6Ih4UoqzaAs-unsplash.jpg" alt="ML Bank Telemarketing"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">ML Models for Bank Telemarketing</span><a href="https://github.com/AbhishekNagrecha/Comparing-Machine-Learning-Classification-Models-for-Bank-Marketing-dataset" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all cv"><div class="pf-card"><div class="pf-card__img"><img src="images/national-cancer-institute-f2aDTqfnqfE-unsplash.jpg" alt="Alzheimer Detection"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Early Identification of Dementia Using Deep Learning</span><a href="https://github.com/AbhishekNagrecha/Alzheimer-s-Disease-Classification-Using-Deep-Learning-Techniques" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all da"><div class="pf-card"><div class="pf-card__img"><img src="images/jeremy-yap-J39X2xX_8CQ-unsplash.jpg" alt="Tableau IMDB"><div class="pf-card__overlay"><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__overlay-btn">View Dashboard</a></div></div><div class="pf-card__footer"><span class="pf-card__name">Tableau Dashboards — IMDB Movies EDA</span><a href="https://public.tableau.com/profile/abhishek.nagrecha#!/vizhome/EDAofMovies/Dashboard4" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all nw"><div class="pf-card"><div class="pf-card__img"><img src="images/bantersnaps-epuqS5rgGUo-unsplash.jpg" alt="VANET Simulation"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">VANET Simulation Using Veins</span><a href="https://github.com/AbhishekNagrecha/Accurate-Simulation-of-Vehicular-Ad-Hoc-Networks-Using-Veins-Framework" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
+                <div class="single-portfolio col-sm-4 all nw"><div class="pf-card"><div class="pf-card__img"><img src="images/leohoho-q22jhy4vwoA-unsplash.jpg" alt="SDN Cloud Computing"><div class="pf-card__overlay"><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__overlay-btn">View on GitHub</a></div></div><div class="pf-card__footer"><span class="pf-card__name">SDN and Cloud Computing</span><a href="https://github.com/AbhishekNagrecha/Routing-Algorithm-To-Reform-Mobile-Network-Using-SDN-and-Cloud-Computing" target="_blank" class="pf-card__arrow">&#8599;</a></div></div></div>
             </div>
         </div>
     </div>
@@ -2298,6 +1948,12 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       </div>
     </div>
 
+    <!-- Email -->
+    <div class="connect-email-bar">
+      <i class="fas fa-envelope"></i>
+      <a href="/cdn-cgi/l/email-protection#3f5e5d57564c575a5411515e584d5a5c575e115e517f58525e5653115c5052"><span class="__cf_email__" data-cfemail="70111218190318151b5e1e111702151318115e111e30171d11191c5e131f1d">[email&#160;protected]</span></a>
+    </div>
+
     <!-- Social cards -->
     <div class="connect-social-grid">
       <a href="https://www.linkedin.com/in/iamnagrecha/" target="_blank" class="connect-social-card">
@@ -2312,7 +1968,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="/cdn-cgi/l/email-protection#78191a10110b101d135616191f0a1d1b1019561916381f15191114561b1715" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#cfaeada7a6bca7aaa4e1a1aea8bdaaaca7aee1aea18fa8a2aea6a3e1aca0a2" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
