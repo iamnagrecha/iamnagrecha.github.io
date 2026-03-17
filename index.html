@@ -280,10 +280,7 @@
   border-color: #bac964 !important;
 }
 
-/* ── Eyebrow labels: gold ── */
-.sec-eyebrow {
-  color: #bac964 !important;
-}
+
 </style>
 
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
@@ -476,42 +473,10 @@ function triggerFilter(el, section) {
   position: relative;
   display: inline-block;
 }
-.section-heading h2 span[style*="color"]::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -3px;
-  width: 100%; height: 2px;
-  background: linear-gradient(90deg, #bac964, transparent);
-  border-radius: 2px;
-}
 
-/* Eyebrow label — injected via JS */
-.sec-eyebrow {
-  display: block;
-  font-size: 0.68rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: #bac964;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-/* Only animate eyebrow when JS confirms observer */
-.sh-animate .sec-eyebrow {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.sec-eyebrow.sh-visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-/* Animated gold divider under every section heading */
-.section-heading::after {
-  content: '';
-  display: block;
-  width: 52px;
+/* Animated gold divider — added via .section-divider sibling element */
+.section-divider {
+  width: 60px;
   height: 3px;
   background: linear-gradient(90deg, #bac964, #e2f054);
   border-radius: 2px;
@@ -519,8 +484,8 @@ function triggerFilter(el, section) {
   animation: pulseBarGlobal 2.5s ease-in-out infinite;
 }
 @keyframes pulseBarGlobal {
-  0%, 100% { width: 52px; opacity: 1; }
-  50%       { width: 90px; opacity: 0.6; }
+  0%, 100% { width: 60px; opacity: 1; }
+  50%       { width: 100px; opacity: 0.6; }
 }
 
 /* Sub-paragraphs in headings */
@@ -553,23 +518,14 @@ function triggerFilter(el, section) {
     font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
     letter-spacing: -0.01em !important;
     line-height: 1.25 !important;
-    /* Prevent long words overflowing on narrow screens */
     overflow-wrap: break-word;
     word-break: break-word;
   }
 }
 
-/* Eyebrow label — smaller tracking on tiny screens */
-@media (max-width: 575px) {
-  .sec-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
-  }
-}
-
 /* Divider pulse — keep it narrow on mobile so it doesn't look odd */
 @media (max-width: 575px) {
-  .section-heading::after {
+  .section-divider {
     width: 40px !important;
     animation: pulseBarMobile 2.5s ease-in-out infinite;
   }
@@ -597,12 +553,7 @@ function triggerFilter(el, section) {
     transform: none !important;
     transition: none !important;
   }
-  .sec-eyebrow {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  .section-heading::after,
+  .section-divider,
   .skills-divider {
     animation: none !important;
   }
@@ -611,69 +562,29 @@ function triggerFilter(el, section) {
 
 <script>
 (function() {
-  var eyebrows = {
-    'section-about':        'Who I Am',
-    'section-work':         'Client Portfolio',
-    'section-portfolio':    'University Work',
-    'section-blog':         'Thoughts & Writing',
-    'section-testimonials': 'Kind Words',
-    'section-contact':      'Let\'s Talk'
-  };
-
   function revealAll() {
-    document.querySelectorAll('.section-heading h2, .sec-eyebrow').forEach(function(el) {
+    document.querySelectorAll('.section-heading h2').forEach(function(el) {
       el.classList.add('sh-visible');
     });
   }
-
   function init() {
-    /* Inject eyebrow labels */
-    Object.keys(eyebrows).forEach(function(id) {
-      var section = document.getElementById(id);
-      if (!section) return;
-      var h2 = section.querySelector('.section-heading h2');
-      if (!h2) return;
-      if (h2.previousElementSibling && h2.previousElementSibling.classList.contains('sec-eyebrow')) return;
-      var eyebrow = document.createElement('span');
-      eyebrow.className = 'sec-eyebrow';
-      eyebrow.textContent = eyebrows[id];
-      h2.parentNode.insertBefore(eyebrow, h2);
-    });
-
-    /* If IntersectionObserver not supported, just show everything */
-    if (!('IntersectionObserver' in window)) {
-      revealAll();
-      return;
-    }
-
-    /* Mark body so CSS opacity:0 animation rules kick in */
+    if (!('IntersectionObserver' in window)) { revealAll(); return; }
     document.body.classList.add('sh-animate');
-
-    var targets = document.querySelectorAll('.section-heading h2, .sec-eyebrow');
-
-    /* Hard fallback: reveal everything after 1.5s regardless */
+    var targets = document.querySelectorAll('.section-heading h2');
     var safetyTimer = setTimeout(revealAll, 1500);
-
     var threshold = window.innerWidth < 768 ? 0.05 : 0.15;
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) {
-          var el = e.target;
-          var delay = el.classList.contains('sec-eyebrow') ? 0 : 120;
-          setTimeout(function() { el.classList.add('sh-visible'); }, delay);
-          io.unobserve(el);
+          setTimeout(function() { e.target.classList.add('sh-visible'); }, 120);
+          io.unobserve(e.target);
         }
       });
     }, { threshold: threshold, rootMargin: '0px 0px -20px 0px' });
-
     targets.forEach(function(el) { io.observe(el); });
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
 })();
 </script>
 
@@ -684,6 +595,7 @@ function triggerFilter(el, section) {
             <div class="col text-center">
                 <div class="section-heading mb-4">
                     <h2>About <span style="color: #bac964;">Me</span></h2>
+                    <div class="section-divider"></div>
                 </div>
             </div>
         </div>
@@ -980,8 +892,8 @@ $(document).ready(function() {
     <div class="container">
         <div class="row">
             <div class="section-heading text-center col-md-12">
-		<h2><strong>Global Client <span style="color: #bac964;">Projects</span></strong></h2> 
-                <p class="text-lg mb-4">I've had the privilege of working with some amazing global clients. Here's a showcase of the esteemed brands I've collaborated with:</p>
+		<h2><strong>Global Client <span style="color: #bac964;">Projects</span></strong></h2>
+                <div class="section-divider"></div>
             </div>
         </div>
         <div class="filters text-center">
@@ -1277,7 +1189,6 @@ $(document).ready(function() {
   <div class="container skills-container">
     <div class="row mb-2 text-center">
       <div class="col-md-12">
-        <p class="skills-eyebrow">What I Bring to the Table</p>
         <h2 class="skills-heading">Core <span class="skills-accent">Skills</span> &amp; <span class="skills-accent">Strengths</span></h2>
         <div class="skills-divider"></div>
       </div>
@@ -1428,9 +1339,6 @@ $(document).ready(function() {
     font-size: 1.65rem;
   }
 
-  .skills-eyebrow {
-    font-size: 0.65rem;
-  }
 
   .sk-card {
     padding: 22px 18px 20px;
@@ -1497,16 +1405,6 @@ $(document).ready(function() {
 @keyframes gridDrift {
   0%   { transform: translate(0,0); }
   100% { transform: translate(48px, 48px); }
-}
-
-/* Eyebrow label */
-.skills-eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #bac964;
-  margin-bottom: 10px;
-  font-weight: 600;
 }
 
 /* Heading */
@@ -1742,9 +1640,8 @@ $(document).ready(function() {
 		<div class="container">
 			<div class="row">
 				<div class="section-heading text-center col-md-12">
-					<h2><strong>Academic <span style="color: #bac964;">Projects</span></strong></h2>	
-					<p class="text-lg mb-4">I've had the opportunity to work on several impactful academic projects, some of which I also led. Here’s a glimpse of the key projects I’ve been a part of:</p>
-
+					<h2><strong>Academic <span style="color: #bac964;">Projects</span></strong></h2>
+					<div class="section-divider"></div>
 				</div>
 			</div>
 			<div class="filters">
@@ -1877,7 +1774,7 @@ $(document).ready(function() {
             <div class="col-md-12 mb-5">
                 <div class="section-heading text-center">
                     <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></strong></h2>
-                    <p class="text-lg mb-4">Check out my blogs on Medium, where I share insights, experiences, and ideas.</p>
+                    <div class="section-divider"></div>
                 </div>
             </div>
         </div>
@@ -2076,9 +1973,7 @@ body {
       <div class="col text-center">
         <div class="section-heading">
           <h2 class="text-white">What Others <span style="color: #bac964;">Say</span></h2>
-          <p class="text-secondary mt-3">
-            Feedback from colleagues and clients I’ve had the privilege to work with.
-          </p>
+          <div class="section-divider"></div>
         </div>
       </div>
     </div>
@@ -2237,6 +2132,7 @@ cards.forEach(card => observer.observe(card));
             <div class="col-md-12 mb-5">
                 <div class="section-heading text-center">
                     <h2>Connect <strong>with <span style="color: #bac964;">Me</span></strong></h2>
+                    <div class="section-divider"></div>
                 </div>
             </div>
 
