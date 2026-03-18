@@ -76,18 +76,7 @@
 
         <li class="nav-item"><a class="nav-link" href="#section-blog">Insights</a></li>
         <li class="nav-item"><a class="nav-link" href="#section-testimonials">Testimonials</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#section-contact" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connect</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="https://www.linkedin.com/in/iamnagrecha/" target="_blank"><i class="fab fa-linkedin" style="width:18px;margin-right:8px;color:#bac964;"></i>LinkedIn</a>
-            <a class="dropdown-item" href="https://github.com/iamnagrecha" target="_blank"><i class="fab fa-github" style="width:18px;margin-right:8px;color:#bac964;"></i>GitHub</a>
-            <a class="dropdown-item" href="https://iamnagrecha.medium.com/" target="_blank"><i class="fab fa-medium-m" style="width:18px;margin-right:8px;color:#bac964;"></i>Medium</a>
-            <a class="dropdown-item" href="https://x.com/iamnagrecha" target="_blank"><span style="display:inline-block;width:18px;margin-right:8px;color:#bac964;font-weight:800;">&#120143;</span>X / Twitter</a>
-            <div class="dropdown-divider" style="border-color:rgba(186,201,100,0.2);margin:4px 0;"></div>
-            <a class="dropdown-item" href="#section-contact"><i class="fas fa-envelope" style="width:18px;margin-right:8px;color:#bac964;"></i>Email Me</a>
-            <a class="dropdown-item" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank"><i class="fas fa-calendar-alt" style="width:18px;margin-right:8px;color:#bac964;"></i>Schedule a Call</a>
-          </div>
-        </li>
+        <li class="nav-item"><a class="nav-link connect-box" href="#section-contact">Connect</a></li>
       </ul>
     </div>  <!-- ← collapse div closes here -->
 
@@ -272,6 +261,24 @@
 }
 
 /* ── Connect button ── */
+.connect-box,
+.site-navbar .connect-box {
+  border: 1px solid #bac964 !important;
+  border-radius: 6px !important;
+  padding: 6px 16px !important;
+  color: #bac964 !important;
+  background: transparent !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  opacity: 1 !important;
+}
+.connect-box:hover,
+.site-navbar .connect-box:hover {
+  background: #bac964 !important;
+  color: #111111 !important;
+  border-color: #bac964 !important;
+}
 
 
 </style>
@@ -2304,7 +2311,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="/cdn-cgi/l/email-protection#e382818b8a908b8688cd8d82849186808b82cd828da3848e828a8fcd808c8e"><span class="__cf_email__" data-cfemail="cdacafa5a4bea5a8a6e3a3acaabfa8aea5ace3aca38daaa0aca4a1e3aea2a0">[email&#160;protected]</span></a>
+      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
     </div>
 
     <!-- Social cards -->
@@ -2321,7 +2328,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="/cdn-cgi/l/email-protection#f495969c9d879c919fda9a95938691979c95da959ab49399959d98da979b99" class="connect-social-card">
+      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2347,7 +2354,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2374,4 +2381,10 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<scrip
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
+	
