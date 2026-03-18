@@ -194,7 +194,7 @@
 	// Page Nav
 	var clickMenu = function() {
 
-		$('.navbar-nav a:not([class="external"]):not(.dropdown-toggle)').click(function(event){
+		$('.navbar-nav a:not([class="external"])').click(function(event){
 
 			var section = $(this).data('nav-section'),
 				navbar = $('.navbar-nav');
