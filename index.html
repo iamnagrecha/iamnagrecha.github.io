@@ -82,7 +82,7 @@
             <a class="dropdown-item" href="https://www.linkedin.com/in/iamnagrecha/" target="_blank"><i class="fab fa-linkedin" style="width:18px;margin-right:8px;color:#bac964;"></i>LinkedIn</a>
             <a class="dropdown-item" href="https://github.com/iamnagrecha" target="_blank"><i class="fab fa-github" style="width:18px;margin-right:8px;color:#bac964;"></i>GitHub</a>
             <a class="dropdown-item" href="https://iamnagrecha.medium.com/" target="_blank"><i class="fab fa-medium-m" style="width:18px;margin-right:8px;color:#bac964;"></i>Medium</a>
-            <a class="dropdown-item" href="https://x.com/iamnagrecha" target="_blank"><span style="display:inline-block;width:18px;margin-right:8px;color:#bac964;font-weight:800;font-style:normal;">&#120143;</span>X / Twitter</a>
+            <a class="dropdown-item" href="https://x.com/iamnagrecha" target="_blank"><span style="display:inline-block;width:18px;margin-right:8px;color:#bac964;font-weight:800;">&#120143;</span>X / Twitter</a>
             <div class="dropdown-divider" style="border-color:rgba(186,201,100,0.2);margin:4px 0;"></div>
             <a class="dropdown-item" href="#section-contact"><i class="fas fa-envelope" style="width:18px;margin-right:8px;color:#bac964;"></i>Email Me</a>
             <a class="dropdown-item" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank"><i class="fas fa-calendar-alt" style="width:18px;margin-right:8px;color:#bac964;"></i>Schedule a Call</a>
@@ -274,8 +274,73 @@
 /* ── Connect button ── */
 
 
-
 </style>
+
+<!-- Scripts (your original Bootstrap 4 + jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Navbar Close Script -->
+<script>
+$(document).ready(function () {
+
+    // Close navbar when regular (non-dropdown) links clicked
+    $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Close navbar after dropdown item clicked (delay so scroll/filter fires first)
+    $('.dropdown-item').on('click', function () {
+        // Close all open dropdown menus immediately
+        $('.dropdown-menu').removeClass('show');
+        $('.nav-item.dropdown').removeClass('show');
+        setTimeout(function() {
+            $('.navbar-collapse').collapse('hide');
+        }, 150);
+    });
+
+    // Close navbar when X button clicked
+    $('#close-navbar').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+    });
+
+    // Dropdown toggle — mobile: manually show/hide; desktop: let Bootstrap handle hover
+    $('.dropdown-toggle').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $menu = $(this).next('.dropdown-menu');
+        var $parent = $(this).closest('.nav-item.dropdown');
+        // Close all other open dropdowns first
+        $('.nav-item.dropdown').not($parent).removeClass('show');
+        $('.dropdown-menu').not($menu).removeClass('show');
+        // Toggle this one
+        $parent.toggleClass('show');
+        $menu.toggleClass('show');
+    });
+
+    // Close dropdowns when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.nav-item.dropdown').length) {
+            $('.nav-item.dropdown').removeClass('show');
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+});
+
+// Filter trigger for Consulting and Academic dropdowns
+function triggerFilter(el, section) {
+    var filter = el.getAttribute('data-filter');
+    var target = document.querySelector(section);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(function() {
+        var filterBtn = document.querySelector('.filters li[data-filter="' + filter + '"]');
+        if (filterBtn) filterBtn.click();
+    }, 800);
+}
+</script>
 
 
 
@@ -2299,67 +2364,6 @@ function cfSend() {
     + '?subject=' + encodeURIComponent('Message from ' + name)
     + '&body='    + encodeURIComponent('Name: ' + name + '\nEmail: ' + replyTo + '\n\n' + message);
   window.location.href = mailto;
-}
-</script>
-
-<!-- Navbar Close Script -->
-<script>
-$(document).ready(function () {
-
-    // Close navbar when regular (non-dropdown) links clicked
-    $('.navbar-nav a:not(.dropdown-toggle)').on('click', function () {
-        $('.navbar-collapse').collapse('hide');
-    });
-
-    // Close navbar after dropdown item clicked (delay so scroll/filter fires first)
-    $('.dropdown-item').on('click', function () {
-        // Close all open dropdown menus immediately
-        $('.dropdown-menu').removeClass('show');
-        $('.nav-item.dropdown').removeClass('show');
-        setTimeout(function() {
-            $('.navbar-collapse').collapse('hide');
-        }, 150);
-    });
-
-    // Close navbar when X button clicked
-    $('#close-navbar').on('click', function () {
-        $('.navbar-collapse').collapse('hide');
-    });
-
-    // Dropdown toggle — mobile: manually show/hide; desktop: let Bootstrap handle hover
-    $('.dropdown-toggle').on('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var $menu = $(this).next('.dropdown-menu');
-        var $parent = $(this).closest('.nav-item.dropdown');
-        // Close all other open dropdowns first
-        $('.nav-item.dropdown').not($parent).removeClass('show');
-        $('.dropdown-menu').not($menu).removeClass('show');
-        // Toggle this one
-        $parent.toggleClass('show');
-        $menu.toggleClass('show');
-    });
-
-    // Close dropdowns when clicking outside
-    $(document).on('click', function(e) {
-        if (!$(e.target).closest('.nav-item.dropdown').length) {
-            $('.nav-item.dropdown').removeClass('show');
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-});
-
-// Filter trigger for Consulting and Academic dropdowns
-function triggerFilter(el, section) {
-    var filter = el.getAttribute('data-filter');
-    var target = document.querySelector(section);
-    if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
-    setTimeout(function() {
-        var filterBtn = document.querySelector('.filters li[data-filter="' + filter + '"]');
-        if (filterBtn) filterBtn.click();
-    }, 800);
 }
 </script>
 
