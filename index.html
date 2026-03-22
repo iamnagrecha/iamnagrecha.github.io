@@ -634,175 +634,458 @@ function triggerFilter(el, section) {
             </div>
         </div>
 
-        <!-- Academic Highlights -->
-        <p id="section-learning" class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
-        <div class="timeline-animated academic-timeline mb-5 justify-content-center">
-            <div class="timeline-item">
-                <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
-                <span class="timeline-text">DonBosco School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2000 - Mar 2005</div>
+        <!-- ══ LEARNING MILESTONES — Redesigned ══ -->
+        <style>
+        /* Google Font addition for serif display */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+        /* ── Shared section header ── */
+        .lj-sec-header {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 20px;
+        }
+        .lj-sec-label {
+          font-size: 0.65rem;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #bac964;
+          white-space: nowrap;
+        }
+        .lj-sec-line {
+          flex: 1;
+          height: 1px;
+          background: linear-gradient(90deg, rgba(186,201,100,0.35), transparent);
+        }
+        .lj-sec-title {
+          font-family: 'DM Serif Display', serif;
+          font-size: clamp(1.7rem, 4vw, 2.6rem);
+          font-weight: 400;
+          color: #fff;
+          line-height: 1.15;
+          margin-bottom: 36px;
+        }
+        .lj-sec-title em {
+          font-style: italic;
+          color: #bac964;
+        }
+
+        /* ── Milestones card grid ── */
+        .milestones-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          margin-bottom: 0;
+        }
+        @media (max-width: 900px)  { .milestones-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px)  { .milestones-grid { grid-template-columns: 1fr; } }
+
+        .milestone-card {
+          position: relative;
+          background: #13131a;
+          border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 16px;
+          padding: 24px 20px 20px;
+          overflow: hidden;
+          transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        .milestone-card.mc-visible {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 0.55s ease, transform 0.55s ease,
+                      border-color 0.3s, box-shadow 0.3s;
+        }
+        .milestone-card:hover {
+          border-color: rgba(186,201,100,0.4);
+          transform: translateY(-4px);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(186,201,100,0.08);
+        }
+        .milestone-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse at 15% 15%, rgba(186,201,100,0.06) 0%, transparent 65%);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .milestone-card:hover::before { opacity: 1; }
+
+        .mc-era {
+          font-size: 0.62rem;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #bac964;
+          margin-bottom: 14px;
+        }
+        .mc-logo-wrap {
+          width: 50px; height: 50px;
+          border-radius: 11px;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 14px;
+          overflow: hidden;
+        }
+        .mc-logo-wrap img {
+          width: 36px; height: 36px;
+          object-fit: contain;
+          border-radius: 6px;
+        }
+        .mc-logo-wrap .mc-fallback { font-size: 1.25rem; }
+        .mc-name {
+          font-size: 0.97rem;
+          font-weight: 600;
+          color: #fff;
+          margin-bottom: 3px;
+          line-height: 1.3;
+        }
+        .mc-type {
+          font-size: 0.76rem;
+          color: rgba(255,255,255,0.42);
+        }
+        .mc-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          margin-top: 11px;
+          background: rgba(186,201,100,0.1);
+          border: 1px solid rgba(186,201,100,0.25);
+          border-radius: 20px;
+          padding: 4px 10px;
+          font-size: 0.68rem;
+          font-weight: 600;
+          color: #bac964;
+          text-decoration: none;
+          transition: background 0.2s;
+        }
+        .mc-badge:hover { background: rgba(186,201,100,0.2); text-decoration: none; }
+
+        /* ── Section separator ── */
+        .lj-sep {
+          border: none;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(186,201,100,0.12), transparent);
+          margin: 60px 0;
+        }
+
+        /* ── Journey vertical timeline ── */
+        .journey-list {
+          display: flex;
+          flex-direction: column;
+        }
+        .journey-item {
+          display: grid;
+          grid-template-columns: 68px 1px 1fr;
+          align-items: stretch;
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+        .journey-item.ji-visible {
+          opacity: 1;
+          transform: translateX(0);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .ji-date {
+          padding: 2px 14px 0 0;
+          text-align: right;
+        }
+        .ji-year {
+          font-size: 0.68rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #bac964;
+          white-space: nowrap;
+        }
+        .ji-yearend {
+          font-size: 0.62rem;
+          color: rgba(255,255,255,0.35);
+        }
+        .ji-spine {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+        }
+        .ji-dot {
+          width: 10px; height: 10px;
+          border-radius: 50%;
+          background: #0d0d12;
+          border: 2px solid #bac964;
+          flex-shrink: 0;
+          margin-top: 3px;
+          position: relative;
+          z-index: 1;
+          transition: background 0.2s, box-shadow 0.2s;
+        }
+        .journey-item:hover .ji-dot {
+          background: #bac964;
+          box-shadow: 0 0 0 4px rgba(186,201,100,0.18);
+        }
+        .ji-line {
+          flex: 1;
+          width: 1px;
+          background: linear-gradient(180deg, rgba(186,201,100,0.3) 0%, rgba(186,201,100,0.05) 100%);
+          margin-top: 3px;
+        }
+        .journey-item:last-child .ji-line { background: transparent; }
+        .ji-content {
+          padding: 0 0 32px 22px;
+        }
+        .ji-header {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+          margin-bottom: 5px;
+        }
+        .ji-logo {
+          width: 34px; height: 34px;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+        .ji-logo img { width: 24px; height: 24px; object-fit: contain; }
+        .ji-logo .ji-fallback { font-size: 0.88rem; }
+        .ji-org {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #fff;
+          line-height: 1.2;
+        }
+        .ji-role {
+          font-size: 0.8rem;
+          color: rgba(255,255,255,0.45);
+          margin-top: 1px;
+        }
+        .ji-current-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          margin-top: 8px;
+          background: rgba(186,201,100,0.1);
+          border: 1px solid rgba(186,201,100,0.3);
+          border-radius: 20px;
+          padding: 3px 9px;
+          font-size: 0.63rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #bac964;
+        }
+        .ji-pulse-dot {
+          width: 5px; height: 5px;
+          border-radius: 50%;
+          background: #bac964;
+          animation: jiPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes jiPulse {
+          0%,100% { opacity:1; transform:scale(1); }
+          50% { opacity:0.35; transform:scale(0.65); }
+        }
+
+        @media (max-width: 580px) {
+          .journey-item { grid-template-columns: 50px 1px 1fr; }
+          .ji-year { font-size: 0.6rem; }
+          .ji-org { font-size: 0.92rem; }
+          .lj-sec-title { font-size: 1.75rem; }
+        }
+        </style>
+
+        <!-- ─── Learning Milestones HTML ─── -->
+        <div id="section-learning" style="padding-top: 10px;">
+          <div class="lj-sec-header">
+            <span class="lj-sec-label">Education</span>
+            <span class="lj-sec-line"></span>
+          </div>
+          <h2 class="lj-sec-title">Learning <em>Milestones</em></h2>
+
+          <div class="milestones-grid">
+
+            <div class="milestone-card" data-mc-delay="0">
+              <div class="mc-era">2000 – 2005</div>
+              <div class="mc-logo-wrap">
+                <img src="images/donbosco_logo.png" alt="Don Bosco" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🏫</span>'">
+              </div>
+              <div class="mc-name">Don Bosco School</div>
+              <div class="mc-type">Primary Education</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
-                <span class="timeline-text">Delhi Public School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2005 - Feb 2012</div>
+
+            <div class="milestone-card" data-mc-delay="100">
+              <div class="mc-era">2005 – 2012</div>
+              <div class="mc-logo-wrap">
+                <img src="images/dps_logo.png" alt="Delhi Public School" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🏫</span>'">
+              </div>
+              <div class="mc-name">Delhi Public School</div>
+              <div class="mc-type">Secondary Education</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
-                <span class="timeline-text">Parth School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2012 - Mar 2014</div>
+
+            <div class="milestone-card" data-mc-delay="200">
+              <div class="mc-era">2012 – 2014</div>
+              <div class="mc-logo-wrap">
+                <img src="images/parth_school_logo.png" alt="Parth School" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🏫</span>'">
+              </div>
+              <div class="mc-name">Parth School</div>
+              <div class="mc-type">Higher Secondary</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
-                <span class="timeline-text">GTU</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">May 2014 - Jun 2018</div>
+
+            <div class="milestone-card" data-mc-delay="300">
+              <div class="mc-era">2014 – 2018</div>
+              <div class="mc-logo-wrap">
+                <img src="images/gtu_logo.png" alt="GTU" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🎓</span>'">
+              </div>
+              <div class="mc-name">GTU</div>
+              <div class="mc-type">Bachelor's Degree</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
-                <span class="timeline-text">Lakehead University</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Sep 2019 - Apr 2021</div>
+
+            <div class="milestone-card" data-mc-delay="400">
+              <div class="mc-era">2019 – 2021</div>
+              <div class="mc-logo-wrap">
+                <img src="images/lakehead_logo.png" alt="Lakehead University" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🎓</span>'">
+              </div>
+              <div class="mc-name">Lakehead University</div>
+              <div class="mc-type">MSc, Computer Science</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
-                <span class="timeline-text">Certifications</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">
-                    2019 - Present
-                    <br>
-                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="text-info">View Dashboard</a>
+
+            <div class="milestone-card" data-mc-delay="500">
+              <div class="mc-era">2019 – Present</div>
+              <div class="mc-logo-wrap">
+                <img src="images/credly_logo.png" alt="Certifications" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'mc-fallback\'>🏆</span>'">
+              </div>
+              <div class="mc-name">Certifications</div>
+              <div class="mc-type">Continuous Learning</div>
+              <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="mc-badge">
+                <i class="fas fa-external-link-alt" style="font-size:0.58rem;"></i> View Dashboard
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="lj-sep">
+
+        <!-- ─── Professional Journey HTML ─── -->
+        <div id="section-journey" style="padding-top: 10px; padding-bottom: 40px;">
+          <div class="lj-sec-header">
+            <span class="lj-sec-label">Career</span>
+            <span class="lj-sec-line"></span>
+          </div>
+          <h2 class="lj-sec-title">Professional <em>Journey</em></h2>
+
+          <div class="journey-list">
+
+            <div class="journey-item" data-ji-delay="0">
+              <div class="ji-date"><div class="ji-year">Apr</div><div class="ji-yearend">2021</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/sparks_logo.png" alt="Sparks Foundation" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>💡</span>'"></div>
+                  <div class="ji-org">Sparks Foundation</div>
                 </div>
+                <div class="ji-role">Data Science Intern</div>
+              </div>
             </div>
+
+            <div class="journey-item" data-ji-delay="100">
+              <div class="ji-date"><div class="ji-year">Feb</div><div class="ji-yearend">2021</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/malatest_logo.png" alt="R.A. Malatest" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>📊</span>'"></div>
+                  <div class="ji-org">R.A. Malatest &amp; Associates</div>
+                </div>
+                <div class="ji-role">Data Collection Clerk &nbsp;·&nbsp; Feb – May 2021</div>
+              </div>
+            </div>
+
+            <div class="journey-item" data-ji-delay="200">
+              <div class="ji-date"><div class="ji-year">May</div><div class="ji-yearend">2021</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/nmg_logo.png" alt="Narcity Media Group" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>📰</span>'"></div>
+                  <div class="ji-org">Narcity Media Group</div>
+                </div>
+                <div class="ji-role">Data Engineer &nbsp;·&nbsp; May – Aug 2021</div>
+              </div>
+            </div>
+
+            <div class="journey-item" data-ji-delay="300">
+              <div class="ji-date"><div class="ji-year">Nov</div><div class="ji-yearend">2021</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/alessa_logo.png" alt="Alessa Inc" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>🔒</span>'"></div>
+                  <div class="ji-org">Alessa Inc</div>
+                </div>
+                <div class="ji-role">Intermediate Technical Analyst &nbsp;·&nbsp; Nov 2021 – Oct 2022</div>
+              </div>
+            </div>
+
+            <div class="journey-item" data-ji-delay="400">
+              <div class="ji-date"><div class="ji-year">Oct</div><div class="ji-yearend">2022</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/alessa_logo.png" alt="Alessa Inc" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>🔒</span>'"></div>
+                  <div class="ji-org">Alessa Inc</div>
+                </div>
+                <div class="ji-role">Intermediate Analytic Consultant &nbsp;·&nbsp; Oct 2022 – Jun 2025</div>
+              </div>
+            </div>
+
+            <div class="journey-item" data-ji-delay="500">
+              <div class="ji-date"><div class="ji-year">Jun</div><div class="ji-yearend">2025</div></div>
+              <div class="ji-spine"><div class="ji-dot"></div><div class="ji-line"></div></div>
+              <div class="ji-content">
+                <div class="ji-header">
+                  <div class="ji-logo"><img src="images/alessa_logo.png" alt="Alessa Inc" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'ji-fallback\'>🔒</span>'"></div>
+                  <div class="ji-org">Alessa Inc</div>
+                </div>
+                <div class="ji-role">Data Analytics Specialist &nbsp;·&nbsp; Jun 2025 – Present</div>
+                <div class="ji-current-badge"><span class="ji-pulse-dot"></span> Current Role</div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Career Highlights -->
-        <p id="section-journey" class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
-        <div class="timeline-animated career-timeline mb-5 justify-content-center">
-            <div class="timeline-item">
-                <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
-                <span class="timeline-text">Sparks Foundation</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Science Intern | Apr 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
-                <span class="timeline-text">R.A Malatest & Associates</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
-                <span class="timeline-text">Narcity Media Group</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
-            </div>
-        </div>
-    </div>
+    </div><!-- close container -->
 
-<style>
-/* Timeline container */
-.timeline-animated {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 30px;
-}
+    <script>
+    (function () {
+      // Milestone cards scroll reveal
+      var mcCards = document.querySelectorAll('.milestone-card');
+      var jiItems = document.querySelectorAll('.journey-item');
 
-/* Timeline items start hidden and slightly down */
-.timeline-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin: 20px;
-    cursor: pointer;
-    width: 140px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
-
-/* Fade in and move up when in view */
-.timeline-item.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .timeline-item { width: 100px; margin: 15px 8px; }
-    .timeline-icon { width: 50px; height: 50px; }
-}
-
-/* Icons and text styling */
-.timeline-icon {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-bottom: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
-.timeline-text { font-size: 0.95rem; font-weight: 500; margin-top: 6px; text-align: center; width: 100%; word-break: break-word; }
-.timeline-hint { font-size: 0.7rem; color: #999; margin-top: 3px; text-align: center; display: block; }
-.timeline-extra { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; padding: 6px 10px; font-size: 0.85rem; border-radius: 6px; white-space: nowrap; margin-bottom: 8px; z-index: 10; }
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Scroll animation with stagger for each timeline-item
-    const timelines = document.querySelectorAll('.timeline-animated');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                const items = entry.target.querySelectorAll('.timeline-item');
-                items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('show'); // fade in + move up
-                    }, index * 200); // 200ms delay between items
-                });
-                observer.unobserve(entry.target); // stop observing after first trigger
-            }
+      var revealObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var delay = parseInt(el.dataset.mcDelay || el.dataset.jiDelay || 0);
+            setTimeout(function() {
+              if (el.classList.contains('milestone-card')) el.classList.add('mc-visible');
+              if (el.classList.contains('journey-item'))  el.classList.add('ji-visible');
+            }, delay);
+            revealObs.unobserve(el);
+          }
         });
-    }, { threshold: 0.3 });
+      }, { threshold: 0.1 });
 
-    timelines.forEach(timeline => observer.observe(timeline));
-
-    // Click to toggle extra info
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const extra = item.querySelector('.timeline-extra');
-            const visible = extra.style.display === 'block';
-            document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
-            extra.style.display = visible ? 'none' : 'block';
-        });
-    });
-});
-</script>
+      mcCards.forEach(function(el) { revealObs.observe(el); });
+      jiItems.forEach(function(el) { revealObs.observe(el); });
+    })();
+    </script>
 </section>
 					
 					
@@ -2311,7 +2594,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#dbbab9b3b2a8b3beb0f5b5babca9beb8b3baf5bab59bbcb6bab2b7f5b8b4b6"><span class="__cf_email__" data-cfemail="4a2b28222339222f2164242b2d382f29222b642b240a2d272b232664292527">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -2328,7 +2611,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#3f5e5d57564c575a5411515e584d5a5c575e115e517f58525e5653115c5052" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2354,7 +2637,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2381,10 +2664,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
