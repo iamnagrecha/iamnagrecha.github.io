@@ -2260,33 +2260,101 @@ cards.forEach(card => observer.observe(card));
   margin-bottom: 48px;
 }
 
-.connect-form-wrap { max-width: 600px; margin: 0 auto; }
+.connect-form-wrap { max-width: 660px; margin: 0 auto; }
 .connect-form-wrap h3 {
   font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.4);
   text-transform: uppercase; letter-spacing: 0.18em;
   margin-bottom: 24px; text-align: center;
 }
-.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.cf-row.full { grid-template-columns: 1fr; }
-@media (max-width: 575px) { .cf-row { grid-template-columns: 1fr; } }
-.cf-input {
-  width: 100%; background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
-  padding: 13px 16px; color: #fff; font-size: 0.9rem;
-  outline: none; transition: border-color 0.2s, background 0.2s;
-  caret-color: #bac964;
+
+/* ── Calendly-style booking widget ── */
+.book-call-wrap {
+  max-width: 660px; margin: 0 auto;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(186,201,100,0.18);
+  border-radius: 18px; overflow: hidden;
 }
-.cf-input::placeholder { color: rgba(255,255,255,0.3); }
-.cf-input:focus { border-color: #bac964; background: rgba(186,201,100,0.07); }
-textarea.cf-input { resize: vertical; min-height: 120px; }
-.cf-submit {
-  display: block; width: 100%; margin-top: 18px; padding: 14px;
+.book-call-header {
+  padding: 20px 28px 16px;
+  border-bottom: 1px solid rgba(186,201,100,0.12);
+}
+.book-call-header .label {
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #bac964; margin-bottom: 4px;
+}
+.book-call-header .title {
+  font-size: 1rem; font-weight: 600; color: #fff;
+}
+.book-call-body { padding: 24px 28px 28px; }
+.cal-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.cal-nav button {
+  background: rgba(186,201,100,0.1); border: 1px solid rgba(186,201,100,0.25);
+  color: #bac964; border-radius: 50%; width: 32px; height: 32px;
+  font-size: 1rem; line-height: 1; cursor: pointer; transition: background 0.18s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cal-nav button:hover { background: rgba(186,201,100,0.22); }
+.cal-nav .cal-month { font-size: 0.95rem; font-weight: 700; color: #fff; }
+.cal-grid { width: 100%; border-collapse: collapse; }
+.cal-grid th {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4); text-align: center; padding-bottom: 10px;
+  text-transform: uppercase;
+}
+.cal-grid td { text-align: center; padding: 4px 2px; }
+.cal-day {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.25);
+  cursor: default; transition: background 0.15s, color 0.15s;
+}
+.cal-day.available {
+  color: #bac964; cursor: pointer;
+  background: rgba(186,201,100,0.08);
+  border: 1px solid rgba(186,201,100,0.18);
+}
+.cal-day.available:hover, .cal-day.selected {
+  background: #bac964; color: #111; border-color: #bac964;
+}
+.cal-day.today { border: 1.5px solid rgba(186,201,100,0.4); color: rgba(255,255,255,0.5); }
+.cal-tz {
+  margin-top: 14px; display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.45);
+}
+.cal-tz i { color: #bac964; }
+
+/* Time slots panel */
+.time-panel {
+  display: none; margin-top: 22px;
+  border-top: 1px solid rgba(186,201,100,0.12); padding-top: 22px;
+}
+.time-panel.visible { display: block; }
+.time-panel h4 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px;
+}
+.time-slots { display: flex; flex-wrap: wrap; gap: 10px; }
+.time-slot {
+  padding: 9px 18px; border-radius: 8px;
+  border: 1px solid rgba(186,201,100,0.25);
+  background: rgba(186,201,100,0.06);
+  color: #bac964; font-size: 0.84rem; font-weight: 600;
+  cursor: pointer; transition: all 0.18s;
+}
+.time-slot:hover, .time-slot.selected {
+  background: #bac964; color: #111; border-color: #bac964;
+}
+.book-confirm-btn {
+  display: none; width: 100%; margin-top: 18px; padding: 13px;
   background: #bac964; color: #111; border: none; border-radius: 8px;
-  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.2s;
 }
-.cf-submit:hover { background: #d4e070; transform: translateY(-2px); }
+.book-confirm-btn.visible { display: block; }
+.book-confirm-btn:hover { background: #d4e070; transform: translateY(-2px); }
 
 .connect-footer {
   margin-top: 72px; padding: 22px 0;
@@ -2311,7 +2379,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#d7b6b5bfbea4bfb2bcf9b9b6b0a5b2b4bfb6f9b6b997b0bab6bebbf9b4b8ba"><span class="__cf_email__" data-cfemail="58393a30312b303d337636393f2a3d3b3039763936183f35393134763b3735">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -2328,7 +2396,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#5b3a39333228333e3075353a3c293e38333a753a351b3c363a323775383436" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2338,40 +2406,151 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
 
     <div class="connect-divider"></div>
 
-    <!-- Form -->
+    <!-- Calendly-style booking widget -->
     <div class="connect-form-wrap">
-      <h3>Or send a message</h3>
-      <div class="cf-row">
-        <input id="cf-name" type="text" class="cf-input" placeholder="Your Name">
-        <input id="cf-email" type="email" class="cf-input" placeholder="Your Email">
+      <h3>Book a Call</h3>
+      <div class="book-call-wrap">
+        <div class="book-call-header">
+          <div class="label">Book a Call</div>
+          <div class="title">Pick a time that works for you &mdash; 30 min Google Meet</div>
+        </div>
+        <div class="book-call-body">
+          <div class="cal-nav">
+            <button onclick="calPrev()" aria-label="Previous month">&#8249;</button>
+            <span class="cal-month" id="cal-month-label"></span>
+            <button onclick="calNext()" aria-label="Next month">&#8250;</button>
+          </div>
+          <table class="cal-grid">
+            <thead>
+              <tr>
+                <th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+              </tr>
+            </thead>
+            <tbody id="cal-body"></tbody>
+          </table>
+          <div class="cal-tz">
+            <i class="fas fa-globe"></i>
+            <span>Eastern Time &ndash; US &amp; Canada</span>
+          </div>
+          <div class="time-panel" id="time-panel">
+            <h4 id="time-panel-label">Available Times</h4>
+            <div class="time-slots" id="time-slots"></div>
+            <button class="book-confirm-btn" id="book-confirm-btn" onclick="confirmBooking()">Confirm Booking</button>
+          </div>
+        </div>
       </div>
-      <div class="cf-row full">
-        <textarea id="cf-message" class="cf-input" placeholder="Your message..."></textarea>
-      </div>
-      <button class="cf-submit" onclick="cfSend()">Send Message</button>
     </div>
 
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
 <script>
-function cfSend() {
-  var name    = document.getElementById('cf-name').value.trim();
-  var replyTo = document.getElementById('cf-email').value.trim();
-  var message = document.getElementById('cf-message').value.trim();
-  if (!name || !replyTo || !message) {
-    alert('Please fill in all fields before sending.');
-    return;
-  }
-  var mailto = 'mailto:abhishek.nagrecha.an@gmail.com'
-    + '?subject=' + encodeURIComponent('Message from ' + name)
-    + '&body='    + encodeURIComponent('Name: ' + name + '\nEmail: ' + replyTo + '\n\n' + message);
-  window.location.href = mailto;
+// ── Calendly-style calendar widget ──
+const TIMES = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM'];
+const AVAILABLE_DAYS = [1,2,3,4,5]; // Mon–Fri
+let calYear, calMonth, selectedDate = null, selectedTime = null;
+
+function calInit() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCal();
 }
+
+function renderCal() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('cal-month-label').textContent = months[calMonth] + ' ' + calYear;
+  const tbody = document.getElementById('cal-body');
+  tbody.innerHTML = '';
+  const first = new Date(calYear, calMonth, 1).getDay();
+  const days  = new Date(calYear, calMonth + 1, 0).getDate();
+  const today = new Date();
+  let d = 1, row = document.createElement('tr');
+  for (let i = 0; i < first; i++) row.appendChild(document.createElement('td'));
+  for (let col = first; col < 7; col++) {
+    row.appendChild(makeDay(d, today));
+    d++;
+  }
+  tbody.appendChild(row);
+  while (d <= days) {
+    row = document.createElement('tr');
+    for (let col = 0; col < 7 && d <= days; col++, d++) row.appendChild(makeDay(d, today));
+    tbody.appendChild(row);
+  }
+}
+
+function makeDay(d, today) {
+  const td = document.createElement('td');
+  const date = new Date(calYear, calMonth, d);
+  const dow = date.getDay();
+  const isToday = date.toDateString() === today.toDateString();
+  const isPast  = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const avail   = AVAILABLE_DAYS.includes(dow) && !isPast;
+  const span = document.createElement('span');
+  span.className = 'cal-day' + (avail ? ' available' : '') + (isToday ? ' today' : '');
+  if (selectedDate && date.toDateString() === selectedDate.toDateString()) span.classList.add('selected');
+  span.textContent = d;
+  if (avail) span.onclick = () => selectDate(date, span);
+  td.appendChild(span);
+  return td;
+}
+
+function selectDate(date, span) {
+  selectedDate = date; selectedTime = null;
+  document.querySelectorAll('.cal-day.selected').forEach(el => el.classList.remove('selected'));
+  span.classList.add('selected');
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('time-panel-label').textContent =
+    days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
+  const slotsEl = document.getElementById('time-slots');
+  slotsEl.innerHTML = '';
+  TIMES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'time-slot'; btn.textContent = t;
+    btn.onclick = () => selectTime(t, btn);
+    slotsEl.appendChild(btn);
+  });
+  document.getElementById('time-panel').classList.add('visible');
+  document.getElementById('book-confirm-btn').classList.remove('visible');
+}
+
+function selectTime(t, btn) {
+  selectedTime = t;
+  document.querySelectorAll('.time-slot').forEach(el => el.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('book-confirm-btn').classList.add('visible');
+}
+
+function confirmBooking() {
+  if (!selectedDate || !selectedTime) return;
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const label = months[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear() + ' at ' + selectedTime;
+  const subject = encodeURIComponent('Meeting with Abhishek – ' + label);
+  const body    = encodeURIComponent('Hi Abhishek,\n\nI'd like to book a 30-min call on ' + label + ' (Eastern Time).\n\nPlease confirm.\n\nThank you!');
+  window.open('mailto:abhishek.nagrecha.an@gmail.com?subject=' + subject + '&body=' + body);
+}
+
+function calPrev() {
+  calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; }
+  selectedDate = null; selectedTime = null;
+  renderCal();
+  document.getElementById('time-panel').classList.remove('visible');
+  document.getElementById('book-confirm-btn').classList.remove('visible');
+}
+function calNext() {
+  calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; }
+  selectedDate = null; selectedTime = null;
+  renderCal();
+  document.getElementById('time-panel').classList.remove('visible');
+  document.getElementById('book-confirm-btn').classList.remove('visible');
+}
+
+document.addEventListener('DOMContentLoaded', calInit);
 </script>
 
 	<script src="js/vendor/jquery.min.js"></script>
@@ -2381,10 +2560,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
