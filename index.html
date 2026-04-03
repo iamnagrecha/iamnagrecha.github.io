@@ -657,8 +657,10 @@ function triggerFilter(el, section) {
                     <img src="images/donbosco_logo.png" alt="Don Bosco Logo">
                 </div>
                 <div class="card-content">
-                    <h3>Don Bosco School</h3>
-                    <p><i class="fa fa-calendar"></i> Apr 2000 - Mar 2005</p>
+                    <div class="card-header">
+                        <h3>Don Bosco School</h3>
+                        <span class="card-date">Apr 2000 - Mar 2005</span>
+                    </div>
                     <p>Primary Education | Foundation in Science & Mathematics</p>
                     <p>Skills: 
                         <span class="skill-badge">Reading</span>
@@ -674,8 +676,10 @@ function triggerFilter(el, section) {
                     <img src="images/dps_logo.png" alt="Delhi Public School Logo">
                 </div>
                 <div class="card-content">
-                    <h3>Delhi Public School Vadodara</h3>
-                    <p><i class="fa fa-calendar"></i> 2005 - 2012</p>
+                    <div class="card-header">
+                        <h3>Delhi Public School Vadodara</h3>
+                        <span class="card-date">2005 - 2012</span>
+                    </div>
                     <p>High School, Science | Grade: A+ | 9.8 CGPA</p>
                     <p>Skills: 
                         <span class="skill-badge">Office 365</span>
@@ -690,10 +694,11 @@ function triggerFilter(el, section) {
                     <img src="images/gtu_logo.png" alt="GTU Logo">
                 </div>
                 <div class="card-content">
-                    <h3>Gujarat Technological University</h3>
-                    <p><i class="fa fa-calendar"></i> May 2014 - Jun 2018</p>
+                    <div class="card-header">
+                        <h3>Gujarat Technological University</h3>
+                        <span class="card-date">May 2014 - Jun 2018</span>
+                    </div>
                     <p>Bachelor of Engineering - Computer Engineering</p>
-                    <p>Final Project: Fitness & Diet App using Android Studio & Firebase</p>
                     <p>Skills: 
                         <span class="skill-badge">Java</span>
                         <span class="skill-badge">Python</span>
@@ -711,10 +716,11 @@ function triggerFilter(el, section) {
                     <img src="images/lakehead_logo.png" alt="Lakehead University Logo">
                 </div>
                 <div class="card-content">
-                    <h3>Lakehead University</h3>
-                    <p><i class="fa fa-calendar"></i> Sep 2019 - May 2021</p>
+                    <div class="card-header">
+                        <h3>Lakehead University</h3>
+                        <span class="card-date">Sep 2019 - May 2021</span>
+                    </div>
                     <p>Master of Science - Computer Science</p>
-                    <p>Final Project: COVID-19 detection using deep CNN on CT scan images</p>
                     <p>Skills: 
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">Machine Learning</span>
@@ -731,6 +737,27 @@ function triggerFilter(el, section) {
 </section>
 
 <style>
+/* Timeline cards */
+.timeline-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 650px;
+    width: 90%;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(186,201,100,0.25);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+    position: relative;
+}
+.card-content { flex: 1; text-align: left; }
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+.card-header h3 { margin: 0 0 4px 0; font-size: 1rem; font-weight: 700; color: #fff; }
+.card-date { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+
 /* Skill badge styling */
 .skill-badge {
     display: inline-block;
