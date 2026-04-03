@@ -22,7 +22,7 @@
 
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
-<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar" style="position:fixed;top:0;left:0;width:100%;z-index:8000;">
+<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,8 +43,8 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#section-about">About Me</a>
             <a class="dropdown-item" href="#section-learning">Learning Milestones</a>
-            <a class="dropdown-item" href="#section-certifications">Certifications</a>
             <a class="dropdown-item" href="#section-journey">Professional Journey</a>
+			<a class="dropdown-item" href="#section-certifications">Certifications</a>
           </div>
         </li>
 
@@ -286,33 +286,6 @@
 
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Isotope init for consulting projects
-    var $workGrid = $('.filters-content .grid');
-    if ($workGrid.length) {
-        var isoWork = $workGrid.isotope({ itemSelector: '.single-portfolio', layoutMode: 'fitRows' });
-        $('#section-work .filters li').on('click', function() {
-            $('#section-work .filters li').removeClass('active');
-            $(this).addClass('active');
-            var filterVal = $(this).attr('data-filter');
-            isoWork.isotope({ filter: filterVal === '*' ? '*' : '.' + filterVal.replace('.','') });
-        });
-    }
-    // Isotope init for academic projects  
-    var $portGrid = $('#section-portfolio .filters-content .grid');
-    if ($portGrid.length) {
-        var isoPort = $portGrid.isotope({ itemSelector: '.single-portfolio', layoutMode: 'fitRows' });
-        $('#section-portfolio .filters li').on('click', function() {
-            $('#section-portfolio .filters li').removeClass('active');
-            $(this).addClass('active');
-            var filterVal = $(this).attr('data-filter');
-            isoPort.isotope({ filter: filterVal });
-        });
-    }
-});
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -695,15 +668,6 @@ function triggerFilter(el, section) {
                 <span class="timeline-hint">Click for details</span>
                 <div class="timeline-extra">Sep 2019 - Apr 2021</div>
             </div>
-            <div class="timeline-item">
-                <img src="images/credly_logo.png" alt="Certifications Logo" class="timeline-icon">
-                <span class="timeline-text">Certifications</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">
-                    2019 - Present
-                    <br>
-                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="text-info">View Dashboard</a>
-                </div>
             </div>
         </div>
 
@@ -834,67 +798,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 					
 					
-
-
-<!-- Certifications Section -->
-<section class="site-section" id="section-certifications">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col text-center">
-                <div class="section-heading mb-4">
-                    <h2>&#127885; <strong>Certifications</strong></h2>
-                    <div class="section-divider"></div>
-                    <p style="margin-top:12px; color:rgba(255,255,255,0.55);">16 industry badges earned 2019 &ndash; Present &nbsp;&middot;&nbsp; <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964; font-weight:700;">View all on Credly &#8599;</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">CAMS &ndash; Certified Anti-Money Laundering Specialist</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">ACAMS</div></div>
-                    </div>
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Science Professional Certificate</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
-                    </div>
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Machine Learning with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
-                    </div>
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Analysis with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
-                    </div>
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">SQL &amp; Databases for Data Science</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
-                    </div>
-
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">+ 11 more badges on Credly</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;"><a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964;">credly.com/users/iamnagrecha &#8599;</a></div></div>
-                    </div>
-
-                </div>
-                <div style="text-align:center; margin-top:28px;">
-                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank"
-                       style="display:inline-block; background:#bac964; color:#111; font-size:0.82rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:11px 28px; border-radius:8px; text-decoration:none;"
-                       onmouseover="this.style.background='#d4e070'" onmouseout="this.style.background='#bac964'">
-                        View Full Credly Dashboard
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -1053,6 +956,65 @@ $(document).ready(function() {
   .single-portfolio .p-inner .button { font-size: 0.76rem; }
 }
 </style>
+
+<!-- Certifications Section -->
+<section class="site-section" id="section-certifications">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col text-center">
+                <div class="section-heading mb-4">
+                    <h2>&#127885; <strong>Certifications</strong></h2>
+                    <div class="section-divider"></div>
+                    <p style="margin-top:12px; color:rgba(255,255,255,0.55);">16 industry badges earned 2019 &ndash; Present &nbsp;&middot;&nbsp; <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964; font-weight:700;">View all on Credly &#8599;</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">CAMS &ndash; Certified Anti-Money Laundering Specialist</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">ACAMS</div></div>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Science Professional Certificate</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Machine Learning with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Analysis with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">SQL &amp; Databases for Data Science</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
+                        <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">+ 11 more badges on Credly</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;"><a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964;">credly.com/users/iamnagrecha &#8599;</a></div></div>
+                    </div>
+
+                </div>
+                <div style="text-align:center; margin-top:28px;">
+                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank"
+                       style="display:inline-block; background:#bac964; color:#111; font-size:0.82rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:11px 28px; border-radius:8px; text-decoration:none;"
+                       onmouseover="this.style.background='#d4e070'" onmouseout="this.style.background='#bac964'">
+                        View Full Credly Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="site-section" id="section-work">
     <div class="container">
@@ -2400,7 +2362,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="/cdn-cgi/l/email-protection#ea8b88828399828f81c4848b8d988f89828bc48b84aa8d878b8386c4898587"><span class="__cf_email__" data-cfemail="01606369687269646a2f6f606673646269602f606f41666c60686d2f626e6c">[email&#160;protected]</span></a>
+      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
     </div>
 
     <!-- Social cards -->
@@ -2417,7 +2379,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="/cdn-cgi/l/email-protection#0b6a69636278636e6025656a6c796e68636a256a654b6c666a626725686466" class="connect-social-card">
+      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2443,7 +2405,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2470,4 +2432,10 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<scrip
+	<script src="js/vendor/jquery.stellar.min.js"></script>
+	<script src="js/vendor/jquery.waypoints.min.js"></script>
+
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="js/custom.js"></script>
+	
