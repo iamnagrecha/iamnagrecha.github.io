@@ -22,7 +22,7 @@
 
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
-<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar">
+<nav class="navbar navbar-expand-lg site-navbar navbar-dark" id="pb-navbar" style="position:fixed;top:0;left:0;width:100%;z-index:8000;">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -286,6 +286,33 @@
 
 <!-- Scripts (your original Bootstrap 4 + jQuery) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Isotope init for consulting projects
+    var $workGrid = $('.filters-content .grid');
+    if ($workGrid.length) {
+        var isoWork = $workGrid.isotope({ itemSelector: '.single-portfolio', layoutMode: 'fitRows' });
+        $('#section-work .filters li').on('click', function() {
+            $('#section-work .filters li').removeClass('active');
+            $(this).addClass('active');
+            var filterVal = $(this).attr('data-filter');
+            isoWork.isotope({ filter: filterVal === '*' ? '*' : '.' + filterVal.replace('.','') });
+        });
+    }
+    // Isotope init for academic projects  
+    var $portGrid = $('#section-portfolio .filters-content .grid');
+    if ($portGrid.length) {
+        var isoPort = $portGrid.isotope({ itemSelector: '.single-portfolio', layoutMode: 'fitRows' });
+        $('#section-portfolio .filters li').on('click', function() {
+            $('#section-portfolio .filters li').removeClass('active');
+            $(this).addClass('active');
+            var filterVal = $(this).attr('data-filter');
+            isoPort.isotope({ filter: filterVal });
+        });
+    }
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -815,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="row mb-5">
             <div class="col text-center">
                 <div class="section-heading mb-4">
-                    <h2>🏅 <strong>Certifications</strong></h2>
+                    <h2>&#127885; <strong>Certifications</strong></h2>
                     <div class="section-divider"></div>
                     <p style="margin-top:12px; color:rgba(255,255,255,0.55);">16 industry badges earned 2019 &ndash; Present &nbsp;&middot;&nbsp; <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964; font-weight:700;">View all on Credly &#8599;</a></p>
                 </div>
@@ -827,54 +854,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">CAMS &ndash; Certified Anti-Money Laundering Specialist</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">ACAMS</div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">CAMS &ndash; Certified Anti-Money Laundering Specialist</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">ACAMS</div></div>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Science Professional Certificate</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Science Professional Certificate</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Machine Learning with Python</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Machine Learning with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Analysis with Python</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">Data Analysis with Python</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">SQL &amp; Databases for Data Science</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">SQL &amp; Databases for Data Science</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM / Coursera</div></div>
                     </div>
 
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.2); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
                         <img src="images/credly_logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;flex-shrink:0;" alt="badge">
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">+ 11 more badges on Credly</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;"><a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964;">credly.com/users/iamnagrecha &#8599;</a></div>
-                        </div>
+                        <div><div style="font-size:0.88rem;font-weight:700;color:#fff;line-height:1.3;">+ 11 more badges on Credly</div><div style="font-size:0.75rem;color:#bac964;margin-top:3px;"><a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964;">credly.com/users/iamnagrecha &#8599;</a></div></div>
                     </div>
 
                 </div>
-
                 <div style="text-align:center; margin-top:28px;">
                     <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank"
                        style="display:inline-block; background:#bac964; color:#111; font-size:0.82rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:11px 28px; border-radius:8px; text-decoration:none;"
