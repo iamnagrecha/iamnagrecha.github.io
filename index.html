@@ -635,7 +635,7 @@ function triggerFilter(el, section) {
             </div>
         </div>
 
-<!-- Academic Highlights -->
+!-- Academic Highlights -->
 <section class="site-section" id="section-learning">
     <div class="container">
         <div class="row mb-5">
@@ -659,14 +659,14 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Don Bosco School</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Apr 2000 - Mar 2005</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Apr 2000 – Mar 2005</span>
                     </div>
-                    <p>Primary Education | Foundation in Science & Mathematics</p>
-                    <p>
+                    <p class="card-role">Primary Education | Foundation in Science & Mathematics</p>
+                    <div class="card-badges">
                         <span class="skill-badge">Reading</span>
                         <span class="skill-badge">Writing</span>
                         <span class="skill-badge">Basic Computers</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -678,13 +678,13 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Delhi Public School Vadodara</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> 2005 - 2012</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> 2005 – 2012</span>
                     </div>
-                    <p>High School, Science | Grade: A+ | 9.8 CGPA</p>
-                    <p>
+                    <p class="card-role">High School, Science | Grade: A+ | 9.8 CGPA</p>
+                    <div class="card-badges">
                         <span class="skill-badge">Office 365</span>
                         <span class="skill-badge">Teamwork</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -696,17 +696,17 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Gujarat Technological University</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> May 2014 - Jun 2018</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> May 2014 – Jun 2018</span>
                     </div>
-                    <p>Bachelor of Engineering - Computer Engineering</p>
-                    <p>
+                    <p class="card-role">Bachelor of Engineering – Computer Engineering</p>
+                    <div class="card-badges">
                         <span class="skill-badge">Java</span>
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">SQL</span>
                         <span class="skill-badge">SDLC</span>
                         <span class="skill-badge">OOP</span>
                         <span class="skill-badge">C++</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -718,10 +718,10 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Lakehead University</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Sep 2019 - May 2021</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Sep 2019 – May 2021</span>
                     </div>
-                    <p>Master of Science - Computer Science</p>
-                    <p>
+                    <p class="card-role">Master of Science – Computer Science</p>
+                    <div class="card-badges">
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">Machine Learning</span>
                         <span class="skill-badge">Computer Vision</span>
@@ -729,47 +729,13 @@ function triggerFilter(el, section) {
                         <span class="skill-badge">Tableau</span>
                         <span class="skill-badge">Power BI</span>
                         <span class="skill-badge">R</span>
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<style>
-/* Timeline cards */
-.timeline-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    max-width: 650px;
-    width: 90%;
-    padding: 12px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(186,201,100,0.25);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-    position: relative;
-}
-.card-content { flex: 1; text-align: left; }
-.card-header { display: flex; justify-content: space-between; align-items: center; }
-.card-header h3 { margin: 0 0 4px 0; font-size: 1rem; font-weight: 700; color: #fff; }
-.card-date { font-size: 0.75rem; color: #bac964; }
-
-/* Skill badge styling */
-.skill-badge {
-    display: inline-block;
-    background: rgba(186,201,100,0.15);
-    color: #bac964;
-    padding: 2px 8px;
-    margin: 2px 4px 2px 0;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 500;
-}
-</style>
 
 <!-- Career Highlights -->
 <section class="site-section" id="section-journey">
@@ -795,15 +761,18 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Sparks Foundation</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Mar 2021 - Mar 2021</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Mar 2021</span>
                     </div>
-                    <p>Data Science & Business Analytics Intern | Singapore, Remote</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Data Science & Business Analytics Intern</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Singapore, Remote</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">Anaconda</span>
                         <span class="skill-badge">Data Analysis</span>
                         <span class="skill-badge">Visualization</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -815,14 +784,17 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>R.A Malatest & Associates</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Feb 2021 - Apr 2021</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Feb – Apr 2021</span>
                     </div>
-                    <p>Data Collection Clerk | Ottawa, Canada</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Data Collection Clerk</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Ottawa, Canada</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">Data Entry</span>
                         <span class="skill-badge">Telephone Interviewing</span>
                         <span class="skill-badge">Decision-Making</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -834,16 +806,19 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Narcity Media Group</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> May 2021 - Aug 2021</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> May – Aug 2021</span>
                     </div>
-                    <p>Data Engineer | Toronto, Canada</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Data Engineer</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Toronto, Canada</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">GTM</span>
                         <span class="skill-badge">A/B Testing</span>
                         <span class="skill-badge">SQL</span>
                         <span class="skill-badge">Analytics</span>
                         <span class="skill-badge">Python</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -855,15 +830,18 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Alessa Inc</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Nov 2021 - Sep 2022</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Nov 2021 – Sep 2022</span>
                     </div>
-                    <p>Intermediate Technical Analyst | Ottawa, Canada</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Intermediate Technical Analyst</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Ottawa, Canada</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">SDLC</span>
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">SQL</span>
                         <span class="skill-badge">Client Communication</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -875,17 +853,20 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Alessa Inc</h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Sep 2022 - Jun 2025</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Sep 2022 – Jun 2025</span>
                     </div>
-                    <p>Intermediate Analytic Consultant | Ottawa, Canada</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Intermediate Analytic Consultant</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Ottawa, Canada</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">SQL</span>
                         <span class="skill-badge">Cloud</span>
                         <span class="skill-badge">AML</span>
                         <span class="skill-badge">Automation</span>
                         <span class="skill-badge">Risk Scoring</span>
-                    </p>
+                    </div>
                 </div>
             </div>
 
@@ -897,146 +878,220 @@ function triggerFilter(el, section) {
                 <div class="card-content">
                     <div class="card-header">
                         <h3>Alessa Inc <span class="tag-present">Present</span></h3>
-                        <span class="card-date"><i class="fa fa-calendar"></i> Jun 2025 - Present</span>
+                        <span class="card-date"><i class="fa fa-calendar"></i> Jun 2025 – Present</span>
                     </div>
-                    <p>Data Analytics Specialist | Remote / Ottawa, Canada</p>
-                    <p>
+                    <div class="card-meta">
+                        <span class="card-role">Data Analytics Specialist</span>
+                        <span class="card-location"><i class="fa fa-map-marker"></i> Remote / Ottawa, Canada</span>
+                    </div>
+                    <div class="card-badges">
                         <span class="skill-badge">Python</span>
                         <span class="skill-badge">SQL</span>
                         <span class="skill-badge">Cloud</span>
                         <span class="skill-badge">AML</span>
                         <span class="skill-badge">Analytics</span>
                         <span class="skill-badge">Stakeholder Communication</span>
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<style>
-/* Card header and date styling */
-.card-header { display: flex; justify-content: space-between; align-items: center; }
-.card-date { font-size: 0.75rem; color: #bac964; }
 
-/* Skill badges */
-.skill-badge {
-    display: inline-block;
-    background: rgba(186,201,100,0.15);
-    color: #bac964;
-    padding: 2px 8px;
-    margin: 2px 4px 2px 0;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 500;
-}
-</style>
-
-<!-- Timeline / Learning & Career cards CSS -->
 <style>
-/* Timeline cards */
+/* ── Timeline wrapper ── */
 .timeline-animated {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
+
+/* ── Card base ── */
 .timeline-card {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    max-width: 650px;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 680px;
     width: 90%;
-    padding: 12px;
-    background: rgba(255,255,255,0.05);
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    border: 1px solid rgba(186,201,100,0.25);
+    border: 1px solid rgba(186, 201, 100, 0.25);
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease-out;
+    box-sizing: border-box;
 }
-.timeline-card.show { opacity: 1; transform: translateY(0); }
+.timeline-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Logo icon ── */
 .card-icon {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 10px;
     border: 2px solid #bac964;
-    background: rgba(186,201,100,0.1);
-    display: flex; align-items: center; justify-content: center;
+    background: rgba(186, 201, 100, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
-.card-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
-.card-content { flex: 1; text-align: left; }
-.card-content h3 { margin: 0 0 4px 0; font-size: 1rem; font-weight: 700; color: #fff; }
-.card-content p { margin: 2px 0; font-size: 0.85rem; color: #bac964; }
-.tag-present { background: #bac964; color: #13141a; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem; margin-left: 6px; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .timeline-card { flex-direction: column; align-items: flex-start; }
-    .card-icon { width: 70px; height: 70px; }
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
-/* ── Portfolio card reskin — CSS only ── */
-.single-portfolio { padding: 10px; transition: margin-top 0.25s ease; }
-.single-portfolio .relative {
-  border-radius: 14px 14px 0 0;
-  overflow: hidden;
-  border: 1px solid rgba(186,201,100,0.1);
-  border-bottom: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+/* ── Content area ── */
+.card-content {
+    flex: 1;
+    min-width: 0; /* allows text truncation inside flex children */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
-.single-portfolio:hover .relative {
-  border-color: rgba(186,201,100,0.55);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+
+/* ── Header row: name left, date right ── */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
 }
-.single-portfolio .thumb {
-  background: #fff;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.card-header h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
 }
-.single-portfolio .thumb img.image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  padding: 10px !important;
-  max-height: none !important;
+.card-date {
+    font-size: 0.72rem;
+    color: #bac964;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 2px;
 }
-.single-portfolio .relative::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg,#bac964,#e2f054,#bac964);
-  background-size: 200%;
-  opacity: 0; z-index: 3;
-  transition: opacity 0.3s ease;
-  animation: pfShimmer 2.5s linear infinite;
+
+/* ── Meta row: role left, location right ── */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
-.single-portfolio:hover .relative::before { opacity: 1; }
-@keyframes pfShimmer { 0%{background-position:0%} 100%{background-position:200%} }
-.single-portfolio .p-inner {
-  background: #13141a;
-  border: 1px solid rgba(186,201,100,0.1);
-  border-top: none;
-  border-radius: 0 0 14px 14px;
-  padding: 12px 14px;
-  transition: border-color 0.3s ease;
+.card-role {
+    margin: 0;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
 }
-.single-portfolio:hover .p-inner { border-color: rgba(186,201,100,0.55); }
-.single-portfolio .p-inner .button {
-  font-size: 0.82rem; font-weight: 700;
-  color: #fff !important; text-decoration: none; display: block;
-  transition: color 0.2s;
+.card-location {
+    font-size: 0.72rem;
+    color: #bac964;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
-.single-portfolio:hover .p-inner .button { color: #bac964 !important; }
-.single-portfolio:hover { margin-top: -6px; margin-bottom: 6px; }
-@media (max-width:575px) {
-  .single-portfolio { padding: 7px; }
-  .single-portfolio .p-inner .button { font-size: 0.76rem; }
+.card-location .fa {
+    margin-right: 3px;
+    font-size: 0.7rem;
+}
+
+/* ── Skill badges ── */
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 2px;
+}
+.skill-badge {
+    display: inline-block;
+    background: rgba(186, 201, 100, 0.13);
+    color: #bac964;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* ── Present tag ── */
+.tag-present {
+    background: #bac964;
+    color: #13141a;
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* ── Mobile: ≤ 480px ── */
+@media (max-width: 480px) {
+    .timeline-card {
+        width: 95%;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+    }
+
+    /* Stack name above date */
+    .card-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+    .card-date {
+        font-size: 0.68rem;
+    }
+
+    /* Stack role above location */
+    .card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .card-role {
+        font-size: 0.78rem;
+    }
+    .card-location {
+        font-size: 0.68rem;
+    }
+
+    .skill-badge {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+    }
+
+    .card-header h3 {
+        font-size: 0.88rem;
+    }
+}
+
+/* ── Tablet: 481px – 768px ── */
+@media (min-width: 481px) and (max-width: 768px) {
+    .timeline-card {
+        width: 92%;
+        padding: 13px 14px;
+    }
+    .card-icon {
+        width: 56px;
+        height: 56px;
+    }
 }
 </style>
 
@@ -1045,14 +1100,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const cards = document.querySelectorAll('.timeline-card');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if(entry.isIntersecting){
+            if (entry.isIntersecting) {
                 cards.forEach((card, index) => {
                     setTimeout(() => card.classList.add('show'), index * 150);
                 });
                 observer.disconnect();
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
     cards.forEach(card => observer.observe(card));
 });
 </script>
