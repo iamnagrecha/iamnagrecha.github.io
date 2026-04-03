@@ -801,86 +801,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- Add jQuery (if not already included) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Counter Section -->
-<section class="site-section section-counters text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-12 mb-4">
-                <p class="counter" data-to="5" data-speed="2000">0</p>
-                <h4>YEARS EXPERIENCE</h4>
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <p class="counter" data-to="30" data-speed="2000">0</p>       
-                <h4>CLIENTS SERVED</h4>      
-            </div>
 
-            <div class="col-md-4 col-12 mb-4">
-                <p class="counter" data-to="16" data-speed="2000">0</p>       
-                <h4>CERTIFICATIONS ACHIEVED</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Counter Script -->
-<script>
-$(document).ready(function() {
-    var triggered = false; // Flag to ensure counter is triggered only once
-    
-    function startCounter() {
-        $('.counter').each(function() {
-            var $this = $(this),
-                countTo = parseInt($this.attr('data-to')),
-                speed = parseInt($this.attr('data-speed'));
-
-            $this.text(0); // Ensure the counter starts from zero
-
-            $({ countNum: 0 }).animate({ countNum: countTo }, {
-                duration: speed,
-                easing: 'swing',
-                step: function() {
-                    $this.text(Math.floor(this.countNum));
-                },
-                complete: function() {
-                    $this.text(this.countNum);
-                }
-            });
-        });
-    }
-
-    // Trigger counter when the section is in view
-    function checkCounter() {
-        var top = $('.section-counters').offset().top - window.innerHeight;
-        if (!triggered && $(window).scrollTop() > top) {
-            startCounter();
-            triggered = true;
-        }
-    }
-
-    // Trigger on scroll
-    $(window).on('scroll', checkCounter);
-    
-    // Trigger if section is already in view on page load
-    checkCounter();
-});
-</script>
-
-<!-- CSS for Better Mobile Styling -->
-<style>
-    .section-counters {
-        padding: 40px 0;
-    }
-    .counter {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #333;
-    }
-    h4 {
-        font-size: 1.2rem;
-        color: #555;
-        margin-top: 10px;
-    }
-</style>
 
 	
 
@@ -1060,7 +981,7 @@ $(document).ready(function() {
 
             <!-- SQL -->
             <div class="cert-card">
-                <img src="images/uc-davis-aggies-9-logo-png-transparent.png" alt="UC Davis Badge">
+                <img src="images/148392_UniversityofCaliforniaDavis.png" alt="UC Davis Badge">
                 <div class="cert-info">
                     <div class="cert-title">SQL for Data Science</div>
                     <div class="cert-meta">UC Davis · Nov 2020</div>
@@ -1130,6 +1051,91 @@ $(document).ready(function() {
 }
 </style>
 
+
+<!-- Counter Section -->
+<section class="site-section section-counters text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="5" data-speed="2000">0</p>
+                <h4>YEARS EXPERIENCE</h4>
+            </div>
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="30" data-speed="2000">0</p>       
+                <h4>CLIENTS SERVED</h4>      
+            </div>
+
+            <div class="col-md-4 col-12 mb-4">
+                <p class="counter" data-to="16" data-speed="2000">0</p>       
+                <h4>CERTIFICATIONS ACHIEVED</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Counter Script -->
+<script>
+$(document).ready(function() {
+    var triggered = false; // Flag to ensure counter is triggered only once
+    
+    function startCounter() {
+        $('.counter').each(function() {
+            var $this = $(this),
+                countTo = parseInt($this.attr('data-to')),
+                speed = parseInt($this.attr('data-speed'));
+
+            $this.text(0); // Ensure the counter starts from zero
+
+            $({ countNum: 0 }).animate({ countNum: countTo }, {
+                duration: speed,
+                easing: 'swing',
+                step: function() {
+                    $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                    $this.text(this.countNum);
+                }
+            });
+        });
+    }
+
+    // Trigger counter when the section is in view
+    function checkCounter() {
+        var top = $('.section-counters').offset().top - window.innerHeight;
+        if (!triggered && $(window).scrollTop() > top) {
+            startCounter();
+            triggered = true;
+        }
+    }
+
+    // Trigger on scroll
+    $(window).on('scroll', checkCounter);
+    
+    // Trigger if section is already in view on page load
+    checkCounter();
+});
+</script>
+
+<!-- CSS for Better Mobile Styling -->
+<style>
+    .section-counters {
+        padding: 40px 0;
+    }
+    .counter {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    h4 {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+    }
+</style>
+
+
+
+	
 <section class="site-section" id="section-work">
     <div class="container">
         <div class="row">
