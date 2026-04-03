@@ -635,41 +635,121 @@ function triggerFilter(el, section) {
             </div>
         </div>
 
-        <!-- Academic Highlights -->
-        <p id="section-learning" class="mb-3 text-center" style="font-size: 1.3rem;"><strong>📚 Learning Milestones:</strong></p>
-        <div class="timeline-animated academic-timeline mb-5 justify-content-center">
-            <div class="timeline-item">
-                <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="timeline-icon">
-                <span class="timeline-text">DonBosco School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2000 - Mar 2005</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="timeline-icon">
-                <span class="timeline-text">Delhi Public School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2005 - Feb 2012</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/parth_school_logo.png" alt="Parth School Logo" class="timeline-icon">
-                <span class="timeline-text">Parth School</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Apr 2012 - Mar 2014</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/gtu_logo.png" alt="GTU Logo" class="timeline-icon">
-                <span class="timeline-text">GTU</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">May 2014 - Jun 2018</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="timeline-icon">
-                <span class="timeline-text">Lakehead University</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Sep 2019 - Apr 2021</div>
-            </div>
+<!-- Academic Highlights -->
+<section class="site-section" id="section-learning">
+    <p class="text-center mb-4" style="font-size: 1.4rem;"><strong>📚 Learning Milestones</strong></p>
+
+    <div class="academic-grid">
+        <!-- Don Bosco -->
+        <div class="academic-card">
+            <img src="images/donbosco_logo.png" alt="Don Bosco Logo" class="academic-logo">
+            <div class="academic-info">
+                <div class="academic-name">DonBosco School</div>
+                <div class="academic-duration">Apr 2000 - Mar 2005</div>
             </div>
         </div>
+
+        <!-- Delhi Public School -->
+        <div class="academic-card">
+            <img src="images/dps_logo.png" alt="Delhi Public School Logo" class="academic-logo">
+            <div class="academic-info">
+                <div class="academic-name">Delhi Public School</div>
+                <div class="academic-duration">Apr 2005 - Feb 2012</div>
+            </div>
+        </div>
+
+        <!-- Parth School -->
+        <div class="academic-card">
+            <img src="images/parth_school_logo.png" alt="Parth School Logo" class="academic-logo">
+            <div class="academic-info">
+                <div class="academic-name">Parth School</div>
+                <div class="academic-duration">Apr 2012 - Mar 2014</div>
+            </div>
+        </div>
+
+        <!-- GTU -->
+        <div class="academic-card">
+            <img src="images/gtu_logo.png" alt="GTU Logo" class="academic-logo">
+            <div class="academic-info">
+                <div class="academic-name">GTU</div>
+                <div class="academic-duration">May 2014 - Jun 2018</div>
+            </div>
+        </div>
+
+        <!-- Lakehead University -->
+        <div class="academic-card">
+            <img src="images/lakehead_logo.png" alt="Lakehead University Logo" class="academic-logo">
+            <div class="academic-info">
+                <div class="academic-name">Lakehead University</div>
+                <div class="academic-duration">Sep 2019 - Apr 2021</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Academic Grid */
+.academic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Academic Card */
+.academic-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(186,201,100,0.25);
+    border-radius: 12px;
+    padding: 16px 20px;
+    min-width: 260px;
+    max-width: 360px;
+    flex: 1 1 260px;
+    transition: transform 0.3s, background 0.3s;
+}
+.academic-card:hover {
+    transform: translateY(-3px);
+    background: rgba(186,201,100,0.08);
+}
+
+/* Logo */
+.academic-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    padding: 4px;
+}
+
+/* Info */
+.academic-info {
+    display: flex;
+    flex-direction: column;
+}
+.academic-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+}
+.academic-duration {
+    font-size: 0.8rem;
+    color: #bac964;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .academic-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .academic-name { font-size: 0.9rem; }
+    .academic-duration { font-size: 0.75rem; }
+}
+</style>
 
         <!-- Career Highlights -->
         <p id="section-journey" class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
