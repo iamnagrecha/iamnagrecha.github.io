@@ -957,153 +957,313 @@ $(document).ready(function() {
 }
 </style>
 
-<!-- Certifications Section -->
+<!-- Certifications Section — Redesigned -->
+<style>
+.cert-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #bac964;
+  border: 1px solid rgba(186,201,100,0.3);
+  border-radius: 100px;
+  padding: 5px 16px;
+  margin-bottom: 18px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 48px;
+}
+@media (max-width: 991px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 575px) { .cert-grid { grid-template-columns: 1fr; gap: 10px; } }
+
+.cert-card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(186,201,100,0.22);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    opacity 0.45s ease;
+}
+.cert-card.cert-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* shimmer top line on hover */
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bac964, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cert-card:hover {
+  background: rgba(186,201,100,0.06);
+  border-color: rgba(186,201,100,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(186,201,100,0.08), 0 2px 10px rgba(0,0,0,0.35);
+}
+.cert-card:hover::before { opacity: 1; }
+
+.cert-icon-wrap {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+}
+.cert-card:hover .cert-icon-wrap {
+  background: rgba(186,201,100,0.1);
+  border-color: rgba(186,201,100,0.3);
+}
+.cert-icon-wrap img {
+  width: 30px; height: 30px;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+.cert-card:hover .cert-icon-wrap img { filter: brightness(1.15); }
+
+.cert-card-name {
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+}
+.cert-card-meta {
+  font-size: 0.72rem;
+  color: #bac964;
+  font-weight: 500;
+  margin-top: 5px;
+  display: flex; align-items: center; gap: 5px;
+}
+.cert-card-meta::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #bac964;
+  flex-shrink: 0;
+}
+
+.cert-cta-wrap {
+  text-align: center;
+  margin-top: 44px;
+}
+.cert-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #bac964;
+  color: #111;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.22s, transform 0.2s, box-shadow 0.22s;
+}
+.cert-cta-btn:hover {
+  background: #d4e070;
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(186,201,100,0.25);
+  text-decoration: none;
+}
+.cert-cta-btn svg {
+  width: 13px; height: 13px;
+  transition: transform 0.2s;
+}
+.cert-cta-btn:hover svg { transform: translate(2px,-2px); }
+</style>
+
 <section class="site-section" id="section-certifications">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col text-center">
-                <div class="section-heading mb-4">
-					<h2>
-					    <strong style="color:#fff;">Industry</strong> 
-					    <strong style="color:#bac964;">Certifications</strong>
-					</h2>
-                    <div class="section-divider"></div>
-                    <p style="margin-top:12px; color:rgba(255,255,255,0.55);">
-                        AML, Financial Crime, Data Science & Cloud Certifications (2019 – Present)
-                        &nbsp;&middot;&nbsp;
-                        <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964; font-weight:700;">
-                            View verified badges on Credly &#8599;
-                        </a>
-                    </p>
-                </div>
-            </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col text-center">
+        <div class="section-heading">
+          <span class="cert-label">Credentials &amp; Badges</span>
+          <h2>
+            <strong style="color:#fff;">Industry</strong>
+            <strong style="color:#bac964;">Certifications</strong>
+          </h2>
+          <div class="section-divider"></div>
+          <p style="margin-top:14px; color:rgba(255,255,255,0.55);">
+            AML, Financial Crime, Data Science &amp; Cloud &nbsp;&middot;&nbsp; 2019 – Present
+            &nbsp;&nbsp;
+            <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" style="color:#bac964; font-weight:700;">
+              View verified badges on Credly &#8599;
+            </a>
+          </p>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
-					
-                    <!-- ACAMS Financial Inclusion -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/acams.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Enhancing Financial Inclusion with a Risk-Based Approach</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">ACAMS · Jul 2025</div>
-                        </div>
-                    </div>
-
-                    <!-- Basel Institute -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/basel.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Operational Analysis of Suspicious Transaction Reports (STR)</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">Basel Institute on Governance · Aug 2025</div>
-                        </div>
-                    </div>
-
-                    <!-- AML & KYC Foundation -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/kyc.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Foundation in AML and KYC</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">KYC Lookup · Jul 2025</div>
-                        </div>
-                    </div>
-
-                    <!-- Applied Data Science -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Applied Data Science with Python – Level 2</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-                        </div>
-                    </div>
-
-                    <!-- Data Analysis -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Data Analysis Using Python</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-                        </div>
-                    </div>
-
-                    <!-- Data Visualization Python -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Data Visualization Using Python</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-                        </div>
-                    </div>
-
-                    <!-- Data Visualization R -->
-                    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px; min-width:240px; flex:1 1 240px; max-width:340px;">
-                        <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="badge">
-                        <div>
-                            <div style="font-size:0.9rem;font-weight:700;color:#fff;">Data Visualization with R</div>
-                            <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-                        </div>
-                    </div>
-
-                   <!-- Python -->
-					<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px;">
-					    <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="IBM Logo">
-					    <div>
-					        <div style="font-size:0.9rem;font-weight:700;color:#fff;">Python for Data Science</div>
-					        <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-					    </div>
-					</div>
-					
-					<!-- R -->
-					<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px;">
-					    <img src="images/Font-IBM-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="IBM Logo">
-					    <div>
-					        <div style="font-size:0.9rem;font-weight:700;color:#fff;">R for Data Science</div>
-					        <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">IBM · Nov 2020</div>
-					    </div>
-					</div>
-					
-					<!-- SQL -->
-					<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px;">
-					    <img src="images/UC-Davis-Logo.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="UC Davis Logo">
-					    <div>
-					        <div style="font-size:0.9rem;font-weight:700;color:#fff;">SQL for Data Science</div>
-					        <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">UC Davis · Nov 2020</div>
-					    </div>
-					</div>
-					
-					<!-- AWS -->
-					<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px;">
-					    <img src="images/Amazon_Web_Services_Logo.svg.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="AWS Logo">
-					    <div>
-					        <div style="font-size:0.9rem;font-weight:700;color:#fff;">AWS Certified Cloud Practitioner</div>
-					        <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">AWS · Jan 2021</div>
-					    </div>
-					</div>
-					
-					<!-- Google -->
-					<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(186,201,100,0.25); border-radius:12px; padding:16px 20px; display:flex; align-items:center; gap:12px;">
-					    <img src="images/Google__G__logo.svg.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:4px;" alt="Google Logo">
-					    <div>
-					        <div style="font-size:0.9rem;font-weight:700;color:#fff;">Technical Support Fundamentals</div>
-					        <div style="font-size:0.75rem;color:#bac964;margin-top:3px;">Google · May 2020</div>
-					    </div>
-					</div>
-                </div>
-
-                <div style="text-align:center; margin-top:28px;">
-                    <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank"
-                       style="display:inline-block; background:#bac964; color:#111; font-size:0.82rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:11px 28px; border-radius:8px; text-decoration:none;"
-                       onmouseover="this.style.background='#d4e070'" onmouseout="this.style.background='#bac964'">
-                        View Full Credential Portfolio
-                    </a>
-                </div>
-
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="cert-grid" id="certGrid">
+
+      <!-- ACAMS -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/acams.png" alt="ACAMS"></div>
+        <div>
+          <div class="cert-card-name">Enhancing Financial Inclusion with a Risk-Based Approach</div>
+          <div class="cert-card-meta">ACAMS &nbsp;·&nbsp; Jul 2025</div>
+        </div>
+      </div>
+
+      <!-- Basel -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/basel.png" alt="Basel Institute"></div>
+        <div>
+          <div class="cert-card-name">Operational Analysis of Suspicious Transaction Reports (STR)</div>
+          <div class="cert-card-meta">Basel Institute on Governance &nbsp;·&nbsp; Aug 2025</div>
+        </div>
+      </div>
+
+      <!-- KYC -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/kyc.png" alt="KYC Lookup"></div>
+        <div>
+          <div class="cert-card-name">Foundation in AML and KYC</div>
+          <div class="cert-card-meta">KYC Lookup &nbsp;·&nbsp; Jul 2025</div>
+        </div>
+      </div>
+
+      <!-- IBM Applied DS -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">Applied Data Science with Python – Level 2</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- IBM Data Analysis -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">Data Analysis Using Python</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- IBM Data Viz Python -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">Data Visualization Using Python</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- IBM Data Viz R -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">Data Visualization with R</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- IBM Python DS -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">Python for Data Science</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- IBM R DS -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Font-IBM-Logo.png" alt="IBM"></div>
+        <div>
+          <div class="cert-card-name">R for Data Science</div>
+          <div class="cert-card-meta">IBM &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- UC Davis SQL -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/UC-Davis-Logo.png" alt="UC Davis"></div>
+        <div>
+          <div class="cert-card-name">SQL for Data Science</div>
+          <div class="cert-card-meta">UC Davis &nbsp;·&nbsp; Nov 2020</div>
+        </div>
+      </div>
+
+      <!-- AWS -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Amazon_Web_Services_Logo.svg.png" alt="AWS"></div>
+        <div>
+          <div class="cert-card-name">AWS Certified Cloud Practitioner</div>
+          <div class="cert-card-meta">AWS &nbsp;·&nbsp; Jan 2021</div>
+        </div>
+      </div>
+
+      <!-- Google -->
+      <div class="cert-card">
+        <div class="cert-icon-wrap"><img src="images/Google__G__logo.svg.png" alt="Google"></div>
+        <div>
+          <div class="cert-card-name">Technical Support Fundamentals</div>
+          <div class="cert-card-meta">Google &nbsp;·&nbsp; May 2020</div>
+        </div>
+      </div>
+
+    </div><!-- /cert-grid -->
+
+    <div class="cert-cta-wrap">
+      <a href="https://www.youracclaim.com/users/iamnagrecha" target="_blank" class="cert-cta-btn">
+        View Full Credential Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
 </section>
+
+<script>
+(function() {
+  var certCards = document.querySelectorAll('#certGrid .cert-card');
+  if (!certCards.length) return;
+
+  var certObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var card = entry.target;
+        var idx = Array.prototype.indexOf.call(certCards, card);
+        var col = idx % 3;
+        setTimeout(function() { card.classList.add('cert-visible'); }, col * 75);
+        certObserver.unobserve(card);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  certCards.forEach(function(card) { certObserver.observe(card); });
+})();
+</script>
 
 <section class="site-section" id="section-work">
     <div class="container">
@@ -2451,7 +2611,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#0b6a69636278636e6025656a6c796e68636a256a654b6c666a626725686466"><span class="__cf_email__" data-cfemail="82e3e0eaebf1eae7e9acece3e5f0e7e1eae3ace3ecc2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -2468,7 +2628,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#b1d0d3d9d8c2d9d4da9fdfd0d6c3d4d2d9d09fd0dff1d6dcd0d8dd9fd2dedc" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2494,7 +2654,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2521,10 +2681,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
