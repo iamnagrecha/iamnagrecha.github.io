@@ -800,6 +800,7 @@ function triggerFilter(el, section) {
     </div>
 </section>
 
+<!-- Timeline / Learning & Career cards CSS -->
 <style>
 /* Timeline cards */
 .timeline-animated {
@@ -842,6 +843,68 @@ function triggerFilter(el, section) {
 @media (max-width: 768px) {
     .timeline-card { flex-direction: column; align-items: flex-start; }
     .card-icon { width: 70px; height: 70px; }
+}
+
+/* ── Portfolio card reskin — CSS only ── */
+.single-portfolio { padding: 10px; transition: margin-top 0.25s ease; }
+.single-portfolio .relative {
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(186,201,100,0.1);
+  border-bottom: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.single-portfolio:hover .relative {
+  border-color: rgba(186,201,100,0.55);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+}
+.single-portfolio .thumb {
+  background: #fff;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.single-portfolio .thumb img.image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  padding: 10px !important;
+  max-height: none !important;
+}
+.single-portfolio .relative::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,#bac964,#e2f054,#bac964);
+  background-size: 200%;
+  opacity: 0; z-index: 3;
+  transition: opacity 0.3s ease;
+  animation: pfShimmer 2.5s linear infinite;
+}
+.single-portfolio:hover .relative::before { opacity: 1; }
+@keyframes pfShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.single-portfolio .p-inner {
+  background: #13141a;
+  border: 1px solid rgba(186,201,100,0.1);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  padding: 12px 14px;
+  transition: border-color 0.3s ease;
+}
+.single-portfolio:hover .p-inner { border-color: rgba(186,201,100,0.55); }
+.single-portfolio .p-inner .button {
+  font-size: 0.82rem; font-weight: 700;
+  color: #fff !important; text-decoration: none; display: block;
+  transition: color 0.2s;
+}
+.single-portfolio:hover .p-inner .button { color: #bac964 !important; }
+.single-portfolio:hover { margin-top: -6px; margin-bottom: 6px; }
+@media (max-width:575px) {
+  .single-portfolio { padding: 7px; }
+  .single-portfolio .p-inner .button { font-size: 0.76rem; }
 }
 </style>
 
