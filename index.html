@@ -639,9 +639,9 @@ function triggerFilter(el, section) {
 <section class="site-section" id="section-learning">
     <p class="text-center mb-4" style="font-size: 1.4rem;"><strong>📚 Learning Milestones</strong></p>
 
-    <div class="timeline-container">
+    <div class="timeline-animated">
         <!-- Don Bosco -->
-        <div class="timeline-block">
+        <div class="timeline-item">
             <div class="timeline-icon">
                 <img src="images/donbosco_logo.png" alt="Don Bosco Logo">
             </div>
@@ -652,7 +652,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Delhi Public School -->
-        <div class="timeline-block">
+        <div class="timeline-item">
             <div class="timeline-icon">
                 <img src="images/dps_logo.png" alt="Delhi Public School Logo">
             </div>
@@ -663,7 +663,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Parth School -->
-        <div class="timeline-block">
+        <div class="timeline-item">
             <div class="timeline-icon">
                 <img src="images/parth_school_logo.png" alt="Parth School Logo">
             </div>
@@ -674,7 +674,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- GTU -->
-        <div class="timeline-block">
+        <div class="timeline-item">
             <div class="timeline-icon">
                 <img src="images/gtu_logo.png" alt="GTU Logo">
             </div>
@@ -685,7 +685,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Lakehead University -->
-        <div class="timeline-block">
+        <div class="timeline-item">
             <div class="timeline-icon">
                 <img src="images/lakehead_logo.png" alt="Lakehead University Logo">
             </div>
@@ -697,50 +697,122 @@ function triggerFilter(el, section) {
     </div>
 </section>
 
+<!-- Career Highlights -->
+<section class="site-section" id="section-journey">
+    <p class="text-center mb-4" style="font-size: 1.4rem;"><strong>💼 Professional Journey</strong></p>
+
+    <div class="timeline-animated">
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/sparks_logo.png" alt="Sparks Foundation Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>Sparks Foundation</h3>
+                <p>Data Science Intern | Apr 2021</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/malatest_logo.png" alt="Malatest Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>R.A Malatest & Associates</h3>
+                <p>Data Collection Clerk | Feb 2021 - May 2021</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/nmg_logo.png" alt="Narcity Media Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>Narcity Media Group</h3>
+                <p>Data Engineer | May 2021 - Aug 2021</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>Alessa Inc</h3>
+                <p>Intermediate Technical Analyst | Nov 2021 - Oct 2022</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa Inc Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>Alessa Inc</h3>
+                <p>Intermediate Analytic Consultant | Oct 2022 - Jun 2025</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo">
+            </div>
+            <div class="timeline-content">
+                <h3>Alessa Inc</h3>
+                <p>Data Analytics Specialist | Jun 2025 - Present</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <style>
-/* Timeline Container */
-.timeline-container {
+/* Timeline container */
+.timeline-animated {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
 
-/* Timeline Block */
-.timeline-block {
+/* Timeline items start hidden and move up */
+.timeline-item {
     display: flex;
     align-items: center;
     gap: 16px;
-    width: 100%;
-    max-width: 800px;
+    max-width: 650px;
+    width: 90%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
 }
 
-/* Icon */
+/* Show animation */
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Icon styling */
 .timeline-icon {
     flex-shrink: 0;
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
-    background: rgba(186,201,100,0.1);
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 12px;
     border: 2px solid #bac964;
+    background: rgba(186,201,100,0.1);
 }
 .timeline-icon img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     border-radius: 12px;
 }
 
-/* Content */
+/* Content styling */
 .timeline-content {
     background: rgba(255,255,255,0.05);
-    padding: 14px 18px;
+    padding: 12px 18px;
     border-radius: 12px;
     border: 1px solid rgba(186,201,100,0.25);
     flex: 1;
+    text-align: center;
 }
 .timeline-content h3 {
     margin: 0;
@@ -756,154 +828,28 @@ function triggerFilter(el, section) {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .timeline-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-    }
-    .timeline-icon {
-        width: 70px;
-        height: 70px;
-    }
-    .timeline-icon img {
-        width: 80%;
-        height: 80%;
-    }
-    .timeline-content h3 {
-        font-size: 0.95rem;
-    }
-    .timeline-content p {
-        font-size: 0.8rem;
-    }
+    .timeline-item { flex-direction: column; gap: 12px; width: 90%; }
+    .timeline-icon { width: 70px; height: 70px; }
 }
-</style>
-
-        <!-- Career Highlights -->
-        <p id="section-journey" class="mb-3 text-center mt-5" style="font-size: 1.3rem;"><strong>💼 Professional Journey:</strong></p>
-        <div class="timeline-animated career-timeline mb-5 justify-content-center">
-            <div class="timeline-item">
-                <img src="images/sparks_logo.png" alt="Sparks Foundation Logo" class="timeline-icon">
-                <span class="timeline-text">Sparks Foundation</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Science Intern | Apr 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/malatest_logo.png" alt="Malatest Logo" class="timeline-icon">
-                <span class="timeline-text">R.A Malatest & Associates</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Collection Clerk | Feb 2021 - May 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/nmg_logo.png" alt="Narcity Media Logo" class="timeline-icon">
-                <span class="timeline-text">Narcity Media Group</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Engineer | May 2021 - Aug 2021</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Intermediate Technical Analyst | Nov 2021 - Oct 2022</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa Inc Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Intermediate Analytic Consultant | Oct 2022 - Jun 2025</div>
-            </div>
-            <div class="timeline-item">
-                <img src="images/alessa_logo.png" alt="Alessa/Valsoft Logo" class="timeline-icon">
-                <span class="timeline-text">Alessa Inc</span>
-                <span class="timeline-hint">Click for details</span>
-                <div class="timeline-extra">Data Analytics Specialist | Jun 2025 - Present</div>
-            </div>
-        </div>
-    </div>
-
-<style>
-/* Timeline container */
-.timeline-animated {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    margin-top: 30px;
-}
-
-/* Timeline items start hidden and slightly down */
-.timeline-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin: 20px;
-    cursor: pointer;
-    width: 140px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
-
-/* Fade in and move up when in view */
-.timeline-item.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .timeline-item { width: 100px; margin: 15px 8px; }
-    .timeline-icon { width: 50px; height: 50px; }
-}
-
-/* Icons and text styling */
-.timeline-icon {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-bottom: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
-.timeline-text { font-size: 0.95rem; font-weight: 500; margin-top: 6px; text-align: center; width: 100%; word-break: break-word; }
-.timeline-hint { font-size: 0.7rem; color: #999; margin-top: 3px; text-align: center; display: block; }
-.timeline-extra { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; padding: 6px 10px; font-size: 0.85rem; border-radius: 6px; white-space: nowrap; margin-bottom: 8px; z-index: 10; }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Scroll animation with stagger for each timeline-item
-    const timelines = document.querySelectorAll('.timeline-animated');
-
+    const items = document.querySelectorAll('.timeline-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if(entry.isIntersecting){
-                const items = entry.target.querySelectorAll('.timeline-item');
                 items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('show'); // fade in + move up
-                    }, index * 200); // 200ms delay between items
+                    setTimeout(() => item.classList.add('show'), index * 200);
                 });
-                observer.unobserve(entry.target); // stop observing after first trigger
+                observer.disconnect();
             }
         });
     }, { threshold: 0.3 });
 
-    timelines.forEach(timeline => observer.observe(timeline));
-
-    // Click to toggle extra info
-    document.querySelectorAll('.timeline-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const extra = item.querySelector('.timeline-extra');
-            const visible = extra.style.display === 'block';
-            document.querySelectorAll('.timeline-extra').forEach(e => e.style.display = 'none');
-            extra.style.display = visible ? 'none' : 'block';
-        });
-    });
+    items.forEach(item => observer.observe(item));
 });
 </script>
-</section>
 					
 					
 <!-- Add jQuery (if not already included) -->
