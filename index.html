@@ -978,7 +978,7 @@ $(document).ready(function() {
         </div>
 
         <div class="certifications-grid">
-            <!-- Example Certification Card -->
+            <!-- ACAMS -->
             <div class="cert-card">
                 <img src="images/acams.png" alt="ACAMS Badge">
                 <div class="cert-info">
@@ -987,6 +987,7 @@ $(document).ready(function() {
                 </div>
             </div>
 
+            <!-- Basel Institute -->
             <div class="cert-card">
                 <img src="images/basel.png" alt="Basel Badge">
                 <div class="cert-info">
@@ -995,6 +996,7 @@ $(document).ready(function() {
                 </div>
             </div>
 
+            <!-- AML & KYC Foundation -->
             <div class="cert-card">
                 <img src="images/kyc.png" alt="KYC Badge">
                 <div class="cert-info">
@@ -1003,7 +1005,86 @@ $(document).ready(function() {
                 </div>
             </div>
 
-            <!-- Repeat similar blocks for all badges -->
+            <!-- Applied Data Science -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Applied Data Science with Python – Level 2</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- Data Analysis -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Data Analysis Using Python</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- Data Visualization Python -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Data Visualization Using Python</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- Data Visualization R -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Data Visualization with R</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- Python -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Python for Data Science</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- R -->
+            <div class="cert-card">
+                <img src="images/Font-IBM-Logo.png" alt="IBM Badge">
+                <div class="cert-info">
+                    <div class="cert-title">R for Data Science</div>
+                    <div class="cert-meta">IBM · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- SQL -->
+            <div class="cert-card">
+                <img src="images/UC-Davis-Logo.png" alt="UC Davis Badge">
+                <div class="cert-info">
+                    <div class="cert-title">SQL for Data Science</div>
+                    <div class="cert-meta">UC Davis · Nov 2020</div>
+                </div>
+            </div>
+
+            <!-- AWS -->
+            <div class="cert-card">
+                <img src="images/Amazon_Web_Services_Logo.svg.png" alt="AWS Badge">
+                <div class="cert-info">
+                    <div class="cert-title">AWS Certified Cloud Practitioner</div>
+                    <div class="cert-meta">AWS · Jan 2021</div>
+                </div>
+            </div>
+
+            <!-- Google -->
+            <div class="cert-card">
+                <img src="images/Google__G__logo.svg.png" alt="Google Badge">
+                <div class="cert-info">
+                    <div class="cert-title">Technical Support Fundamentals</div>
+                    <div class="cert-meta">Google · May 2020</div>
+                </div>
+            </div>
         </div>
 
         <div class="text-center mt-4">
@@ -1014,93 +1095,43 @@ $(document).ready(function() {
     </div>
 </section>
 
-<!-- Styles -->
 <style>
 /* Section Heading */
-.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
+.section-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
 .title-white { color: #fff; }
 .title-accent { color: #bac964; }
-.section-subtitle {
-    margin-top: 12px;
-    color: rgba(255,255,255,0.55);
-    font-size: 0.9rem;
-}
-.credly-link {
-    color: #bac964;
-    font-weight: 700;
-    text-decoration: none;
-}
+.section-subtitle { margin-top: 12px; color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+.credly-link { color: #bac964; font-weight: 700; text-decoration: none; }
 .credly-link:hover { text-decoration: underline; }
 
 /* Certifications Grid */
-.certifications-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-}
+.certifications-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 .cert-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(186,201,100,0.25);
-    border-radius: 12px;
-    padding: 16px 20px;
-    min-width: 240px;
-    max-width: 340px;
-    flex: 1 1 240px;
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(186,201,100,0.25);
+    border-radius: 12px; padding: 16px 20px;
+    min-width: 240px; max-width: 340px; flex: 1 1 240px;
     transition: transform 0.3s, background 0.3s;
 }
-.cert-card:hover {
-    transform: translateY(-4px);
-    background: rgba(186,201,100,0.08);
-}
+.cert-card:hover { transform: translateY(-4px); background: rgba(186,201,100,0.08); }
 .cert-card img {
-    width: 44px;
-    height: 44px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.08);
-    padding: 4px;
+    width: 44px; height: 44px; object-fit: contain;
+    border-radius: 8px; background: rgba(255,255,255,0.08); padding: 4px;
 }
-.cert-info .cert-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #fff;
-}
-.cert-info .cert-meta {
-    font-size: 0.75rem;
-    color: #bac964;
-    margin-top: 3px;
-}
+.cert-info .cert-title { font-size: 0.9rem; font-weight: 700; color: #fff; }
+.cert-info .cert-meta { font-size: 0.75rem; color: #bac964; margin-top: 3px; }
 
 /* Portfolio Button */
 .portfolio-btn {
-    display: inline-block;
-    background: #bac964;
-    color: #111;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 11px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.3s;
+    display: inline-block; background: #bac964; color: #111; font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 28px; border-radius: 8px;
+    text-decoration: none; transition: background 0.3s;
 }
 .portfolio-btn:hover { background: #d4e070; }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .cert-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+    .cert-card { flex: 1 1 100%; max-width: 100%; }
     .section-title { font-size: 1.6rem; }
     .section-subtitle { font-size: 0.85rem; }
 }
