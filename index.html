@@ -958,36 +958,15 @@ $(document).ready(function() {
 </style>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --gold: #bac964;
-    --gold-light: #d4e070;
-    --gold-dim: rgba(186,201,100,0.18);
-    --gold-border: rgba(186,201,100,0.28);
-    --bg: #0e1012;
-    --surface: rgba(255,255,255,0.035);
-    --surface-hover: rgba(186,201,100,0.07);
-    --text: #ffffff;
-    --text-muted: rgba(255,255,255,0.5);
-    --radius: 14px;
-  }
-
-  body {
-    background: var(--bg);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-  }
-
   /* ── SECTION WRAPPER ─────────────────────────── */
-  .cert-section {
+  #section-certifications.cert-section {
     padding: 100px 24px;
     position: relative;
     overflow: hidden;
   }
 
   /* subtle radial glow behind the heading */
-  .cert-section::before {
+  #section-certifications.cert-section::before {
     content: '';
     position: absolute;
     top: -120px; left: 50%;
@@ -998,57 +977,58 @@ $(document).ready(function() {
   }
 
   /* ── HEADER ──────────────────────────────────── */
-  .cert-header {
+  #section-certifications .cert-header {
     text-align: center;
     margin-bottom: 64px;
     opacity: 0;
     transform: translateY(24px);
-    animation: fadeUp 0.7s ease forwards;
+    animation: certFadeUp 0.7s ease forwards;
   }
 
-  .cert-label {
+  #section-certifications .cert-label {
     display: inline-block;
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid var(--gold-border);
+    color: #bac964;
+    border: 1px solid rgba(186,201,100,0.28);
     border-radius: 100px;
     padding: 5px 16px;
     margin-bottom: 20px;
   }
 
-  .cert-title {
+  #section-certifications .cert-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.6rem, 6vw, 4.4rem);
     line-height: 1;
     letter-spacing: 0.03em;
-    color: var(--text);
+    color: #ffffff;
+    margin: 0;
   }
-  .cert-title span { color: var(--gold); }
+  #section-certifications .cert-title span { color: #bac964; }
 
-  .cert-divider {
+  #section-certifications .cert-divider {
     width: 48px; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, #bac964, transparent);
     margin: 20px auto;
   }
 
-  .cert-subtitle {
+  #section-certifications .cert-subtitle {
     font-size: 0.87rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     margin-top: 4px;
   }
-  .cert-subtitle a {
-    color: var(--gold);
+  #section-certifications .cert-subtitle a {
+    color: #bac964;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
   }
-  .cert-subtitle a:hover { color: var(--gold-light); }
+  #section-certifications .cert-subtitle a:hover { color: #d4e070; }
 
   /* ── GRID ────────────────────────────────────── */
-  .cert-grid {
+  #section-certifications .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
@@ -1057,10 +1037,10 @@ $(document).ready(function() {
   }
 
   /* ── CARD ────────────────────────────────────── */
-  .cert-card {
-    background: var(--surface);
-    border: 1px solid var(--gold-border);
-    border-radius: var(--radius);
+  #section-certifications .cert-card {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(186,201,100,0.28);
+    border-radius: 14px;
     padding: 20px 22px;
     display: flex;
     align-items: center;
@@ -1077,31 +1057,31 @@ $(document).ready(function() {
       box-shadow 0.35s ease;
   }
 
-  .cert-card.visible {
-    animation: fadeUp 0.55s ease forwards;
+  #section-certifications .cert-card.visible {
+    animation: certFadeUp 0.55s ease forwards;
   }
 
   /* shimmer line at top */
-  .cert-card::before {
+  #section-certifications .cert-card::before {
     content: '';
     position: absolute;
     inset: 0 0 auto 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #bac964 50%, transparent 100%);
     opacity: 0;
     transition: opacity 0.35s;
   }
 
-  .cert-card:hover {
-    background: var(--surface-hover);
+  #section-certifications .cert-card:hover {
+    background: rgba(186,201,100,0.07);
     border-color: rgba(186,201,100,0.5);
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(186,201,100,0.08), 0 2px 8px rgba(0,0,0,0.4);
   }
-  .cert-card:hover::before { opacity: 1; }
+  #section-certifications .cert-card:hover::before { opacity: 1; }
 
   /* icon badge */
-  .cert-icon {
+  #section-certifications .cert-icon {
     flex-shrink: 0;
     width: 48px; height: 48px;
     border-radius: 10px;
@@ -1113,60 +1093,59 @@ $(document).ready(function() {
     overflow: hidden;
     transition: background 0.3s;
   }
-  .cert-card:hover .cert-icon {
+  #section-certifications .cert-card:hover .cert-icon {
     background: rgba(186,201,100,0.1);
     border-color: rgba(186,201,100,0.3);
   }
-  .cert-icon img {
+  #section-certifications .cert-icon img {
     width: 32px; height: 32px;
     object-fit: contain;
     filter: brightness(0.9);
     transition: filter 0.3s;
   }
-  .cert-card:hover .cert-icon img { filter: brightness(1.1); }
+  #section-certifications .cert-card:hover .cert-icon img { filter: brightness(1.1); }
 
   /* text */
-  .cert-info { min-width: 0; }
-  .cert-name {
+  #section-certifications .cert-info { min-width: 0; }
+  #section-certifications .cert-name {
     font-size: 0.88rem;
     font-weight: 600;
-    color: var(--text);
+    color: #ffffff;
     line-height: 1.35;
   }
-  .cert-meta {
+  #section-certifications .cert-meta {
     font-size: 0.72rem;
-    color: var(--gold);
+    color: #bac964;
     font-weight: 500;
     margin-top: 5px;
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  .cert-meta::before {
+  #section-certifications .cert-meta::before {
     content: '';
     display: inline-block;
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: var(--gold);
+    background: #bac964;
     flex-shrink: 0;
   }
 
   /* ── CTA ──────────────────────────────────────── */
-  .cert-cta {
+  #section-certifications .cert-cta {
     text-align: center;
     margin-top: 52px;
     opacity: 0;
     transform: translateY(16px);
-    animation: fadeUp 0.6s 0.5s ease forwards;
+    animation: certFadeUp 0.6s 0.5s ease forwards;
   }
 
-  .cert-btn {
+  #section-certifications .cert-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--gold);
+    background: #bac964;
     color: #111;
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -1177,28 +1156,30 @@ $(document).ready(function() {
     transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
     box-shadow: 0 0 0 0 rgba(186,201,100,0.4);
   }
-  .cert-btn:hover {
-    background: var(--gold-light);
+  #section-certifications .cert-btn:hover {
+    background: #d4e070;
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(186,201,100,0.25);
+    color: #111;
+    text-decoration: none;
   }
-  .cert-btn svg {
+  #section-certifications .cert-btn svg {
     width: 14px; height: 14px;
     flex-shrink: 0;
     transition: transform 0.2s;
   }
-  .cert-btn:hover svg { transform: translate(2px,-2px); }
+  #section-certifications .cert-btn:hover svg { transform: translate(2px,-2px); }
 
   /* ── KEYFRAMES ──────────────────────────────── */
-  @keyframes fadeUp {
+  @keyframes certFadeUp {
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* ── RESPONSIVE ─────────────────────────────── */
   @media (max-width: 600px) {
-    .cert-section { padding: 72px 16px; }
-    .cert-grid { grid-template-columns: 1fr; }
-    .cert-card { max-width: 100%; }
+    #section-certifications.cert-section { padding: 72px 16px; }
+    #section-certifications .cert-grid { grid-template-columns: 1fr; }
+    #section-certifications .cert-card { max-width: 100%; }
   }
 </style>
 <section class="cert-section" id="section-certifications">
@@ -2732,7 +2713,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#2e4f4c46475d464b4500404f495c4b4d464f004f406e49434f4742004d4143"><span class="__cf_email__" data-cfemail="e1808389889289848acf8f80869384828980cf808fa1868c80888dcf828e8c">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -2749,7 +2730,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#ee8f8c86879d868b85c0808f899c8b8d868fc08f80ae89838f8782c08d8183" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -2775,7 +2756,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
   </div>
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -2802,10 +2783,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
