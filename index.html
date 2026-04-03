@@ -1363,6 +1363,29 @@ $(document).ready(function() {
 
 </section>
 
+<script>
+  // Staggered scroll-reveal for cards
+  const cards = document.querySelectorAll('.cert-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = parseInt(card.dataset.delay) || 0;
+        setTimeout(() => card.classList.add('visible'), delay);
+        observer.unobserve(card);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Assign staggered delays row-by-row based on grid position
+  cards.forEach((card, i) => {
+    const col = i % 3;  // assumes 3-col desktop grid
+    card.dataset.delay = col * 80;
+    observer.observe(card);
+  });
+</script>
+	
 <section class="site-section" id="section-work">
     <div class="container">
         <div class="row">
