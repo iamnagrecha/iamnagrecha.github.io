@@ -2179,300 +2179,473 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <section class="site-section" id="section-blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-4">
-                <div class="section-heading text-center">
-                    <h2>Blogs on <strong><a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></strong></h2>
-                    <div class="section-divider"></div>
-                </div>
+    <div class="blog-container">
+
+        <!-- Header -->
+        <div class="blog-header">
+            <div class="blog-header-line"></div>
+            <h2 class="blog-title">Blogs on <a href="https://iamnagrecha.medium.com/" target="_blank">Medium</a></h2>
+            <div class="blog-header-line"></div>
+        </div>
+
+        <!-- Desktop: 2-card carousel -->
+        <div class="blog-stage d-none d-md-flex">
+            <button class="blog-arrow" id="blogPrevDesktop" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div id="blogCarouselDesktop" class="blog-track-wrap">
+                <div class="blog-track" id="blogTrackDesktop"></div>
+            </div>
+            <button class="blog-arrow" id="blogNextDesktop" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+
+        <!-- Mobile: 1-card carousel -->
+        <div class="blog-stage-mobile d-flex d-md-none">
+            <div class="blog-track-wrap" style="width:100%">
+                <div class="blog-track" id="blogTrackMobile"></div>
             </div>
         </div>
 
-        <!-- Carousel row: arrow + cards + arrow -->
-        <div class="blog-carousel-row">
-            <!-- Prev button -->
-            <button class="blog-arrow blog-arrow-prev d-none d-md-flex" id="blogPrevDesktop" aria-label="Previous">&#8592;</button>
-
-            <!-- Carousel -->
-            <div id="blogCarousel" class="carousel slide flex-grow-1" data-ride="carousel" data-interval="5000">
-                <div class="carousel-inner" id="blogCarouselInner"></div>
-            </div>
-
-            <!-- Next button -->
-            <button class="blog-arrow blog-arrow-next d-none d-md-flex" id="blogNextDesktop" aria-label="Next">&#8594;</button>
+        <!-- Dots + mobile arrows -->
+        <div class="blog-footer">
+            <button class="blog-arrow-sm d-flex d-md-none" id="blogPrevMobile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="blog-dots" id="blogDots"></div>
+            <button class="blog-arrow-sm d-flex d-md-none" id="blogNextMobile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
         </div>
 
-        <!-- Mobile nav -->
-        <div class="blog-mobile-nav d-flex d-md-none justify-content-center align-items-center mt-3">
-            <button class="blog-nav-btn" id="blogPrevMobile" aria-label="Previous">&#8592;</button>
-            <span class="blog-nav-counter" id="blogCounter">1 / 1</span>
-            <button class="blog-nav-btn" id="blogNextMobile" aria-label="Next">&#8594;</button>
-        </div>
     </div>
 </section>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha&timestamp=" + new Date().getTime();
+    const URL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha&timestamp=" + Date.now();
 
-    function stripHtml(html) {
-        const tmp = document.createElement('div');
-        tmp.innerHTML = html;
-        return tmp.textContent || tmp.innerText || '';
+    function strip(html) {
+        const d = document.createElement('div');
+        d.innerHTML = html;
+        return d.textContent || d.innerText || '';
     }
 
     function isMobile() { return window.innerWidth < 768; }
 
-    function updateCounter(total) {
-        const activeIndex = $('#blogCarousel .carousel-item.active').index() + 1;
-        const el = document.getElementById('blogCounter');
-        if (el) el.textContent = activeIndex + ' / ' + total;
+    let blogs = [];
+    let currentSlide = 0;
+
+    function totalSlides() {
+        return isMobile() ? blogs.length : Math.ceil(blogs.length / 2);
     }
 
-    function buildCarousel(blogs) {
-        const mobile = isMobile();
-        const chunkSize = mobile ? 1 : 2;
-        let blogHTML = '';
-        let totalSlides = 0;
-
-        for (let i = 0; i < blogs.length; i += chunkSize) {
-            const isActive = i === 0 ? 'active' : '';
-            const chunk = blogs.slice(i, i + chunkSize);
-            totalSlides++;
-
-            let cardsHTML = chunk.map(blog => {
-                let plainDesc = stripHtml(blog.description);
-                if (plainDesc.length > 130) plainDesc = plainDesc.substring(0, 130) + "...";
-
-                return `
-                    <div class="${mobile ? 'col-12' : 'col-md-6'} mb-3">
-                        <div class="blog-entry">
-                            ${blog.thumbnail
-                                ? `<div class="blog-img-wrap"><img src="${blog.thumbnail}" alt="${blog.title}" class="blog-img" onerror="this.parentElement.style.display='none'"></div>`
-                                : ''}
-                            <div class="blog-entry-content">
-                                <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                                <p class="blog-description">${plainDesc}</p>
-                                <a href="${blog.link}" target="_blank" class="read-more">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            blogHTML += `
-                <div class="carousel-item ${isActive}">
-                    <div class="row mx-0">${cardsHTML}</div>
+    function cardHTML(blog) {
+        const desc = strip(blog.description).substring(0, 110) + '...';
+        const date = blog.pubDate ? new Date(blog.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : '';
+        return `
+            <div class="blog-card">
+                ${blog.thumbnail ? `<div class="blog-card-img"><img src="${blog.thumbnail}" alt="" onerror="this.parentElement.style.display='none'"></div>` : ''}
+                <div class="blog-card-body">
+                    ${date ? `<span class="blog-date">${date}</span>` : ''}
+                    <h3 class="blog-card-title"><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                    <p class="blog-card-desc">${desc}</p>
+                    <a href="${blog.link}" target="_blank" class="blog-read-more">
+                        Read article
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
                 </div>
-            `;
+            </div>
+        `;
+    }
+
+    function render() {
+        const mobile = isMobile();
+        const track = document.getElementById(mobile ? 'blogTrackMobile' : 'blogTrackDesktop');
+        if (!track) return;
+
+        // Clamp slide index
+        const max = totalSlides() - 1;
+        if (currentSlide > max) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = max;
+
+        // Build slides
+        let html = '';
+        if (mobile) {
+            blogs.forEach(blog => { html += `<div class="blog-slide">${cardHTML(blog)}</div>`; });
+        } else {
+            for (let i = 0; i < blogs.length; i += 2) {
+                const pair = blogs.slice(i, i + 2);
+                html += `<div class="blog-slide">${pair.map(cardHTML).join('')}</div>`;
+            }
         }
+        track.innerHTML = html;
 
-        document.getElementById("blogCarouselInner").innerHTML = blogHTML;
+        // Slide to currentSlide
+        goTo(currentSlide, false);
 
-        $('#blogCarousel').carousel({ interval: 5000, wrap: true, ride: 'carousel' });
+        // Dots
+        buildDots();
+    }
 
-        updateCounter(totalSlides);
+    function goTo(idx, animate = true) {
+        const mobile = isMobile();
+        const track = document.getElementById(mobile ? 'blogTrackMobile' : 'blogTrackDesktop');
+        if (!track) return;
+        const max = totalSlides() - 1;
+        if (idx > max) idx = 0;
+        if (idx < 0) idx = max;
+        currentSlide = idx;
+        track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    }
 
-        $('#blogCarousel').off('slid.bs.carousel').on('slid.bs.carousel', function () {
-            updateCounter(totalSlides);
-        });
+    function buildDots() {
+        const dots = document.getElementById('blogDots');
+        dots.innerHTML = '';
+        for (let i = 0; i < totalSlides(); i++) {
+            const d = document.createElement('button');
+            d.className = 'blog-dot' + (i === currentSlide ? ' active' : '');
+            d.setAttribute('aria-label', 'Slide ' + (i + 1));
+            d.onclick = () => goTo(i);
+            dots.appendChild(d);
+        }
+    }
 
-        // Wire up all nav buttons
-        ['blogPrevDesktop', 'blogPrevMobile'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.onclick = () => $('#blogCarousel').carousel('prev');
-        });
-        ['blogNextDesktop', 'blogNextMobile'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.onclick = () => $('#blogCarousel').carousel('next');
+    function updateDots() {
+        document.querySelectorAll('.blog-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === currentSlide);
         });
     }
 
-    fetch(mediumFeedUrl)
+    // Nav wiring
+    document.getElementById('blogPrevDesktop').onclick = () => goTo(currentSlide - 1);
+    document.getElementById('blogNextDesktop').onclick = () => goTo(currentSlide + 1);
+    document.getElementById('blogPrevMobile').onclick = () => goTo(currentSlide - 1);
+    document.getElementById('blogNextMobile').onclick = () => goTo(currentSlide + 1);
+
+    // Auto-play
+    let timer = setInterval(() => goTo(currentSlide + 1), 5000);
+    document.getElementById('section-blog').addEventListener('mouseenter', () => clearInterval(timer));
+    document.getElementById('section-blog').addEventListener('mouseleave', () => {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(currentSlide + 1), 5000);
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    document.getElementById('section-blog').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    document.getElementById('section-blog').addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(currentSlide + (diff > 0 ? 1 : -1));
+    });
+
+    // Resize
+    let rTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(rTimer);
+        rTimer = setTimeout(() => { currentSlide = 0; render(); }, 300);
+    });
+
+    // Fetch
+    fetch(URL)
         .then(r => r.json())
         .then(data => {
-            const blogs = data.items.slice(0, 12);
-            buildCarousel(blogs);
-
-            let resizeTimer;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => buildCarousel(blogs), 300);
-            });
+            blogs = data.items.slice(0, 12);
+            render();
         })
-        .catch(err => console.error("Error fetching Medium RSS:", err));
+        .catch(err => console.error(err));
 });
 </script>
 
 <style>
-body {
-    background-color: #121212;
-    color: #fff;
+/* ── Fonts ── */
+#section-blog, #section-blog * {
+    box-sizing: border-box;
 }
 
-/* ── Heading ── */
-#section-blog .section-heading h2 { color: #fff; }
+/* ── Container ── */
+.blog-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+}
 
-#section-blog .section-heading h2 a {
+/* ── Header ── */
+.blog-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 48px;
+    justify-content: center;
+}
+
+.blog-header-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333);
+    max-width: 120px;
+}
+.blog-header-line:last-child {
+    background: linear-gradient(to left, transparent, #333);
+}
+
+.blog-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.blog-title a {
     color: #bac964;
     text-decoration: none;
+    position: relative;
 }
-#section-blog .section-heading h2 a:hover {
-    color: #bac964;
-    text-decoration: underline;
-}
-
-/* ── Carousel row layout ── */
-.blog-carousel-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* ── Desktop arrow buttons ── */
-.blog-arrow {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1.5px solid #bac964;
-    background: transparent;
-    color: #bac964;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, color 0.2s ease;
-    line-height: 1;
-}
-.blog-arrow:hover {
+.blog-title a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
     background: #bac964;
-    color: #121212;
+    transition: width 0.3s ease;
+}
+.blog-title a:hover::after { width: 100%; }
+
+/* ── Stage ── */
+.blog-stage {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.blog-stage-mobile {
+    width: 100%;
+}
+
+.blog-track-wrap {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.blog-track {
+    display: flex;
+    will-change: transform;
+}
+
+/* ── Slide ── */
+.blog-slide {
+    min-width: 100%;
+    display: flex;
+    gap: 16px;
+    padding: 4px;
 }
 
 /* ── Card ── */
-.blog-entry {
-    background: #1e1e1e;
-    border: 1.5px solid #bac964;
-    border-radius: 10px;
+.blog-card {
+    flex: 1;
+    background: #181818;
+    border-radius: 12px;
+    border: 1px solid #252525;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.25s ease, transform 0.2s ease;
-}
-.blog-entry:hover {
-    border-color: #d4e47a;
-    transform: translateY(-3px);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-/* ── Image ── */
-.blog-img-wrap {
+.blog-card:hover {
+    border-color: #bac964;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(186, 201, 100, 0.08);
+}
+
+/* ── Card image ── */
+.blog-card-img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     overflow: hidden;
     flex-shrink: 0;
+    position: relative;
 }
-.blog-img {
+
+.blog-card-img img {
     width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+    filter: brightness(0.85);
 }
 
-/* ── Content ── */
-.blog-entry-content {
-    padding: 12px 14px 14px;
+.blog-card:hover .blog-card-img img {
+    transform: scale(1.04);
+    filter: brightness(1);
+}
+
+/* ── Card body ── */
+.blog-card-body {
+    padding: 18px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    flex: 1;
 }
 
-.blog-entry h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
+/* ── Date ── */
+.blog-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #bac964;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* ── Title ── */
+.blog-card-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #f0f0f0;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.45;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.blog-entry h3 a {
-    color: #fff;
+
+.blog-card-title a {
+    color: inherit;
     text-decoration: none;
     transition: color 0.2s;
 }
-.blog-entry h3 a:hover { color: #bac964; }
+.blog-card-title a:hover { color: #bac964; }
 
-.blog-description {
-    font-size: 12px;
-    color: #999;
+/* ── Description ── */
+.blog-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #777;
+    line-height: 1.65;
     margin: 0;
-    line-height: 1.55;
+    flex: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.read-more {
+/* ── Read more ── */
+.blog-read-more {
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     color: #bac964;
     text-decoration: none;
-    display: inline-block;
-    margin-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+    transition: gap 0.2s ease;
 }
-.read-more:hover { text-decoration: underline; }
+.blog-read-more:hover { gap: 8px; }
 
-/* ── Carousel ── */
-.carousel-inner { padding: 4px 0 8px; }
-
-/* ── Mobile nav ── */
-.blog-mobile-nav { gap: 16px; padding-bottom: 12px; }
-
-.blog-nav-btn {
-    background: transparent;
-    border: 1.5px solid #bac964;
-    color: #bac964;
-    border-radius: 50%;
+/* ── Arrow buttons ── */
+.blog-arrow {
+    flex-shrink: 0;
     width: 40px;
     height: 40px;
-    font-size: 18px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: #181818;
+    color: #888;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
-.blog-nav-btn:hover, .blog-nav-btn:active {
-    background: #bac964;
-    color: #121212;
+.blog-arrow:hover {
+    border-color: #bac964;
+    color: #bac964;
+    background: rgba(186, 201, 100, 0.06);
 }
 
-.blog-nav-counter {
-    font-size: 13px;
-    color: #aaa;
-    min-width: 40px;
-    text-align: center;
+/* ── Footer (dots + mobile arrows) ── */
+.blog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.blog-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.blog-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #333;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s, width 0.3s;
+}
+
+.blog-dot.active {
+    background: #bac964;
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* ── Mobile arrow small ── */
+.blog-arrow-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: #181818;
+    color: #888;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+.blog-arrow-sm:hover, .blog-arrow-sm:active {
+    border-color: #bac964;
+    color: #bac964;
 }
 
 /* ── Mobile tweaks ── */
 @media (max-width: 767px) {
-    .blog-img-wrap, .blog-img { height: 170px; }
-    .blog-entry-content { padding: 12px 14px 14px; }
-    .blog-entry h3 { font-size: 15px; }
-    .blog-description { font-size: 13px; -webkit-line-clamp: 3; }
-    .read-more { font-size: 13px; }
-    .carousel-inner { padding: 4px 4px 8px; }
-    #blogCarousel .col-12 { padding-left: 6px; padding-right: 6px; }
+    .blog-container { padding: 40px 16px 32px; }
+    .blog-header { margin-bottom: 32px; }
+    .blog-header-line { max-width: 60px; }
+    .blog-card-img { height: 180px; }
+    .blog-card-body { padding: 14px 16px 16px; }
+    .blog-card-title { font-size: 17px; }
+    .blog-card-desc { font-size: 13px; -webkit-line-clamp: 3; }
+    .blog-slide { padding: 2px; }
 }
 </style>
 
