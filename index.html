@@ -2213,163 +2213,186 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha" + "&timestamp=" + new Date().getTime();
+document.addEventListener("DOMContentLoaded", function () {
+    const mediumFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha" + "&timestamp=" + new Date().getTime();
+
+    function stripHtml(html) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
+    }
 
     fetch(mediumFeedUrl)
-    .then(response => response.json())
-    .then(data => {
-        let blogs = data.items.slice(0, 12); // Fetch latest 12 blogs
-        let blogHTML = '';
-        
-        blogs.forEach((blog, index) => {
-            let descriptionPreview = blog.description;
-            let readMoreLink = `<a href="${blog.link}" target="_blank" class="read-more">Read More</a>`;
-            
-            // Limit the description to the first 800 characters for preview
-            if (descriptionPreview.length > 800) {
-                descriptionPreview = descriptionPreview.substring(0, 800) + "...";
-            }
-            
-            blogHTML += `
-                <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-12 col-md-6 mb-4">
-                            <div class="blog-entry">
-                                <div class="blog-entry-content">
-                                    <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
-                                    <p class="blog-description">${descriptionPreview} ${readMoreLink}</p>
-                                    ${blog.thumbnail ? `<img src="${blog.thumbnail}" alt="${blog.title}" class="img-fluid blog-img">` : ""}
+        .then(response => response.json())
+        .then(data => {
+            let blogs = data.items.slice(0, 12);
+            let blogHTML = '';
+
+            blogs.forEach((blog, index) => {
+                let plainDesc = stripHtml(blog.description);
+                if (plainDesc.length > 120) {
+                    plainDesc = plainDesc.substring(0, 120) + "...";
+                }
+
+                blogHTML += `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-12 col-md-5 mb-4">
+                                <div class="blog-entry">
+                                    ${blog.thumbnail
+                                        ? `<div class="blog-img-wrap"><img src="${blog.thumbnail}" alt="${blog.title}" class="blog-img" onerror="this.parentElement.style.display='none'"></div>`
+                                        : ''}
+                                    <div class="blog-entry-content">
+                                        <h3><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                                        <p class="blog-description">${plainDesc}</p>
+                                        <a href="${blog.link}" target="_blank" class="read-more">Read More →</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
-        });
+                `;
+            });
 
-        document.getElementById("blogCarouselInner").innerHTML = blogHTML;
+            document.getElementById("blogCarouselInner").innerHTML = blogHTML;
 
-        // Reinitialize the carousel to avoid looping issues
-        $('#blogCarousel').carousel({
-            interval: 5000,
-            wrap: true, // Ensures the carousel loops properly
-            ride: 'carousel' // Ensures smooth transition when cycling through items
-        });
+            $('#blogCarousel').carousel({
+                interval: 5000,
+                wrap: true,
+                ride: 'carousel'
+            });
 
-        // Fix the carousel behavior after reaching the last item
-        $('#blogCarousel').on('slid.bs.carousel', function (e) {
-            const totalItems = $('#blogCarousel .carousel-item').length;
-            const activeIndex = $('#blogCarousel .carousel-item.active').index();
-            if (activeIndex === totalItems - 1) {
-                // Reset the carousel to the first item to loop smoothly
-                $('#blogCarousel').carousel(0);
-            }
-        });
-
-    })
-    .catch(error => console.error("Error fetching Medium RSS:", error));
+            $('#blogCarousel').on('slid.bs.carousel', function (e) {
+                const totalItems = $('#blogCarousel .carousel-item').length;
+                const activeIndex = $('#blogCarousel .carousel-item.active').index();
+                if (activeIndex === totalItems - 1) {
+                    $('#blogCarousel').carousel(0);
+                }
+            });
+        })
+        .catch(error => console.error("Error fetching Medium RSS:", error));
 });
 </script>
 
 <style>
 body {
-    background-color: #121212; /* Dark background for the website */
-    color: #fff; /* White text color for contrast */
+    background-color: #121212;
+    color: #fff;
 }
 
+/* Section heading */
+#section-blog .section-heading h2 {
+    color: #fff;
+}
+
+#section-blog .section-heading h2 a {
+    color: #feb47b;
+    text-decoration: none;
+}
+
+#section-blog .section-heading h2 a:hover {
+    text-decoration: underline;
+}
+
+/* Blog card */
 .blog-entry {
-    background: #1e1e1e; /* Dark background for the blog entry */
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    height: auto; /* Remove fixed height to allow flexibility */
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden; /* Prevent overflow of long content */
-    margin-bottom: 20px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
 .blog-entry:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    border-color: #feb47b;
+    transform: translateY(-3px);
+}
+
+/* Image */
+.blog-img-wrap {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.blog-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content */
+.blog-entry-content {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .blog-entry h3 {
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 600;
     color: #fff;
-    margin-bottom: 10px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .blog-entry h3 a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .blog-entry h3 a:hover {
-    color: #feb47b; /* Change text color on hover */
+    color: #feb47b;
 }
 
-.blog-entry p {
-    font-size: 14px;
-    color: #f1f1f1;
-    margin-top: 10px;
-    font-weight: 400;
-    text-align: justify;
-    height: 80px; /* Set a height for the description to prevent overflow */
-    overflow: hidden; /* Hide the overflowed text */
-    text-overflow: ellipsis; /* Show ellipsis when text is too long */
+.blog-description {
+    font-size: 13px;
+    color: #aaa;
+    margin: 0;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.blog-entry .read-more {
-    font-weight: bold;
+.read-more {
+    font-size: 12px;
+    font-weight: 600;
     color: #feb47b;
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 2px;
     display: inline-block;
 }
 
-.blog-entry .read-more:hover {
+.read-more:hover {
     text-decoration: underline;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: #feb47b; /* Custom arrow color */
+/* Carousel controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #feb47b;
     border-radius: 50%;
 }
 
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
     filter: brightness(1.5);
 }
 
-.blog-entry-content {
-    padding: 10px;
-}
-
-.blog-entry img {
-    max-width: 100%; /* Ensure image fits the width */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;
-    object-fit: cover;
-    max-height: 200px; /* Set a fixed height for the image */
-    margin-top: 10px; /* Space between text and image */
-}
-
 .carousel-inner {
-    padding: 20px 0;
-}
-
-.blog-entry img {
-    object-fit: cover;
-    height: 200px; /* Set a fixed height for all images */
-    width: 100%; /* Make images responsive */
-    border-radius: 8px; /* Rounded corners for the image */
+    padding: 10px 0 20px;
 }
 </style>
 
