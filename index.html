@@ -2622,257 +2622,390 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <section id="section-testimonials">
-  <div class="container">
-    <!-- Heading -->
-    <div class="row mb-5">
-      <div class="col text-center">
-        <div class="section-heading">
-          <h2 class="text-white">What Others <span style="color: #bac964;">Say</span></h2>
-          <div class="section-divider"></div>
+    <div class="container">
+
+        <div class="row mb-5">
+            <div class="col text-center">
+                <div class="section-heading">
+                    <h2 class="text-white">What Others <span style="color:#bac964;">Say</span></h2>
+                    <div class="section-divider"></div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="testi-stage">
+            <div class="testi-track-wrap">
+                <div class="testi-track" id="testiTrack">
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text"><span class="hl">Abhishek is a detail-oriented Consultant</span> who works diligently to fully comprehend the client's requirements and align them with solution capabilities. He approaches everything with positivity and creates a strong virtual team environment. Any team would be lucky to have him.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">MC</div>
+                                <div>
+                                    <div class="testi-name">Michel Caluori</div>
+                                    <div class="testi-role">Director, Professional Services – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text">I have worked on a <span class="hl">large challenging project</span> with Abhishek and he demonstrated <span class="hl">dedication and patience in tackling difficult issues</span>. He takes initiative and completes tasks diligently.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">NM</div>
+                                <div>
+                                    <div class="testi-name">Nino Marshania</div>
+                                    <div class="testi-role">Senior Project Manager – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text">Abhishek and I worked together on multiple projects. He was always <span class="hl">dedicated to completing tasks on time and with high quality</span>, and <span class="hl">supported team collaboration effectively</span>.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">ML</div>
+                                <div>
+                                    <div class="testi-name">Marius Lihet</div>
+                                    <div class="testi-role">Project Manager – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text">Working alongside Abhishek has been effortless. He <span class="hl">understands problems deeply</span> and <span class="hl">builds trust with clients</span>. His <span class="hl">technical skills and consulting mindset</span> make him a key contributor on any engagement.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">LG</div>
+                                <div>
+                                    <div class="testi-name">Luis Guzman</div>
+                                    <div class="testi-role">Project Manager – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text">During his MSc research at Lakehead University, <span class="hl">Abhishek demonstrated leadership and strong machine learning expertise</span>. He contributed significantly to deep learning research and coauthored academic work with professionalism.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">TO</div>
+                                <div>
+                                    <div class="testi-name">Thiago Eustaquio Alves de Oliveira</div>
+                                    <div class="testi-role">Associate Professor – Lakehead University</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text"><span class="hl">Abhishek has been a driving force in client engagement</span>, delivering high-level data analytic solutions while <span class="hl">managing strict timelines effectively</span>.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">JB</div>
+                                <div>
+                                    <div class="testi-name">Joel Borch</div>
+                                    <div class="testi-role">AML Senior Project Manager – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <div class="testi-quote">"</div>
+                            <p class="testi-text"><span class="hl">Abhishek is a highly proficient Data Analytic Specialist</span>. He consistently delivers accurate analysis and is a dependable, collaborative team player.</p>
+                            <div class="testi-person">
+                                <div class="testi-avatar">AD</div>
+                                <div>
+                                    <div class="testi-name">Andrae Duhaney</div>
+                                    <div class="testi-role">Director of Product Management – Alessa Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav: arrows + dots -->
+        <div class="testi-nav mt-4">
+            <button class="testi-arrow" id="testiPrev" aria-label="Previous">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="testi-dots" id="testiDots"></div>
+            <button class="testi-arrow" id="testiNext" aria-label="Next">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+
     </div>
-
-    <!-- Slider -->
-    <div class="testimonial-slider">
-
-      <!-- Slide 1 -->
-      <div class="testimonial-slide active">
-        <div class="quote-icon">“</div>
-              <p class="testimonial-text">
-                <span class="highlight">Abhishek is a detail-oriented Consultant</span> who works diligently to fully comprehend the client's requirements and align them with solution capabilities. He approaches everything with positivity and creates a strong virtual team environment. Any team would be lucky to have him.
-              </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Michel Caluori">
-        <div class="testimonial-author">Michel Caluori</div>
-        <div class="testimonial-role">Director, Professional Services – Alessa Inc.</div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-              <p class="testimonial-text">
-                I have worked on a <span class="highlight">large challenging project</span> with Abhishek and he demonstrated <span class="highlight">dedication and patience in tackling difficult issues</span>. He takes initiative and completes tasks diligently.
-              </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Nino Marshania">
-        <div class="testimonial-author">Nino Marshania</div>
-        <div class="testimonial-role">Senior Project Manager – Alessa Inc.</div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-              <p class="testimonial-text">
-                Abhishek and I worked together on multiple projects. He was always <span class="highlight">dedicated to completing tasks on time and with high quality</span>, and <span class="highlight">supported team collaboration effectively</span>.
-              </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Marius Lihet">
-        <div class="testimonial-author">Marius Lihet</div>
-        <div class="testimonial-role">Project Manager – Alessa Inc.</div>
-      </div>
-
-      <!-- Slide 4 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-              <p class="testimonial-text">
-                Working alongside Abhishek has been effortless. He <span class="highlight">understands problems deeply</span> and <span class="highlight">builds trust with clients</span>. His <span class="highlight">technical skills and consulting mindset</span> make him a key contributor on any engagement.
-              </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Luis Guzman">
-        <div class="testimonial-author">Luis Guzman</div>
-        <div class="testimonial-role">Project Manager – Alessa Inc.</div>
-      </div>
-
-      <!-- Slide 5 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-              <p class="testimonial-text">
-                During his MSc research at Lakehead University, <span class="highlight">Abhishek demonstrated leadership and strong machine learning expertise</span>. He contributed significantly to deep learning research and coauthored academic work with professionalism.
-              </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Thiago Eustaquio Alves de Oliveira">
-        <div class="testimonial-author">Thiago Eustaquio Alves de Oliveira</div>
-        <div class="testimonial-role">Associate Professor – Lakehead University</div>
-      </div>
-
-      <!-- Slide 6 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-		  <p class="testimonial-text">
-			<span class="highlight">Abhishek has been a driving force in client engagement</span>, delivering high-level data analytic solutions while <span class="highlight">managing strict timelines effectively</span>.
-		  </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Joel Borch">
-        <div class="testimonial-author">Joel Borch</div>
-        <div class="testimonial-role">AML Senior Project Manager – Alessa Inc.</div>
-      </div>
-
-      <!-- Slide 7 -->
-      <div class="testimonial-slide">
-        <div class="quote-icon">“</div>
-		  <p class="testimonial-text">
-			<span class="highlight">Abhishek is a highly proficient Data Analytic Specialist</span>. He consistently delivers accurate analysis and is a dependable, collaborative team player.
-		  </p>
-        <img class="testimonial-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="Andrae Duhaney">
-        <div class="testimonial-author">Andrae Duhaney</div>
-        <div class="testimonial-role">Director of Product Management – Alessa Inc.</div>
-      </div>
-
-    </div>
-
-    <!-- Slider dots -->
-    <div class="slider-controls mt-4">
-      <span class="control-dot active" data-slide="0"></span>
-      <span class="control-dot" data-slide="1"></span>
-      <span class="control-dot" data-slide="2"></span>
-      <span class="control-dot" data-slide="3"></span>
-      <span class="control-dot" data-slide="4"></span>
-      <span class="control-dot" data-slide="5"></span>
-      <span class="control-dot" data-slide="6"></span>
-    </div>
-
-  </div>
 </section>
-	
-<script>
-const slides = document.querySelectorAll('.testimonial-slide');
-const dots = document.querySelectorAll('.control-dot');
-let current = 0;
 
-// Function to show a slide
-function showSlide(index) {
-    slides.forEach((slide,i) => {
-        slide.classList.remove('active');
-        dots[i].classList.remove('active');
-        if(i===index){
-            slide.classList.add('active');
-            dots[i].classList.add('active');
-        }
-    });
-}
-
-// Auto slide every 8 seconds
-setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-}, 8000);
-
-// Click on dots
-dots.forEach(dot => {
-    dot.addEventListener('click', e => {
-        current = parseInt(dot.getAttribute('data-slide'));
-        showSlide(current);
-    });
-});
-</script>
-
-<!-- Optional JS: fade-in on scroll -->
-<script>
-const cards = document.querySelectorAll('.testimonial-card');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('fade-in');
-        }
-    });
-},{ threshold: 0.2 });
-
-cards.forEach(card => observer.observe(card));
-</script>
-
-
-<!-- Include Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+(function () {
+    const track = document.getElementById('testiTrack');
+    const slides = track.querySelectorAll('.testi-slide');
+    const dotsWrap = document.getElementById('testiDots');
+    const total = slides.length;
+    let current = 0;
+    let timer;
+
+    // Build dots
+    slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+    });
+
+    function goTo(idx) {
+        if (idx >= total) idx = 0;
+        if (idx < 0) idx = total - 1;
+        current = idx;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsWrap.querySelectorAll('.testi-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 8000);
+    }
+
+    document.getElementById('testiPrev').addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    document.getElementById('testiNext').addEventListener('click', () => { goTo(current + 1); startTimer(); });
+
+    // Pause on hover
+    const section = document.getElementById('section-testimonials');
+    section.addEventListener('mouseenter', () => clearInterval(timer));
+    section.addEventListener('mouseleave', startTimer);
+
+    // Touch swipe
+    let tx = 0;
+    track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+        const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); startTimer(); }
+    });
+
+    startTimer();
+})();
+</script>
 
 <style>
-#section-contact { padding: 90px 0 0; }
+#section-testimonials {
+    padding: 60px 0;
+}
 
-.connect-email-bar {
-  display: flex; align-items: center; justify-content: center;
-  gap: 10px; margin-bottom: 48px;
-  flex-wrap: wrap; text-align: center;
+.testi-stage {
+    position: relative;
+    overflow: hidden;
+    padding: 0 4px;
 }
-.connect-email-bar a {
-  color: #bac964; font-size: 1rem; font-weight: 600;
-  text-decoration: none; letter-spacing: 0.02em;
-  word-break: break-all;
-}
-.connect-email-bar a:hover { text-decoration: underline; color: #d4e070; }
-.connect-email-bar i { color: #bac964; font-size: 1.1rem; flex-shrink: 0; }
 
-.connect-social-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px; margin-bottom: 56px;
+.testi-track-wrap {
+    overflow: hidden;
+    border-radius: 16px;
 }
+
+.testi-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.testi-slide {
+    min-width: 100%;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+/* Card */
+.testi-card {
+    background: #181818;
+    border: 1px solid #252525;
+    border-radius: 16px;
+    padding: 36px 40px 32px;
+    position: relative;
+    transition: border-color 0.3s ease;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.testi-card:hover {
+    border-color: rgba(186, 201, 100, 0.35);
+}
+
+/* Big quote mark */
+.testi-quote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 80px;
+    line-height: 0.6;
+    color: #bac964;
+    opacity: 0.35;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+/* Text */
+.testi-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #c8c8c8;
+    margin: 0 0 28px;
+    font-style: italic;
+}
+
+.hl {
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Person row */
+.testi-person {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-top: 1px solid #252525;
+    padding-top: 20px;
+}
+
+/* Avatar initials */
+.testi-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(186, 201, 100, 0.12);
+    border: 1.5px solid rgba(186, 201, 100, 0.3);
+    color: #bac964;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+.testi-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.testi-role {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Nav row */
+.testi-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* Arrow buttons */
+.testi-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: #181818;
+    color: #777;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+.testi-arrow:hover {
+    border-color: #bac964;
+    color: #bac964;
+    background: rgba(186, 201, 100, 0.06);
+}
+
+/* Dots */
+.testi-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.testi-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: #333;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s, width 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.testi-dot.active {
+    background: #bac964;
+    width: 22px;
+}
+
+/* Mobile */
 @media (max-width: 767px) {
-  .connect-social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-}
-@media (max-width: 400px) {
-  .connect-social-grid { grid-template-columns: 1fr; }
-}
-.connect-social-card {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  padding: 15px 16px;
-  border: 1px solid rgba(186,201,100,0.25);
-  border-radius: 12px;
-  background: rgba(186,201,100,0.04);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.03em;
-  text-decoration: none;
-  transition: all 0.22s ease;
-  text-align: center;
-}
-.connect-social-card i { font-size: 1.2rem; color: #bac964; width: 20px; text-align: center; flex-shrink: 0; }
-.connect-social-card .x-icon {
-  font-style: normal; font-weight: 800; font-size: 1.1rem;
-  color: #bac964; width: 20px; text-align: center; flex-shrink: 0;
-}
-.connect-social-card:hover {
-  background: rgba(186,201,100,0.12); border-color: #bac964;
-  color: #fff; transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(186,201,100,0.12);
-  text-decoration: none;
-}
+    #section-testimonials { padding: 40px 0; }
 
-.connect-divider {
-  width: 100%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(186,201,100,0.2), transparent);
-  margin-bottom: 48px;
-}
+    .testi-card {
+        padding: 24px 20px 22px;
+        border-radius: 12px;
+    }
 
-.connect-form-wrap { max-width: 600px; margin: 0 auto; }
-.connect-form-wrap h3 {
-  font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.4);
-  text-transform: uppercase; letter-spacing: 0.18em;
-  margin-bottom: 24px; text-align: center;
-}
-.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.cf-row.full { grid-template-columns: 1fr; }
-@media (max-width: 575px) { .cf-row { grid-template-columns: 1fr; } }
-.cf-input {
-  width: 100%; background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
-  padding: 13px 16px; color: #fff; font-size: 0.9rem;
-  outline: none; transition: border-color 0.2s, background 0.2s;
-  caret-color: #bac964;
-}
-.cf-input::placeholder { color: rgba(255,255,255,0.3); }
-.cf-input:focus { border-color: #bac964; background: rgba(186,201,100,0.07); }
-textarea.cf-input { resize: vertical; min-height: 120px; }
-.cf-submit {
-  display: block; width: 100%; margin-top: 18px; padding: 14px;
-  background: #bac964; color: #111; border: none; border-radius: 8px;
-  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.cf-submit:hover { background: #d4e070; transform: translateY(-2px); }
+    .testi-quote {
+        font-size: 60px;
+        margin-bottom: 14px;
+    }
 
-.connect-footer {
-  margin-top: 72px; padding: 22px 0;
-  border-top: 1px solid rgba(186,201,100,0.1);
-  text-align: center; color: rgba(255,255,255,0.28);
-  font-size: 0.78rem; letter-spacing: 0.06em;
+    .testi-text {
+        font-size: 14px;
+        line-height: 1.75;
+        margin-bottom: 20px;
+    }
+
+    .testi-person {
+        gap: 12px;
+        padding-top: 16px;
+    }
+
+    .testi-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 12px;
+    }
+
+    .testi-name { font-size: 13px; }
+    .testi-role { font-size: 11px; }
 }
 </style>
+
 
 <section class="site-section" id="section-contact">
   <div class="container">
