@@ -600,14 +600,31 @@ function triggerFilter(el, section) {
 })();
 </script>
 
+<!-- ===================== ABOUT SECTION CSS ===================== -->
+<style>
+@keyframes aboutFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.about-anim {
+  opacity: 0;
+  animation: aboutFadeUp 0.55s ease forwards;
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-anim { opacity: 1 !important; animation: none !important; }
+}
+</style>
+
+<!-- ===================== ABOUT SECTION HTML ===================== -->
 <section class="site-section" id="section-about">
   <div class="container">
 
-    <!-- Section Heading -->
+    <!-- Heading -->
     <div class="row mb-5">
       <div class="col text-center">
-        <div class="section-heading mb-4">
-          <h2>About <span style="color: #bac964;">Me</span></h2>
+        <div class="section-heading mb-4 about-anim" data-delay="0">
+          <h2>About <span style="color:#bac964;">Me</span></h2>
           <div class="section-divider"></div>
         </div>
       </div>
@@ -616,9 +633,10 @@ function triggerFilter(el, section) {
     <!-- Lead -->
     <div class="row mb-4">
       <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-        <p style="font-size: clamp(1rem, 2.5vw, 1.15rem); line-height: 1.75; margin-bottom: 0;">
+        <p class="about-anim" data-delay="150"
+           style="font-size:clamp(1rem,2.5vw,1.15rem);line-height:1.8;margin-bottom:0;">
           I help financial institutions
-          <strong style="color: #bac964;">detect, prevent, and report financial crime</strong>
+          <strong style="color:#bac964;">detect, prevent, and report financial crime</strong>
           &mdash; using data, automation, and deep AML expertise.
         </p>
       </div>
@@ -627,41 +645,38 @@ function triggerFilter(el, section) {
     <!-- Stat Cards -->
     <div class="row justify-content-center mb-4 mt-4">
       <div class="col-12 col-md-10 col-lg-8">
-        <div style="
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: clamp(8px, 2vw, 14px);
-        ">
-          <div style="
-            background: rgba(255,255,255,0.05);
-            border: 0.5px solid rgba(186,201,100,0.3);
-            border-radius: 12px;
-            padding: clamp(12px, 3vw, 20px) 8px;
-            text-align: center;
-          ">
-            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">5+</div>
-            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Years designing<br>AML solutions</div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,14px);">
+
+          <div class="about-anim" data-delay="300" style="
+            background:rgba(186,201,100,0.07);
+            border:0.5px solid rgba(186,201,100,0.3);
+            border-radius:12px;
+            padding:clamp(12px,3vw,20px) 8px;
+            text-align:center;">
+            <div id="about-c1" style="font-size:clamp(1.5rem,4vw,2.2rem);font-weight:500;color:#bac964;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums;">1</div>
+            <div style="font-size:clamp(0.7rem,1.8vw,0.82rem);color:rgba(255,255,255,0.5);line-height:1.45;">Years designing<br>AML solutions</div>
           </div>
-          <div style="
-            background: rgba(255,255,255,0.05);
-            border: 0.5px solid rgba(186,201,100,0.3);
-            border-radius: 12px;
-            padding: clamp(12px, 3vw, 20px) 8px;
-            text-align: center;
-          ">
-            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">30+</div>
-            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Global clients<br>served</div>
+
+          <div class="about-anim" data-delay="420" style="
+            background:rgba(186,201,100,0.07);
+            border:0.5px solid rgba(186,201,100,0.3);
+            border-radius:12px;
+            padding:clamp(12px,3vw,20px) 8px;
+            text-align:center;">
+            <div id="about-c2" style="font-size:clamp(1.5rem,4vw,2.2rem);font-weight:500;color:#bac964;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums;">1</div>
+            <div style="font-size:clamp(0.7rem,1.8vw,0.82rem);color:rgba(255,255,255,0.5);line-height:1.45;">Global clients<br>served</div>
           </div>
-          <div style="
-            background: rgba(255,255,255,0.05);
-            border: 0.5px solid rgba(186,201,100,0.3);
-            border-radius: 12px;
-            padding: clamp(12px, 3vw, 20px) 8px;
-            text-align: center;
-          ">
-            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">100%</div>
-            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Data-driven<br>compliance</div>
+
+          <div class="about-anim" data-delay="540" style="
+            background:rgba(186,201,100,0.07);
+            border:0.5px solid rgba(186,201,100,0.3);
+            border-radius:12px;
+            padding:clamp(12px,3vw,20px) 8px;
+            text-align:center;">
+            <div id="about-c3" style="font-size:clamp(1.5rem,4vw,2.2rem);font-weight:500;color:#bac964;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums;">1%</div>
+            <div style="font-size:clamp(0.7rem,1.8vw,0.82rem);color:rgba(255,255,255,0.5);line-height:1.45;">Data-driven<br>compliance</div>
           </div>
+
         </div>
       </div>
     </div>
@@ -669,61 +684,53 @@ function triggerFilter(el, section) {
     <!-- Accent Divider -->
     <div class="row mb-4">
       <div class="col text-center">
-        <div style="width: 44px; height: 2px; background: #bac964; margin: 0 auto; border-radius: 2px;"></div>
+        <div class="about-anim" data-delay="640"
+             style="width:44px;height:2px;background:#bac964;margin:0 auto;border-radius:2px;"></div>
       </div>
     </div>
 
-    <!-- Highlight Pills -->
+    <!-- Pills -->
     <div class="row justify-content-center mb-5">
-      <div class="col-12 col-md-10 col-lg-7" style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="col-12 col-md-10 col-lg-7" style="display:flex;flex-direction:column;gap:10px;">
 
-        <div style="
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          border-left: 3px solid #bac964;
-          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
-          background: rgba(186,201,100,0.06);
-        ">
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+        <div class="about-anim" data-delay="700" style="
+          display:flex;align-items:flex-start;gap:14px;
+          border-left:3px solid #bac964;
+          padding:clamp(10px,2vw,14px) clamp(12px,2.5vw,18px);
+          background:rgba(186,201,100,0.06);">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
             <circle cx="8" cy="8" r="6.5" stroke="#bac964" stroke-width="1.3"/>
             <path d="M5 8l2 2 4-4" stroke="#bac964" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+          <p style="margin:0;font-size:clamp(0.88rem,2vw,1rem);line-height:1.65;">
             <strong>AML solutions expert</strong> &mdash; transaction monitoring, risk scoring, sanction screening &amp; regulatory reporting
           </p>
         </div>
 
-        <div style="
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          border-left: 3px solid #bac964;
-          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
-          background: rgba(186,201,100,0.06);
-        ">
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+        <div class="about-anim" data-delay="840" style="
+          display:flex;align-items:flex-start;gap:14px;
+          border-left:3px solid #bac964;
+          padding:clamp(10px,2vw,14px) clamp(12px,2.5vw,18px);
+          background:rgba(186,201,100,0.06);">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
             <rect x="2" y="5" width="12" height="8" rx="1.5" stroke="#bac964" stroke-width="1.3"/>
             <path d="M5 5V4a3 3 0 016 0v1" stroke="#bac964" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+          <p style="margin:0;font-size:clamp(0.88rem,2vw,1rem);line-height:1.65;">
             <strong>Trusted by 30+ global clients</strong> &mdash; banks, fintechs, credit unions &amp; securities firms across North America
           </p>
         </div>
 
-        <div style="
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          border-left: 3px solid #bac964;
-          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
-          background: rgba(186,201,100,0.06);
-        ">
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+        <div class="about-anim" data-delay="980" style="
+          display:flex;align-items:flex-start;gap:14px;
+          border-left:3px solid #bac964;
+          padding:clamp(10px,2vw,14px) clamp(12px,2.5vw,18px);
+          background:rgba(186,201,100,0.06);">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px">
             <rect x="3" y="3" width="10" height="10" rx="2" stroke="#bac964" stroke-width="1.3"/>
             <path d="M6 8h4M8 6v4" stroke="#bac964" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+          <p style="margin:0;font-size:clamp(0.88rem,2vw,1rem);line-height:1.65;">
             <strong>Automation-first mindset</strong> &mdash; turning complex compliance requirements into scalable, automated solutions
           </p>
         </div>
@@ -733,6 +740,54 @@ function triggerFilter(el, section) {
 
   </div>
 </section>
+
+<!-- ===================== ABOUT SECTION JS ===================== -->
+<script>
+(function () {
+  const elems = document.querySelectorAll('#section-about .about-anim');
+  const counters = [
+    { el: document.getElementById('about-c1'), target: 5,   suffix: '+',  delay: 450 },
+    { el: document.getElementById('about-c2'), target: 30,  suffix: '+',  delay: 600 },
+    { el: document.getElementById('about-c3'), target: 100, suffix: '%',  delay: 750 },
+  ];
+
+  function animateCounter(el, target, suffix, duration) {
+    const start = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(performance.now());
+  }
+
+  let triggered = false;
+  function triggerAll() {
+    if (triggered) return;
+    triggered = true;
+    elems.forEach(el => {
+      const delay = parseInt(el.dataset.delay) || 0;
+      setTimeout(() => {
+        el.style.animationDelay = '0ms';
+        el.style.animationPlayState = 'running';
+      }, delay);
+    });
+    counters.forEach(c => {
+      setTimeout(() => animateCounter(c.el, c.target, c.suffix, 1400), c.delay);
+    });
+  }
+
+  const section = document.getElementById('section-about');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { triggerAll(); obs.disconnect(); }
+    }, { threshold: 0.15 });
+    obs.observe(section);
+  } else {
+    triggerAll();
+  }
+})();
+</script>
 
 
 <!-- Academic Highlights -->
