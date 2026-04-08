@@ -601,39 +601,138 @@ function triggerFilter(el, section) {
 </script>
 
 <section class="site-section" id="section-about">
-    <div class="container">
-        <!-- Section Heading -->
-        <div class="row mb-5">
-            <div class="col text-center">
-                <div class="section-heading mb-4">
-                    <h2>About <span style="color: #bac964;">Me</span></h2>
-                    <div class="section-divider"></div>
-                </div>
-            </div>
+  <div class="container">
+
+    <!-- Section Heading -->
+    <div class="row mb-5">
+      <div class="col text-center">
+        <div class="section-heading mb-4">
+          <h2>About <span style="color: #bac964;">Me</span></h2>
+          <div class="section-divider"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lead -->
+    <div class="row mb-4">
+      <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+        <p style="font-size: clamp(1rem, 2.5vw, 1.15rem); line-height: 1.75; margin-bottom: 0;">
+          I help financial institutions
+          <strong style="color: #bac964;">detect, prevent, and report financial crime</strong>
+          &mdash; using data, automation, and deep AML expertise.
+        </p>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="row justify-content-center mb-4 mt-4">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div style="
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: clamp(8px, 2vw, 14px);
+        ">
+          <div style="
+            background: rgba(255,255,255,0.05);
+            border: 0.5px solid rgba(186,201,100,0.3);
+            border-radius: 12px;
+            padding: clamp(12px, 3vw, 20px) 8px;
+            text-align: center;
+          ">
+            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">5+</div>
+            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Years designing<br>AML solutions</div>
+          </div>
+          <div style="
+            background: rgba(255,255,255,0.05);
+            border: 0.5px solid rgba(186,201,100,0.3);
+            border-radius: 12px;
+            padding: clamp(12px, 3vw, 20px) 8px;
+            text-align: center;
+          ">
+            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">30+</div>
+            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Global clients<br>served</div>
+          </div>
+          <div style="
+            background: rgba(255,255,255,0.05);
+            border: 0.5px solid rgba(186,201,100,0.3);
+            border-radius: 12px;
+            padding: clamp(12px, 3vw, 20px) 8px;
+            text-align: center;
+          ">
+            <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; color: #bac964; line-height: 1; margin-bottom: 6px;">100%</div>
+            <div style="font-size: clamp(0.7rem, 1.8vw, 0.82rem); color: rgba(255,255,255,0.5); line-height: 1.4;">Data-driven<br>compliance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accent Divider -->
+    <div class="row mb-4">
+      <div class="col text-center">
+        <div style="width: 44px; height: 2px; background: #bac964; margin: 0 auto; border-radius: 2px;"></div>
+      </div>
+    </div>
+
+    <!-- Highlight Pills -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-12 col-md-10 col-lg-7" style="display: flex; flex-direction: column; gap: 10px;">
+
+        <div style="
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          border-left: 3px solid #bac964;
+          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
+          background: rgba(186,201,100,0.06);
+        ">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+            <circle cx="8" cy="8" r="6.5" stroke="#bac964" stroke-width="1.3"/>
+            <path d="M5 8l2 2 4-4" stroke="#bac964" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+            <strong>AML solutions expert</strong> &mdash; transaction monitoring, risk scoring, sanction screening &amp; regulatory reporting
+          </p>
         </div>
 
-        <!-- Introduction -->
-        <div class="row mb-5">
-            <div class="col text-center">
-                <p class="lead mb-4" style="font-size: 1.15rem;">
-                    I help financial institutions <strong>detect, prevent, and report financial crime</strong> &mdash; using data, automation, and deep AML expertise.
-                </p>
-                <div style="display: inline-flex; flex-direction: column; gap: 14px; text-align: left; max-width: 600px; width: 100%;">
-                    <div style="display: flex; align-items: flex-start; gap: 14px;">
-                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#127919;</span>
-                        <p style="margin: 0; font-size: 1rem;"><strong>5+ years</strong> designing AML solutions &mdash; transaction monitoring, risk scoring, sanction screening &amp; regulatory reporting</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 14px;">
-                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#127974;</span>
-                        <p style="margin: 0; font-size: 1rem;"><strong>30+ global clients</strong> including banks, fintechs, credit unions &amp; securities firms across North America</p>
-                    </div>
-                    <div style="display: flex; align-items: flex-start; gap: 14px;">
-                        <span style="color: #bac964; font-size: 1.3rem; line-height: 1;">&#129302;</span>
-                        <p style="margin: 0; font-size: 1rem;"><strong>Data-driven approach</strong> &mdash; turning complex compliance requirements into automated, scalable solutions</p>
-                    </div>
-                </div>
-            </div>
+        <div style="
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          border-left: 3px solid #bac964;
+          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
+          background: rgba(186,201,100,0.06);
+        ">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+            <rect x="2" y="5" width="12" height="8" rx="1.5" stroke="#bac964" stroke-width="1.3"/>
+            <path d="M5 5V4a3 3 0 016 0v1" stroke="#bac964" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+            <strong>Trusted by 30+ global clients</strong> &mdash; banks, fintechs, credit unions &amp; securities firms across North America
+          </p>
         </div>
+
+        <div style="
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          border-left: 3px solid #bac964;
+          padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
+          background: rgba(186,201,100,0.06);
+        ">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0; margin-top:2px;">
+            <rect x="3" y="3" width="10" height="10" rx="2" stroke="#bac964" stroke-width="1.3"/>
+            <path d="M6 8h4M8 6v4" stroke="#bac964" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <p style="margin: 0; font-size: clamp(0.88rem, 2vw, 1rem); line-height: 1.65;">
+            <strong>Automation-first mindset</strong> &mdash; turning complex compliance requirements into scalable, automated solutions
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- Academic Highlights -->
