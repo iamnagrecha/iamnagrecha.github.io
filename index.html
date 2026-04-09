@@ -375,23 +375,23 @@ function triggerFilter(el, section) {
   <!-- RIGHT: chart grid -->
   <div class="chart-grid">
     <div class="chart-panel">
-      <div class="panel-label">AML Flag Types</div>
+      <div class="panel-label">Core Skill Proficiency</div>
       <div class="panel-canvas-wrap"><canvas id="cv-bar"></canvas></div>
     </div>
     <div class="chart-panel">
-      <div class="panel-label">AI Model Accuracy</div>
+      <div class="panel-label">AML Solution Accuracy · Career Growth</div>
       <div class="panel-canvas-wrap"><canvas id="cv-line"></canvas></div>
     </div>
     <div class="chart-panel">
-      <div class="panel-label">Risk Distribution</div>
+      <div class="panel-label">Certification Areas</div>
       <div class="panel-canvas-wrap"><canvas id="cv-donut"></canvas></div>
     </div>
     <div class="chart-panel">
-      <div class="panel-label">Entity Network</div>
+      <div class="panel-label">Consulting Domain Focus</div>
       <div class="panel-canvas-wrap"><canvas id="cv-net"></canvas></div>
     </div>
     <div class="chart-panel span-full">
-      <div class="panel-label">Transaction Anomalies · Hourly Risk Heatmap</div>
+      <div class="panel-label">Skill Depth by Role · Career Progression 2021 – Present</div>
       <div class="panel-canvas-wrap"><canvas id="cv-combo"></canvas></div>
     </div>
   </div>
@@ -414,12 +414,10 @@ function triggerFilter(el, section) {
   background: linear-gradient(90deg, transparent, #bac964 35%, #bac964 65%, transparent);
   opacity: .5;
 }
-/* LEFT */
 .hero-content {
   position: relative; z-index: 10;
   width: 42%; min-width: 300px; padding: 0 0 0 6vw; flex-shrink: 0;
 }
-/* RIGHT grid */
 .chart-grid {
   position: relative; z-index: 5; flex: 1;
   display: grid;
@@ -447,7 +445,6 @@ function triggerFilter(el, section) {
 .panel-canvas-wrap canvas {
   position: absolute; inset: 0; width: 100% !important; height: 100% !important;
 }
-/* Text */
 .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
 .ey-line { width: 32px; height: 1.5px; background: #bac964; }
 .ey-dot { width: 5px; height: 5px; border-radius: 50%; background: #bac964; animation: blink 2.2s ease-in-out infinite; }
@@ -472,7 +469,6 @@ function triggerFilter(el, section) {
 .chart-panel:nth-child(1){animation-delay:.4s;} .chart-panel:nth-child(2){animation-delay:.55s;}
 .chart-panel:nth-child(3){animation-delay:.7s;} .chart-panel:nth-child(4){animation-delay:.85s;}
 .chart-panel:nth-child(5){animation-delay:1s;}
-/* Mobile */
 @media(max-width:768px){
   .site-hero-new { flex-direction: column; align-items: stretch; }
   .hero-content { width: 100%; padding: 80px 24px 0; }
@@ -495,96 +491,262 @@ function triggerFilter(el, section) {
     const ctx=cv.getContext('2d'); ctx.scale(2,2);
     return{cv,ctx,W,H};
   }
+
   function gridLines(ctx,W,H,cols,rows){
     ctx.strokeStyle=A(.07); ctx.lineWidth=.5;
     for(let i=0;i<=cols;i++){const x=i*(W/cols);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
     for(let i=0;i<=rows;i++){const y=i*(H/rows);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
   }
+
+  /* ── CHART 1: Core Skill Proficiency (horizontal bar) ──
+     Labels and values drawn from his 8 skill cards:
+     AML & Compliance · Python/SQL · Client Delivery ·
+     Analytics & BI · Data Engineering · ML & Data Science · Cloud & Databases */
   function drawBar(ctx,W,H,p){
-    const labels=['Struct.','Layer','PEP','Veloc.','Mule'];
-    const vals=[82,67,91,55,73];
-    const P={t:8,r:4,b:22,l:4};
-    const cH=H-P.t-P.b, n=labels.length;
-    const bw=Math.floor((W-P.l-P.r)/n*.55);
-    const gap=(W-P.l-P.r-bw*n)/(n-1);
-    ctx.clearRect(0,0,W,H); gridLines(ctx,W,H,5,3);
+    const labels=['AML','Python/SQL','Delivery','BI/Viz','Data Eng','ML/DS','Cloud'];
+    const vals=[95,88,90,85,80,82,78];
+    const P={t:6,r:32,b:8,l:46};
+    const cW=W-P.l-P.r, cH=H-P.t-P.b, n=labels.length;
+    const bh=Math.floor(cH/n*.62);
+    const gap=(cH-bh*n)/(n-1);
+    ctx.clearRect(0,0,W,H);
+    gridLines(ctx,W,H,4,n);
     labels.forEach((l,i)=>{
-      const x=P.l+i*(bw+gap), bh=Math.round((vals[i]/100)*cH*p), y=P.t+cH-bh;
-      ctx.fillStyle=A(.1); ctx.fillRect(x,P.t,bw,cH);
-      ctx.fillStyle=ACC; ctx.fillRect(x,y,bw,bh);
-      if(p>.75){ctx.globalAlpha=Math.min(1,(p-.75)/.25);ctx.fillStyle=ACC;ctx.font=`500 ${Math.max(7,Math.floor(W/36))}px system-ui`;ctx.textAlign='center';ctx.fillText(vals[i]+'%',x+bw/2,y-3);ctx.globalAlpha=1;}
-      ctx.fillStyle=A(.35); ctx.font=`${Math.max(6,Math.floor(W/40))}px system-ui`; ctx.textAlign='center'; ctx.fillText(l,x+bw/2,H-4);
+      const y=P.t+i*(bh+gap);
+      const bw=Math.round((vals[i]/100)*cW*p);
+      ctx.fillStyle=A(.1); ctx.fillRect(P.l,y,cW,bh);
+      ctx.fillStyle=ACC;   ctx.fillRect(P.l,y,bw,bh);
+      const fs=Math.max(6,Math.floor(H/n*.38));
+      ctx.fillStyle=A(.45); ctx.font=`${fs}px system-ui`; ctx.textAlign='right';
+      ctx.fillText(l,P.l-4,y+bh/2+fs*.35);
+      if(p>.7){
+        ctx.globalAlpha=Math.min(1,(p-.7)/.3);
+        ctx.fillStyle=ACC; ctx.textAlign='left';
+        ctx.fillText(vals[i]+'%',P.l+bw+3,y+bh/2+fs*.35);
+        ctx.globalAlpha=1;
+      }
+    });
+    /* x-axis tick labels */
+    [0,25,50,75,100].forEach(v=>{
+      const x=P.l+(v/100)*cW;
+      ctx.fillStyle=A(.2); ctx.font='5px system-ui'; ctx.textAlign='center';
+      ctx.fillText(v+'%',x,H-1);
     });
   }
+
+  /* ── CHART 2: AML Solution Accuracy Growth (line)
+     Maps to his career arc: Sparks intern → Malatest → Alessa intermediate → Alessa specialist
+     Points represent solution quality / complexity handled over time (2021 → 2025) ── */
   function drawLine(ctx,W,H,p){
-    const pts=[48,55,61,58,70,74,79,82,85,88,91,94];
+    const pts=[38,44,50,56,62,67,72,76,80,85,90,94];
+    const yLabels=['2021','','','','2023','','','','2024','','','2025'];
     const P={t:10,r:8,b:18,l:22}; const cW=W-P.l-P.r, cH=H-P.t-P.b;
     ctx.clearRect(0,0,W,H);
-    for(let i=0;i<=3;i++){const y=P.t+i*(cH/3);ctx.strokeStyle=A(.07);ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(W-P.r,y);ctx.stroke();ctx.fillStyle=A(.3);ctx.font=`${Math.max(6,Math.floor(W/38))}px system-ui`;ctx.textAlign='right';ctx.fillText(Math.round(100-i*33)+'%',P.l-2,y+3);}
+    for(let i=0;i<=3;i++){
+      const y=P.t+i*(cH/3);
+      ctx.strokeStyle=A(.07); ctx.lineWidth=.5;
+      ctx.beginPath(); ctx.moveTo(P.l,y); ctx.lineTo(W-P.r,y); ctx.stroke();
+      ctx.fillStyle=A(.3); ctx.font=`${Math.max(6,Math.floor(W/38))}px system-ui`;
+      ctx.textAlign='right'; ctx.fillText(Math.round(100-i*33)+'%',P.l-2,y+3);
+    }
     const n=Math.max(2,Math.round(pts.length*p)); const vis=pts.slice(0,n);
-    ctx.beginPath();ctx.strokeStyle=ACC;ctx.lineWidth=1.5;ctx.lineJoin='round';
-    vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.stroke();
-    ctx.beginPath();vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-    const lx=P.l+(n-1)*(cW/(pts.length-1));ctx.lineTo(lx,P.t+cH);ctx.lineTo(P.l,P.t+cH);ctx.closePath();ctx.fillStyle=A(.07);ctx.fill();
+    /* filled area */
+    ctx.beginPath();
+    vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    const lx=P.l+(n-1)*(cW/(pts.length-1));
+    ctx.lineTo(lx,P.t+cH); ctx.lineTo(P.l,P.t+cH); ctx.closePath();
+    ctx.fillStyle=A(.07); ctx.fill();
+    /* line */
+    ctx.beginPath(); ctx.strokeStyle=ACC; ctx.lineWidth=1.5; ctx.lineJoin='round';
+    vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    ctx.stroke();
+    /* end dot + label */
     const lv=vis[n-1], ly=P.t+cH-(lv/100)*cH;
-    ctx.beginPath();ctx.arc(lx,ly,3,0,Math.PI*2);ctx.fillStyle=ACC;ctx.fill();
-    ctx.fillStyle=ACC;ctx.font=`500 ${Math.max(7,Math.floor(W/32))}px system-ui`;ctx.textAlign='center';ctx.fillText(lv+'%',lx,ly-6);
+    ctx.beginPath(); ctx.arc(lx,ly,3,0,Math.PI*2); ctx.fillStyle=ACC; ctx.fill();
+    ctx.fillStyle=ACC; ctx.font=`500 ${Math.max(7,Math.floor(W/32))}px system-ui`;
+    ctx.textAlign='center'; ctx.fillText(lv+'%',lx,ly-6);
+    /* year markers at key milestones */
+    if(p>.9){
+      ctx.globalAlpha=Math.min(1,(p-.9)/.1);
+      [[0,'\'21'],[4,'\'22'],[8,'\'24'],[11,'\'25']].forEach(([idx,lbl])=>{
+        if(idx>=vis.length)return;
+        const x=P.l+idx*(cW/(pts.length-1));
+        ctx.fillStyle=A(.28); ctx.font='5px system-ui'; ctx.textAlign='center';
+        ctx.fillText(lbl,x,H-2);
+      });
+      ctx.globalAlpha=1;
+    }
   }
+
+  /* ── CHART 3: Certification Areas (donut)
+     12 certs broken into 4 clusters from his certifications section:
+     Data Science (IBM ×7) · AML & FinCrime (ACAMS, Basel, KYC) · Cloud (AWS) · SQL/DB (UC Davis) ── */
   function drawDonut(ctx,W,H,p){
     ctx.clearRect(0,0,W,H);
-    const cx=W/2,cy=H/2,R=Math.min(W,H)*.38,r=R*.55;
-    const segs=[{pct:.22,col:ACC},{pct:.35,col:A(.55)},{pct:.31,col:A(.25)},{pct:.12,col:A(.1)}];
+    const cx=W/2, cy=H/2, R=Math.min(W,H)*.36, r=R*.55;
+    const segs=[
+      {pct:.58, col:ACC,        label:'DS'},
+      {pct:.25, col:A(.5),      label:'AML'},
+      {pct:.09, col:A(.22),     label:'Cloud'},
+      {pct:.08, col:A(.10),     label:'SQL'},
+    ];
     let ang=-Math.PI/2;
-    segs.forEach(s=>{const sw=s.pct*Math.PI*2*p;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,ang,ang+sw);ctx.closePath();ctx.fillStyle=s.col;ctx.fill();ang+=sw;});
-    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='#080808';ctx.fill();
-    const fs=Math.max(8,Math.floor(Math.min(W,H)/10));
-    ctx.fillStyle=ACC;ctx.font=`500 ${fs}px system-ui`;ctx.textAlign='center';ctx.fillText('RISK',cx,cy+fs*.35);
-    if(p>.8){ctx.globalAlpha=Math.min(1,(p-.8)/.2);let la=-Math.PI/2;segs.forEach(s=>{const mid=la+s.pct*Math.PI*2*.5;la+=s.pct*Math.PI*2;const lx=cx+Math.cos(mid)*(R+12),ly=cy+Math.sin(mid)*(R+12);ctx.fillStyle=A(.6);ctx.font=`${Math.max(6,Math.floor(W/28))}px system-ui`;ctx.textAlign='center';ctx.fillText(Math.round(s.pct*100)+'%',lx,ly+3);});ctx.globalAlpha=1;}
+    segs.forEach(s=>{
+      const sw=s.pct*Math.PI*2*p;
+      ctx.beginPath(); ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,R,ang,ang+sw); ctx.closePath();
+      ctx.fillStyle=s.col; ctx.fill();
+      ang+=sw;
+    });
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle='#080808'; ctx.fill();
+    const fs=Math.max(7,Math.floor(Math.min(W,H)/11));
+    ctx.fillStyle=ACC; ctx.font=`500 ${fs}px system-ui`;
+    ctx.textAlign='center'; ctx.fillText('CERTS',cx,cy+fs*.35);
+    if(p>.75){
+      ctx.globalAlpha=Math.min(1,(p-.75)/.25);
+      let la=-Math.PI/2;
+      segs.forEach(s=>{
+        const mid=la+s.pct*Math.PI*2*.5; la+=s.pct*Math.PI*2;
+        const lx=cx+Math.cos(mid)*(R+11), ly=cy+Math.sin(mid)*(R+11);
+        ctx.fillStyle=A(.55);
+        ctx.font=`${Math.max(5,Math.floor(W/26))}px system-ui`;
+        ctx.textAlign='center';
+        ctx.fillText(s.label,lx,ly-2);
+        ctx.fillText(Math.round(s.pct*100)+'%',lx,ly+Math.max(5,Math.floor(W/26))+1);
+      });
+      ctx.globalAlpha=1;
+    }
   }
+
+  /* ── CHART 4: Consulting Domain Focus (spider / radar drawn on canvas)
+     6 service areas from his consulting nav, sized by engagement depth across 30+ clients ── */
   function drawNet(ctx,W,H,p){
     ctx.clearRect(0,0,W,H);
-    const sc=Math.min(W/220,H/190);const ox=(W-220*sc)/2,oy=(H-190*sc)/2;
-    const nodes=[{x:110,y:95,r:7,l:'Entity A',c:ACC},{x:50,y:48,r:5,l:'Shell Co',c:A(.55)},{x:170,y:42,r:5,l:'Account',c:A(.55)},{x:30,y:145,r:4,l:'PEP',c:'rgba(220,75,75,.9)'},{x:190,y:140,r:4,l:'Offshore',c:A(.38)},{x:110,y:18,r:4,l:'Trust',c:A(.3)},{x:82,y:165,r:3,l:'LLC',c:A(.25)}].map(n=>({...n,x:ox+n.x*sc,y:oy+n.y*sc,r:n.r*sc}));
-    const edges=[[0,1],[0,2],[0,4],[1,3],[1,5],[2,5],[0,6],[3,6]];
-    const ep=Math.min(1,p*1.5);
-    edges.forEach(([a,b],i)=>{const t=Math.max(0,Math.min(1,(ep-(i/edges.length)*.4)*2));if(t<=0)return;const na=nodes[a],nb=nodes[b];ctx.beginPath();ctx.moveTo(na.x,na.y);ctx.lineTo(na.x+(nb.x-na.x)*t,na.y+(nb.y-na.y)*t);ctx.strokeStyle=A(.2);ctx.lineWidth=.8;ctx.stroke();});
-    nodes.forEach((nd,i)=>{const np=Math.max(0,Math.min(1,(p-(i/nodes.length)*.25)*3));if(np<=0)return;ctx.globalAlpha=np;ctx.beginPath();ctx.arc(nd.x,nd.y,nd.r,0,Math.PI*2);ctx.fillStyle=nd.c;ctx.fill();if(np>.6){ctx.fillStyle=A(.5);ctx.font=`${Math.max(6,Math.floor(W/28))}px system-ui`;ctx.textAlign='center';ctx.fillText(nd.l,nd.x,nd.y+nd.r+8*sc);}ctx.globalAlpha=1;});
+    const cx=W/2, cy=H/2;
+    const R=Math.min(W,H)*.36*p;
+    const domains=[
+      {label:'Tx Monitor', val:.97},
+      {label:'Risk Score',  val:.92},
+      {label:'Entity Res.', val:.88},
+      {label:'Sanction',    val:.85},
+      {label:'Reg Report',  val:.80},
+      {label:'Case Mgmt',   val:.74},
+    ];
+    const n=domains.length;
+    const angle=i=>(-Math.PI/2)+(i/n)*Math.PI*2;
+    /* grid rings */
+    [.25,.5,.75,1].forEach(frac=>{
+      ctx.beginPath();
+      for(let i=0;i<n;i++){
+        const a=angle(i), rx=cx+Math.cos(a)*R*frac, ry=cy+Math.sin(a)*R*frac;
+        i===0?ctx.moveTo(rx,ry):ctx.lineTo(rx,ry);
+      }
+      ctx.closePath(); ctx.strokeStyle=A(.08); ctx.lineWidth=.5; ctx.stroke();
+    });
+    /* spokes */
+    for(let i=0;i<n;i++){
+      const a=angle(i);
+      ctx.beginPath(); ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(a)*R, cy+Math.sin(a)*R);
+      ctx.strokeStyle=A(.07); ctx.lineWidth=.5; ctx.stroke();
+    }
+    /* filled polygon */
+    ctx.beginPath();
+    domains.forEach((d,i)=>{
+      const a=angle(i), r2=R*d.val;
+      const x=cx+Math.cos(a)*r2, y=cy+Math.sin(a)*r2;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath(); ctx.fillStyle=A(.14); ctx.fill();
+    ctx.strokeStyle=ACC; ctx.lineWidth=1.2; ctx.stroke();
+    /* dots + labels */
+    domains.forEach((d,i)=>{
+      const a=angle(i), r2=R*d.val;
+      const x=cx+Math.cos(a)*r2, y=cy+Math.sin(a)*r2;
+      ctx.beginPath(); ctx.arc(x,y,2.5,0,Math.PI*2);
+      ctx.fillStyle=ACC; ctx.fill();
+      if(p>.6){
+        ctx.globalAlpha=Math.min(1,(p-.6)/.4);
+        const lx=cx+Math.cos(a)*(R+12), ly=cy+Math.sin(a)*(R+12);
+        const fs=Math.max(5,Math.floor(W/28));
+        ctx.fillStyle=A(.45); ctx.font=`${fs}px system-ui`; ctx.textAlign='center';
+        ctx.fillText(d.label,lx,ly+fs*.4);
+        ctx.globalAlpha=1;
+      }
+    });
   }
+
+  /* ── CHART 5: Career Skill Depth (grouped bar, full-width)
+     4 roles × 4 skill tracks. Tracks: Python/SQL | ML/DS | AML Domain | Cloud
+     Roles: Sparks(2021) | Malatest(2021) | Alessa Intermediate(2022) | Alessa Specialist(2025) ── */
   function drawCombo(ctx,W,H,p){
     ctx.clearRect(0,0,W,H);
-    const half=Math.floor(W/2)-10;
-    const sP={t:8,r:8,b:8,l:8};const sW=half-sP.l-sP.r,sH=H-sP.t-sP.b;
-    gridLines(ctx,half,H,5,4);
-    const sd=n=>{let x=n*9301+49297;return(x%233280)/233280;};
-    const normal=[],alerts=[];
-    for(let i=0;i<55;i++)normal.push({x:sd(i*3),y:sd(i*7)});
-    for(let i=0;i<10;i++)alerts.push({x:sd(i*11)*.85+.08,y:sd(i*13)*.85+.08});
-    normal.slice(0,Math.round(normal.length*p)).forEach(pt=>{const x=sP.l+pt.x*sW,y=sP.t+pt.y*sH;ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fillStyle=A(.38);ctx.fill();});
-    alerts.slice(0,Math.round(alerts.length*p)).forEach(pt=>{const x=sP.l+pt.x*sW,y=sP.t+pt.y*sH;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle='rgba(220,70,70,.9)';ctx.fill();ctx.strokeStyle='rgba(220,70,70,.25)';ctx.lineWidth=4;ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.stroke();});
-    ctx.fillStyle=A(.22);ctx.font='7px system-ui';ctx.textAlign='left';ctx.fillText('TRANSACTION ANOMALIES',sP.l,7);
-    ctx.strokeStyle=A(.1);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(half+10,4);ctx.lineTo(half+10,H-4);ctx.stroke();
-    const hX=half+20,hW=W-hX-4;
-    const cols=12,rows=5;const hsd=n=>{let x=n*6271+1000003;return(x%1000)/1000;};
-    const cw=Math.floor(hW/cols),ch=Math.floor(H/rows);
-    for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const v=Math.pow(hsd(r*cols+c),1.3)*p;ctx.fillStyle=`rgba(186,201,100,${(v*.82+.04).toFixed(2)})`;ctx.fillRect(hX+c*cw+1,r*ch+1,cw-2,ch-2);}
-    ['Mon','Tue','Wed','Thu','Fri'].forEach((d,i)=>{ctx.fillStyle=A(.28);ctx.font='7px system-ui';ctx.textAlign='right';ctx.fillText(d,hX-2,i*ch+ch/2+3);});
-    ctx.fillStyle=A(.22);ctx.font='7px system-ui';ctx.textAlign='left';ctx.fillText('HOURLY RISK HEATMAP',hX,7);
+    const roles=['Sparks \'21','Malatest \'21','Alessa Inter.','Alessa Spec.'];
+    const tracks=[
+      {name:'Python/SQL', vals:[55,30,75,92], col:ACC},
+      {name:'ML / DS',    vals:[60,20,65,84], col:A(.62)},
+      {name:'AML Domain', vals:[10,10,80,96], col:A(.35)},
+      {name:'Cloud',      vals:[40,15,68,82], col:A(.18)},
+    ];
+    const P={t:14,r:8,b:28,l:8};
+    const cW=W-P.l-P.r, cH=H-P.t-P.b;
+    const nR=roles.length, nT=tracks.length;
+    const groupW=cW/nR, barW=Math.floor(groupW/(nT+1));
+    const groupPad=Math.floor((groupW-barW*nT)/2);
+    gridLines(ctx,W,H,nR,4);
+    /* y-axis % ticks */
+    [0,25,50,75,100].forEach(v=>{
+      const y=P.t+cH-(v/100)*cH;
+      ctx.fillStyle=A(.18); ctx.font='5px system-ui'; ctx.textAlign='left';
+      ctx.fillText(v+'%',1,y+2);
+    });
+    roles.forEach((role,ri)=>{
+      tracks.forEach((tr,ti)=>{
+        const x=P.l+ri*groupW+groupPad+ti*barW;
+        const bh=Math.round((tr.vals[ri]/100)*cH*p);
+        const y=P.t+cH-bh;
+        ctx.fillStyle=tr.col; ctx.fillRect(x,y,barW-1,bh);
+      });
+      /* role label */
+      ctx.fillStyle=A(.32); ctx.font=`${Math.max(5,Math.floor(W/68))}px system-ui`;
+      ctx.textAlign='center';
+      ctx.fillText(role,P.l+ri*groupW+groupW/2,H-2);
+    });
+    /* legend top-right */
+    if(p>.5){
+      ctx.globalAlpha=Math.min(1,(p-.5)/.5);
+      tracks.forEach((tr,ti)=>{
+        const lx=W-70, ly=4+ti*8;
+        ctx.fillStyle=tr.col; ctx.fillRect(lx,ly,6,5);
+        ctx.fillStyle=A(.35); ctx.font='5px system-ui'; ctx.textAlign='left';
+        ctx.fillText(tr.name,lx+8,ly+4.5);
+      });
+      ctx.globalAlpha=1;
+    }
   }
+
   function animate(fn,delay){
     setTimeout(()=>{let p=0;const t=()=>{p=Math.min(1,p+.022);fn(p);if(p<1)requestAnimationFrame(t);};requestAnimationFrame(t);},delay);
   }
+
   window.addEventListener('load',()=>{
     setTimeout(()=>{
-      const bar=setupCanvas('cv-bar'),line=setupCanvas('cv-line'),donut=setupCanvas('cv-donut'),net=setupCanvas('cv-net'),combo=setupCanvas('cv-combo');
-      animate(p=>drawBar(bar.ctx,bar.W,bar.H,p),400);
-      animate(p=>drawLine(line.ctx,line.W,line.H,p),600);
-      animate(p=>drawDonut(donut.ctx,donut.W,donut.H,p),800);
-      animate(p=>drawNet(net.ctx,net.W,net.H,p),1000);
-      animate(p=>drawCombo(combo.ctx,combo.W,combo.H,p),1200);
+      const bar  =setupCanvas('cv-bar');
+      const line =setupCanvas('cv-line');
+      const donut=setupCanvas('cv-donut');
+      const net  =setupCanvas('cv-net');
+      const combo=setupCanvas('cv-combo');
+      animate(p=>drawBar  (bar.ctx,  bar.W,   bar.H,   p), 400);
+      animate(p=>drawLine (line.ctx, line.W,  line.H,  p), 600);
+      animate(p=>drawDonut(donut.ctx,donut.W, donut.H, p), 800);
+      animate(p=>drawNet  (net.ctx,  net.W,   net.H,   p),1000);
+      animate(p=>drawCombo(combo.ctx,combo.W, combo.H, p),1200);
     },100);
   });
 })();
 </script>
+
 	
 
 <!-- ScrollReveal removed - was hiding navbar items and sections -->
