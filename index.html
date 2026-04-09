@@ -439,12 +439,8 @@ function triggerFilter(el, section) {
   font-size: 8px; letter-spacing: .18em; text-transform: uppercase;
   color: rgba(186,201,100,.28); margin-bottom: 8px; flex-shrink: 0;
 }
-.panel-canvas-wrap {
-  flex: 1; position: relative; min-height: 0;
-}
-.panel-canvas-wrap canvas {
-  position: absolute; inset: 0; width: 100% !important; height: 100% !important;
-}
+.panel-canvas-wrap { flex: 1; position: relative; min-height: 0; }
+.panel-canvas-wrap canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
 .ey-line { width: 32px; height: 1.5px; background: #bac964; }
 .ey-dot { width: 5px; height: 5px; border-radius: 50%; background: #bac964; animation: blink 2.2s ease-in-out infinite; }
@@ -479,270 +475,420 @@ function triggerFilter(el, section) {
 
 <script>
 (function(){
-  const ACC='#bac964';
-  const A=p=>`rgba(186,201,100,${p})`;
+  const ACC = '#bac964';
+  const A   = p => `rgba(186,201,100,${p})`;
 
   function setupCanvas(id){
-    const cv=document.getElementById(id);
-    const wrap=cv.parentElement;
-    const W=wrap.clientWidth||200, H=wrap.clientHeight||120;
-    cv.width=W*2; cv.height=H*2;
-    cv.style.width=W+'px'; cv.style.height=H+'px';
-    const ctx=cv.getContext('2d'); ctx.scale(2,2);
-    return{cv,ctx,W,H};
+    const cv   = document.getElementById(id);
+    const wrap = cv.parentElement;
+    const W    = wrap.clientWidth  || 200;
+    const H    = wrap.clientHeight || 120;
+    cv.width  = W * 2; cv.height = H * 2;
+    cv.style.width  = W + 'px';
+    cv.style.height = H + 'px';
+    const ctx = cv.getContext('2d');
+    ctx.scale(2, 2);
+    return { cv, ctx, W, H };
   }
 
-  function gridLines(ctx,W,H,cols,rows){
-    ctx.strokeStyle=A(.07); ctx.lineWidth=.5;
-    for(let i=0;i<=cols;i++){const x=i*(W/cols);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
-    for(let i=0;i<=rows;i++){const y=i*(H/rows);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  function gridLines(ctx, W, H, cols, rows){
+    ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
+    for(let i = 0; i <= cols; i++){
+      const x = i * (W / cols);
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for(let i = 0; i <= rows; i++){
+      const y = i * (H / rows);
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
   }
 
-  /* ── CHART 1: Core Skill Proficiency (horizontal bar) ──
-     Labels and values drawn from his 8 skill cards:
-     AML & Compliance · Python/SQL · Client Delivery ·
-     Analytics & BI · Data Engineering · ML & Data Science · Cloud & Databases */
-  function drawBar(ctx,W,H,p){
-    const labels=['AML','Python/SQL','Delivery','BI/Viz','Data Eng','ML/DS','Cloud'];
-    const vals=[95,88,90,85,80,82,78];
-    const P={t:6,r:32,b:8,l:46};
-    const cW=W-P.l-P.r, cH=H-P.t-P.b, n=labels.length;
-    const bh=Math.floor(cH/n*.62);
-    const gap=(cH-bh*n)/(n-1);
-    ctx.clearRect(0,0,W,H);
-    gridLines(ctx,W,H,4,n);
-    labels.forEach((l,i)=>{
-      const y=P.t+i*(bh+gap);
-      const bw=Math.round((vals[i]/100)*cW*p);
-      ctx.fillStyle=A(.1); ctx.fillRect(P.l,y,cW,bh);
-      ctx.fillStyle=ACC;   ctx.fillRect(P.l,y,bw,bh);
-      const fs=Math.max(6,Math.floor(H/n*.38));
-      ctx.fillStyle=A(.45); ctx.font=`${fs}px system-ui`; ctx.textAlign='right';
-      ctx.fillText(l,P.l-4,y+bh/2+fs*.35);
-      if(p>.7){
-        ctx.globalAlpha=Math.min(1,(p-.7)/.3);
-        ctx.fillStyle=ACC; ctx.textAlign='left';
-        ctx.fillText(vals[i]+'%',P.l+bw+3,y+bh/2+fs*.35);
-        ctx.globalAlpha=1;
+  /* ─── CHART 1 · Core Skill Proficiency (horizontal bar) ───
+     Labels right-aligned in a fixed left column (42px).
+     Value labels shown dark-on-gold inside wide bars,
+     gold outside narrow bars. x-axis tick marks at 0 / 50 / 100. */
+  function drawBar(ctx, W, H, p){
+    const labels = ['AML','Python/SQL','Delivery','BI / Viz','Data Eng','ML / DS','Cloud'];
+    const vals   = [95, 88, 90, 85, 80, 82, 78];
+    const P      = { t: 6, r: 38, b: 6, l: 44 };
+    const cW     = W - P.l - P.r;
+    const cH     = H - P.t - P.b;
+    const n      = labels.length;
+    const bh     = Math.floor(cH / n * 0.60);
+    const gap    = (cH - bh * n) / (n + 1);
+    const fs     = Math.max(6, Math.floor(H / n * 0.36));
+
+    ctx.clearRect(0, 0, W, H);
+    gridLines(ctx, W, H, 4, n);
+    ctx.font = `${fs}px system-ui`;
+
+    labels.forEach((l, i) => {
+      const y  = P.t + gap * (i + 1) + bh * i;
+      const bw = Math.round((vals[i] / 100) * cW * p);
+
+      ctx.fillStyle = A(.09);
+      ctx.fillRect(P.l, y, cW, bh);
+
+      ctx.fillStyle = ACC;
+      ctx.fillRect(P.l, y, bw, bh);
+
+      ctx.fillStyle = A(.40);
+      ctx.textAlign = 'right';
+      ctx.fillText(l, P.l - 5, y + bh / 2 + fs * 0.36);
+
+      if(p > 0.6){
+        ctx.globalAlpha = Math.min(1, (p - 0.6) / 0.4);
+        const pct = vals[i] + '%';
+        const tw  = ctx.measureText(pct).width;
+        if(bw > tw + 10){
+          ctx.fillStyle = '#080808';
+          ctx.textAlign = 'right';
+          ctx.fillText(pct, P.l + bw - 4, y + bh / 2 + fs * 0.36);
+        } else {
+          ctx.fillStyle = ACC;
+          ctx.textAlign = 'left';
+          ctx.fillText(pct, P.l + bw + 3, y + bh / 2 + fs * 0.36);
+        }
+        ctx.globalAlpha = 1;
       }
     });
-    /* x-axis tick labels */
-    [0,25,50,75,100].forEach(v=>{
-      const x=P.l+(v/100)*cW;
-      ctx.fillStyle=A(.2); ctx.font='5px system-ui'; ctx.textAlign='center';
-      ctx.fillText(v+'%',x,H-1);
+
+    [0, 50, 100].forEach(v => {
+      const x = P.l + (v / 100) * cW;
+      ctx.fillStyle = A(.18);
+      ctx.font      = '5px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText(v + '%', x, H - 1);
     });
   }
 
-  /* ── CHART 2: AML Solution Accuracy Growth (line)
-     Maps to his career arc: Sparks intern → Malatest → Alessa intermediate → Alessa specialist
-     Points represent solution quality / complexity handled over time (2021 → 2025) ── */
-  function drawLine(ctx,W,H,p){
-    const pts=[38,44,50,56,62,67,72,76,80,85,90,94];
-    const yLabels=['2021','','','','2023','','','','2024','','','2025'];
-    const P={t:10,r:8,b:18,l:22}; const cW=W-P.l-P.r, cH=H-P.t-P.b;
-    ctx.clearRect(0,0,W,H);
-    for(let i=0;i<=3;i++){
-      const y=P.t+i*(cH/3);
-      ctx.strokeStyle=A(.07); ctx.lineWidth=.5;
-      ctx.beginPath(); ctx.moveTo(P.l,y); ctx.lineTo(W-P.r,y); ctx.stroke();
-      ctx.fillStyle=A(.3); ctx.font=`${Math.max(6,Math.floor(W/38))}px system-ui`;
-      ctx.textAlign='right'; ctx.fillText(Math.round(100-i*33)+'%',P.l-2,y+3);
-    }
-    const n=Math.max(2,Math.round(pts.length*p)); const vis=pts.slice(0,n);
-    /* filled area */
+  /* ─── CHART 2 · AML Solution Accuracy Growth (line) ───
+     Y-axis domain is 30–100 so the start value (38%) sits
+     visibly above the bottom rather than at 1%. */
+  function drawLine(ctx, W, H, p){
+    const pts  = [38, 44, 50, 56, 62, 67, 72, 76, 80, 85, 90, 94];
+    const P    = { t: 14, r: 10, b: 18, l: 28 };
+    const cW   = W - P.l - P.r;
+    const cH   = H - P.t - P.b;
+    const YMIN = 30, YMAX = 100, YR = YMAX - YMIN;
+
+    ctx.clearRect(0, 0, W, H);
+
+    [40, 60, 80, 100].forEach(v => {
+      const y = P.t + cH - ((v - YMIN) / YR) * cH;
+      ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
+      ctx.beginPath(); ctx.moveTo(P.l, y); ctx.lineTo(W - P.r, y); ctx.stroke();
+      ctx.fillStyle   = A(.28);
+      ctx.font        = `${Math.max(6, Math.floor(W / 38))}px system-ui`;
+      ctx.textAlign   = 'right';
+      ctx.fillText(v + '%', P.l - 3, y + 3);
+    });
+
+    const total = pts.length;
+    const n     = Math.max(2, Math.round(total * p));
+    const vis   = pts.slice(0, n);
+
+    const px = i => P.l + i * (cW / (total - 1));
+    const py = v => P.t + cH - ((v - YMIN) / YR) * cH;
+
+    /* area fill */
     ctx.beginPath();
-    vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-    const lx=P.l+(n-1)*(cW/(pts.length-1));
-    ctx.lineTo(lx,P.t+cH); ctx.lineTo(P.l,P.t+cH); ctx.closePath();
-    ctx.fillStyle=A(.07); ctx.fill();
-    /* line */
-    ctx.beginPath(); ctx.strokeStyle=ACC; ctx.lineWidth=1.5; ctx.lineJoin='round';
-    vis.forEach((v,i)=>{const x=P.l+i*(cW/(pts.length-1));const y=P.t+cH-(v/100)*cH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
+    const lx = px(n - 1);
+    ctx.lineTo(lx, P.t + cH); ctx.lineTo(P.l, P.t + cH);
+    ctx.closePath(); ctx.fillStyle = A(.07); ctx.fill();
+
+    /* line stroke */
+    ctx.beginPath(); ctx.strokeStyle = ACC; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
+    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
     ctx.stroke();
+
     /* end dot + label */
-    const lv=vis[n-1], ly=P.t+cH-(lv/100)*cH;
-    ctx.beginPath(); ctx.arc(lx,ly,3,0,Math.PI*2); ctx.fillStyle=ACC; ctx.fill();
-    ctx.fillStyle=ACC; ctx.font=`500 ${Math.max(7,Math.floor(W/32))}px system-ui`;
-    ctx.textAlign='center'; ctx.fillText(lv+'%',lx,ly-6);
-    /* year markers at key milestones */
-    if(p>.9){
-      ctx.globalAlpha=Math.min(1,(p-.9)/.1);
-      [[0,'\'21'],[4,'\'22'],[8,'\'24'],[11,'\'25']].forEach(([idx,lbl])=>{
-        if(idx>=vis.length)return;
-        const x=P.l+idx*(cW/(pts.length-1));
-        ctx.fillStyle=A(.28); ctx.font='5px system-ui'; ctx.textAlign='center';
-        ctx.fillText(lbl,x,H-2);
+    const lv = vis[n - 1];
+    const ly = py(lv);
+    ctx.beginPath(); ctx.arc(lx, ly, 3, 0, Math.PI * 2);
+    ctx.fillStyle = ACC; ctx.fill();
+    ctx.fillStyle = ACC;
+    ctx.font      = `500 ${Math.max(7, Math.floor(W / 32))}px system-ui`;
+    ctx.textAlign = 'center';
+    ctx.fillText(lv + '%', lx, ly - 7);
+
+    /* start dot + label */
+    if(p > 0.05){
+      ctx.globalAlpha = Math.min(1, p / 0.14);
+      ctx.beginPath(); ctx.arc(px(0), py(pts[0]), 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = A(.55); ctx.fill();
+      ctx.fillStyle = A(.45);
+      ctx.font      = `${Math.max(6, Math.floor(W / 36))}px system-ui`;
+      ctx.textAlign = 'center';
+      ctx.fillText(pts[0] + '%', px(0), py(pts[0]) - 6);
+      ctx.globalAlpha = 1;
+    }
+
+    /* year labels at career milestones */
+    if(p > 0.85){
+      ctx.globalAlpha = Math.min(1, (p - 0.85) / 0.15);
+      const fs = Math.max(5, Math.floor(W / 42));
+      [[0,"'21"],[3,"'22"],[7,"'24"],[11,"'25"]].forEach(([idx, lbl]) => {
+        if(idx >= vis.length) return;
+        ctx.fillStyle = A(.30);
+        ctx.font      = `${fs}px system-ui`;
+        ctx.textAlign = 'center';
+        ctx.fillText(lbl, px(idx), H - 2);
       });
-      ctx.globalAlpha=1;
+      ctx.globalAlpha = 1;
     }
   }
 
-  /* ── CHART 3: Certification Areas (donut)
-     12 certs broken into 4 clusters from his certifications section:
-     Data Science (IBM ×7) · AML & FinCrime (ACAMS, Basel, KYC) · Cloud (AWS) · SQL/DB (UC Davis) ── */
-  function drawDonut(ctx,W,H,p){
-    ctx.clearRect(0,0,W,H);
-    const cx=W/2, cy=H/2, R=Math.min(W,H)*.36, r=R*.55;
-    const segs=[
-      {pct:.58, col:ACC,        label:'DS'},
-      {pct:.25, col:A(.5),      label:'AML'},
-      {pct:.09, col:A(.22),     label:'Cloud'},
-      {pct:.08, col:A(.10),     label:'SQL'},
+  /* ─── CHART 3 · Certification Areas (donut) ───
+     Centre shifted slightly left so right-side labels have room.
+     Labels rendered as two lines to prevent clipping.
+     Centre text shows "12 / CERTS". */
+  function drawDonut(ctx, W, H, p){
+    ctx.clearRect(0, 0, W, H);
+
+    const cx = W * 0.45;
+    const cy = H * 0.50;
+    const R  = Math.min(W * 0.27, H * 0.35);
+    const ri = R * 0.54;
+
+    const segs = [
+      { pct: 0.58, col: ACC,    l1: 'Data Sci', l2: '58%' },
+      { pct: 0.25, col: A(.50), l1: 'AML',      l2: '25%' },
+      { pct: 0.09, col: A(.22), l1: 'Cloud',    l2: '9%'  },
+      { pct: 0.08, col: A(.10), l1: 'SQL',      l2: '8%'  },
     ];
-    let ang=-Math.PI/2;
-    segs.forEach(s=>{
-      const sw=s.pct*Math.PI*2*p;
-      ctx.beginPath(); ctx.moveTo(cx,cy);
-      ctx.arc(cx,cy,R,ang,ang+sw); ctx.closePath();
-      ctx.fillStyle=s.col; ctx.fill();
-      ang+=sw;
+
+    let ang = -Math.PI / 2;
+    segs.forEach(s => {
+      const sw = s.pct * Math.PI * 2 * p;
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, R, ang, ang + sw);
+      ctx.closePath(); ctx.fillStyle = s.col; ctx.fill();
+      ang += sw;
     });
-    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
-    ctx.fillStyle='#080808'; ctx.fill();
-    const fs=Math.max(7,Math.floor(Math.min(W,H)/11));
-    ctx.fillStyle=ACC; ctx.font=`500 ${fs}px system-ui`;
-    ctx.textAlign='center'; ctx.fillText('CERTS',cx,cy+fs*.35);
-    if(p>.75){
-      ctx.globalAlpha=Math.min(1,(p-.75)/.25);
-      let la=-Math.PI/2;
-      segs.forEach(s=>{
-        const mid=la+s.pct*Math.PI*2*.5; la+=s.pct*Math.PI*2;
-        const lx=cx+Math.cos(mid)*(R+11), ly=cy+Math.sin(mid)*(R+11);
-        ctx.fillStyle=A(.55);
-        ctx.font=`${Math.max(5,Math.floor(W/26))}px system-ui`;
-        ctx.textAlign='center';
-        ctx.fillText(s.label,lx,ly-2);
-        ctx.fillText(Math.round(s.pct*100)+'%',lx,ly+Math.max(5,Math.floor(W/26))+1);
+
+    /* hole */
+    ctx.beginPath(); ctx.arc(cx, cy, ri, 0, Math.PI * 2);
+    ctx.fillStyle = '#080808'; ctx.fill();
+
+    /* centre text */
+    const fs = Math.max(7, Math.floor(Math.min(W, H) / 11));
+    ctx.fillStyle = ACC; ctx.textAlign = 'center';
+    ctx.font      = `500 ${fs}px system-ui`;
+    ctx.fillText('12',    cx, cy - fs * 0.15);
+    ctx.font      = `${Math.max(5, fs - 2)}px system-ui`;
+    ctx.fillText('CERTS', cx, cy + fs * 0.95);
+
+    /* segment labels — two lines each, pushed well outside ring */
+    if(p > 0.78){
+      ctx.globalAlpha = Math.min(1, (p - 0.78) / 0.22);
+      const lfs    = Math.max(5, Math.floor(W / 22));
+      const labelR = R + Math.max(10, Math.floor(Math.min(W, H) * 0.14));
+      let la = -Math.PI / 2;
+
+      segs.forEach(s => {
+        const mid = la + s.pct * Math.PI * 2 * 0.5;
+        la += s.pct * Math.PI * 2;
+        const lx = cx + Math.cos(mid) * labelR;
+        const ly = cy + Math.sin(mid) * labelR;
+        ctx.fillStyle = A(.58);
+        ctx.font      = `${lfs}px system-ui`;
+        ctx.textAlign = 'center';
+        ctx.fillText(s.l1, lx, ly - lfs * 0.35);
+        ctx.fillText(s.l2, lx, ly + lfs * 0.85);
       });
-      ctx.globalAlpha=1;
+      ctx.globalAlpha = 1;
     }
   }
 
-  /* ── CHART 4: Consulting Domain Focus (spider / radar drawn on canvas)
-     6 service areas from his consulting nav, sized by engagement depth across 30+ clients ── */
-  function drawNet(ctx,W,H,p){
-    ctx.clearRect(0,0,W,H);
-    const cx=W/2, cy=H/2;
-    const R=Math.min(W,H)*.36*p;
-    const domains=[
-      {label:'Tx Monitor', val:.97},
-      {label:'Risk Score',  val:.92},
-      {label:'Entity Res.', val:.88},
-      {label:'Sanction',    val:.85},
-      {label:'Reg Report',  val:.80},
-      {label:'Case Mgmt',   val:.74},
+  /* ─── CHART 4 · Consulting Domain Focus (radar) ───
+     labelR uses a fixed multiplier of the panel's min dimension
+     so labels never overlap the polygon regardless of p value. */
+  function drawNet(ctx, W, H, p){
+    ctx.clearRect(0, 0, W, H);
+
+    const cx = W / 2;
+    const cy = H / 2;
+    const R  = Math.min(W, H) * 0.28 * p;               /* polygon scales with p */
+    const LR = Math.min(W, H) * 0.28 * 1.40;            /* label radius fixed at final size */
+
+    const domains = [
+      { l1: 'Tx Monitor',   l2: '',        val: 0.97 },
+      { l1: 'Risk',         l2: 'Score',   val: 0.92 },
+      { l1: 'Entity',       l2: 'Res.',    val: 0.88 },
+      { l1: 'Sanction',     l2: 'Screen',  val: 0.85 },
+      { l1: 'Reg',          l2: 'Report',  val: 0.80 },
+      { l1: 'Case',         l2: 'Mgmt',    val: 0.74 },
     ];
-    const n=domains.length;
-    const angle=i=>(-Math.PI/2)+(i/n)*Math.PI*2;
+    const n     = domains.length;
+    const angle = i => (-Math.PI / 2) + (i / n) * Math.PI * 2;
+
     /* grid rings */
-    [.25,.5,.75,1].forEach(frac=>{
+    [0.25, 0.5, 0.75, 1].forEach(frac => {
       ctx.beginPath();
-      for(let i=0;i<n;i++){
-        const a=angle(i), rx=cx+Math.cos(a)*R*frac, ry=cy+Math.sin(a)*R*frac;
-        i===0?ctx.moveTo(rx,ry):ctx.lineTo(rx,ry);
+      for(let i = 0; i < n; i++){
+        const a = angle(i);
+        const x = cx + Math.cos(a) * R * frac;
+        const y = cy + Math.sin(a) * R * frac;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
-      ctx.closePath(); ctx.strokeStyle=A(.08); ctx.lineWidth=.5; ctx.stroke();
+      ctx.closePath();
+      ctx.strokeStyle = A(.08); ctx.lineWidth = .5; ctx.stroke();
     });
+
     /* spokes */
-    for(let i=0;i<n;i++){
-      const a=angle(i);
-      ctx.beginPath(); ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+Math.cos(a)*R, cy+Math.sin(a)*R);
-      ctx.strokeStyle=A(.07); ctx.lineWidth=.5; ctx.stroke();
+    for(let i = 0; i < n; i++){
+      const a = angle(i);
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+      ctx.strokeStyle = A(.07); ctx.lineWidth = .5; ctx.stroke();
     }
+
     /* filled polygon */
     ctx.beginPath();
-    domains.forEach((d,i)=>{
-      const a=angle(i), r2=R*d.val;
-      const x=cx+Math.cos(a)*r2, y=cy+Math.sin(a)*r2;
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    domains.forEach((d, i) => {
+      const a = angle(i);
+      const x = cx + Math.cos(a) * R * d.val;
+      const y = cy + Math.sin(a) * R * d.val;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
-    ctx.closePath(); ctx.fillStyle=A(.14); ctx.fill();
-    ctx.strokeStyle=ACC; ctx.lineWidth=1.2; ctx.stroke();
-    /* dots + labels */
-    domains.forEach((d,i)=>{
-      const a=angle(i), r2=R*d.val;
-      const x=cx+Math.cos(a)*r2, y=cy+Math.sin(a)*r2;
-      ctx.beginPath(); ctx.arc(x,y,2.5,0,Math.PI*2);
-      ctx.fillStyle=ACC; ctx.fill();
-      if(p>.6){
-        ctx.globalAlpha=Math.min(1,(p-.6)/.4);
-        const lx=cx+Math.cos(a)*(R+12), ly=cy+Math.sin(a)*(R+12);
-        const fs=Math.max(5,Math.floor(W/28));
-        ctx.fillStyle=A(.45); ctx.font=`${fs}px system-ui`; ctx.textAlign='center';
-        ctx.fillText(d.label,lx,ly+fs*.4);
-        ctx.globalAlpha=1;
-      }
-    });
-  }
+    ctx.closePath();
+    ctx.fillStyle   = A(.13); ctx.fill();
+    ctx.strokeStyle = ACC; ctx.lineWidth = 1.2; ctx.stroke();
 
-  /* ── CHART 5: Career Skill Depth (grouped bar, full-width)
-     4 roles × 4 skill tracks. Tracks: Python/SQL | ML/DS | AML Domain | Cloud
-     Roles: Sparks(2021) | Malatest(2021) | Alessa Intermediate(2022) | Alessa Specialist(2025) ── */
-  function drawCombo(ctx,W,H,p){
-    ctx.clearRect(0,0,W,H);
-    const roles=['Sparks \'21','Malatest \'21','Alessa Inter.','Alessa Spec.'];
-    const tracks=[
-      {name:'Python/SQL', vals:[55,30,75,92], col:ACC},
-      {name:'ML / DS',    vals:[60,20,65,84], col:A(.62)},
-      {name:'AML Domain', vals:[10,10,80,96], col:A(.35)},
-      {name:'Cloud',      vals:[40,15,68,82], col:A(.18)},
-    ];
-    const P={t:14,r:8,b:28,l:8};
-    const cW=W-P.l-P.r, cH=H-P.t-P.b;
-    const nR=roles.length, nT=tracks.length;
-    const groupW=cW/nR, barW=Math.floor(groupW/(nT+1));
-    const groupPad=Math.floor((groupW-barW*nT)/2);
-    gridLines(ctx,W,H,nR,4);
-    /* y-axis % ticks */
-    [0,25,50,75,100].forEach(v=>{
-      const y=P.t+cH-(v/100)*cH;
-      ctx.fillStyle=A(.18); ctx.font='5px system-ui'; ctx.textAlign='left';
-      ctx.fillText(v+'%',1,y+2);
+    /* vertex dots */
+    domains.forEach((d, i) => {
+      const a = angle(i);
+      const x = cx + Math.cos(a) * R * d.val;
+      const y = cy + Math.sin(a) * R * d.val;
+      ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = ACC; ctx.fill();
     });
-    roles.forEach((role,ri)=>{
-      tracks.forEach((tr,ti)=>{
-        const x=P.l+ri*groupW+groupPad+ti*barW;
-        const bh=Math.round((tr.vals[ri]/100)*cH*p);
-        const y=P.t+cH-bh;
-        ctx.fillStyle=tr.col; ctx.fillRect(x,y,barW-1,bh);
+
+    /* labels — fade in after 55%, always at full-size radius */
+    if(p > 0.55){
+      ctx.globalAlpha = Math.min(1, (p - 0.55) / 0.45);
+      const lfs = Math.max(5, Math.floor(Math.min(W, H) / 20));
+
+      domains.forEach((d, i) => {
+        const a  = angle(i);
+        const lx = cx + Math.cos(a) * LR;
+        const ly = cy + Math.sin(a) * LR;
+        ctx.fillStyle = A(.50);
+        ctx.font      = `${lfs}px system-ui`;
+        ctx.textAlign = 'center';
+        if(d.l2){
+          ctx.fillText(d.l1, lx, ly - lfs * 0.3);
+          ctx.fillText(d.l2, lx, ly + lfs * 0.9);
+        } else {
+          ctx.fillText(d.l1, lx, ly + lfs * 0.35);
+        }
       });
-      /* role label */
-      ctx.fillStyle=A(.32); ctx.font=`${Math.max(5,Math.floor(W/68))}px system-ui`;
-      ctx.textAlign='center';
-      ctx.fillText(role,P.l+ri*groupW+groupW/2,H-2);
-    });
-    /* legend top-right */
-    if(p>.5){
-      ctx.globalAlpha=Math.min(1,(p-.5)/.5);
-      tracks.forEach((tr,ti)=>{
-        const lx=W-70, ly=4+ti*8;
-        ctx.fillStyle=tr.col; ctx.fillRect(lx,ly,6,5);
-        ctx.fillStyle=A(.35); ctx.font='5px system-ui'; ctx.textAlign='left';
-        ctx.fillText(tr.name,lx+8,ly+4.5);
-      });
-      ctx.globalAlpha=1;
+      ctx.globalAlpha = 1;
     }
   }
 
-  function animate(fn,delay){
-    setTimeout(()=>{let p=0;const t=()=>{p=Math.min(1,p+.022);fn(p);if(p<1)requestAnimationFrame(t);};requestAnimationFrame(t);},delay);
+  /* ─── CHART 5 · Career Skill Depth (grouped bar, full-width) ───
+     Bars fill 52% of each role slot — prevents the oversized bars
+     seen in the screenshot. Legend strip sits in a reserved top band.
+     y-axis labels on left; role labels centred under each group. */
+  function drawCombo(ctx, W, H, p){
+    ctx.clearRect(0, 0, W, H);
+
+    const roles  = ["Sparks '21", "Malatest '21", 'Alessa Inter.', 'Alessa Spec.'];
+    const tracks = [
+      { name: 'Python/SQL', vals: [55, 30, 75, 92], col: ACC    },
+      { name: 'ML / DS',    vals: [60, 20, 65, 84], col: A(.58) },
+      { name: 'AML Domain', vals: [10, 10, 80, 96], col: A(.32) },
+      { name: 'Cloud',      vals: [40, 15, 68, 82], col: A(.15) },
+    ];
+
+    const legH = Math.max(13, Math.floor(H * 0.13));
+    const P    = { t: legH + 5, r: 6, b: 22, l: 22 };
+    const cW   = W - P.l - P.r;
+    const cH   = H - P.t - P.b;
+    const nR   = roles.length;
+    const nT   = tracks.length;
+    const slotW  = cW / nR;
+    const barW   = Math.floor(slotW * 0.52 / nT);
+    const grpOff = Math.floor((slotW - barW * nT) / 2);
+
+    gridLines(ctx, W, H, nR, 4);
+
+    /* y-axis % labels */
+    [0, 25, 50, 75, 100].forEach(v => {
+      const y = P.t + cH - (v / 100) * cH;
+      ctx.fillStyle = A(.20);
+      ctx.font      = '5px system-ui';
+      ctx.textAlign = 'right';
+      ctx.fillText(v + '%', P.l - 3, y + 2);
+    });
+
+    /* bars */
+    roles.forEach((role, ri) => {
+      tracks.forEach((tr, ti) => {
+        const x  = P.l + ri * slotW + grpOff + ti * barW;
+        const bh = Math.round((tr.vals[ri] / 100) * cH * p);
+        const y  = P.t + cH - bh;
+        ctx.fillStyle = tr.col;
+        ctx.fillRect(x, y, Math.max(1, barW - 1), bh);
+      });
+
+      /* role label */
+      const lfs = Math.max(5, Math.floor(W / 68));
+      ctx.fillStyle = A(.35);
+      ctx.font      = `${lfs}px system-ui`;
+      ctx.textAlign = 'center';
+      ctx.fillText(role, P.l + ri * slotW + slotW / 2, H - 4);
+    });
+
+    /* legend strip — top band, fades in at 40% */
+    if(p > 0.4){
+      ctx.globalAlpha = Math.min(1, (p - 0.4) / 0.3);
+      const lfs     = Math.max(6, Math.floor(H * 0.075));
+      const swatchS = lfs;
+      let lx        = P.l;
+
+      tracks.forEach(tr => {
+        ctx.fillStyle = tr.col;
+        ctx.fillRect(lx, 3, swatchS, swatchS * 0.72);
+        ctx.fillStyle = A(.42);
+        ctx.font      = `${lfs}px system-ui`;
+        ctx.textAlign = 'left';
+        ctx.fillText(tr.name, lx + swatchS + 3, 3 + swatchS * 0.68);
+        lx += swatchS + 3 + ctx.measureText(tr.name).width + 9;
+      });
+      ctx.globalAlpha = 1;
+    }
   }
 
-  window.addEventListener('load',()=>{
-    setTimeout(()=>{
-      const bar  =setupCanvas('cv-bar');
-      const line =setupCanvas('cv-line');
-      const donut=setupCanvas('cv-donut');
-      const net  =setupCanvas('cv-net');
-      const combo=setupCanvas('cv-combo');
-      animate(p=>drawBar  (bar.ctx,  bar.W,   bar.H,   p), 400);
-      animate(p=>drawLine (line.ctx, line.W,  line.H,  p), 600);
-      animate(p=>drawDonut(donut.ctx,donut.W, donut.H, p), 800);
-      animate(p=>drawNet  (net.ctx,  net.W,   net.H,   p),1000);
-      animate(p=>drawCombo(combo.ctx,combo.W, combo.H, p),1200);
-    },100);
+  /* ─── animation runner ─── */
+  function animate(fn, delay){
+    setTimeout(() => {
+      let p = 0;
+      const tick = () => {
+        p = Math.min(1, p + 0.022);
+        fn(p);
+        if(p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const bar   = setupCanvas('cv-bar');
+      const line  = setupCanvas('cv-line');
+      const donut = setupCanvas('cv-donut');
+      const net   = setupCanvas('cv-net');
+      const combo = setupCanvas('cv-combo');
+      animate(p => drawBar  (bar.ctx,   bar.W,   bar.H,   p),  400);
+      animate(p => drawLine (line.ctx,  line.W,  line.H,  p),  600);
+      animate(p => drawDonut(donut.ctx, donut.W, donut.H, p),  800);
+      animate(p => drawNet  (net.ctx,   net.W,   net.H,   p), 1000);
+      animate(p => drawCombo(combo.ctx, combo.W, combo.H, p), 1200);
+    }, 100);
   });
 })();
 </script>
