@@ -353,13 +353,11 @@ function triggerFilter(el, section) {
 
 
 <section class="site-hero" id="section-home" 
-    style="position: relative; background: #0d0d12; overflow: hidden;" 
+    style="position: relative; background: #0d0d12; overflow: hidden; height:100vh;" 
     data-stellar-background-ratio="0.5">
 
-    <!-- Particle canvas -->
     <canvas id="heroParticles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
 
-    <!-- Overlay -->
     <div class="overlay" style="position:absolute; inset:0; background: rgba(0,0,0,0.15); z-index:1;"></div>
 
     <div class="container" style="position:relative; z-index:2;">
@@ -396,52 +394,43 @@ function triggerFilter(el, section) {
     </div>
 </section>
 
-<style>
-@keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 0.6; } }
-@keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes fadeInText { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInButton { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-</style>
-
 <script>
 const canvas = document.getElementById('heroParticles');
 const ctx = canvas.getContext('2d');
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-// Determine particle count based on screen size
 const particleCount = window.innerWidth > 768 ? 80 : 40;
 
-// Generate particles with size and glow variation
 const particles = [];
 for(let i=0;i<particleCount;i++){
     particles.push({
         x: Math.random()*width,
         y: Math.random()*height,
-        r: Math.random()*4 + 2, // radius 2–6
-        dx:(Math.random()-0.5)*1.2, // speed x
-        dy:(Math.random()-0.5)*1.2, // speed y
+        r: Math.random()*3 + 2, // radius 2-5
+        dx:(Math.random()-0.5)*1.5,
+        dy:(Math.random()-0.5)*1.5,
         color:'#bac964',
-        glow: 4 + Math.random()*4 // shadowBlur
+        alpha: 0.4 + Math.random()*0.6 // twinkle effect
     });
-});
+}
 
-// Animate particles
 function animate(){
     ctx.clearRect(0,0,width,height);
 
     particles.forEach(p=>{
         p.x += p.dx; p.y += p.dy;
 
-        // wrap around edges
-        if(p.x>width) p.x=0; if(p.x<0) p.x=width;
-        if(p.y>height) p.y=0; if(p.y<0) p.y=height;
+        if(p.x>width) p.x=0;
+        if(p.x<0) p.x=width;
+        if(p.y>height) p.y=0;
+        if(p.y<0) p.y=height;
 
         ctx.beginPath();
         ctx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = p.glow;
+        ctx.fillStyle = `rgba(186,201,100,${p.alpha})`;
+        ctx.shadowColor = '#bac964';
+        ctx.shadowBlur = 6; // stronger glow
         ctx.fill();
     });
 
@@ -450,26 +439,9 @@ function animate(){
 
 animate();
 
-// Responsive resize
 window.addEventListener('resize', ()=>{
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-
-    // Adjust particle count dynamically
-    if(window.innerWidth > 768 && particles.length < 80){
-        const add = 80 - particles.length;
-        for(let i=0;i<add;i++){
-            particles.push({
-                x: Math.random()*width,
-                y: Math.random()*height,
-                r: Math.random()*4 + 2,
-                dx:(Math.random()-0.5)*1.2,
-                dy:(Math.random()-0.5)*1.2,
-                color:'#bac964',
-                glow: 4 + Math.random()*4
-            });
-        }
-    }
 });
 </script>
 	
