@@ -353,20 +353,25 @@ function triggerFilter(el, section) {
 
 
 <section class="site-hero" id="section-home" 
-    style="background-image: url('images/data.PNG'); background-size: cover; background-position: center;" 
+    style="position: relative; background: #0d0d12; overflow: hidden;" 
     data-stellar-background-ratio="0.5">
 
-    <!-- Dark overlay with a smooth fade-in effect -->
-    <div class="overlay" style="animation: fadeInOverlay 1.5s ease-in;"></div>
+    <!-- Animated particle canvas -->
+    <canvas id="heroParticles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
 
-    <div class="container">
+    <!-- Optional subtle overlay for contrast -->
+    <div class="overlay" style="position:absolute; inset:0; background: rgba(0,0,0,0.15); z-index:1;"></div>
+
+    <div class="container" style="position:relative; z-index:2;">
         <div class="row intro-text align-items-center justify-content-center">
             <div class="col-md-10 text-left pt-5">
                 
                 <!-- Heading with smooth slide-in animation -->
                 <h1 class="site-heading site-animate" style="animation: slideIn 1.2s ease-out;">
                     <strong class="d-block">Abhishek Nagrecha, MSc</strong>
-                    <span class="d-block" style="color: #bac964; font-size: 0.55em; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px;">DATA ANALYTICS SPECIALIST · PROFESSIONAL SERVICES · FINANCIAL COMPLIANCE </span>
+                    <span class="d-block" style="color: #bac964; font-size: 0.55em; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px;">
+                        DATA ANALYTICS SPECIALIST · PROFESSIONAL SERVICES · FINANCIAL COMPLIANCE
+                    </span>
                 </h1>
                 
                 <!-- Subheading with elegant fade-in effect -->
@@ -374,20 +379,20 @@ function triggerFilter(el, section) {
                     <strong>Turning financial data into compliance intelligence</strong>
                 </p>
 
-		<!-- "Schedule a Meeting" button linking to Google Meet booking -->
-		<div class="page-scroll mt-3 text-left">
-		    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true" 
-		       target="_blank"
-		       class="btn btn-primary btn-sm"
-		       style="animation: fadeInButton 1.8s ease-in-out; font-size: 1rem; font-weight: 600; 
-		              letter-spacing: 0.5px; background-color: #bac964; border-color: #bac964; 
-		              color: #212529; text-align: center; padding: 8px 20px; 
-		              transition: transform 0.3s ease, box-shadow 0.3s ease; text-transform: uppercase;"
-		       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0px 5px 15px rgba(186, 201, 100, 0.3)';"
-		       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-		       Schedule a Meeting
-		    </a>
-		</div>
+                <!-- "Schedule a Meeting" button -->
+                <div class="page-scroll mt-3 text-left">
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true" 
+                       target="_blank"
+                       class="btn btn-primary btn-sm"
+                       style="animation: fadeInButton 1.8s ease-in-out; font-size: 1rem; font-weight: 600; 
+                              letter-spacing: 0.5px; background-color: #bac964; border-color: #bac964; 
+                              color: #212529; text-align: center; padding: 8px 20px; 
+                              transition: transform 0.3s ease, box-shadow 0.3s ease; text-transform: uppercase;"
+                       onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0px 5px 15px rgba(186, 201, 100, 0.3)';"
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                       Schedule a Meeting
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -415,6 +420,58 @@ function triggerFilter(el, section) {
     to { opacity: 1; transform: scale(1); }
 }
 </style>
+
+<script>
+const canvas = document.getElementById('heroParticles');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 70;
+
+for(let i=0; i<particleCount; i++){
+    particles.push({
+        x: Math.random()*width,
+        y: Math.random()*height,
+        r: Math.random()*3 + 1,
+        dx: (Math.random()-0.5)*0.6,
+        dy: (Math.random()-0.5)*0.6,
+        color: '#bac964'
+    });
+}
+
+function animate() {
+    ctx.fillStyle = '#0d0d12'; // black background
+    ctx.fillRect(0,0,width,height);
+
+    particles.forEach(p=>{
+        p.x += p.dx;
+        p.y += p.dy;
+        if(p.x>width) p.x=0;
+        if(p.x<0) p.x=width;
+        if(p.y>height) p.y=0;
+        if(p.y<0) p.y=height;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 6;
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+});
+</script>
+
+	
 
 <!-- ScrollReveal removed - was hiding navbar items and sections -->
 	
