@@ -359,7 +359,7 @@ function triggerFilter(el, section) {
     <!-- Particle canvas -->
     <canvas id="heroParticles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
 
-    <!-- Optional overlay -->
+    <!-- Overlay -->
     <div class="overlay" style="position:absolute; inset:0; background: rgba(0,0,0,0.15); z-index:1;"></div>
 
     <div class="container" style="position:relative; z-index:2;">
@@ -409,35 +409,39 @@ const ctx = canvas.getContext('2d');
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-// Particles — bigger and more dynamic
+// Determine particle count based on screen size
+const particleCount = window.innerWidth > 768 ? 80 : 40;
+
+// Generate particles with size and glow variation
 const particles = [];
-for(let i=0;i<50;i++){
+for(let i=0;i<particleCount;i++){
     particles.push({
         x: Math.random()*width,
         y: Math.random()*height,
-        r: Math.random()*4 + 2, // bigger radius
-        dx:(Math.random()-0.5)*1.2, // faster
-        dy:(Math.random()-0.5)*1.2,
-        color:'#bac964'
+        r: Math.random()*4 + 2, // radius 2–6
+        dx:(Math.random()-0.5)*1.2, // speed x
+        dy:(Math.random()-0.5)*1.2, // speed y
+        color:'#bac964',
+        glow: 4 + Math.random()*4 // shadowBlur
     });
-}
+});
 
+// Animate particles
 function animate(){
     ctx.clearRect(0,0,width,height);
 
     particles.forEach(p=>{
         p.x += p.dx; p.y += p.dy;
 
-        if(p.x>width) p.x=0;
-        if(p.x<0) p.x=width;
-        if(p.y>height) p.y=0;
-        if(p.y<0) p.y=height;
+        // wrap around edges
+        if(p.x>width) p.x=0; if(p.x<0) p.x=width;
+        if(p.y>height) p.y=0; if(p.y<0) p.y=height;
 
         ctx.beginPath();
         ctx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
         ctx.fillStyle = p.color;
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8; // stronger glow
+        ctx.shadowBlur = p.glow;
         ctx.fill();
     });
 
@@ -446,9 +450,26 @@ function animate(){
 
 animate();
 
+// Responsive resize
 window.addEventListener('resize', ()=>{
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
+
+    // Adjust particle count dynamically
+    if(window.innerWidth > 768 && particles.length < 80){
+        const add = 80 - particles.length;
+        for(let i=0;i<add;i++){
+            particles.push({
+                x: Math.random()*width,
+                y: Math.random()*height,
+                r: Math.random()*4 + 2,
+                dx:(Math.random()-0.5)*1.2,
+                dy:(Math.random()-0.5)*1.2,
+                color:'#bac964',
+                glow: 4 + Math.random()*4
+            });
+        }
+    }
 });
 </script>
 	
