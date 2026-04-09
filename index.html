@@ -353,11 +353,12 @@ function triggerFilter(el, section) {
 
 
 <section class="site-hero" id="section-home" 
-    style="position: relative; background: #0d0d12; overflow: hidden; height:100vh;" 
-    data-stellar-background-ratio="0.5">
+    style="position: relative; background: #0d0d12; overflow: hidden; height:100vh;">
 
-    <canvas id="heroParticles" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
+    <!-- Animated shapes background -->
+    <canvas id="heroShapes" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;"></canvas>
 
+    <!-- Overlay -->
     <div class="overlay" style="position:absolute; inset:0; background: rgba(0,0,0,0.15); z-index:1;"></div>
 
     <div class="container" style="position:relative; z-index:2;">
@@ -395,49 +396,55 @@ function triggerFilter(el, section) {
 </section>
 
 <script>
-const canvas = document.getElementById('heroParticles');
+const canvas = document.getElementById('heroShapes');
 const ctx = canvas.getContext('2d');
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-const particleCount = window.innerWidth > 768 ? 80 : 40;
-
-const particles = [];
-for(let i=0;i<particleCount;i++){
-    particles.push({
+// Create floating shape objects
+const shapeCount = window.innerWidth > 768 ? 12 : 6; // fewer on mobile
+const shapes = [];
+for(let i=0;i<shapeCount;i++){
+    shapes.push({
         x: Math.random()*width,
         y: Math.random()*height,
-        r: Math.random()*3 + 2, // radius 2-5
-        dx:(Math.random()-0.5)*1.5,
-        dy:(Math.random()-0.5)*1.5,
-        color:'#bac964',
-        alpha: 0.4 + Math.random()*0.6 // twinkle effect
+        size: 80 + Math.random()*60, // size of shapes
+        dx: (Math.random()-0.5)*0.3, // slow horizontal drift
+        dy: (Math.random()-0.5)*0.3,
+        rotation: Math.random()*360,
+        dr: (Math.random()-0.5)*0.2, // rotation speed
+        color: '#bac964',
+        alpha: 0.05 + Math.random()*0.1 // subtle transparency
     });
 }
 
-function animate(){
+function drawShapes(){
     ctx.clearRect(0,0,width,height);
-
-    particles.forEach(p=>{
-        p.x += p.dx; p.y += p.dy;
-
-        if(p.x>width) p.x=0;
-        if(p.x<0) p.x=width;
-        if(p.y>height) p.y=0;
-        if(p.y<0) p.y=height;
-
+    shapes.forEach(s=>{
+        ctx.save();
+        ctx.translate(s.x,s.y);
+        ctx.rotate(s.rotation*Math.PI/180);
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = s.alpha;
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
-        ctx.fillStyle = `rgba(186,201,100,${p.alpha})`;
-        ctx.shadowColor = '#bac964';
-        ctx.shadowBlur = 6; // stronger glow
+        ctx.rect(-s.size/2, -s.size/2, s.size, s.size);
         ctx.fill();
+        ctx.restore();
+
+        // update position
+        s.x += s.dx; s.y += s.dy; s.rotation += s.dr;
+
+        // wrap around edges
+        if(s.x - s.size > width) s.x = -s.size;
+        if(s.x + s.size < 0) s.x = width + s.size;
+        if(s.y - s.size > height) s.y = -s.size;
+        if(s.y + s.size < 0) s.y = height + s.size;
     });
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(drawShapes);
 }
 
-animate();
+drawShapes();
 
 window.addEventListener('resize', ()=>{
     width = canvas.width = window.innerWidth;
