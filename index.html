@@ -352,553 +352,560 @@ function triggerFilter(el, section) {
 
 
 
-<section class="site-hero-new" id="section-home">
-  <div class="bg-grid"></div>
-  <div class="top-accent"></div>
+<section id="section-home" class="hero-section">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-top-accent"></div>
 
-<!-- LEFT: text -->
-<div class="hero-content">
-  <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
-  <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
+  <!-- Floating particles -->
+  <canvas id="hero-particles" aria-hidden="true"></canvas>
 
-  <p class="hero-sub" style="color: #ffffff;">MSc · Data Analytics Specialist</p>
+  <div class="hero-inner">
 
-  <div class="hdiv"></div>
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-ey-line"></span>
+        <span class="hero-ey-dot"></span>
+      </div>
 
-  <div class="tags">
-    <span class="tag" style="color: #ffffff;">Professional Services</span>
-    <span class="tag" style="color: #ffffff;">Financial Compliance</span>
-    <span class="tag" style="color: #ffffff;">AML · AI</span>
+      <h1 class="hero-name">
+        <span class="hn-first">ABHISHEK</span>
+        <span class="hn-last">NAGRECHA<em>,</em></span>
+      </h1>
+
+      <p class="hero-title">MSc &nbsp;&middot;&nbsp; Data Analytics Specialist</p>
+
+      <div class="hero-rule"></div>
+
+      <div class="hero-tags">
+        <span class="htag">Professional Services</span>
+        <span class="htag">Financial Compliance</span>
+        <span class="htag">AML &middot; AI</span>
+      </div>
+
+      <p class="hero-desc">
+        <strong>Turning financial data into compliance intelligence</strong> &mdash;
+        analytics-driven insights for regulatory and risk management challenges.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
+           target="_blank" class="hcta-primary">
+          Schedule a Meeting
+          <span class="hcta-arr"></span>
+        </a>
+        <a href="#section-about" class="hcta-ghost">Learn More</a>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+
+      <!-- Stat strip -->
+      <div class="hero-stats">
+        <div class="hstat">
+          <span class="hstat-num" data-target="5" data-suffix="+">0+</span>
+          <span class="hstat-lbl">Years Experience</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" data-target="30" data-suffix="+">0+</span>
+          <span class="hstat-lbl">Global Clients</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" data-target="12" data-suffix="">0</span>
+          <span class="hstat-lbl">Certifications</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" data-target="6" data-suffix="">0</span>
+          <span class="hstat-lbl">AML Domains</span>
+        </div>
+      </div>
+
+      <!-- Education card -->
+      <div class="hcard">
+        <div class="hcard-label">Education</div>
+        <div class="hcard-body">
+          <div class="hedu-item">
+            <div class="hedu-dot"></div>
+            <div class="hedu-content">
+              <div class="hedu-degree">Master of Science &mdash; Computer Science</div>
+              <div class="hedu-school">Lakehead University &nbsp;&middot;&nbsp; 2019 – 2021</div>
+            </div>
+          </div>
+          <div class="hedu-item">
+            <div class="hedu-dot hedu-dot-sm"></div>
+            <div class="hedu-content">
+              <div class="hedu-degree">Bachelor of Engineering &mdash; Computer Engineering</div>
+              <div class="hedu-school">Gujarat Technological University &nbsp;&middot;&nbsp; 2014 – 2018</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills card -->
+      <div class="hcard">
+        <div class="hcard-label">Core Competencies</div>
+        <div class="hcard-body">
+          <div class="hskill-grid" id="hero-skills">
+            <div class="hskill-row"><span class="hskill-name">AML</span><div class="hskill-track"><div class="hskill-fill" data-w="95"></div></div><span class="hskill-pct">95%</span></div>
+            <div class="hskill-row"><span class="hskill-name">Python / SQL</span><div class="hskill-track"><div class="hskill-fill" data-w="88"></div></div><span class="hskill-pct">88%</span></div>
+            <div class="hskill-row"><span class="hskill-name">BI &amp; Visualization</span><div class="hskill-track"><div class="hskill-fill" data-w="85"></div></div><span class="hskill-pct">85%</span></div>
+            <div class="hskill-row"><span class="hskill-name">ML / Data Science</span><div class="hskill-track"><div class="hskill-fill" data-w="82"></div></div><span class="hskill-pct">82%</span></div>
+            <div class="hskill-row"><span class="hskill-name">Cloud</span><div class="hskill-track"><div class="hskill-fill" data-w="78"></div></div><span class="hskill-pct">78%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain tags -->
+      <div class="hcard">
+        <div class="hcard-label">Consulting Domains</div>
+        <div class="hcard-body">
+          <div class="hdomain-tags">
+            <span class="hdtag">Transaction Monitoring</span>
+            <span class="hdtag">Risk Scoring</span>
+            <span class="hdtag">Entity Resolution</span>
+            <span class="hdtag">Sanctions Screening</span>
+            <span class="hdtag">Regulatory Reporting</span>
+            <span class="hdtag">Case Management</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <p class="hero-desc">
-    <strong>Turning financial data into compliance intelligence</strong> — analytics-driven insights for regulatory and risk management challenges.
-  </p>
-
-  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
-     target="_blank" class="hero-cta">Schedule a Meeting <span class="cta-arr"></span></a>
-</div>
-
-  <!-- RIGHT: chart grid -->
-  <div class="chart-grid">
-    <div class="chart-panel">
-      <div class="panel-label">Core Skill Proficiency</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-bar"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">AML Solution Accuracy · Career Growth</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-line"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">Certification Areas</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-donut"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">Consulting Domain Focus</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-net"></canvas></div>
-    </div>
-    <div class="chart-panel span-full">
-      <div class="panel-label">Skill Depth by Role · Career Progression 2021 – Present</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-combo"></canvas></div>
-    </div>
+  <!-- Bottom strip -->
+  <div class="hero-strip">
+    <span class="hero-strip-text">Currently at Alessa Inc &nbsp;&middot;&nbsp; Ottawa, Canada &nbsp;&middot;&nbsp; Remote</span>
+    <span class="hero-strip-dot"></span>
+    <span class="hero-strip-text">Open to Consulting</span>
   </div>
 </section>
 
 <style>
-.site-hero-new {
-  position: relative; min-height: 100vh; background: #080808;
-  overflow: hidden; display: flex; align-items: center;
+/* ── HERO SECTION ── */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: #080808;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   font-family: system-ui, -apple-system, sans-serif;
 }
-.bg-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(186,201,100,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(186,201,100,.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+.hero-bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(186,201,100,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(186,201,100,.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: heroGridDrift 28s linear infinite;
 }
-.top-accent {
+@keyframes heroGridDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 56px 56px; }
+}
+.hero-top-accent {
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, #bac964 35%, #bac964 65%, transparent);
-  opacity: .5;
+  background: linear-gradient(90deg, transparent, #bac964 30%, #bac964 70%, transparent);
+  opacity: .5; z-index: 5;
 }
-.hero-content {
+#hero-particles {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  width: 100%; height: 100%;
+}
+
+/* ── INNER LAYOUT ── */
+.hero-inner {
   position: relative; z-index: 10;
-  width: 42%; min-width: 300px; padding: 0 0 0 6vw; flex-shrink: 0;
-}
-.chart-grid {
-  position: relative; z-index: 5; flex: 1;
+  flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 16px;
-  padding: 80px 3vw 80px 2vw;
-  height: 100vh;
-  align-items: stretch;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  padding: 0;
 }
-.chart-panel {
-  background: rgba(186,201,100,.03);
-  border: 1px solid rgba(186,201,100,.08);
-  border-radius: 3px; padding: 12px;
-  display: flex; flex-direction: column; overflow: hidden;
+.hero-inner::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 5%; bottom: 5%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(186,201,100,.15) 20%, rgba(186,201,100,.15) 80%, transparent);
+  pointer-events: none;
 }
-.span-full { grid-column: 1 / -1; }
-.panel-label {
-  font-size: 8px; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(186,201,100,.28); margin-bottom: 8px; flex-shrink: 0;
+
+/* ── LEFT ── */
+.hero-left {
+  padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 64px);
+  display: flex; flex-direction: column; justify-content: center; gap: 20px;
 }
-.panel-canvas-wrap { flex: 1; position: relative; min-height: 0; }
-.panel-canvas-wrap canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
-.eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
-.ey-line { width: 32px; height: 1.5px; background: #bac964; }
-.ey-dot { width: 5px; height: 5px; border-radius: 50%; background: #bac964; animation: blink 2.2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1;}50%{opacity:.2;} }
-.hero-name { font-size: clamp(2.4rem,4vw,3.8rem); font-weight: 700; color: #fff; line-height: 1.07; letter-spacing: -.03em; margin-bottom: 10px; }
-.hero-name span { color: #bac964; }
-.hero-sub { font-size: clamp(.85rem,1.4vw,1rem); color: rgba(186,201,100,.7); font-weight: 300; letter-spacing: .07em; margin-bottom: 24px; }
-.hdiv { width: 44px; height: 1.5px; background: #bac964; opacity: .3; margin-bottom: 20px; }
-.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
-.tag { font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(186,201,100,.55); border: 1px solid rgba(186,201,100,.16); padding: 5px 10px; border-radius: 1px; }
-.hero-desc { font-size: .85rem; color: rgba(255,255,255,.4); line-height: 1.8; margin-bottom: 34px; max-width: 360px; }
-.hero-desc strong { color: rgba(255,255,255,.7); font-weight: 500; }
-.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: #bac964; color: #080808; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; padding: 13px 26px; border-radius: 1px; text-decoration: none; transition: background .2s, transform .2s; }
-.hero-cta:hover { background: #ccdb6a; transform: translateY(-2px); }
-.cta-arr { display: inline-block; width: 10px; height: 10px; border-top: 2px solid #080808; border-right: 2px solid #080808; transform: rotate(45deg); }
-@keyframes fadeUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
-.hero-content > * { animation: fadeUp .6s ease both; }
-.eyebrow{animation-delay:.1s;}.hero-name{animation-delay:.2s;}.hero-sub{animation-delay:.28s;}
-.hdiv{animation-delay:.33s;}.tags{animation-delay:.38s;}.hero-desc{animation-delay:.46s;}.hero-cta{animation-delay:.56s;}
-@keyframes panelIn { from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);} }
-.chart-panel { animation: panelIn .5s ease both; }
-.chart-panel:nth-child(1){animation-delay:.4s;} .chart-panel:nth-child(2){animation-delay:.55s;}
-.chart-panel:nth-child(3){animation-delay:.7s;} .chart-panel:nth-child(4){animation-delay:.85s;}
-.chart-panel:nth-child(5){animation-delay:1s;}
-@media(max-width:768px){
-  .site-hero-new { flex-direction: column; align-items: stretch; }
-  .hero-content { width: 100%; padding: 80px 24px 0; }
-  .chart-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; padding: 20px 16px 40px; }
-  .chart-panel { min-height: 130px; }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-ey-line {
+  display: block; width: 28px; height: 1.5px;
+  background: #bac964; opacity: .6;
+}
+.hero-ey-dot {
+  display: block; width: 5px; height: 5px;
+  border-radius: 50%; background: #bac964;
+  animation: blink 2.2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.15;} }
+
+.hero-name {
+  display: flex; flex-direction: column;
+  font-size: clamp(2.6rem, 4.5vw, 5rem);
+  font-weight: 700; line-height: .97;
+  letter-spacing: -.035em; color: #fff;
+  margin: 0;
+}
+.hn-last em { color: #bac964; font-style: normal; }
+
+.hero-title {
+  font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(186,201,100,.5); font-weight: 400; margin: 0;
+}
+.hero-rule {
+  width: 40px; height: 1px;
+  background: #bac964; opacity: .22;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+.htag {
+  font-size: 8.5px; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(186,201,100,.4);
+  border: 1px solid rgba(186,201,100,.14);
+  padding: 4px 10px; border-radius: 2px;
+}
+.hero-desc {
+  font-size: clamp(.82rem, 1.2vw, .92rem);
+  color: rgba(255,255,255,.36); line-height: 1.9;
+  max-width: 400px; margin: 0;
+}
+.hero-desc strong { color: rgba(255,255,255,.65); font-weight: 500; }
+.hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.hcta-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #bac964; color: #080808;
+  font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  padding: 12px 24px; border-radius: 2px; text-decoration: none;
+  transition: background .18s, transform .18s;
+}
+.hcta-primary:hover { background: #ccdb6a; transform: translateY(-2px); color: #080808; text-decoration: none; }
+.hcta-arr {
+  display: inline-block; width: 7px; height: 7px;
+  border-top: 1.5px solid #080808; border-right: 1.5px solid #080808;
+  transform: rotate(45deg);
+}
+.hcta-ghost {
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(186,201,100,.4); text-decoration: none;
+  border-bottom: 1px solid rgba(186,201,100,.18); padding-bottom: 2px;
+  transition: color .2s;
+}
+.hcta-ghost:hover { color: rgba(186,201,100,.8); text-decoration: none; }
+
+/* ── RIGHT ── */
+.hero-right {
+  padding: clamp(40px, 6vh, 80px) clamp(24px, 4vw, 56px);
+  display: flex; flex-direction: column; gap: 20px;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+/* Stats strip */
+.hero-stats {
+  display: flex; align-items: center;
+  gap: 0;
+  border: 1px solid rgba(186,201,100,.10);
+  border-radius: 4px;
+  background: rgba(186,201,100,.025);
+  padding: 16px 0;
+}
+.hstat {
+  flex: 1; text-align: center; padding: 0 12px;
+}
+.hstat-num {
+  display: block;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 700; color: #bac964;
+  letter-spacing: -.02em; line-height: 1; margin-bottom: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.hstat-lbl {
+  display: block;
+  font-size: 8px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+}
+.hstat-div {
+  width: 1px; align-self: stretch;
+  background: rgba(186,201,100,.10);
+}
+
+/* Cards */
+.hcard {
+  border: 1px solid rgba(186,201,100,.09);
+  border-radius: 4px;
+  background: rgba(186,201,100,.02);
+  overflow: hidden;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.hcard.hcard-visible { opacity: 1; transform: translateY(0); }
+.hcard-label {
+  font-size: 8px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(186,201,100,.25);
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid rgba(186,201,100,.07);
+}
+.hcard-body { padding: 14px; }
+
+/* Education */
+.hedu-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(186,201,100,.06);
+}
+.hedu-item:last-child { border-bottom: none; padding-bottom: 0; }
+.hedu-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #bac964; flex-shrink: 0; margin-top: 5px;
+}
+.hedu-dot-sm { background: rgba(186,201,100,.35); }
+.hedu-degree {
+  font-size: clamp(.78rem, 1.1vw, .85rem);
+  color: rgba(255,255,255,.65); line-height: 1.4; margin-bottom: 3px;
+}
+.hedu-school {
+  font-size: .7rem; letter-spacing: .04em;
+  color: rgba(186,201,100,.38);
+}
+
+/* Skills */
+.hskill-grid { display: flex; flex-direction: column; gap: 9px; }
+.hskill-row { display: flex; align-items: center; gap: 10px; }
+.hskill-name {
+  font-size: .68rem; letter-spacing: .04em;
+  color: rgba(255,255,255,.32); width: 96px; flex-shrink: 0;
+}
+.hskill-track {
+  flex: 1; height: 2px;
+  background: rgba(186,201,100,.08); border-radius: 1px; overflow: hidden;
+}
+.hskill-fill {
+  height: 100%; background: #bac964; border-radius: 1px;
+  width: 0; transition: width 1.2s cubic-bezier(.16,1,.3,1);
+}
+.hskill-pct {
+  font-size: .65rem; color: rgba(186,201,100,.38);
+  width: 28px; text-align: right; flex-shrink: 0;
+}
+
+/* Domain tags */
+.hdomain-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hdtag {
+  font-size: 8px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(186,201,100,.42);
+  border: 1px solid rgba(186,201,100,.14);
+  padding: 5px 9px; border-radius: 2px;
+  transition: background .18s, color .18s;
+}
+.hdtag:hover {
+  background: rgba(186,201,100,.08);
+  color: rgba(186,201,100,.7);
+}
+
+/* Bottom strip */
+.hero-strip {
+  position: relative; z-index: 10;
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px clamp(24px, 5vw, 64px);
+  border-top: 1px solid rgba(186,201,100,.08);
+  background: rgba(8,8,8,.6);
+  flex-wrap: wrap;
+}
+.hero-strip-text {
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+}
+.hero-strip-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: rgba(186,201,100,.35); flex-shrink: 0;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * { animation: heroFadeUp .6s ease both; }
+.hero-eyebrow  { animation-delay: .08s !important; }
+.hero-name     { animation-delay: .16s !important; }
+.hero-title    { animation-delay: .23s !important; }
+.hero-rule     { animation-delay: .28s !important; }
+.hero-tags     { animation-delay: .34s !important; }
+.hero-desc     { animation-delay: .42s !important; }
+.hero-actions  { animation-delay: .52s !important; }
+
+.hero-stats {
+  opacity: 0; transform: translateY(10px);
+  animation: heroFadeUp .55s ease .42s both;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .hero-inner::after { display: none; }
+  .hero-left {
+    padding: 56px 20px 32px;
+    gap: 16px;
+  }
+  .hero-right {
+    padding: 24px 20px 40px;
+    gap: 16px;
+    border-top: 1px solid rgba(186,201,100,.08);
+  }
+  .hero-name { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+  .hero-stats { flex-wrap: wrap; }
+  .hstat { min-width: 80px; }
+}
+@media (max-width: 400px) {
+  .hstat-div { display: none; }
+  .hstat { border-bottom: 1px solid rgba(186,201,100,.08); padding: 10px; }
+  .hero-stats { flex-direction: column; gap: 0; padding: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-grid, #hero-particles { animation: none; }
+  .hero-left > *, .hero-stats, .hcard { animation: none; opacity: 1; transform: none; }
 }
 </style>
 
 <script>
+/* ── Particle canvas ── */
 (function(){
-  const ACC = '#bac964';
-  const A   = p => `rgba(186,201,100,${p})`;
-
-  function setupCanvas(id){
-    const cv   = document.getElementById(id);
-    const wrap = cv.parentElement;
-    const W    = wrap.clientWidth  || 200;
-    const H    = wrap.clientHeight || 120;
-    cv.width  = W * 2; cv.height = H * 2;
-    cv.style.width  = W + 'px';
-    cv.style.height = H + 'px';
-    const ctx = cv.getContext('2d');
-    ctx.scale(2, 2);
-    return { cv, ctx, W, H };
+  var cv = document.getElementById('hero-particles');
+  if(!cv) return;
+  var ctx = cv.getContext('2d');
+  var W, H, pts = [];
+  function resize(){
+    W = cv.width  = cv.offsetWidth;
+    H = cv.height = cv.offsetHeight;
   }
-
-  function gridLines(ctx, W, H, cols, rows){
-    ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
-    for(let i = 0; i <= cols; i++){
-      const x = i * (W / cols);
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-    for(let i = 0; i <= rows; i++){
-      const y = i * (H / rows);
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
+  function mkPt(){
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      r: Math.random()*1.2+.3,
+      a: Math.random()*.4+.05
+    };
   }
-
-  /* ─── CHART 1 · Core Skill Proficiency (horizontal bar) ───
-     Labels right-aligned in a fixed left column (42px).
-     Value labels shown dark-on-gold inside wide bars,
-     gold outside narrow bars. x-axis tick marks at 0 / 50 / 100. */
-  function drawBar(ctx, W, H, p){
-    const labels = ['AML','Python/SQL','Delivery','BI / Viz','Data Eng','ML / DS','Cloud'];
-    const vals   = [95, 88, 90, 85, 80, 82, 78];
-    const P      = { t: 6, r: 38, b: 6, l: 44 };
-    const cW     = W - P.l - P.r;
-    const cH     = H - P.t - P.b;
-    const n      = labels.length;
-    const bh     = Math.floor(cH / n * 0.60);
-    const gap    = (cH - bh * n) / (n + 1);
-    const fs     = Math.max(6, Math.floor(H / n * 0.36));
-
-    ctx.clearRect(0, 0, W, H);
-    gridLines(ctx, W, H, 4, n);
-    ctx.font = `${fs}px system-ui`;
-
-    labels.forEach((l, i) => {
-      const y  = P.t + gap * (i + 1) + bh * i;
-      const bw = Math.round((vals[i] / 100) * cW * p);
-
-      ctx.fillStyle = A(.09);
-      ctx.fillRect(P.l, y, cW, bh);
-
-      ctx.fillStyle = ACC;
-      ctx.fillRect(P.l, y, bw, bh);
-
-      ctx.fillStyle = A(.40);
-      ctx.textAlign = 'right';
-      ctx.fillText(l, P.l - 5, y + bh / 2 + fs * 0.36);
-
-      if(p > 0.6){
-        ctx.globalAlpha = Math.min(1, (p - 0.6) / 0.4);
-        const pct = vals[i] + '%';
-        const tw  = ctx.measureText(pct).width;
-        if(bw > tw + 10){
-          ctx.fillStyle = '#080808';
-          ctx.textAlign = 'right';
-          ctx.fillText(pct, P.l + bw - 4, y + bh / 2 + fs * 0.36);
-        } else {
-          ctx.fillStyle = ACC;
-          ctx.textAlign = 'left';
-          ctx.fillText(pct, P.l + bw + 3, y + bh / 2 + fs * 0.36);
+  function init(){
+    resize();
+    pts = [];
+    var n = Math.min(55, Math.floor(W*H/14000));
+    for(var i=0;i<n;i++) pts.push(mkPt());
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(function(p){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0) p.x=W; if(p.x>W) p.x=0;
+      if(p.y<0) p.y=H; if(p.y>H) p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(186,201,100,'+p.a+')'; ctx.fill();
+    });
+    /* connection lines */
+    for(var i=0;i<pts.length;i++){
+      for(var j=i+1;j<pts.length;j++){
+        var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<90){
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle='rgba(186,201,100,'+(0.06*(1-d/90))+')';
+          ctx.lineWidth=.5; ctx.stroke();
         }
-        ctx.globalAlpha = 1;
       }
-    });
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', function(){ init(); });
+  init(); draw();
+})();
 
-    [0, 50, 100].forEach(v => {
-      const x = P.l + (v / 100) * cW;
-      ctx.fillStyle = A(.18);
-      ctx.font      = '5px system-ui';
-      ctx.textAlign = 'center';
-      ctx.fillText(v + '%', x, H - 1);
+/* ── Animated counters ── */
+(function(){
+  function animCount(el, target, suffix, dur){
+    var start = performance.now();
+    (function tick(now){
+      var p = Math.min((now-start)/dur, 1);
+      var ease = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(ease*target)+suffix;
+      if(p<1) requestAnimationFrame(tick);
+    })(performance.now());
+  }
+  var section = document.getElementById('section-home');
+  var triggered = false;
+  function run(){
+    if(triggered) return; triggered=true;
+    document.querySelectorAll('.hstat-num').forEach(function(el){
+      animCount(el, parseInt(el.dataset.target), el.dataset.suffix||'', 1400);
     });
   }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ run(); }
+    },{threshold:0.2}).observe(section);
+  } else { run(); }
+})();
 
-  /* ─── CHART 2 · AML Solution Accuracy Growth (line) ───
-     Y-axis domain is 30–100 so the start value (38%) sits
-     visibly above the bottom rather than at 1%. */
-  function drawLine(ctx, W, H, p){
-    const pts  = [38, 44, 50, 56, 62, 67, 72, 76, 80, 85, 90, 94];
-    const P    = { t: 14, r: 10, b: 18, l: 28 };
-    const cW   = W - P.l - P.r;
-    const cH   = H - P.t - P.b;
-    const YMIN = 30, YMAX = 100, YR = YMAX - YMIN;
-
-    ctx.clearRect(0, 0, W, H);
-
-    [40, 60, 80, 100].forEach(v => {
-      const y = P.t + cH - ((v - YMIN) / YR) * cH;
-      ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
-      ctx.beginPath(); ctx.moveTo(P.l, y); ctx.lineTo(W - P.r, y); ctx.stroke();
-      ctx.fillStyle   = A(.28);
-      ctx.font        = `${Math.max(6, Math.floor(W / 38))}px system-ui`;
-      ctx.textAlign   = 'right';
-      ctx.fillText(v + '%', P.l - 3, y + 3);
+/* ── Skill bars + card reveal on scroll ── */
+(function(){
+  var done = false;
+  function reveal(){
+    if(done) return; done=true;
+    document.querySelectorAll('.hskill-fill').forEach(function(el,i){
+      setTimeout(function(){ el.style.width=el.dataset.w+'%'; }, 300+i*80);
     });
-
-    const total = pts.length;
-    const n     = Math.max(2, Math.round(total * p));
-    const vis   = pts.slice(0, n);
-
-    const px = i => P.l + i * (cW / (total - 1));
-    const py = v => P.t + cH - ((v - YMIN) / YR) * cH;
-
-    /* area fill */
-    ctx.beginPath();
-    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
-    const lx = px(n - 1);
-    ctx.lineTo(lx, P.t + cH); ctx.lineTo(P.l, P.t + cH);
-    ctx.closePath(); ctx.fillStyle = A(.07); ctx.fill();
-
-    /* line stroke */
-    ctx.beginPath(); ctx.strokeStyle = ACC; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
-    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
-    ctx.stroke();
-
-    /* end dot + label */
-    const lv = vis[n - 1];
-    const ly = py(lv);
-    ctx.beginPath(); ctx.arc(lx, ly, 3, 0, Math.PI * 2);
-    ctx.fillStyle = ACC; ctx.fill();
-    ctx.fillStyle = ACC;
-    ctx.font      = `500 ${Math.max(7, Math.floor(W / 32))}px system-ui`;
-    ctx.textAlign = 'center';
-    ctx.fillText(lv + '%', lx, ly - 7);
-
-    /* start dot + label */
-    if(p > 0.05){
-      ctx.globalAlpha = Math.min(1, p / 0.14);
-      ctx.beginPath(); ctx.arc(px(0), py(pts[0]), 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = A(.55); ctx.fill();
-      ctx.fillStyle = A(.45);
-      ctx.font      = `${Math.max(6, Math.floor(W / 36))}px system-ui`;
-      ctx.textAlign = 'center';
-      ctx.fillText(pts[0] + '%', px(0), py(pts[0]) - 6);
-      ctx.globalAlpha = 1;
-    }
-
-    /* year labels at career milestones */
-    if(p > 0.85){
-      ctx.globalAlpha = Math.min(1, (p - 0.85) / 0.15);
-      const fs = Math.max(5, Math.floor(W / 42));
-      [[0,"'21"],[3,"'22"],[7,"'24"],[11,"'25"]].forEach(([idx, lbl]) => {
-        if(idx >= vis.length) return;
-        ctx.fillStyle = A(.30);
-        ctx.font      = `${fs}px system-ui`;
-        ctx.textAlign = 'center';
-        ctx.fillText(lbl, px(idx), H - 2);
-      });
-      ctx.globalAlpha = 1;
-    }
   }
-
-  /* ─── CHART 3 · Certification Areas (donut) ───
-     Centre shifted slightly left so right-side labels have room.
-     Labels rendered as two lines to prevent clipping.
-     Centre text shows "12 / CERTS". */
-  function drawDonut(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const cx = W * 0.45;
-    const cy = H * 0.50;
-    const R  = Math.min(W * 0.27, H * 0.35);
-    const ri = R * 0.54;
-
-    const segs = [
-      { pct: 0.58, col: ACC,    l1: 'Data Sci', l2: '58%' },
-      { pct: 0.25, col: A(.50), l1: 'AML',      l2: '25%' },
-      { pct: 0.09, col: A(.22), l1: 'Cloud',    l2: '9%'  },
-      { pct: 0.08, col: A(.10), l1: 'SQL',      l2: '8%'  },
-    ];
-
-    let ang = -Math.PI / 2;
-    segs.forEach(s => {
-      const sw = s.pct * Math.PI * 2 * p;
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, R, ang, ang + sw);
-      ctx.closePath(); ctx.fillStyle = s.col; ctx.fill();
-      ang += sw;
-    });
-
-    /* hole */
-    ctx.beginPath(); ctx.arc(cx, cy, ri, 0, Math.PI * 2);
-    ctx.fillStyle = '#080808'; ctx.fill();
-
-    /* centre text */
-    const fs = Math.max(7, Math.floor(Math.min(W, H) / 11));
-    ctx.fillStyle = ACC; ctx.textAlign = 'center';
-    ctx.font      = `500 ${fs}px system-ui`;
-    ctx.fillText('12',    cx, cy - fs * 0.15);
-    ctx.font      = `${Math.max(5, fs - 2)}px system-ui`;
-    ctx.fillText('CERTS', cx, cy + fs * 0.95);
-
-    /* segment labels — two lines each, pushed well outside ring */
-    if(p > 0.78){
-      ctx.globalAlpha = Math.min(1, (p - 0.78) / 0.22);
-      const lfs    = Math.max(5, Math.floor(W / 22));
-      const labelR = R + Math.max(10, Math.floor(Math.min(W, H) * 0.14));
-      let la = -Math.PI / 2;
-
-      segs.forEach(s => {
-        const mid = la + s.pct * Math.PI * 2 * 0.5;
-        la += s.pct * Math.PI * 2;
-        const lx = cx + Math.cos(mid) * labelR;
-        const ly = cy + Math.sin(mid) * labelR;
-        ctx.fillStyle = A(.58);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'center';
-        ctx.fillText(s.l1, lx, ly - lfs * 0.35);
-        ctx.fillText(s.l2, lx, ly + lfs * 0.85);
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── CHART 4 · Consulting Domain Focus (radar) ───
-     labelR uses a fixed multiplier of the panel's min dimension
-     so labels never overlap the polygon regardless of p value. */
-  function drawNet(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const cx = W / 2;
-    const cy = H / 2;
-    const R  = Math.min(W, H) * 0.28 * p;               /* polygon scales with p */
-    const LR = Math.min(W, H) * 0.28 * 1.40;            /* label radius fixed at final size */
-
-    const domains = [
-      { l1: 'Tx Monitor',   l2: '',        val: 0.97 },
-      { l1: 'Risk',         l2: 'Score',   val: 0.92 },
-      { l1: 'Entity',       l2: 'Res.',    val: 0.88 },
-      { l1: 'Sanction',     l2: 'Screen',  val: 0.85 },
-      { l1: 'Reg',          l2: 'Report',  val: 0.80 },
-      { l1: 'Case',         l2: 'Mgmt',    val: 0.74 },
-    ];
-    const n     = domains.length;
-    const angle = i => (-Math.PI / 2) + (i / n) * Math.PI * 2;
-
-    /* grid rings */
-    [0.25, 0.5, 0.75, 1].forEach(frac => {
-      ctx.beginPath();
-      for(let i = 0; i < n; i++){
-        const a = angle(i);
-        const x = cx + Math.cos(a) * R * frac;
-        const y = cy + Math.sin(a) * R * frac;
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.closePath();
-      ctx.strokeStyle = A(.08); ctx.lineWidth = .5; ctx.stroke();
-    });
-
-    /* spokes */
-    for(let i = 0; i < n; i++){
-      const a = angle(i);
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
-      ctx.strokeStyle = A(.07); ctx.lineWidth = .5; ctx.stroke();
-    }
-
-    /* filled polygon */
-    ctx.beginPath();
-    domains.forEach((d, i) => {
-      const a = angle(i);
-      const x = cx + Math.cos(a) * R * d.val;
-      const y = cy + Math.sin(a) * R * d.val;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    });
-    ctx.closePath();
-    ctx.fillStyle   = A(.13); ctx.fill();
-    ctx.strokeStyle = ACC; ctx.lineWidth = 1.2; ctx.stroke();
-
-    /* vertex dots */
-    domains.forEach((d, i) => {
-      const a = angle(i);
-      const x = cx + Math.cos(a) * R * d.val;
-      const y = cy + Math.sin(a) * R * d.val;
-      ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = ACC; ctx.fill();
-    });
-
-    /* labels — fade in after 55%, always at full-size radius */
-    if(p > 0.55){
-      ctx.globalAlpha = Math.min(1, (p - 0.55) / 0.45);
-      const lfs = Math.max(5, Math.floor(Math.min(W, H) / 20));
-
-      domains.forEach((d, i) => {
-        const a  = angle(i);
-        const lx = cx + Math.cos(a) * LR;
-        const ly = cy + Math.sin(a) * LR;
-        ctx.fillStyle = A(.50);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'center';
-        if(d.l2){
-          ctx.fillText(d.l1, lx, ly - lfs * 0.3);
-          ctx.fillText(d.l2, lx, ly + lfs * 0.9);
-        } else {
-          ctx.fillText(d.l1, lx, ly + lfs * 0.35);
+  var cards = document.querySelectorAll('.hcard');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('hcard-visible');
+          io.unobserve(e.target);
         }
       });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── CHART 5 · Career Skill Depth (grouped bar, full-width) ───
-     Bars fill 52% of each role slot — prevents the oversized bars
-     seen in the screenshot. Legend strip sits in a reserved top band.
-     y-axis labels on left; role labels centred under each group. */
-  function drawCombo(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const roles  = ["Sparks '21", "Malatest '21", 'Alessa Inter.', 'Alessa Spec.'];
-    const tracks = [
-      { name: 'Python/SQL', vals: [55, 30, 75, 92], col: ACC    },
-      { name: 'ML / DS',    vals: [60, 20, 65, 84], col: A(.58) },
-      { name: 'AML Domain', vals: [10, 10, 80, 96], col: A(.32) },
-      { name: 'Cloud',      vals: [40, 15, 68, 82], col: A(.15) },
-    ];
-
-    const legH = Math.max(13, Math.floor(H * 0.13));
-    const P    = { t: legH + 5, r: 6, b: 22, l: 22 };
-    const cW   = W - P.l - P.r;
-    const cH   = H - P.t - P.b;
-    const nR   = roles.length;
-    const nT   = tracks.length;
-    const slotW  = cW / nR;
-    const barW   = Math.floor(slotW * 0.52 / nT);
-    const grpOff = Math.floor((slotW - barW * nT) / 2);
-
-    gridLines(ctx, W, H, nR, 4);
-
-    /* y-axis % labels */
-    [0, 25, 50, 75, 100].forEach(v => {
-      const y = P.t + cH - (v / 100) * cH;
-      ctx.fillStyle = A(.20);
-      ctx.font      = '5px system-ui';
-      ctx.textAlign = 'right';
-      ctx.fillText(v + '%', P.l - 3, y + 2);
+    },{threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+    cards.forEach(function(c,i){
+      c.style.transitionDelay=(i*0.1)+'s';
+      io.observe(c);
     });
-
-    /* bars */
-    roles.forEach((role, ri) => {
-      tracks.forEach((tr, ti) => {
-        const x  = P.l + ri * slotW + grpOff + ti * barW;
-        const bh = Math.round((tr.vals[ri] / 100) * cH * p);
-        const y  = P.t + cH - bh;
-        ctx.fillStyle = tr.col;
-        ctx.fillRect(x, y, Math.max(1, barW - 1), bh);
-      });
-
-      /* role label */
-      const lfs = Math.max(5, Math.floor(W / 68));
-      ctx.fillStyle = A(.35);
-      ctx.font      = `${lfs}px system-ui`;
-      ctx.textAlign = 'center';
-      ctx.fillText(role, P.l + ri * slotW + slotW / 2, H - 4);
-    });
-
-    /* legend strip — top band, fades in at 40% */
-    if(p > 0.4){
-      ctx.globalAlpha = Math.min(1, (p - 0.4) / 0.3);
-      const lfs     = Math.max(6, Math.floor(H * 0.075));
-      const swatchS = lfs;
-      let lx        = P.l;
-
-      tracks.forEach(tr => {
-        ctx.fillStyle = tr.col;
-        ctx.fillRect(lx, 3, swatchS, swatchS * 0.72);
-        ctx.fillStyle = A(.42);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'left';
-        ctx.fillText(tr.name, lx + swatchS + 3, 3 + swatchS * 0.68);
-        lx += swatchS + 3 + ctx.measureText(tr.name).width + 9;
-      });
-      ctx.globalAlpha = 1;
+    /* skill bars trigger when skills card is visible */
+    var skillCard = document.querySelector('#hero-skills')
+      ? document.querySelector('#hero-skills').closest('.hcard') : null;
+    if(skillCard){
+      var sio = new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting){ reveal(); sio.disconnect(); }
+      },{threshold:0.2});
+      sio.observe(skillCard);
     }
+  } else {
+    cards.forEach(function(c){ c.classList.add('hcard-visible'); });
+    reveal();
   }
-
-  /* ─── animation runner ─── */
-  function animate(fn, delay){
-    setTimeout(() => {
-      let p = 0;
-      const tick = () => {
-        p = Math.min(1, p + 0.022);
-        fn(p);
-        if(p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, delay);
-  }
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const bar   = setupCanvas('cv-bar');
-      const line  = setupCanvas('cv-line');
-      const donut = setupCanvas('cv-donut');
-      const net   = setupCanvas('cv-net');
-      const combo = setupCanvas('cv-combo');
-      animate(p => drawBar  (bar.ctx,   bar.W,   bar.H,   p),  400);
-      animate(p => drawLine (line.ctx,  line.W,  line.H,  p),  600);
-      animate(p => drawDonut(donut.ctx, donut.W, donut.H, p),  800);
-      animate(p => drawNet  (net.ctx,   net.W,   net.H,   p), 1000);
-      animate(p => drawCombo(combo.ctx, combo.W, combo.H, p), 1200);
-    }, 100);
-  });
 })();
 </script>
+
+
 
 	
 
@@ -3754,7 +3761,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
     <!-- Email -->
     <div class="connect-email-bar">
       <i class="fas fa-envelope"></i>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com">abhishek.nagrecha.an@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#e1808389889289848acf8f80869384828980cf808fa1868c80888dcf828e8c"><span class="__cf_email__" data-cfemail="e584878d8c968d808ecb8b84829780868d84cb848ba58288848c89cb868a88">[email&#160;protected]</span></a>
     </div>
 
     <!-- Social cards -->
@@ -3771,7 +3778,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
       <a href="https://x.com/iamnagrecha" target="_blank" class="connect-social-card">
         <span class="x-icon">&#120143;</span> X / Twitter
       </a>
-      <a href="mailto:abhishek.nagrecha.an@gmail.com" class="connect-social-card">
+      <a href="/cdn-cgi/l/email-protection#1d7c7f75746e75787633737c7a6f787e757c337c735d7a707c7471337e7270" class="connect-social-card">
         <i class="fas fa-envelope"></i> Email Me
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you.&location=Google+Meet&trp=true" target="_blank" class="connect-social-card">
@@ -3784,7 +3791,7 @@ textarea.cf-input { resize: vertical; min-height: 120px; }
 
 
   <div class="connect-footer">
-    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
+    <p style="margin:0;">&copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Abhishek Nagrecha &mdash; All Rights Reserved</p>
   </div>
 </section>
 
@@ -3811,10 +3818,4 @@ function cfSend() {
 
 	<script src="js/vendor/jquery.easing.1.3.js"></script>
 
-	<script src="js/vendor/jquery.stellar.min.js"></script>
-	<script src="js/vendor/jquery.waypoints.min.js"></script>
-
-	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-	<script src="js/custom.js"></script>
-	
+	<scrip
