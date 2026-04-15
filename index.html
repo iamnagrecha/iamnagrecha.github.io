@@ -436,6 +436,10 @@ function triggerFilter(el, section) {
   opacity:0;animation:heroFadeUp .7s .5s ease forwards;
 }
 
+/* Hide mobile strip on desktop */
+.mob-strip{display:none;}
+.mob-ai-label{display:none;}
+
 /* The dashboard window */
 .hdash{
   width:100%;max-width:520px;
@@ -458,7 +462,25 @@ function triggerFilter(el, section) {
 .hdash-dot:nth-child(1){background:#ff5f56;}
 .hdash-dot:nth-child(2){background:#ffbd2e;}
 .hdash-dot:nth-child(3){background:#27c93f;}
-.hdash-title{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(186,201,100,.4);}
+.hdash-title{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(186,201,100,.72);font-weight:500;
+  overflow:hidden;white-space:nowrap;
+  border-right:1.5px solid rgba(186,201,100,.6);
+  width:0;
+  animation:hdashType 1.8s steps(26,end) 0.8s forwards, hdashCaret 0.75s step-end 0.8s 4;
+}
+@keyframes hdashType{from{width:0;}to{width:21ch;}}
+@keyframes hdashCaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.7);}}
+/* AI badge inside title bar */
+.hdash-ai{
+  font-size:8px;font-weight:700;letter-spacing:.08em;
+  color:#060608;background:#bac964;
+  padding:2px 6px;border-radius:3px;
+  opacity:0;animation:hdashAIpop .3s ease 2.7s forwards;
+  flex-shrink:0;
+}
+@keyframes hdashAIpop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
 .hdash-live{display:flex;align-items:center;gap:5px;font-size:8px;color:rgba(186,201,100,.5);letter-spacing:.1em;text-transform:uppercase;}
 .hdash-live-dot{width:5px;height:5px;border-radius:50%;background:#bac964;animation:hstatPulse 1.8s ease-in-out infinite;}
 
@@ -537,7 +559,7 @@ function triggerFilter(el, section) {
     mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
     -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
   }
-  /* Card scroll strip */
+  /* Card scroll strip — show on mobile only */
   .mob-strip{
     display:flex;flex-direction:row;
     gap:10px;padding:0 24px;
@@ -563,6 +585,30 @@ function triggerFilter(el, section) {
   .mob-bar-track{flex:1;height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
   .mob-bar-fill{height:100%;background:#bac964;border-radius:2px;}
   .mob-bar-val{font-size:9px;color:rgba(186,201,100,.8);font-weight:600;}
+
+  /* AI label above card strip */
+  .mob-ai-label{
+    display:flex;align-items:center;gap:8px;
+    padding:0 24px 12px;
+    opacity:0;animation:heroFadeUp .5s .3s ease forwards;
+  }
+  .mob-ai-text{
+    font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(186,201,100,.55);font-weight:500;
+    overflow:hidden;white-space:nowrap;
+    border-right:1.5px solid rgba(186,201,100,.5);
+    width:0;
+    animation:mobAItype 1.4s steps(22,end) .5s forwards, mobAIcaret .75s step-end .5s 3;
+  }
+  @keyframes mobAItype{from{width:0;}to{width:20ch;}}
+  @keyframes mobAIcaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.6);}}
+  .mob-ai-badge{
+    font-size:8px;font-weight:700;letter-spacing:.08em;
+    color:#060608;background:#bac964;
+    padding:2px 6px;border-radius:3px;
+    opacity:0;animation:hdashAIpop .3s ease 2s forwards;
+    flex-shrink:0;
+  }
 
   #hero-canvas{display:none;}
   .hero-orb{display:none;}
@@ -602,6 +648,10 @@ function triggerFilter(el, section) {
 
   <!-- RIGHT — compliance dashboard panel (desktop) / card strip (mobile) -->
   <div class="hero-right">
+    <div class="mob-ai-label" id="mob-ai-label">
+      <span class="mob-ai-text">Abhishek's Intelligence</span>
+      <span class="mob-ai-badge">AI</span>
+    </div>
     <div class="mob-strip" id="mob-strip"></div>
     <div class="hdash">
 
@@ -612,7 +662,10 @@ function triggerFilter(el, section) {
           <div class="hdash-dot"></div>
           <div class="hdash-dot"></div>
         </div>
-        <div class="hdash-title">Compliance Intelligence</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="hdash-title">Abhishek's Intelligence</div>
+          <div class="hdash-ai">AI</div>
+        </div>
         <div class="hdash-live"><div class="hdash-live-dot"></div>Live</div>
       </div>
 
@@ -706,13 +759,13 @@ function triggerFilter(el, section) {
 
   /* live activity feed */
   var FEED=[
-    {dot:'green',text:'<strong>AWS Cloud Practitioner</strong> certification renewed',time:'2m ago'},
-    {dot:'blue', text:'New article published on <strong>Medium</strong> — AML automation',time:'18m ago'},
-    {dot:'gold', text:'<strong>Python pipeline</strong> — AML alert triage automated',time:'1h ago'},
-    {dot:'green',text:'<strong>ACAMS</strong> course completed — Risk-Based Approach',time:'3h ago'},
-    {dot:'blue', text:'<strong>Power BI dashboard</strong> — compliance KPIs shipped',time:'5h ago'},
-    {dot:'gold', text:'<strong>ML model</strong> — transaction anomaly detection tuned',time:'1d ago'},
-    {dot:'green',text:'<strong>Basel Institute</strong> cert earned — STR Analysis',time:'2d ago'},
+    {dot:'green',text:'<strong>AWS Certified Cloud Practitioner</strong> — earned Jan 2021',time:'Certified'},
+    {dot:'blue', text:'<strong>Basel Institute on Governance</strong> — STR Operational Analysis',time:'Aug 2025'},
+    {dot:'green',text:'<strong>ACAMS</strong> — Financial Inclusion &amp; Risk-Based Approach',time:'Jul 2025'},
+    {dot:'gold', text:'<strong>KYC Lookup</strong> — Foundation in AML and KYC',time:'Jul 2025'},
+    {dot:'blue', text:'Writing on <strong>Medium</strong> — AML, data science &amp; compliance',time:'Blog'},
+    {dot:'gold', text:'<strong>Alessa Inc</strong> — Data Analytics Specialist, Ottawa',time:'Current'},
+    {dot:'green',text:'<strong>MSc Computer Science</strong> — Lakehead University',time:'2021'},
   ];
   var feed=document.getElementById('hdash-feed');
   if(feed){
