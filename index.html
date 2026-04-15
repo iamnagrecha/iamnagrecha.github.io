@@ -488,7 +488,7 @@ function triggerFilter(el, section) {
 .hdash-body{padding:20px 20px 6px;}
 
 /* Top stat row */
-.hdash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.hdash-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px;}
 .hds{
   background:rgba(186,201,100,.05);
   border:1px solid rgba(186,201,100,.1);
@@ -536,7 +536,8 @@ function triggerFilter(el, section) {
   .hero-name{font-size:2.4rem;}
   .hero-right{padding:60px 3vw 60px 2vw;}
   .hdash{max-width:420px;}
-  .hds-val{font-size:1.25rem;}
+  .hds-val{font-size:1.1rem;}
+  .hdash-stats{grid-template-columns:repeat(5,1fr);gap:6px;}
 }
 
 /* ── MOBILE ── */
@@ -554,7 +555,14 @@ function triggerFilter(el, section) {
   .hero-right{
     padding:0 0 44px;
     opacity:1;animation:none;
+    flex-direction:column;
+    align-items:flex-start;
     justify-content:flex-start;
+    overflow:hidden;
+  }
+  /* Mask only the strip, not the label */
+  .mob-strip-wrap{
+    width:100%;
     overflow:hidden;
     mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
     -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
@@ -652,7 +660,7 @@ function triggerFilter(el, section) {
       <span class="mob-ai-text">Abhishek's Intelligence</span>
       <span class="mob-ai-badge">AI</span>
     </div>
-    <div class="mob-strip" id="mob-strip"></div>
+    <div class="mob-strip-wrap"><div class="mob-strip" id="mob-strip"></div></div>
     <div class="hdash">
 
       <!-- Window chrome -->
@@ -675,15 +683,23 @@ function triggerFilter(el, section) {
         <div class="hdash-stats">
           <div class="hds">
             <div class="hds-val" id="hds-clients">0</div>
-            <div class="hds-lbl">Global Clients</div>
+            <div class="hds-lbl">Clients</div>
           </div>
           <div class="hds">
             <div class="hds-val" id="hds-years">0</div>
-            <div class="hds-lbl">Yrs Experience</div>
+            <div class="hds-lbl">Yrs AML</div>
           </div>
           <div class="hds">
             <div class="hds-val" id="hds-certs">0</div>
             <div class="hds-lbl">Certifications</div>
+          </div>
+          <div class="hds">
+            <div class="hds-val" id="hds-articles">0</div>
+            <div class="hds-lbl">Articles</div>
+          </div>
+          <div class="hds">
+            <div class="hds-val" id="hds-testimonials">0</div>
+            <div class="hds-lbl">Testimonials</div>
           </div>
         </div>
 
@@ -749,6 +765,8 @@ function triggerFilter(el, section) {
   counter('hds-clients',30,'+',800);
   counter('hds-years',5,'+',950);
   counter('hds-certs',12,'',1100);
+  counter('hds-articles',12,'',1250);
+  counter('hds-testimonials',7,'',1400);
 
   /* skill bars */
   setTimeout(function(){
