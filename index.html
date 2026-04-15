@@ -622,7 +622,15 @@ function triggerFilter(el, section) {
   .hero-cred-strip{display:none;}
   .site-hero{flex-direction:column;align-items:stretch;min-height:unset;}
   .hero-content{width:100%;padding:72px 22px 32px;min-width:unset;}
-  .hero-name{font-size:2.8rem;}
+  .hero-name{font-size:clamp(2.2rem,12vw,3.2rem);letter-spacing:-.03em;}
+  .hero-name br{display:none;}
+  .hero-content{text-align:center;}
+  .eyebrow{justify-content:center;}
+  .hdiv{margin-left:auto;margin-right:auto;}
+  .tags{justify-content:center;}
+  .hero-desc{margin-left:auto;margin-right:auto;}
+  .hero-cta-group{justify-content:center;}
+  .hero-cta{justify-content:center;}
   .hero-desc{max-width:100%;}
   .hero-cta-group{flex-direction:column;align-items:flex-start;gap:10px;}
   .hero-cta{width:100%;justify-content:center;}
@@ -711,7 +719,7 @@ function triggerFilter(el, section) {
   <!-- LEFT -->
   <div class="hero-content">
     <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
-    <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
+    <h1 class="hero-name">ABHISHEK NAGRECHA<span>,</span></h1>
     <p class="hero-sub">MSc · Data Analytics Specialist</p>
     <div class="hdiv"></div>
 
