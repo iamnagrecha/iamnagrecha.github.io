@@ -621,17 +621,14 @@ function triggerFilter(el, section) {
     font-size:9px;letter-spacing:.18em;text-transform:uppercase;
     color:rgba(186,201,100,.55);font-weight:500;
     overflow:hidden;white-space:nowrap;
-    border-right:1.5px solid rgba(186,201,100,.5);
     width:0;
-    animation:mobAItype 1.4s steps(22,end) .5s forwards, mobAIcaret .75s step-end .5s 3;
+    animation:mobAItype 1.4s steps(22,end) .5s forwards;
   }
   @keyframes mobAItype{from{width:0;}to{width:190px;}}
-  @keyframes mobAIcaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.6);}}
   .mob-ai-badge{
     font-size:8px;font-weight:700;letter-spacing:.08em;
     color:#060608;background:#bac964;
     padding:2px 6px;border-radius:3px;
-    opacity:0;animation:hdashAIpop .3s ease 2s forwards;
     flex-shrink:0;
   }
 
