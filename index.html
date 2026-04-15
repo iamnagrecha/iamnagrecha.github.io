@@ -574,17 +574,21 @@ function triggerFilter(el, section) {
   /* Hide dashboard, show card strip instead */
   .hdash{display:none;}
   .hero-right{
-    padding:0 0 52px;
+    padding:0 0 36px;
     opacity:1;animation:none;
     flex-direction:column;
     align-items:flex-start;
     justify-content:flex-start;
-    overflow:visible;
+    overflow:hidden;
+    max-height:220px;
+    flex-shrink:0;
   }
   /* Mask only the strip, not the label */
   .mob-strip-wrap{
     width:100%;
     overflow:hidden;
+    height:148px;
+    flex-shrink:0;
     mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
     -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
   }
@@ -598,27 +602,27 @@ function triggerFilter(el, section) {
   .mob-strip:hover{animation-play-state:paused;}
   @keyframes mobScrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%)}}
   .mob-card{
-    width:168px;flex-shrink:0;
+    width:155px;flex-shrink:0;
     background:rgba(255,255,255,.035);
     border:1px solid rgba(186,201,100,.12);
     border-radius:8px;
-    padding:14px 13px 12px;
-    display:flex;flex-direction:column;gap:7px;
+    padding:11px 12px 10px;
+    display:flex;flex-direction:column;gap:5px;
   }
-  .mob-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;}
-  .mob-icon svg{width:13px;height:13px;}
-  .mob-label{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#bac964;}
-  .mob-title{font-size:12px;color:rgba(255,255,255,.82);font-weight:500;}
-  .mob-sub{font-size:10px;color:rgba(255,255,255,.3);line-height:1.5;}
-  .mob-bar-row{display:flex;align-items:center;gap:7px;margin-top:2px;}
-  .mob-bar-track{flex:1;height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+  .mob-icon{width:26px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;}
+  .mob-icon svg{width:12px;height:12px;}
+  .mob-label{font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:#bac964;}
+  .mob-title{font-size:11.5px;color:rgba(255,255,255,.82);font-weight:500;line-height:1.2;}
+  .mob-sub{font-size:9.5px;color:rgba(255,255,255,.3);line-height:1.4;}
+  .mob-bar-row{display:flex;align-items:center;gap:6px;margin-top:2px;}
+  .mob-bar-track{flex:1;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
   .mob-bar-fill{height:100%;background:#bac964;border-radius:2px;}
   .mob-bar-val{font-size:9px;color:rgba(186,201,100,.8);font-weight:600;}
 
   /* AI label above card strip */
   .mob-ai-label{
-    display:flex;align-items:center;gap:8px;
-    padding:0 24px 12px;
+    display:flex;align-items:center;gap:6px;
+    padding:0 24px 10px;
     opacity:0;animation:heroFadeUp .5s .3s ease forwards;
   }
   .mob-ai-text{
