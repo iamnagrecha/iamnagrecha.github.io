@@ -362,6 +362,9 @@ function triggerFilter(el, section) {
   overflow:hidden;display:flex;align-items:center;
   font-family:'DM Sans',system-ui,sans-serif;
 }
+@media(max-width:640px){
+  .site-hero{overflow-x:hidden;overflow-y:visible;}
+}
 
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 
@@ -432,7 +435,7 @@ function triggerFilter(el, section) {
   position:relative;z-index:5;
   flex:1;min-width:0;
   display:flex;align-items:center;justify-content:center;
-  padding:60px 5vw 60px 2vw;
+  padding:40px 4vw 40px 1vw;
   opacity:0;animation:heroFadeUp .7s .5s ease forwards;
 }
 
@@ -442,7 +445,7 @@ function triggerFilter(el, section) {
 
 /* The dashboard window */
 .hdash{
-  width:100%;max-width:520px;
+  width:100%;max-width:680px;
   background:rgba(255,255,255,.028);
   border:1px solid rgba(186,201,100,.12);
   border-radius:16px;
@@ -467,10 +470,11 @@ function triggerFilter(el, section) {
   color:rgba(186,201,100,.72);font-weight:500;
   overflow:hidden;white-space:nowrap;
   border-right:1.5px solid rgba(186,201,100,.6);
+  max-width:180px;
   width:0;
-  animation:hdashType 1.8s steps(26,end) 0.8s forwards, hdashCaret 0.75s step-end 0.8s 4;
+  animation:hdashType 1.8s steps(22,end) 0.8s forwards, hdashCaret 0.75s step-end 0.8s 4;
 }
-@keyframes hdashType{from{width:0;}to{width:21ch;}}
+@keyframes hdashType{from{width:0;}to{width:100%;}}
 @keyframes hdashCaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.7);}}
 /* AI badge inside title bar */
 .hdash-ai{
@@ -485,7 +489,7 @@ function triggerFilter(el, section) {
 .hdash-live-dot{width:5px;height:5px;border-radius:50%;background:#bac964;animation:hstatPulse 1.8s ease-in-out infinite;}
 
 /* Body */
-.hdash-body{padding:20px 20px 6px;}
+.hdash-body{padding:22px 24px 8px;}
 
 /* Top stat row */
 .hdash-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px;}
@@ -500,7 +504,7 @@ function triggerFilter(el, section) {
   background:linear-gradient(90deg,transparent,#bac964,transparent);
   opacity:.5;
 }
-.hds-val{font-size:1.5rem;font-weight:500;color:#bac964;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums;}
+.hds-val{font-size:1.7rem;font-weight:500;color:#bac964;line-height:1;margin-bottom:5px;font-variant-numeric:tabular-nums;}
 .hds-lbl{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);}
 
 /* Skill rows */
@@ -513,15 +517,32 @@ function triggerFilter(el, section) {
 
 /* Activity feed */
 .hdash-feed-title{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(186,201,100,.35);margin-bottom:10px;}
-.hdash-feed{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+/* Scrolling feed container */
+.hdash-feed-wrap{
+  height:168px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:20px;
+  mask-image:linear-gradient(to bottom,transparent 0%,black 10%,black 85%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 10%,black 85%,transparent 100%);
+}
+.hdash-feed-wrap:hover .hdash-feed{animation-play-state:paused;}
+.hdash-feed{
+  display:flex;flex-direction:column;gap:0;
+  animation:feedScroll 14s linear infinite;
+}
+@keyframes feedScroll{0%{transform:translateY(0);}100%{transform:translateY(-50%)}}
 .hfeed-item{
   display:flex;align-items:center;gap:10px;
   padding:9px 12px;
   border-radius:7px;
-  transition:background .2s;
+  border-left:2px solid transparent;
+  transition:border-color .25s;
   cursor:default;
+  flex-shrink:0;
 }
-.hfeed-item:hover{background:rgba(186,201,100,.04);}
+.hfeed-item:hover{border-left-color:#bac964 !important;}
+.hfeed-item:hover{background:none;}
 .hfeed-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 .hfeed-dot.green{background:#4ade80;}
 .hfeed-dot.gold{background:#bac964;}
@@ -535,7 +556,7 @@ function triggerFilter(el, section) {
   .hero-content{width:46%;padding-left:4vw;}
   .hero-name{font-size:2.4rem;}
   .hero-right{padding:60px 3vw 60px 2vw;}
-  .hdash{max-width:420px;}
+  .hdash{max-width:560px;}
   .hds-val{font-size:1.1rem;}
   .hdash-stats{grid-template-columns:repeat(5,1fr);gap:6px;}
 }
@@ -553,12 +574,12 @@ function triggerFilter(el, section) {
   /* Hide dashboard, show card strip instead */
   .hdash{display:none;}
   .hero-right{
-    padding:0 0 44px;
+    padding:0 0 52px;
     opacity:1;animation:none;
     flex-direction:column;
     align-items:flex-start;
     justify-content:flex-start;
-    overflow:hidden;
+    overflow:visible;
   }
   /* Mask only the strip, not the label */
   .mob-strip-wrap{
@@ -608,7 +629,7 @@ function triggerFilter(el, section) {
     width:0;
     animation:mobAItype 1.4s steps(22,end) .5s forwards, mobAIcaret .75s step-end .5s 3;
   }
-  @keyframes mobAItype{from{width:0;}to{width:20ch;}}
+  @keyframes mobAItype{from{width:0;}to{width:190px;}}
   @keyframes mobAIcaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.6);}}
   .mob-ai-badge{
     font-size:8px;font-weight:700;letter-spacing:.08em;
@@ -635,11 +656,7 @@ function triggerFilter(el, section) {
     <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
     <p class="hero-sub">MSc · Data Analytics Specialist</p>
     <div class="hdiv"></div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-dot"></div><span><strong>5+</strong> Yrs AML</span></div>
-      <div class="hstat"><div class="hstat-dot" style="animation-delay:.4s"></div><span><strong>30+</strong> Clients</span></div>
-      <div class="hstat"><div class="hstat-dot" style="animation-delay:.8s"></div><span><strong>12</strong> Certs</span></div>
-    </div>
+
     <div class="tags">
       <span class="tag">Professional Services</span>
       <span class="tag">Financial Compliance</span>
@@ -714,7 +731,9 @@ function triggerFilter(el, section) {
 
         <!-- Activity feed -->
         <div class="hdash-feed-title">Recent Activity</div>
-        <div class="hdash-feed" id="hdash-feed"></div>
+        <div class="hdash-feed-wrap">
+          <div class="hdash-feed" id="hdash-feed"></div>
+        </div>
 
       </div>
     </div>
@@ -787,7 +806,8 @@ function triggerFilter(el, section) {
   ];
   var feed=document.getElementById('hdash-feed');
   if(feed){
-    feed.innerHTML=FEED.map(function(f){
+    var doubled=FEED.concat(FEED);
+    feed.innerHTML=doubled.map(function(f){
       return '<div class="hfeed-item"><div class="hfeed-dot '+f.dot+'"></div><div class="hfeed-text">'+f.text+'</div><div class="hfeed-time">'+f.time+'</div></div>';
     }).join('');
   }
