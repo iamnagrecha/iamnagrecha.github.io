@@ -557,7 +557,7 @@ function triggerFilter(el, section) {
 @media(max-width:640px){
   .site-hero{flex-direction:column;align-items:stretch;min-height:unset;}
   .hero-content{width:100%;padding:72px 22px 32px;min-width:unset;}
-  .hero-name{font-size:2.1rem;}
+  .hero-name{font-size:2.8rem;}
   .hero-desc{max-width:100%;}
   .hero-cta-group{flex-direction:column;align-items:flex-start;gap:10px;}
   .hero-cta{width:100%;justify-content:center;}
@@ -613,7 +613,7 @@ function triggerFilter(el, section) {
 
   /* AI label above card strip */
   .mob-ai-label{
-    display:flex;align-items:center;gap:6px;
+    display:flex;align-items:center;gap:0;
     padding:0 24px 10px;
     opacity:0;animation:heroFadeUp .5s .3s ease forwards;
   }
@@ -629,7 +629,8 @@ function triggerFilter(el, section) {
     font-size:8px;font-weight:700;letter-spacing:.08em;
     color:#060608;background:#bac964;
     padding:2px 6px;border-radius:3px;
-    flex-shrink:0;
+    margin-left:6px;flex-shrink:0;
+    animation:hdashAIpop .3s ease 1.9s both;
   }
 
   #hero-canvas{display:none;}
