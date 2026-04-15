@@ -363,184 +363,158 @@ function triggerFilter(el, section) {
   font-family:'DM Sans',system-ui,sans-serif;
 }
 
-/* Canvas particle bg */
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 
-/* Subtle grid */
 .hero-bg-grid{
   position:absolute;inset:0;pointer-events:none;z-index:1;
   background-image:
-    linear-gradient(rgba(186,201,100,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(186,201,100,.03) 1px,transparent 1px);
-  background-size:60px 60px;
+    linear-gradient(rgba(186,201,100,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(186,201,100,.025) 1px,transparent 1px);
+  background-size:64px 64px;
 }
-
-/* Gold top line */
 .hero-top-line{
-  position:absolute;top:0;left:0;right:0;height:2px;z-index:2;
+  position:absolute;top:0;left:0;right:0;height:1.5px;z-index:2;
   background:linear-gradient(90deg,transparent,#bac964 35%,#bac964 65%,transparent);
-  opacity:.6;
+  opacity:.5;
 }
-
-/* Mouse-following glow orb */
 .hero-orb{
-  position:absolute;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(186,201,100,.07) 0%,transparent 70%);
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(186,201,100,.055) 0%,transparent 68%);
   pointer-events:none;z-index:1;
   transform:translate(-50%,-50%);
-  transition:left .6s cubic-bezier(.23,1,.32,1),top .6s cubic-bezier(.23,1,.32,1);
-  left:75%;top:50%;
+  transition:left .8s cubic-bezier(.23,1,.32,1),top .8s cubic-bezier(.23,1,.32,1);
+  left:72%;top:50%;
 }
 
-/* ── LEFT COLUMN ── */
+/* ── LEFT ── */
 .hero-content{
   position:relative;z-index:10;
   width:44%;min-width:320px;
   padding:0 0 0 6vw;flex-shrink:0;
 }
-
 .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;opacity:0;animation:heroFadeUp .5s .10s ease forwards;}
 .ey-line{width:32px;height:1.5px;background:#bac964;}
 .ey-dot{width:5px;height:5px;border-radius:50%;background:#bac964;animation:heroBlink 2.2s ease-in-out infinite;}
 @keyframes heroBlink{0%,100%{opacity:1;}50%{opacity:.2;}}
-
 .hero-name{
   font-family:'DM Serif Display',Georgia,serif;
-  font-size:clamp(2.6rem,4.2vw,4.2rem);
+  font-size:clamp(2.6rem,4.2vw,4.4rem);
   color:#fff;line-height:1.05;letter-spacing:-.02em;
   margin:0 0 12px;
   opacity:0;animation:heroFadeUp .6s .18s ease forwards;
 }
 .hero-name span{color:#bac964;}
-
 .hero-sub{
   font-size:clamp(.85rem,1.3vw,.98rem);
-  color:rgba(186,201,100,.65);font-weight:300;letter-spacing:.08em;
+  color:rgba(186,201,100,.6);font-weight:300;letter-spacing:.08em;
   margin-bottom:22px;
-  opacity:0;animation:heroFadeUp .5s .30s ease forwards;
+  opacity:0;animation:heroFadeUp .5s .28s ease forwards;
 }
-
-.hdiv{width:44px;height:1.5px;background:#bac964;opacity:0;margin-bottom:20px;animation:heroFadeUp .5s .34s ease forwards;}
-
-/* Animated stat pills */
-.hero-stats{
-  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;
-  opacity:0;animation:heroFadeUp .5s .40s ease forwards;
-}
-.hstat{
-  display:flex;align-items:center;gap:7px;
-  background:rgba(186,201,100,.06);
-  border:1px solid rgba(186,201,100,.18);
-  border-radius:20px;padding:5px 12px 5px 8px;
-}
+.hdiv{width:44px;height:1.5px;background:#bac964;opacity:0;margin-bottom:20px;animation:heroFadeUp .5s .32s ease forwards;}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;opacity:0;animation:heroFadeUp .5s .38s ease forwards;}
+.hstat{display:flex;align-items:center;gap:7px;background:rgba(186,201,100,.06);border:1px solid rgba(186,201,100,.16);border-radius:20px;padding:5px 12px 5px 8px;}
 .hstat-dot{width:6px;height:6px;border-radius:50%;background:#bac964;animation:hstatPulse 2s ease-in-out infinite;}
-.hstat-dot:nth-child(1){animation-delay:0s;}
-@keyframes hstatPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
-.hstat span{font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.7);font-weight:500;}
+@keyframes hstatPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.65);}}
+.hstat span{font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.65);font-weight:500;}
 .hstat strong{color:#bac964;}
-
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;opacity:0;animation:heroFadeUp .5s .46s ease forwards;}
-.tag{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(186,201,100,.5);border:1px solid rgba(186,201,100,.14);padding:5px 10px;border-radius:1px;}
-
-.hero-desc{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.85;margin-bottom:32px;max-width:360px;opacity:0;animation:heroFadeUp .5s .52s ease forwards;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;opacity:0;animation:heroFadeUp .5s .44s ease forwards;}
+.tag{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(186,201,100,.48);border:1px solid rgba(186,201,100,.13);padding:5px 10px;border-radius:1px;}
+.hero-desc{font-size:.84rem;color:rgba(255,255,255,.36);line-height:1.9;margin-bottom:32px;max-width:360px;opacity:0;animation:heroFadeUp .5s .50s ease forwards;}
 .hero-desc strong{color:rgba(255,255,255,.72);font-weight:500;}
-
-.hero-cta-group{display:flex;align-items:center;gap:14px;opacity:0;animation:heroFadeUp .5s .60s ease forwards;}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#bac964;color:#060608;
-  font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  padding:14px 28px;border-radius:2px;text-decoration:none;
-  transition:background .2s,transform .2s,box-shadow .2s;
-}
-.hero-cta:hover{background:#ccdb6a;transform:translateY(-3px);box-shadow:0 12px 32px rgba(186,201,100,.25);}
+.hero-cta-group{display:flex;align-items:center;gap:14px;opacity:0;animation:heroFadeUp .5s .58s ease forwards;}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:#bac964;color:#060608;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:14px 28px;border-radius:2px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;}
+.hero-cta:hover{background:#ccdb6a;transform:translateY(-3px);box-shadow:0 14px 36px rgba(186,201,100,.28);}
 .cta-arr{display:inline-block;width:10px;height:10px;border-top:2px solid #060608;border-right:2px solid #060608;transform:rotate(45deg);}
-
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── RIGHT — 3-column staggered streams ── */
+/* ── RIGHT — dashboard panel ── */
 .hero-right{
   position:relative;z-index:5;
   flex:1;min-width:0;
-  height:100vh;
-  display:flex;gap:10px;
-  padding:0 2vw 0 1vw;
-  overflow:hidden;
-  mask-image:linear-gradient(to bottom,transparent 0%,black 8%,black 88%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 8%,black 88%,transparent 100%);
-}
-
-/* Each column scrolls independently */
-.hero-col{display:flex;flex-direction:column;gap:10px;flex:1;}
-.hero-col-a{animation:colScrollUp 22s linear infinite;}
-.hero-col-b{animation:colScrollUp 28s linear infinite;margin-top:-60px;}
-.hero-col-c{animation:colScrollUp 19s linear infinite;margin-top:-30px;}
-.hero-col-a:hover,.hero-col-b:hover,.hero-col-c:hover{animation-play-state:paused;}
-
-@keyframes colScrollUp{0%{transform:translateY(0);}100%{transform:translateY(-50%)}}
-
-/* ── CARD ── */
-.hc-card{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(186,201,100,.09);
-  border-radius:10px;
-  padding:14px 14px 12px;
-  display:flex;flex-direction:column;gap:8px;
-  cursor:default;min-width:0;
-  position:relative;overflow:hidden;
-  transition:border-color .3s,background .3s,transform .3s;
-}
-/* shimmer line on top on hover */
-.hc-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
-  background:linear-gradient(90deg,transparent,#bac964,transparent);
-  transform:scaleX(0);transition:transform .4s ease;
-}
-.hc-card:hover{
-  border-color:rgba(186,201,100,.28);
-  background:rgba(186,201,100,.045);
-  transform:translateY(-2px);
-}
-.hc-card:hover::before{transform:scaleX(1);}
-
-/* featured card variant */
-.hc-card.feat{
-  border-color:rgba(186,201,100,.22);
-  background:rgba(186,201,100,.055);
-}
-.hc-card.feat::before{transform:scaleX(1);}
-
-.hc-icon{
-  width:32px;height:32px;border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:transform .3s;
+  padding:60px 5vw 60px 2vw;
+  opacity:0;animation:heroFadeUp .7s .5s ease forwards;
 }
-.hc-card:hover .hc-icon{transform:scale(1.12) rotate(-4deg);}
-.hc-icon svg{width:14px;height:14px;}
 
-.hc-label{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#bac964;opacity:.8;}
-.hc-title{font-size:13px;color:rgba(255,255,255,.88);font-weight:500;line-height:1.3;}
-.hc-sub{font-size:10.5px;color:rgba(255,255,255,.3);line-height:1.55;}
+/* The dashboard window */
+.hdash{
+  width:100%;max-width:520px;
+  background:rgba(255,255,255,.028);
+  border:1px solid rgba(186,201,100,.12);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(186,201,100,.08);
+}
 
-/* Animated bar — fills on first view */
-.hc-bar-row{display:flex;align-items:center;gap:8px;margin-top:3px;}
-.hc-bar-track{flex:1;height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
-.hc-bar-fill{
-  height:100%;border-radius:2px;width:0%;
-  background:linear-gradient(90deg,rgba(186,201,100,.6),#bac964);
-  transition:width 1.2s cubic-bezier(.23,1,.32,1);
+/* Title bar */
+.hdash-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;
+  background:rgba(255,255,255,.025);
+  border-bottom:1px solid rgba(186,201,100,.08);
 }
-.hc-bar-val{
-  font-size:10px;font-weight:600;
-  color:#bac964;min-width:26px;text-align:right;
+.hdash-dots{display:flex;gap:6px;}
+.hdash-dot{width:10px;height:10px;border-radius:50%;}
+.hdash-dot:nth-child(1){background:#ff5f56;}
+.hdash-dot:nth-child(2){background:#ffbd2e;}
+.hdash-dot:nth-child(3){background:#27c93f;}
+.hdash-title{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(186,201,100,.4);}
+.hdash-live{display:flex;align-items:center;gap:5px;font-size:8px;color:rgba(186,201,100,.5);letter-spacing:.1em;text-transform:uppercase;}
+.hdash-live-dot{width:5px;height:5px;border-radius:50%;background:#bac964;animation:hstatPulse 1.8s ease-in-out infinite;}
+
+/* Body */
+.hdash-body{padding:20px 20px 6px;}
+
+/* Top stat row */
+.hdash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.hds{
+  background:rgba(186,201,100,.05);
+  border:1px solid rgba(186,201,100,.1);
+  border-radius:10px;padding:14px 14px 12px;
+  position:relative;overflow:hidden;
 }
+.hds::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#bac964,transparent);
+  opacity:.5;
+}
+.hds-val{font-size:1.5rem;font-weight:500;color:#bac964;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums;}
+.hds-lbl{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+
+/* Skill rows */
+.hdash-skills{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.hsk{display:flex;align-items:center;gap:12px;}
+.hsk-name{font-size:11px;color:rgba(255,255,255,.55);width:90px;flex-shrink:0;letter-spacing:.02em;}
+.hsk-track{flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+.hsk-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(186,201,100,.5),#bac964);width:0%;transition:width 1.6s cubic-bezier(.23,1,.32,1);}
+.hsk-pct{font-size:10px;font-weight:600;color:rgba(186,201,100,.8);width:28px;text-align:right;flex-shrink:0;}
+
+/* Activity feed */
+.hdash-feed-title{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(186,201,100,.35);margin-bottom:10px;}
+.hdash-feed{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.hfeed-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;
+  border-radius:7px;
+  transition:background .2s;
+  cursor:default;
+}
+.hfeed-item:hover{background:rgba(186,201,100,.04);}
+.hfeed-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.hfeed-dot.green{background:#4ade80;}
+.hfeed-dot.gold{background:#bac964;}
+.hfeed-dot.blue{background:#60a5fa;}
+.hfeed-text{flex:1;font-size:11px;color:rgba(255,255,255,.55);line-height:1.4;}
+.hfeed-text strong{color:rgba(255,255,255,.8);font-weight:500;}
+.hfeed-time{font-size:9px;color:rgba(255,255,255,.2);flex-shrink:0;font-variant-numeric:tabular-nums;}
 
 /* ── TABLET ── */
 @media(min-width:641px) and (max-width:960px){
   .hero-content{width:46%;padding-left:4vw;}
   .hero-name{font-size:2.4rem;}
-  .hero-col-c{display:none;}
-  .hero-right{padding:0 1vw 0 1vw;}
+  .hero-right{padding:60px 3vw 60px 2vw;}
+  .hdash{max-width:420px;}
+  .hds-val{font-size:1.25rem;}
 }
 
 /* ── MOBILE ── */
@@ -553,24 +527,43 @@ function triggerFilter(el, section) {
   .hero-cta{width:100%;justify-content:center;}
   .hero-stats{gap:8px;}
 
+  /* Hide dashboard, show card strip instead */
+  .hdash{display:none;}
   .hero-right{
-    height:auto;padding:0 0 44px;
-    flex-direction:row;
+    padding:0 0 44px;
+    opacity:1;animation:none;
+    justify-content:flex-start;
     overflow:hidden;
     mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
     -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 92%,transparent 100%);
   }
-  .hero-col-a,.hero-col-b,.hero-col-c{
-    flex-direction:row;width:max-content;
-    animation:colScrollLeft 24s linear infinite;
-    margin-top:0;flex:unset;
+  /* Card scroll strip */
+  .mob-strip{
+    display:flex;flex-direction:row;
+    gap:10px;padding:0 24px;
+    width:max-content;
+    animation:mobScrollLeft 26s linear infinite;
   }
-  .hero-col-b,.hero-col-c{display:none;}
-  @keyframes colScrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%)}}
-  .hc-card{
-    width:170px;flex-shrink:0;
-    border-radius:8px;padding:13px 12px;
+  .mob-strip:hover{animation-play-state:paused;}
+  @keyframes mobScrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%)}}
+  .mob-card{
+    width:168px;flex-shrink:0;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(186,201,100,.12);
+    border-radius:8px;
+    padding:14px 13px 12px;
+    display:flex;flex-direction:column;gap:7px;
   }
+  .mob-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;}
+  .mob-icon svg{width:13px;height:13px;}
+  .mob-label{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#bac964;}
+  .mob-title{font-size:12px;color:rgba(255,255,255,.82);font-weight:500;}
+  .mob-sub{font-size:10px;color:rgba(255,255,255,.3);line-height:1.5;}
+  .mob-bar-row{display:flex;align-items:center;gap:7px;margin-top:2px;}
+  .mob-bar-track{flex:1;height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
+  .mob-bar-fill{height:100%;background:#bac964;border-radius:2px;}
+  .mob-bar-val{font-size:9px;color:rgba(186,201,100,.8);font-weight:600;}
+
   #hero-canvas{display:none;}
   .hero-orb{display:none;}
 }
@@ -588,182 +581,166 @@ function triggerFilter(el, section) {
     <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
     <p class="hero-sub">MSc · Data Analytics Specialist</p>
     <div class="hdiv"></div>
-
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-dot"></div><span><strong>5+</strong> Yrs AML</span></div>
       <div class="hstat"><div class="hstat-dot" style="animation-delay:.4s"></div><span><strong>30+</strong> Clients</span></div>
       <div class="hstat"><div class="hstat-dot" style="animation-delay:.8s"></div><span><strong>12</strong> Certs</span></div>
     </div>
-
     <div class="tags">
       <span class="tag">Professional Services</span>
       <span class="tag">Financial Compliance</span>
       <span class="tag">AML · AI</span>
     </div>
-
     <p class="hero-desc">
       <strong>Turning financial data into compliance intelligence</strong> — analytics-driven insights for regulatory and risk management challenges.
     </p>
-
     <div class="hero-cta-group">
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
          target="_blank" class="hero-cta">Schedule a Meeting <span class="cta-arr"></span></a>
-
     </div>
   </div>
 
-  <!-- RIGHT — 3 staggered columns -->
-  <div class="hero-right" id="hero-right">
-    <div class="hero-col hero-col-a" id="col-a"></div>
-    <div class="hero-col hero-col-b" id="col-b"></div>
-    <div class="hero-col hero-col-c" id="col-c"></div>
+  <!-- RIGHT — compliance dashboard panel (desktop) / card strip (mobile) -->
+  <div class="hero-right">
+    <div class="mob-strip" id="mob-strip"></div>
+    <div class="hdash">
+
+      <!-- Window chrome -->
+      <div class="hdash-bar">
+        <div class="hdash-dots">
+          <div class="hdash-dot"></div>
+          <div class="hdash-dot"></div>
+          <div class="hdash-dot"></div>
+        </div>
+        <div class="hdash-title">Compliance Intelligence</div>
+        <div class="hdash-live"><div class="hdash-live-dot"></div>Live</div>
+      </div>
+
+      <div class="hdash-body">
+
+        <!-- Stat blocks -->
+        <div class="hdash-stats">
+          <div class="hds">
+            <div class="hds-val" id="hds-clients">0</div>
+            <div class="hds-lbl">Global Clients</div>
+          </div>
+          <div class="hds">
+            <div class="hds-val" id="hds-years">0</div>
+            <div class="hds-lbl">Yrs Experience</div>
+          </div>
+          <div class="hds">
+            <div class="hds-val" id="hds-certs">0</div>
+            <div class="hds-lbl">Certifications</div>
+          </div>
+        </div>
+
+        <!-- Skill bars -->
+        <div class="hdash-skills">
+          <div class="hsk"><span class="hsk-name">AML / FinCrime</span><div class="hsk-track"><div class="hsk-fill" data-w="95"></div></div><span class="hsk-pct">95%</span></div>
+          <div class="hsk"><span class="hsk-name">Python · SQL</span><div class="hsk-track"><div class="hsk-fill" data-w="88"></div></div><span class="hsk-pct">88%</span></div>
+          <div class="hsk"><span class="hsk-name">ML / Analytics</span><div class="hsk-track"><div class="hsk-fill" data-w="82"></div></div><span class="hsk-pct">82%</span></div>
+          <div class="hsk"><span class="hsk-name">Cloud · Azure</span><div class="hsk-track"><div class="hsk-fill" data-w="79"></div></div><span class="hsk-pct">79%</span></div>
+          <div class="hsk"><span class="hsk-name">BI · Reporting</span><div class="hsk-track"><div class="hsk-fill" data-w="85"></div></div><span class="hsk-pct">85%</span></div>
+        </div>
+
+        <!-- Activity feed -->
+        <div class="hdash-feed-title">Recent Activity</div>
+        <div class="hdash-feed" id="hdash-feed"></div>
+
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
 (function(){
-  /* ── CARD DATA ── */
-  var CARDS = [
-    {feat:true, bg:'rgba(186,201,100,.15)',
-     svg:'<rect x="2" y="2" width="5" height="5" rx="1" fill="#bac964"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#bac964" opacity=".5"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".5"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".85"/>',
-     label:'Core Expertise', title:'AML Compliance', bar:95},
-    {bg:'rgba(186,201,100,.09)',
-     svg:'<circle cx="8" cy="8" r="2.5" fill="#bac964" opacity=".9"/><circle cx="3" cy="4" r="1.4" fill="#bac964" opacity=".4"/><circle cx="13" cy="4" r="1.4" fill="#bac964" opacity=".4"/><circle cx="3" cy="12" r="1.4" fill="#bac964" opacity=".4"/><circle cx="13" cy="12" r="1.4" fill="#bac964" opacity=".4"/><line x1="8" y1="8" x2="3" y2="4" stroke="#bac964" stroke-width=".8" opacity=".3"/><line x1="8" y1="8" x2="13" y2="4" stroke="#bac964" stroke-width=".8" opacity=".3"/><line x1="8" y1="8" x2="3" y2="12" stroke="#bac964" stroke-width=".8" opacity=".3"/><line x1="8" y1="8" x2="13" y2="12" stroke="#bac964" stroke-width=".8" opacity=".3"/>',
-     label:'Machine Learning', title:'ML / Data Science', bar:82},
-    {bg:'rgba(186,201,100,.11)',
-     svg:'<ellipse cx="8" cy="5" rx="5" ry="2" stroke="#bac964" stroke-width="1" opacity=".85"/><path d="M3 5v3c0 1.1 2.24 2 5 2s5-.9 5-2V5" stroke="#bac964" stroke-width="1" opacity=".55" fill="none"/><path d="M3 8v3c0 1.1 2.24 2 5 2s5-.9 5-2V8" stroke="#bac964" stroke-width="1" opacity=".3" fill="none"/>',
-     label:'Languages', title:'Python · SQL', bar:88},
-    {bg:'rgba(186,201,100,.09)',
-     svg:'<path d="M8 2 L14 13 L2 13 Z" stroke="#bac964" stroke-width="1.3" fill="none" opacity=".85"/><line x1="8" y1="6" x2="8" y2="10" stroke="#bac964" stroke-width="1.3" opacity=".9"/><circle cx="8" cy="11.5" r=".9" fill="#bac964"/>',
-     label:'Risk Intelligence', title:'Risk Scoring', sub:'Transaction monitoring · Sanction screening'},
-    {feat:true, bg:'rgba(186,201,100,.13)',
-     svg:'<circle cx="8" cy="7" r="4" stroke="#bac964" stroke-width="1.2" opacity=".9"/><path d="M5 11.5 L5 15 L8 13.5 L11 15 L11 11.5" stroke="#bac964" stroke-width="1.2" fill="none" opacity=".7"/>',
-     label:'Certifications', title:'12 Credentials', sub:'Data Science · AML · Cloud · SQL'},
-    {bg:'rgba(186,201,100,.07)',
-     svg:'<path d="M4 11 a3 3 0 0 1 0-6 4 4 0 0 1 8 1 2.5 2.5 0 0 1 0 5Z" stroke="#bac964" stroke-width="1.1" fill="none" opacity=".8"/>',
-     label:'Infrastructure', title:'Cloud & Data Eng', bar:79},
-    {bg:'rgba(186,201,100,.08)',
-     svg:'<rect x="2" y="8" width="2.5" height="6" rx="1" fill="#bac964" opacity=".45"/><rect x="6.5" y="5" width="2.5" height="9" rx="1" fill="#bac964" opacity=".72"/><rect x="11" y="2" width="2.5" height="12" rx="1" fill="#bac964"/>',
-     label:'Visualisation', title:'BI & Reporting', bar:85},
-    {bg:'rgba(186,201,100,.09)',
-     svg:'<circle cx="8" cy="8" r="5" stroke="#bac964" stroke-width="1.1" opacity=".55"/><polyline points="6,8 8,10 11,6" stroke="#bac964" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>',
-     label:'Delivery', title:'Client Delivery', bar:90},
-    {bg:'rgba(186,201,100,.08)',
-     svg:'<rect x="3" y="2" width="10" height="12" rx="1.5" stroke="#bac964" stroke-width="1" fill="none" opacity=".65"/><line x1="6" y1="6" x2="10" y2="6" stroke="#bac964" stroke-width="1" opacity=".75"/><line x1="6" y1="8.5" x2="10" y2="8.5" stroke="#bac964" stroke-width="1" opacity=".55"/><line x1="6" y1="11" x2="8.5" y2="11" stroke="#bac964" stroke-width="1" opacity=".38"/>',
-     label:'Compliance', title:'Regulatory Filing', sub:'SAR · STR · Case management'},
-    {feat:true, bg:'rgba(186,201,100,.12)',
-     svg:'<circle cx="5" cy="8" r="2.5" stroke="#bac964" stroke-width="1.1" fill="none" opacity=".85"/><circle cx="11.5" cy="5" r="1.9" stroke="#bac964" stroke-width="1" fill="none" opacity=".65"/><circle cx="11.5" cy="11" r="1.9" stroke="#bac964" stroke-width="1" fill="none" opacity=".55"/><line x1="7.4" y1="7.2" x2="9.7" y2="5.7" stroke="#bac964" stroke-width=".9" opacity=".5"/><line x1="7.4" y1="8.8" x2="9.7" y2="10.3" stroke="#bac964" stroke-width=".9" opacity=".5"/>',
-     label:'Entity Resolution', title:'Network Analysis', sub:'Link analysis · Graph modelling'},
-    {bg:'rgba(186,201,100,.07)',
-     svg:'<rect x="2" y="6" width="12" height="7" rx="1.5" stroke="#bac964" stroke-width="1" fill="none" opacity=".65"/><path d="M5 6V5a3 3 0 016 0v1" stroke="#bac964" stroke-width="1" stroke-linecap="round" opacity=".8" fill="none"/>',
-     label:'AML Domain', title:'KYC / KYB', sub:'Customer due diligence'},
-    {bg:'rgba(186,201,100,.09)',
-     svg:'<path d="M8 2C5 2 3 4 3 6c0 3 5 8 5 8s5-5 5-8c0-2-2-4-5-4z" stroke="#bac964" stroke-width="1" fill="none" opacity=".7"/><circle cx="8" cy="6" r="1.5" fill="#bac964" opacity=".8"/>',
-     label:'Global Clients', title:'30+ Institutions', sub:'Banks · Fintechs · Credit Unions'},
-  ];
+  /* orb */
+  var orb=document.getElementById('hero-orb');
+  if(orb){document.addEventListener('mousemove',function(e){orb.style.left=e.clientX+'px';orb.style.top=e.clientY+'px';});}
 
-  function mkCard(c) {
-    var bar = c.bar
-      ? '<div class="hc-bar-row"><div class="hc-bar-track"><div class="hc-bar-fill" data-w="'+c.bar+'"></div></div><span class="hc-bar-val">'+c.bar+'%</span></div>'
-      : '';
-    var sub = c.sub ? '<div class="hc-sub">'+c.sub+'</div>' : '';
-    return '<div class="hc-card'+(c.feat?' feat':'')+'">'+
-      '<div class="hc-icon" style="background:'+c.bg+'"><svg viewBox="0 0 16 16" fill="none">'+c.svg+'</svg></div>'+
-      '<div><div class="hc-label">'+c.label+'</div><div class="hc-title">'+c.title+'</div>'+sub+bar+'</div>'+
-      '</div>';
-  }
-
-  /* Distribute cards across 3 columns */
-  var colA = [], colB = [], colC = [];
-  CARDS.forEach(function(c, i){
-    if(i % 3 === 0) colA.push(c);
-    else if(i % 3 === 1) colB.push(c);
-    else colC.push(c);
-  });
-
-  function fill(id, cards){
-    var el = document.getElementById(id);
-    if(!el) return;
-    var doubled = cards.concat(cards);
-    el.innerHTML = doubled.map(mkCard).join('');
-  }
-  fill('col-a', colA);
-  fill('col-b', colB);
-  fill('col-c', colC);
-
-  /* Animate bars into view */
-  function animateBars(){
-    document.querySelectorAll('.hc-bar-fill[data-w]').forEach(function(el){
-      setTimeout(function(){
-        el.style.width = el.getAttribute('data-w') + '%';
-      }, 600 + Math.random()*400);
-    });
-  }
-  window.addEventListener('load', animateBars);
-  setTimeout(animateBars, 300);
-
-  /* Mouse-tracking orb */
-  var orb = document.getElementById('hero-orb');
-  if(orb){
-    document.addEventListener('mousemove', function(e){
-      orb.style.left = e.clientX + 'px';
-      orb.style.top  = e.clientY + 'px';
-    });
-  }
-
-  /* Particle canvas */
-  var cv = document.getElementById('hero-canvas');
-  if(!cv) return;
-  var ctx = cv.getContext('2d');
-  var W, H, pts = [];
-
-  function resize(){
-    W = cv.width  = window.innerWidth;
-    H = cv.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  for(var i=0;i<55;i++){
-    pts.push({
-      x: Math.random()*1800, y: Math.random()*900,
-      vx:(Math.random()-.5)*.18, vy:(Math.random()-.5)*.18,
-      r: .8+Math.random()*1.2, o: .08+Math.random()*.18
-    });
-  }
-
-  function drawPts(){
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(function(p){
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
-      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(186,201,100,'+p.o+')';
-      ctx.fill();
-    });
-    /* draw connecting lines between nearby pts */
-    for(var i=0;i<pts.length;i++){
-      for(var j=i+1;j<pts.length;j++){
-        var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
-        var dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<120){
-          ctx.beginPath();
-          ctx.strokeStyle='rgba(186,201,100,'+((.04*(1-dist/120)))+')';
-          ctx.lineWidth=.5;
-          ctx.moveTo(pts[i].x,pts[i].y);
-          ctx.lineTo(pts[j].x,pts[j].y);
-          ctx.stroke();
-        }
+  /* particle canvas */
+  var cv=document.getElementById('hero-canvas');
+  if(cv){
+    var ctx=cv.getContext('2d'),W,H,pts=[];
+    function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+    resize();window.addEventListener('resize',resize);
+    for(var i=0;i<45;i++)pts.push({x:Math.random()*1800,y:Math.random()*900,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,r:.7+Math.random()*1.1,o:.06+Math.random()*.14});
+    (function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(function(p){
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(186,201,100,'+p.o+')';ctx.fill();
+      });
+      for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){
+        var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130){ctx.beginPath();ctx.strokeStyle='rgba(186,201,100,'+(0.035*(1-d/130))+')';ctx.lineWidth=.5;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}
       }
-    }
-    requestAnimationFrame(drawPts);
+      requestAnimationFrame(draw);
+    })();
   }
-  requestAnimationFrame(drawPts);
+
+  /* animated counters */
+  function counter(id,target,suffix,delay){
+    setTimeout(function(){
+      var el=document.getElementById(id);if(!el)return;
+      var start=performance.now();
+      (function tick(now){
+        var p=Math.min((now-start)/1200,1);
+        var ease=1-Math.pow(1-p,3);
+        el.textContent=Math.round(ease*target)+(suffix||'');
+        if(p<1)requestAnimationFrame(tick);
+      })(performance.now());
+    },delay);
+  }
+  counter('hds-clients',30,'+',800);
+  counter('hds-years',5,'+',950);
+  counter('hds-certs',12,'',1100);
+
+  /* skill bars */
+  setTimeout(function(){
+    document.querySelectorAll('.hsk-fill[data-w]').forEach(function(el){
+      el.style.width=el.getAttribute('data-w')+'%';
+    });
+  },700);
+
+  /* live activity feed */
+  var FEED=[
+    {dot:'green',text:'<strong>AWS Cloud Practitioner</strong> certification renewed',time:'2m ago'},
+    {dot:'blue', text:'New article published on <strong>Medium</strong> — AML automation',time:'18m ago'},
+    {dot:'gold', text:'<strong>Python pipeline</strong> — AML alert triage automated',time:'1h ago'},
+    {dot:'green',text:'<strong>ACAMS</strong> course completed — Risk-Based Approach',time:'3h ago'},
+    {dot:'blue', text:'<strong>Power BI dashboard</strong> — compliance KPIs shipped',time:'5h ago'},
+    {dot:'gold', text:'<strong>ML model</strong> — transaction anomaly detection tuned',time:'1d ago'},
+    {dot:'green',text:'<strong>Basel Institute</strong> cert earned — STR Analysis',time:'2d ago'},
+  ];
+  var feed=document.getElementById('hdash-feed');
+  if(feed){
+    feed.innerHTML=FEED.map(function(f){
+      return '<div class="hfeed-item"><div class="hfeed-dot '+f.dot+'"></div><div class="hfeed-text">'+f.text+'</div><div class="hfeed-time">'+f.time+'</div></div>';
+    }).join('');
+  }
+
+  /* ── Mobile card scroll strip ── */
+  var MOB=[
+    {bg:'rgba(186,201,100,.12)',svg:'<rect x="2" y="2" width="5" height="5" rx="1" fill="#bac964" opacity=".9"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#bac964" opacity=".45"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".45"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".75"/>',label:'Core Expertise',title:'AML Compliance',bar:95},
+    {bg:'rgba(186,201,100,.09)',svg:'<ellipse cx="8" cy="5" rx="5" ry="2" stroke="#bac964" stroke-width="1" opacity=".85"/><path d="M3 5v3c0 1.1 2.24 2 5 2s5-.9 5-2V5" stroke="#bac964" stroke-width="1" opacity=".5" fill="none"/><path d="M3 8v3c0 1.1 2.24 2 5 2s5-.9 5-2V8" stroke="#bac964" stroke-width="1" opacity=".3" fill="none"/>',label:'Languages',title:'Python · SQL',bar:88},
+    {bg:'rgba(186,201,100,.08)',svg:'<circle cx="8" cy="8" r="2.5" fill="#bac964" opacity=".85"/><circle cx="3" cy="4" r="1.4" fill="#bac964" opacity=".35"/><circle cx="13" cy="4" r="1.4" fill="#bac964" opacity=".35"/><circle cx="3" cy="12" r="1.4" fill="#bac964" opacity=".35"/><circle cx="13" cy="12" r="1.4" fill="#bac964" opacity=".35"/><line x1="8" y1="8" x2="3" y2="4" stroke="#bac964" stroke-width=".8" opacity=".28"/><line x1="8" y1="8" x2="13" y2="4" stroke="#bac964" stroke-width=".8" opacity=".28"/><line x1="8" y1="8" x2="3" y2="12" stroke="#bac964" stroke-width=".8" opacity=".28"/><line x1="8" y1="8" x2="13" y2="12" stroke="#bac964" stroke-width=".8" opacity=".28"/>',label:'Machine Learning',title:'ML / Data Science',bar:82},
+    {bg:'rgba(186,201,100,.11)',svg:'<circle cx="8" cy="7" r="4" stroke="#bac964" stroke-width="1.1" opacity=".85"/><path d="M5 11.5 L5 15 L8 13.5 L11 15 L11 11.5" stroke="#bac964" stroke-width="1.1" fill="none" opacity=".65"/>',label:'Certifications',title:'12 Credentials',sub:'DS · AML · Cloud · SQL'},
+    {bg:'rgba(186,201,100,.07)',svg:'<path d="M4 11 a3 3 0 0 1 0-6 4 4 0 0 1 8 1 2.5 2.5 0 0 1 0 5Z" stroke="#bac964" stroke-width="1.1" fill="none" opacity=".8"/>',label:'Infrastructure',title:'Cloud & Azure',bar:79},
+    {bg:'rgba(186,201,100,.09)',svg:'<path d="M8 2 L14 13 L2 13 Z" stroke="#bac964" stroke-width="1.2" fill="none" opacity=".85"/><line x1="8" y1="6" x2="8" y2="10" stroke="#bac964" stroke-width="1.2" opacity=".85"/><circle cx="8" cy="11.5" r=".85" fill="#bac964"/>',label:'Risk Intelligence',title:'Risk Scoring',sub:'Tx monitoring · Sanctions'},
+    {bg:'rgba(186,201,100,.08)',svg:'<rect x="2" y="8" width="2.5" height="6" rx="1" fill="#bac964" opacity=".45"/><rect x="6.5" y="5" width="2.5" height="9" rx="1" fill="#bac964" opacity=".72"/><rect x="11" y="2" width="2.5" height="12" rx="1" fill="#bac964"/>',label:'Visualisation',title:'BI & Reporting',bar:85},
+    {bg:'rgba(186,201,100,.09)',svg:'<circle cx="8" cy="8" r="5" stroke="#bac964" stroke-width="1.1" opacity=".5"/><polyline points="6,8 8,10 11,6" stroke="#bac964" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>',label:'Delivery',title:'Client Delivery',bar:90},
+  ];
+  function mkMob(c){
+    var bar=c.bar?'<div class="mob-bar-row"><div class="mob-bar-track"><div class="mob-bar-fill" style="width:'+c.bar+'%"></div></div><span class="mob-bar-val">'+c.bar+'%</span></div>':'';
+    var sub=c.sub?'<div class="mob-sub">'+c.sub+'</div>':'';
+    return '<div class="mob-card"><div class="mob-icon" style="background:'+c.bg+'"><svg viewBox="0 0 16 16" fill="none">'+c.svg+'</svg></div><div class="mob-label">'+c.label+'</div><div class="mob-title">'+c.title+'</div>'+sub+bar+'</div>';
+  }
+  var ms=document.getElementById('mob-strip');
+  if(ms){var md=MOB.concat(MOB);ms.innerHTML=md.map(mkMob).join('');}
 })();
 </script>
-
 	
 
 <!-- ScrollReveal removed - was hiding navbar items and sections -->
