@@ -418,8 +418,8 @@ function triggerFilter(el, section) {
 .hero-desc strong{color:rgba(255,255,255,.72);font-weight:500;}
 .hero-cta-group{display:flex;align-items:center;gap:14px;opacity:0;animation:heroFadeUp .5s .58s ease forwards;}
 .hero-cta{display:inline-flex;align-items:center;gap:10px;background:#bac964;color:#060608;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:14px 28px;border-radius:2px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;}
-.hero-cta:hover{background:#ccdb6a;transform:translateY(-3px);box-shadow:0 14px 36px rgba(186,201,100,.28);}
-.cta-arr{display:inline-block;width:10px;height:10px;border-top:2px solid #060608;border-right:2px solid #060608;transform:rotate(45deg);}
+.hero-cta:hover{background:#ccdb6a;color:#060608;transform:translateY(-3px);box-shadow:0 14px 36px rgba(186,201,100,.28);}
+.cta-arr{display:inline-block;width:10px;height:10px;border-top:2px solid #060608;border-right:2px solid #060608;transform:rotate(45deg);transition:border-color .2s;}
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── RIGHT — dashboard panel ── */
@@ -835,7 +835,6 @@ function triggerFilter(el, section) {
     {dot:'blue', text:'<strong>Basel Institute</strong> — STR Operational Analysis cert',time:'Aug 2025'},
     {dot:'blue', text:'<strong>KYC Lookup</strong> — Foundation in AML and KYC cert',time:'Jul 2025'},
     {dot:'gold', text:'<strong>Alessa Inc</strong> — Intermediate Analytic Consultant',time:'Sep 2022 – Jun 2025'},
-    {dot:'green',text:'<strong>Hack the Barriers</strong> — 2nd Place, MediFeel · Invest Ottawa',time:'Mar 2026'},
     {dot:'gold', text:'<strong>Alessa Inc</strong> — Intermediate Technical Analyst',time:'Nov 2021 – Sep 2022'},
     {dot:'blue', text:'<strong>Narcity Media Group</strong> — Data Engineer, Toronto',time:'May – Aug 2021'},
     {dot:'green',text:'<strong>AWS Certified Cloud Practitioner</strong> — earned',time:'Jan 2021'},
