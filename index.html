@@ -384,7 +384,7 @@ function triggerFilter(el, section) {
 /* ── LEFT ── */
 .hero-content{
   position:relative;z-index:10;
-  width:44%;min-width:320px;
+  width:52%;min-width:320px;
   padding:0 0 0 6vw;flex-shrink:0;
 }
 .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;opacity:0;animation:heroFadeUp .5s .10s ease forwards;}
@@ -427,7 +427,7 @@ function triggerFilter(el, section) {
   position:relative;z-index:5;
   flex:1;min-width:0;
   display:flex;align-items:center;justify-content:center;
-  padding:40px 4vw 40px 1vw;
+  padding:40px 3vw 40px 0;
   opacity:0;animation:heroFadeUp .7s .5s ease forwards;
 }
 
@@ -511,7 +511,7 @@ function triggerFilter(el, section) {
 .hdash-feed-title{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(186,201,100,.35);margin-bottom:10px;}
 /* Scrolling feed container */
 .hdash-feed-wrap{
-  height:168px;
+  height:210px;
   overflow:hidden;
   position:relative;
   margin-bottom:20px;
@@ -521,7 +521,7 @@ function triggerFilter(el, section) {
 .hdash-feed-wrap:hover .hdash-feed{animation-play-state:paused;}
 .hdash-feed{
   display:flex;flex-direction:column;gap:0;
-  animation:feedScroll 14s linear infinite;
+  animation:feedScroll 28s linear infinite;
 }
 @keyframes feedScroll{0%{transform:translateY(0);}100%{transform:translateY(-50%)}}
 .hfeed-item{
@@ -539,9 +539,9 @@ function triggerFilter(el, section) {
 .hfeed-dot.green{background:#4ade80;}
 .hfeed-dot.gold{background:#bac964;}
 .hfeed-dot.blue{background:#60a5fa;}
-.hfeed-text{flex:1;font-size:11px;color:rgba(255,255,255,.55);line-height:1.4;}
-.hfeed-text strong{color:rgba(255,255,255,.8);font-weight:500;}
-.hfeed-time{font-size:9px;color:rgba(255,255,255,.2);flex-shrink:0;font-variant-numeric:tabular-nums;}
+.hfeed-text{flex:1;font-size:11.5px;color:rgba(255,255,255,.75);line-height:1.4;}
+.hfeed-text strong{color:#fff;font-weight:600;}
+.hfeed-time{font-size:9.5px;color:rgba(186,201,100,.6);flex-shrink:0;font-variant-numeric:tabular-nums;font-weight:500;}
 
 /* ── TABLET ── */
 @media(min-width:641px) and (max-width:960px){
@@ -553,8 +553,52 @@ function triggerFilter(el, section) {
   .hdash-stats{grid-template-columns:repeat(5,1fr);gap:6px;}
 }
 
+/* ── CREDENTIAL STRIP (desktop only) ── */
+.hero-cred-strip{
+  margin-top:40px;
+  opacity:0;animation:heroFadeUp .5s .72s ease forwards;
+}
+.hero-cred-label{
+  font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);margin-bottom:14px;
+}
+.hero-cred-row{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.hcred{
+  display:flex;align-items:center;gap:7px;
+  padding:7px 13px;
+  border:1px solid rgba(186,201,100,.1);
+  border-radius:4px;
+  background:rgba(186,201,100,.035);
+  transition:border-color .25s,background .25s;
+  cursor:default;
+}
+.hcred:hover{
+  border-color:rgba(186,201,100,.28);
+  background:rgba(186,201,100,.07);
+}
+.hcred-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:#bac964;opacity:.7;flex-shrink:0;
+}
+.hcred-text{
+  font-size:10px;font-weight:500;
+  color:rgba(255,255,255,.5);
+  white-space:nowrap;letter-spacing:.02em;
+}
+.hcred-text strong{color:rgba(186,201,100,.85);font-weight:600;}
+
+/* divider line above strip */
+.hero-cred-divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,rgba(186,201,100,.15),transparent);
+  margin-bottom:18px;
+}
+
 /* ── MOBILE ── */
 @media(max-width:640px){
+  .hero-cred-strip{display:none;}
   .site-hero{flex-direction:column;align-items:stretch;min-height:unset;}
   .hero-content{width:100%;padding:72px 22px 32px;min-width:unset;}
   .hero-name{font-size:2.8rem;}
@@ -661,6 +705,7 @@ function triggerFilter(el, section) {
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
          target="_blank" class="hero-cta">Schedule a Meeting <span class="cta-arr"></span></a>
     </div>
+
   </div>
 
   <!-- RIGHT — compliance dashboard panel (desktop) / card strip (mobile) -->
@@ -696,7 +741,7 @@ function triggerFilter(el, section) {
           </div>
           <div class="hds">
             <div class="hds-val" id="hds-years">0</div>
-            <div class="hds-lbl">Yrs AML</div>
+            <div class="hds-lbl">Yrs Prof. Services</div>
           </div>
           <div class="hds">
             <div class="hds-val" id="hds-certs">0</div>
@@ -722,7 +767,7 @@ function triggerFilter(el, section) {
         </div>
 
         <!-- Activity feed -->
-        <div class="hdash-feed-title">Recent Activity</div>
+        <div class="hdash-feed-title">Career &amp; Education Timeline</div>
         <div class="hdash-feed-wrap">
           <div class="hdash-feed" id="hdash-feed"></div>
         </div>
@@ -785,13 +830,22 @@ function triggerFilter(el, section) {
 
   /* live activity feed */
   var FEED=[
-    {dot:'green',text:'<strong>AWS Certified Cloud Practitioner</strong> — earned Jan 2021',time:'Certified'},
-    {dot:'blue', text:'<strong>Basel Institute on Governance</strong> — STR Operational Analysis',time:'Aug 2025'},
-    {dot:'green',text:'<strong>ACAMS</strong> — Financial Inclusion &amp; Risk-Based Approach',time:'Jul 2025'},
-    {dot:'gold', text:'<strong>KYC Lookup</strong> — Foundation in AML and KYC',time:'Jul 2025'},
-    {dot:'blue', text:'Writing on <strong>Medium</strong> — AML, data science &amp; compliance',time:'Blog'},
-    {dot:'gold', text:'<strong>Alessa Inc</strong> — Data Analytics Specialist, Ottawa',time:'Current'},
-    {dot:'green',text:'<strong>MSc Computer Science</strong> — Lakehead University',time:'2021'},
+    {dot:'gold', text:'<strong>Alessa Inc</strong> — Data Analytics Specialist',time:'Jun 2025 – Now'},
+    {dot:'blue', text:'<strong>ACAMS</strong> — Financial Inclusion &amp; Risk-Based Approach',time:'Jul 2025'},
+    {dot:'blue', text:'<strong>Basel Institute</strong> — STR Operational Analysis cert',time:'Aug 2025'},
+    {dot:'blue', text:'<strong>KYC Lookup</strong> — Foundation in AML and KYC cert',time:'Jul 2025'},
+    {dot:'gold', text:'<strong>Alessa Inc</strong> — Intermediate Analytic Consultant',time:'Sep 2022 – Jun 2025'},
+    {dot:'green',text:'<strong>Hack the Barriers</strong> — 2nd Place, MediFeel · Invest Ottawa',time:'Mar 2026'},
+    {dot:'gold', text:'<strong>Alessa Inc</strong> — Intermediate Technical Analyst',time:'Nov 2021 – Sep 2022'},
+    {dot:'blue', text:'<strong>Narcity Media Group</strong> — Data Engineer, Toronto',time:'May – Aug 2021'},
+    {dot:'green',text:'<strong>AWS Certified Cloud Practitioner</strong> — earned',time:'Jan 2021'},
+    {dot:'blue', text:'<strong>R.A. Malatest &amp; Associates</strong> — Data Collection Clerk',time:'Feb – Apr 2021'},
+    {dot:'gold', text:'<strong>Sparks Foundation</strong> — Data Science &amp; Analytics Intern',time:'Mar 2021'},
+    {dot:'green',text:'<strong>MSc Computer Science</strong> — Lakehead University',time:'Sep 2019 – May 2021'},
+    {dot:'blue', text:'<strong>B.E. Computer Engineering</strong> — Gujarat Technological University',time:'2014 – 2018'},
+    {dot:'gold', text:'<strong>Delhi Public School Vadodara</strong> — High School, Science · 9.8 CGPA',time:'2005 – 2012'},
+    {dot:'green',text:'<strong>Don Bosco School</strong> — Primary Education',time:'2000 – 2005'},
+    {dot:'blue', text:'Writing on <strong>Medium</strong> — AML, data science &amp; compliance · 12 articles',time:'Ongoing'},
   ];
   var feed=document.getElementById('hdash-feed');
   if(feed){
