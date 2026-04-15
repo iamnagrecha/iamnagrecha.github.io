@@ -406,10 +406,11 @@ function triggerFilter(el, section) {
   color:rgba(186,201,100,.9);font-weight:300;letter-spacing:.08em;
   margin-bottom:22px;
   overflow:hidden;white-space:nowrap;
+  display:inline-block;
   width:0;border-right:1.5px solid rgba(186,201,100,.7);
   animation:heroSubType 1.4s steps(28,end) .7s forwards, heroSubCaret .65s step-end .7s 4;
 }
-@keyframes heroSubType{from{width:0;}to{width:100%;}}
+@keyframes heroSubType{from{width:0;}to{width:26ch;}}
 @keyframes heroSubCaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.8);}}
 
 .hdiv{width:44px;height:1.5px;background:#bac964;opacity:0;margin-bottom:20px;animation:heroFadeUp .4s 2.3s ease forwards;}
@@ -685,10 +686,11 @@ function triggerFilter(el, section) {
     font-size:9px;letter-spacing:.18em;text-transform:uppercase;
     color:rgba(186,201,100,.55);font-weight:500;
     overflow:hidden;white-space:nowrap;
+    display:inline-block;
     width:0;
     animation:mobAItype 1.4s steps(22,end) .5s forwards;
   }
-  @keyframes mobAItype{from{width:0;}to{width:190px;}}
+  @keyframes mobAItype{from{width:0;}to{width:22ch;}}
   .mob-ai-badge{
     font-size:8px;font-weight:700;letter-spacing:.08em;
     color:#060608;background:#bac964;
