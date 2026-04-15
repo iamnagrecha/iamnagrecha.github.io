@@ -352,551 +352,163 @@ function triggerFilter(el, section) {
 
 
 
-<section class="site-hero-new" id="section-home">
-  <div class="bg-grid"></div>
-  <div class="top-accent"></div>
-
-<!-- LEFT: text -->
-<div class="hero-content">
-  <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
-  <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
-
-  <p class="hero-sub" style="color: #ffffff;">MSc · Data Analytics Specialist</p>
-
-  <div class="hdiv"></div>
-
-  <div class="tags">
-    <span class="tag" style="color: #ffffff;">Professional Services</span>
-    <span class="tag" style="color: #ffffff;">Financial Compliance</span>
-    <span class="tag" style="color: #ffffff;">AML · AI</span>
-  </div>
-
-  <p class="hero-desc">
-    <strong>Turning financial data into compliance intelligence</strong> — analytics-driven insights for regulatory and risk management challenges.
-  </p>
-
-  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
-     target="_blank" class="hero-cta">Schedule a Meeting <span class="cta-arr"></span></a>
-</div>
-
-  <!-- RIGHT: chart grid -->
-  <div class="chart-grid">
-    <div class="chart-panel">
-      <div class="panel-label">Core Skill Proficiency</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-bar"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">AML Solution Accuracy · Career Growth</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-line"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">Certification Areas</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-donut"></canvas></div>
-    </div>
-    <div class="chart-panel">
-      <div class="panel-label">Consulting Domain Focus</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-net"></canvas></div>
-    </div>
-    <div class="chart-panel span-full">
-      <div class="panel-label">Skill Depth by Role · Career Progression 2021 – Present</div>
-      <div class="panel-canvas-wrap"><canvas id="cv-combo"></canvas></div>
-    </div>
-  </div>
-</section>
-
+<!-- HERO SECTION -->
 <style>
-.site-hero-new {
-  position: relative; min-height: 100vh; background: #080808;
-  overflow: hidden; display: flex; align-items: center;
-  font-family: system-ui, -apple-system, sans-serif;
+*,*::before,*::after{box-sizing:border-box;}
+.site-hero{
+  position:relative;min-height:100vh;background:#080808;
+  overflow:hidden;display:flex;align-items:center;
+  font-family:'DM Sans',system-ui,sans-serif;
 }
-.bg-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(186,201,100,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(186,201,100,.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+.hero-bg-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(186,201,100,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(186,201,100,.04) 1px,transparent 1px);
+  background-size:52px 52px;
 }
-.top-accent {
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, #bac964 35%, #bac964 65%, transparent);
-  opacity: .5;
+.hero-top-line{
+  position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,#bac964 40%,#bac964 60%,transparent);
+  opacity:.5;
 }
-.hero-content {
-  position: relative; z-index: 10;
-  width: 42%; min-width: 300px; padding: 0 0 0 6vw; flex-shrink: 0;
+/* LEFT */
+.hero-content{
+  position:relative;z-index:10;
+  width:42%;min-width:300px;padding:0 0 0 6vw;flex-shrink:0;
 }
-.chart-grid {
-  position: relative; z-index: 5; flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 16px;
-  padding: 80px 3vw 80px 2vw;
-  height: 100vh;
-  align-items: stretch;
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;opacity:0;animation:heroFadeUp .5s .10s ease forwards;}
+.ey-line{width:32px;height:1.5px;background:#bac964;}
+.ey-dot{width:5px;height:5px;border-radius:50%;background:#bac964;animation:heroBlink 2.2s ease-in-out infinite;}
+@keyframes heroBlink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero-name{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(2.4rem,4vw,3.8rem);color:#fff;line-height:1.07;letter-spacing:-.01em;margin:0 0 10px;opacity:0;animation:heroFadeUp .5s .20s ease forwards;}
+.hero-name span{color:#bac964;}
+.hero-sub{font-size:clamp(.85rem,1.4vw,1rem);color:rgba(186,201,100,.7);font-weight:300;letter-spacing:.07em;margin-bottom:24px;opacity:0;animation:heroFadeUp .5s .30s ease forwards;}
+.hdiv{width:44px;height:1.5px;background:#bac964;opacity:0;margin-bottom:20px;animation:heroFadeUp .5s .33s ease forwards;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px;opacity:0;animation:heroFadeUp .5s .38s ease forwards;}
+.tag{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(186,201,100,.55);border:1px solid rgba(186,201,100,.16);padding:5px 10px;border-radius:1px;}
+.hero-desc{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.8;margin-bottom:34px;max-width:360px;opacity:0;animation:heroFadeUp .5s .46s ease forwards;}
+.hero-desc strong{color:rgba(255,255,255,.7);font-weight:500;}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:#bac964;color:#080808;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:13px 26px;border-radius:1px;text-decoration:none;transition:background .2s,transform .2s;opacity:0;animation:heroFadeUp .5s .56s ease forwards;}
+.hero-cta:hover{background:#ccdb6a;transform:translateY(-2px);}
+.cta-arr{display:inline-block;width:10px;height:10px;border-top:2px solid #080808;border-right:2px solid #080808;transform:rotate(45deg);}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* RIGHT — card stream */
+.hero-card-area{
+  position:relative;z-index:5;flex:1;min-width:0;
+  height:100vh;overflow:hidden;
+  padding:80px 3vw 80px 2vw;
 }
-.chart-panel {
-  background: rgba(186,201,100,.03);
-  border: 1px solid rgba(186,201,100,.08);
-  border-radius: 3px; padding: 12px;
-  display: flex; flex-direction: column; overflow: hidden;
+.hero-stream{
+  display:flex;flex-direction:column;gap:10px;
+  animation:heroScrollUp 24s linear infinite;
 }
-.span-full { grid-column: 1 / -1; }
-.panel-label {
-  font-size: 8px; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(186,201,100,.28); margin-bottom: 8px; flex-shrink: 0;
+.hero-stream:hover{animation-play-state:paused;}
+@keyframes heroScrollUp{0%{transform:translateY(0);}100%{transform:translateY(-50%)}}
+.hero-fade-top{position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(#080808,transparent);pointer-events:none;z-index:10;}
+.hero-fade-bot{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,#080808);pointer-events:none;z-index:10;}
+
+.hc-card{
+  background:rgba(255,255,255,.035);border:1px solid rgba(186,201,100,.10);
+  border-radius:4px;padding:14px 16px;
+  display:flex;align-items:flex-start;gap:12px;
+  transition:border-color .25s,background .25s;cursor:default;
 }
-.panel-canvas-wrap { flex: 1; position: relative; min-height: 0; }
-.panel-canvas-wrap canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
-.eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
-.ey-line { width: 32px; height: 1.5px; background: #bac964; }
-.ey-dot { width: 5px; height: 5px; border-radius: 50%; background: #bac964; animation: blink 2.2s ease-in-out infinite; }
-@keyframes blink { 0%,100%{opacity:1;}50%{opacity:.2;} }
-.hero-name { font-size: clamp(2.4rem,4vw,3.8rem); font-weight: 700; color: #fff; line-height: 1.07; letter-spacing: -.03em; margin-bottom: 10px; }
-.hero-name span { color: #bac964; }
-.hero-sub { font-size: clamp(.85rem,1.4vw,1rem); color: rgba(186,201,100,.7); font-weight: 300; letter-spacing: .07em; margin-bottom: 24px; }
-.hdiv { width: 44px; height: 1.5px; background: #bac964; opacity: .3; margin-bottom: 20px; }
-.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
-.tag { font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(186,201,100,.55); border: 1px solid rgba(186,201,100,.16); padding: 5px 10px; border-radius: 1px; }
-.hero-desc { font-size: .85rem; color: rgba(255,255,255,.4); line-height: 1.8; margin-bottom: 34px; max-width: 360px; }
-.hero-desc strong { color: rgba(255,255,255,.7); font-weight: 500; }
-.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: #bac964; color: #080808; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; padding: 13px 26px; border-radius: 1px; text-decoration: none; transition: background .2s, transform .2s; }
-.hero-cta:hover { background: #ccdb6a; transform: translateY(-2px); }
-.cta-arr { display: inline-block; width: 10px; height: 10px; border-top: 2px solid #080808; border-right: 2px solid #080808; transform: rotate(45deg); }
-@keyframes fadeUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
-.hero-content > * { animation: fadeUp .6s ease both; }
-.eyebrow{animation-delay:.1s;}.hero-name{animation-delay:.2s;}.hero-sub{animation-delay:.28s;}
-.hdiv{animation-delay:.33s;}.tags{animation-delay:.38s;}.hero-desc{animation-delay:.46s;}.hero-cta{animation-delay:.56s;}
-@keyframes panelIn { from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);} }
-.chart-panel { animation: panelIn .5s ease both; }
-.chart-panel:nth-child(1){animation-delay:.4s;} .chart-panel:nth-child(2){animation-delay:.55s;}
-.chart-panel:nth-child(3){animation-delay:.7s;} .chart-panel:nth-child(4){animation-delay:.85s;}
-.chart-panel:nth-child(5){animation-delay:1s;}
-@media(max-width:768px){
-  .site-hero-new { flex-direction: column; align-items: stretch; }
-  .hero-content { width: 100%; padding: 80px 24px 0; }
-  .chart-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; padding: 20px 16px 40px; }
-  .chart-panel { min-height: 130px; }
+.hc-card:hover{border-color:rgba(186,201,100,.30);background:rgba(186,201,100,.05);}
+.hc-icon{width:32px;height:32px;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.hc-icon svg{width:13px;height:13px;}
+.hc-label{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#bac964;margin-bottom:2px;}
+.hc-title{font-size:12px;color:rgba(255,255,255,.75);font-weight:500;margin-bottom:2px;}
+.hc-sub{font-size:11px;color:rgba(255,255,255,.3);line-height:1.5;}
+.hc-bar-row{display:flex;align-items:center;gap:8px;margin-top:5px;}
+.hc-bar-track{flex:1;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.hc-bar-fill{height:100%;background:#bac964;border-radius:2px;}
+.hc-bar-val{font-size:9px;color:rgba(186,201,100,.7);min-width:24px;text-align:right;}
+
+/* TABLET */
+@media(min-width:641px) and (max-width:900px){
+  .hero-content{width:46%;padding-left:4vw;}
+  .hero-name{font-size:2.2rem;}
+  .hero-card-area{padding:60px 2vw 60px 1.5vw;}
+}
+/* MOBILE */
+@media(max-width:640px){
+  .site-hero{flex-direction:column;align-items:stretch;min-height:unset;}
+  .hero-content{width:100%;padding:72px 24px 36px;min-width:unset;}
+  .hero-name{font-size:2.2rem;}
+  .hero-desc{max-width:100%;font-size:.88rem;}
+  .hero-cta{display:flex;justify-content:center;width:100%;}
+  .hero-card-area{
+    width:calc(100% + 0px);height:auto;
+    overflow:hidden;padding:0 0 44px;
+  }
+  .hero-stream{
+    flex-direction:row;
+    animation:heroScrollLeft 28s linear infinite;
+    gap:10px;padding:0 24px;
+    width:max-content;align-items:stretch;
+  }
+  @keyframes heroScrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%)}}
+  .hc-card{
+    width:162px;flex-shrink:0;
+    flex-direction:column;align-items:flex-start;
+    gap:8px;padding:14px 13px 12px;border-radius:6px;
+  }
+  .hero-fade-top{top:0;bottom:0;left:0;right:auto;width:44px;height:100%;background:linear-gradient(90deg,#080808,transparent);}
+  .hero-fade-bot{top:0;bottom:0;right:0;left:auto;width:44px;height:100%;background:linear-gradient(270deg,#080808,transparent);}
 }
 </style>
 
+<section class="site-hero" id="section-home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-top-line"></div>
+
+  <div class="hero-content">
+    <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
+    <h1 class="hero-name">ABHISHEK<br>NAGRECHA<span>,</span></h1>
+    <p class="hero-sub">MSc · Data Analytics Specialist</p>
+    <div class="hdiv"></div>
+    <div class="tags">
+      <span class="tag">Professional Services</span>
+      <span class="tag">Financial Compliance</span>
+      <span class="tag">AML · AI</span>
+    </div>
+    <p class="hero-desc">
+      <strong>Turning financial data into compliance intelligence</strong> — analytics-driven insights for regulatory and risk management challenges.
+    </p>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting+with+Abhishek&details=Hi+Abhishek%2C+I%27d+like+to+book+a+meeting+with+you+to+discuss+my+project.&location=Google+Meet&trp=true"
+       target="_blank" class="hero-cta">Schedule a Meeting <span class="cta-arr"></span></a>
+  </div>
+
+  <div class="hero-card-area">
+    <div class="hero-fade-top"></div>
+    <div class="hero-fade-bot"></div>
+    <div class="hero-stream" id="hero-stream"></div>
+  </div>
+</section>
+
 <script>
 (function(){
-  const ACC = '#bac964';
-  const A   = p => `rgba(186,201,100,${p})`;
-
-  function setupCanvas(id){
-    const cv   = document.getElementById(id);
-    const wrap = cv.parentElement;
-    const W    = wrap.clientWidth  || 200;
-    const H    = wrap.clientHeight || 120;
-    cv.width  = W * 2; cv.height = H * 2;
-    cv.style.width  = W + 'px';
-    cv.style.height = H + 'px';
-    const ctx = cv.getContext('2d');
-    ctx.scale(2, 2);
-    return { cv, ctx, W, H };
+  var CARDS=[
+    {bg:'rgba(186,201,100,.12)',svg:'<rect x="2" y="2" width="5" height="5" rx="1" fill="#bac964" opacity=".9"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#bac964" opacity=".4"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".4"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#bac964" opacity=".7"/>',label:'Core Expertise',title:'AML Compliance',bar:95},
+    {bg:'rgba(186,201,100,.08)',svg:'<circle cx="8" cy="8" r="2.5" fill="#bac964" opacity=".85"/><circle cx="3" cy="4" r="1.5" fill="#bac964" opacity=".35"/><circle cx="13" cy="4" r="1.5" fill="#bac964" opacity=".35"/><circle cx="3" cy="12" r="1.5" fill="#bac964" opacity=".35"/><circle cx="13" cy="12" r="1.5" fill="#bac964" opacity=".35"/><line x1="8" y1="8" x2="3" y2="4" stroke="#bac964" stroke-width=".8" opacity=".25"/><line x1="8" y1="8" x2="13" y2="4" stroke="#bac964" stroke-width=".8" opacity=".25"/><line x1="8" y1="8" x2="3" y2="12" stroke="#bac964" stroke-width=".8" opacity=".25"/><line x1="8" y1="8" x2="13" y2="12" stroke="#bac964" stroke-width=".8" opacity=".25"/>',label:'Machine Learning',title:'ML / Data Science',bar:82},
+    {bg:'rgba(186,201,100,.10)',svg:'<ellipse cx="8" cy="5" rx="5" ry="2" stroke="#bac964" stroke-width="1" opacity=".8"/><path d="M3 5v3c0 1.1 2.24 2 5 2s5-.9 5-2V5" stroke="#bac964" stroke-width="1" opacity=".5" fill="none"/><path d="M3 8v3c0 1.1 2.24 2 5 2s5-.9 5-2V8" stroke="#bac964" stroke-width="1" opacity=".3" fill="none"/>',label:'Languages',title:'Python · SQL',bar:88},
+    {bg:'rgba(186,201,100,.09)',svg:'<path d="M8 2 L14 13 L2 13 Z" stroke="#bac964" stroke-width="1.2" fill="none" opacity=".8"/><line x1="8" y1="6" x2="8" y2="10" stroke="#bac964" stroke-width="1.2" opacity=".8"/><circle cx="8" cy="11.5" r=".8" fill="#bac964" opacity=".8"/>',label:'Risk Intelligence',title:'Risk Scoring',sub:'Transaction monitoring · Sanction screening'},
+    {bg:'rgba(186,201,100,.11)',svg:'<circle cx="8" cy="7" r="4" stroke="#bac964" stroke-width="1" opacity=".8"/><path d="M5 11.5 L5 15 L8 13.5 L11 15 L11 11.5" stroke="#bac964" stroke-width="1" fill="none" opacity=".6"/>',label:'Certifications',title:'12 Credentials',sub:'Data Science · AML · Cloud · SQL'},
+    {bg:'rgba(186,201,100,.06)',svg:'<path d="M4 11 a3 3 0 0 1 0-6 4 4 0 0 1 8 1 2.5 2.5 0 0 1 0 5Z" stroke="#bac964" stroke-width="1" fill="none" opacity=".75"/>',label:'Infrastructure',title:'Cloud & Data Eng',bar:79},
+    {bg:'rgba(186,201,100,.07)',svg:'<rect x="2" y="8" width="2.5" height="6" rx="1" fill="#bac964" opacity=".4"/><rect x="6.5" y="5" width="2.5" height="9" rx="1" fill="#bac964" opacity=".7"/><rect x="11" y="2" width="2.5" height="12" rx="1" fill="#bac964" opacity=".9"/>',label:'Visualisation',title:'BI & Reporting',bar:85},
+    {bg:'rgba(186,201,100,.08)',svg:'<circle cx="8" cy="8" r="5" stroke="#bac964" stroke-width="1" opacity=".5"/><polyline points="6,8 8,10 11,6" stroke="#bac964" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>',label:'Delivery',title:'Client Delivery',bar:90},
+    {bg:'rgba(186,201,100,.09)',svg:'<rect x="3" y="2" width="10" height="12" rx="1" stroke="#bac964" stroke-width="1" fill="none" opacity=".6"/><line x1="6" y1="6" x2="10" y2="6" stroke="#bac964" stroke-width="1" opacity=".7"/><line x1="6" y1="8.5" x2="10" y2="8.5" stroke="#bac964" stroke-width="1" opacity=".5"/><line x1="6" y1="11" x2="8" y2="11" stroke="#bac964" stroke-width="1" opacity=".35"/>',label:'Compliance Reporting',title:'Regulatory Filing',sub:'SAR · STR · Case management'},
+    {bg:'rgba(186,201,100,.10)',svg:'<circle cx="5" cy="8" r="2.5" stroke="#bac964" stroke-width="1" fill="none" opacity=".8"/><circle cx="11" cy="5" r="2" stroke="#bac964" stroke-width="1" fill="none" opacity=".6"/><circle cx="11" cy="11" r="2" stroke="#bac964" stroke-width="1" fill="none" opacity=".5"/><line x1="7.5" y1="8" x2="9" y2="5.5" stroke="#bac964" stroke-width=".8" opacity=".4"/><line x1="7.5" y1="8" x2="9" y2="10.5" stroke="#bac964" stroke-width=".8" opacity=".4"/>',label:'Entity Resolution',title:'Network Analysis',sub:'Link analysis · Graph modelling'},
+  ];
+  function mk(c){
+    var bar=c.bar?'<div class="hc-bar-row"><div class="hc-bar-track"><div class="hc-bar-fill" style="width:'+c.bar+'%"></div></div><span class="hc-bar-val">'+c.bar+'%</span></div>':'';
+    var sub=c.sub?'<div class="hc-sub">'+c.sub+'</div>':'';
+    return '<div class="hc-card"><div class="hc-icon" style="background:'+c.bg+'"><svg viewBox="0 0 16 16" fill="none">'+c.svg+'</svg></div><div><div class="hc-label">'+c.label+'</div><div class="hc-title">'+c.title+'</div>'+sub+bar+'</div></div>';
   }
-
-  function gridLines(ctx, W, H, cols, rows){
-    ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
-    for(let i = 0; i <= cols; i++){
-      const x = i * (W / cols);
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-    for(let i = 0; i <= rows; i++){
-      const y = i * (H / rows);
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-  }
-
-  /* ─── CHART 1 · Core Skill Proficiency (horizontal bar) ───
-     Labels right-aligned in a fixed left column (42px).
-     Value labels shown dark-on-gold inside wide bars,
-     gold outside narrow bars. x-axis tick marks at 0 / 50 / 100. */
-  function drawBar(ctx, W, H, p){
-    const labels = ['AML','Python/SQL','Delivery','BI / Viz','Data Eng','ML / DS','Cloud'];
-    const vals   = [95, 88, 90, 85, 80, 82, 78];
-    const P      = { t: 6, r: 38, b: 6, l: 44 };
-    const cW     = W - P.l - P.r;
-    const cH     = H - P.t - P.b;
-    const n      = labels.length;
-    const bh     = Math.floor(cH / n * 0.60);
-    const gap    = (cH - bh * n) / (n + 1);
-    const fs     = Math.max(6, Math.floor(H / n * 0.36));
-
-    ctx.clearRect(0, 0, W, H);
-    gridLines(ctx, W, H, 4, n);
-    ctx.font = `${fs}px system-ui`;
-
-    labels.forEach((l, i) => {
-      const y  = P.t + gap * (i + 1) + bh * i;
-      const bw = Math.round((vals[i] / 100) * cW * p);
-
-      ctx.fillStyle = A(.09);
-      ctx.fillRect(P.l, y, cW, bh);
-
-      ctx.fillStyle = ACC;
-      ctx.fillRect(P.l, y, bw, bh);
-
-      ctx.fillStyle = A(.40);
-      ctx.textAlign = 'right';
-      ctx.fillText(l, P.l - 5, y + bh / 2 + fs * 0.36);
-
-      if(p > 0.6){
-        ctx.globalAlpha = Math.min(1, (p - 0.6) / 0.4);
-        const pct = vals[i] + '%';
-        const tw  = ctx.measureText(pct).width;
-        if(bw > tw + 10){
-          ctx.fillStyle = '#080808';
-          ctx.textAlign = 'right';
-          ctx.fillText(pct, P.l + bw - 4, y + bh / 2 + fs * 0.36);
-        } else {
-          ctx.fillStyle = ACC;
-          ctx.textAlign = 'left';
-          ctx.fillText(pct, P.l + bw + 3, y + bh / 2 + fs * 0.36);
-        }
-        ctx.globalAlpha = 1;
-      }
-    });
-
-    [0, 50, 100].forEach(v => {
-      const x = P.l + (v / 100) * cW;
-      ctx.fillStyle = A(.18);
-      ctx.font      = '5px system-ui';
-      ctx.textAlign = 'center';
-      ctx.fillText(v + '%', x, H - 1);
-    });
-  }
-
-  /* ─── CHART 2 · AML Solution Accuracy Growth (line) ───
-     Y-axis domain is 30–100 so the start value (38%) sits
-     visibly above the bottom rather than at 1%. */
-  function drawLine(ctx, W, H, p){
-    const pts  = [38, 44, 50, 56, 62, 67, 72, 76, 80, 85, 90, 94];
-    const P    = { t: 14, r: 10, b: 18, l: 28 };
-    const cW   = W - P.l - P.r;
-    const cH   = H - P.t - P.b;
-    const YMIN = 30, YMAX = 100, YR = YMAX - YMIN;
-
-    ctx.clearRect(0, 0, W, H);
-
-    [40, 60, 80, 100].forEach(v => {
-      const y = P.t + cH - ((v - YMIN) / YR) * cH;
-      ctx.strokeStyle = A(.07); ctx.lineWidth = .5;
-      ctx.beginPath(); ctx.moveTo(P.l, y); ctx.lineTo(W - P.r, y); ctx.stroke();
-      ctx.fillStyle   = A(.28);
-      ctx.font        = `${Math.max(6, Math.floor(W / 38))}px system-ui`;
-      ctx.textAlign   = 'right';
-      ctx.fillText(v + '%', P.l - 3, y + 3);
-    });
-
-    const total = pts.length;
-    const n     = Math.max(2, Math.round(total * p));
-    const vis   = pts.slice(0, n);
-
-    const px = i => P.l + i * (cW / (total - 1));
-    const py = v => P.t + cH - ((v - YMIN) / YR) * cH;
-
-    /* area fill */
-    ctx.beginPath();
-    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
-    const lx = px(n - 1);
-    ctx.lineTo(lx, P.t + cH); ctx.lineTo(P.l, P.t + cH);
-    ctx.closePath(); ctx.fillStyle = A(.07); ctx.fill();
-
-    /* line stroke */
-    ctx.beginPath(); ctx.strokeStyle = ACC; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
-    vis.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
-    ctx.stroke();
-
-    /* end dot + label */
-    const lv = vis[n - 1];
-    const ly = py(lv);
-    ctx.beginPath(); ctx.arc(lx, ly, 3, 0, Math.PI * 2);
-    ctx.fillStyle = ACC; ctx.fill();
-    ctx.fillStyle = ACC;
-    ctx.font      = `500 ${Math.max(7, Math.floor(W / 32))}px system-ui`;
-    ctx.textAlign = 'center';
-    ctx.fillText(lv + '%', lx, ly - 7);
-
-    /* start dot + label */
-    if(p > 0.05){
-      ctx.globalAlpha = Math.min(1, p / 0.14);
-      ctx.beginPath(); ctx.arc(px(0), py(pts[0]), 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = A(.55); ctx.fill();
-      ctx.fillStyle = A(.45);
-      ctx.font      = `${Math.max(6, Math.floor(W / 36))}px system-ui`;
-      ctx.textAlign = 'center';
-      ctx.fillText(pts[0] + '%', px(0), py(pts[0]) - 6);
-      ctx.globalAlpha = 1;
-    }
-
-    /* year labels at career milestones */
-    if(p > 0.85){
-      ctx.globalAlpha = Math.min(1, (p - 0.85) / 0.15);
-      const fs = Math.max(5, Math.floor(W / 42));
-      [[0,"'21"],[3,"'22"],[7,"'24"],[11,"'25"]].forEach(([idx, lbl]) => {
-        if(idx >= vis.length) return;
-        ctx.fillStyle = A(.30);
-        ctx.font      = `${fs}px system-ui`;
-        ctx.textAlign = 'center';
-        ctx.fillText(lbl, px(idx), H - 2);
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── CHART 3 · Certification Areas (donut) ───
-     Centre shifted slightly left so right-side labels have room.
-     Labels rendered as two lines to prevent clipping.
-     Centre text shows "12 / CERTS". */
-  function drawDonut(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const cx = W * 0.45;
-    const cy = H * 0.50;
-    const R  = Math.min(W * 0.27, H * 0.35);
-    const ri = R * 0.54;
-
-    const segs = [
-      { pct: 0.58, col: ACC,    l1: 'Data Sci', l2: '58%' },
-      { pct: 0.25, col: A(.50), l1: 'AML',      l2: '25%' },
-      { pct: 0.09, col: A(.22), l1: 'Cloud',    l2: '9%'  },
-      { pct: 0.08, col: A(.10), l1: 'SQL',      l2: '8%'  },
-    ];
-
-    let ang = -Math.PI / 2;
-    segs.forEach(s => {
-      const sw = s.pct * Math.PI * 2 * p;
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, R, ang, ang + sw);
-      ctx.closePath(); ctx.fillStyle = s.col; ctx.fill();
-      ang += sw;
-    });
-
-    /* hole */
-    ctx.beginPath(); ctx.arc(cx, cy, ri, 0, Math.PI * 2);
-    ctx.fillStyle = '#080808'; ctx.fill();
-
-    /* centre text */
-    const fs = Math.max(7, Math.floor(Math.min(W, H) / 11));
-    ctx.fillStyle = ACC; ctx.textAlign = 'center';
-    ctx.font      = `500 ${fs}px system-ui`;
-    ctx.fillText('12',    cx, cy - fs * 0.15);
-    ctx.font      = `${Math.max(5, fs - 2)}px system-ui`;
-    ctx.fillText('CERTS', cx, cy + fs * 0.95);
-
-    /* segment labels — two lines each, pushed well outside ring */
-    if(p > 0.78){
-      ctx.globalAlpha = Math.min(1, (p - 0.78) / 0.22);
-      const lfs    = Math.max(5, Math.floor(W / 22));
-      const labelR = R + Math.max(10, Math.floor(Math.min(W, H) * 0.14));
-      let la = -Math.PI / 2;
-
-      segs.forEach(s => {
-        const mid = la + s.pct * Math.PI * 2 * 0.5;
-        la += s.pct * Math.PI * 2;
-        const lx = cx + Math.cos(mid) * labelR;
-        const ly = cy + Math.sin(mid) * labelR;
-        ctx.fillStyle = A(.58);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'center';
-        ctx.fillText(s.l1, lx, ly - lfs * 0.35);
-        ctx.fillText(s.l2, lx, ly + lfs * 0.85);
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── CHART 4 · Consulting Domain Focus (radar) ───
-     labelR uses a fixed multiplier of the panel's min dimension
-     so labels never overlap the polygon regardless of p value. */
-  function drawNet(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const cx = W / 2;
-    const cy = H / 2;
-    const R  = Math.min(W, H) * 0.28 * p;               /* polygon scales with p */
-    const LR = Math.min(W, H) * 0.28 * 1.40;            /* label radius fixed at final size */
-
-    const domains = [
-      { l1: 'Tx Monitor',   l2: '',        val: 0.97 },
-      { l1: 'Risk',         l2: 'Score',   val: 0.92 },
-      { l1: 'Entity',       l2: 'Res.',    val: 0.88 },
-      { l1: 'Sanction',     l2: 'Screen',  val: 0.85 },
-      { l1: 'Reg',          l2: 'Report',  val: 0.80 },
-      { l1: 'Case',         l2: 'Mgmt',    val: 0.74 },
-    ];
-    const n     = domains.length;
-    const angle = i => (-Math.PI / 2) + (i / n) * Math.PI * 2;
-
-    /* grid rings */
-    [0.25, 0.5, 0.75, 1].forEach(frac => {
-      ctx.beginPath();
-      for(let i = 0; i < n; i++){
-        const a = angle(i);
-        const x = cx + Math.cos(a) * R * frac;
-        const y = cy + Math.sin(a) * R * frac;
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.closePath();
-      ctx.strokeStyle = A(.08); ctx.lineWidth = .5; ctx.stroke();
-    });
-
-    /* spokes */
-    for(let i = 0; i < n; i++){
-      const a = angle(i);
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
-      ctx.strokeStyle = A(.07); ctx.lineWidth = .5; ctx.stroke();
-    }
-
-    /* filled polygon */
-    ctx.beginPath();
-    domains.forEach((d, i) => {
-      const a = angle(i);
-      const x = cx + Math.cos(a) * R * d.val;
-      const y = cy + Math.sin(a) * R * d.val;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    });
-    ctx.closePath();
-    ctx.fillStyle   = A(.13); ctx.fill();
-    ctx.strokeStyle = ACC; ctx.lineWidth = 1.2; ctx.stroke();
-
-    /* vertex dots */
-    domains.forEach((d, i) => {
-      const a = angle(i);
-      const x = cx + Math.cos(a) * R * d.val;
-      const y = cy + Math.sin(a) * R * d.val;
-      ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = ACC; ctx.fill();
-    });
-
-    /* labels — fade in after 55%, always at full-size radius */
-    if(p > 0.55){
-      ctx.globalAlpha = Math.min(1, (p - 0.55) / 0.45);
-      const lfs = Math.max(5, Math.floor(Math.min(W, H) / 20));
-
-      domains.forEach((d, i) => {
-        const a  = angle(i);
-        const lx = cx + Math.cos(a) * LR;
-        const ly = cy + Math.sin(a) * LR;
-        ctx.fillStyle = A(.50);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'center';
-        if(d.l2){
-          ctx.fillText(d.l1, lx, ly - lfs * 0.3);
-          ctx.fillText(d.l2, lx, ly + lfs * 0.9);
-        } else {
-          ctx.fillText(d.l1, lx, ly + lfs * 0.35);
-        }
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── CHART 5 · Career Skill Depth (grouped bar, full-width) ───
-     Bars fill 52% of each role slot — prevents the oversized bars
-     seen in the screenshot. Legend strip sits in a reserved top band.
-     y-axis labels on left; role labels centred under each group. */
-  function drawCombo(ctx, W, H, p){
-    ctx.clearRect(0, 0, W, H);
-
-    const roles  = ["Sparks '21", "Malatest '21", 'Alessa Inter.', 'Alessa Spec.'];
-    const tracks = [
-      { name: 'Python/SQL', vals: [55, 30, 75, 92], col: ACC    },
-      { name: 'ML / DS',    vals: [60, 20, 65, 84], col: A(.58) },
-      { name: 'AML Domain', vals: [10, 10, 80, 96], col: A(.32) },
-      { name: 'Cloud',      vals: [40, 15, 68, 82], col: A(.15) },
-    ];
-
-    const legH = Math.max(13, Math.floor(H * 0.13));
-    const P    = { t: legH + 5, r: 6, b: 22, l: 22 };
-    const cW   = W - P.l - P.r;
-    const cH   = H - P.t - P.b;
-    const nR   = roles.length;
-    const nT   = tracks.length;
-    const slotW  = cW / nR;
-    const barW   = Math.floor(slotW * 0.52 / nT);
-    const grpOff = Math.floor((slotW - barW * nT) / 2);
-
-    gridLines(ctx, W, H, nR, 4);
-
-    /* y-axis % labels */
-    [0, 25, 50, 75, 100].forEach(v => {
-      const y = P.t + cH - (v / 100) * cH;
-      ctx.fillStyle = A(.20);
-      ctx.font      = '5px system-ui';
-      ctx.textAlign = 'right';
-      ctx.fillText(v + '%', P.l - 3, y + 2);
-    });
-
-    /* bars */
-    roles.forEach((role, ri) => {
-      tracks.forEach((tr, ti) => {
-        const x  = P.l + ri * slotW + grpOff + ti * barW;
-        const bh = Math.round((tr.vals[ri] / 100) * cH * p);
-        const y  = P.t + cH - bh;
-        ctx.fillStyle = tr.col;
-        ctx.fillRect(x, y, Math.max(1, barW - 1), bh);
-      });
-
-      /* role label */
-      const lfs = Math.max(5, Math.floor(W / 68));
-      ctx.fillStyle = A(.35);
-      ctx.font      = `${lfs}px system-ui`;
-      ctx.textAlign = 'center';
-      ctx.fillText(role, P.l + ri * slotW + slotW / 2, H - 4);
-    });
-
-    /* legend strip — top band, fades in at 40% */
-    if(p > 0.4){
-      ctx.globalAlpha = Math.min(1, (p - 0.4) / 0.3);
-      const lfs     = Math.max(6, Math.floor(H * 0.075));
-      const swatchS = lfs;
-      let lx        = P.l;
-
-      tracks.forEach(tr => {
-        ctx.fillStyle = tr.col;
-        ctx.fillRect(lx, 3, swatchS, swatchS * 0.72);
-        ctx.fillStyle = A(.42);
-        ctx.font      = `${lfs}px system-ui`;
-        ctx.textAlign = 'left';
-        ctx.fillText(tr.name, lx + swatchS + 3, 3 + swatchS * 0.68);
-        lx += swatchS + 3 + ctx.measureText(tr.name).width + 9;
-      });
-      ctx.globalAlpha = 1;
-    }
-  }
-
-  /* ─── animation runner ─── */
-  function animate(fn, delay){
-    setTimeout(() => {
-      let p = 0;
-      const tick = () => {
-        p = Math.min(1, p + 0.022);
-        fn(p);
-        if(p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, delay);
-  }
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const bar   = setupCanvas('cv-bar');
-      const line  = setupCanvas('cv-line');
-      const donut = setupCanvas('cv-donut');
-      const net   = setupCanvas('cv-net');
-      const combo = setupCanvas('cv-combo');
-      animate(p => drawBar  (bar.ctx,   bar.W,   bar.H,   p),  400);
-      animate(p => drawLine (line.ctx,  line.W,  line.H,  p),  600);
-      animate(p => drawDonut(donut.ctx, donut.W, donut.H, p),  800);
-      animate(p => drawNet  (net.ctx,   net.W,   net.H,   p), 1000);
-      animate(p => drawCombo(combo.ctx, combo.W, combo.H, p), 1200);
-    }, 100);
-  });
+  var s=document.getElementById('hero-stream');
+  var all=CARDS.concat(CARDS);
+  s.innerHTML=all.map(mk).join('');
 })();
 </script>
 
