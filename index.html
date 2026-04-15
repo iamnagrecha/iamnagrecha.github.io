@@ -380,14 +380,6 @@ function triggerFilter(el, section) {
   background:linear-gradient(90deg,transparent,#bac964 35%,#bac964 65%,transparent);
   opacity:.5;
 }
-.hero-orb{
-  position:absolute;width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(186,201,100,.055) 0%,transparent 68%);
-  pointer-events:none;z-index:1;
-  transform:translate(-50%,-50%);
-  transition:left .8s cubic-bezier(.23,1,.32,1),top .8s cubic-bezier(.23,1,.32,1);
-  left:72%;top:50%;
-}
 
 /* ── LEFT ── */
 .hero-content{
@@ -644,7 +636,6 @@ function triggerFilter(el, section) {
   }
 
   #hero-canvas{display:none;}
-  .hero-orb{display:none;}
 }
 </style>
 
@@ -652,7 +643,6 @@ function triggerFilter(el, section) {
   <canvas id="hero-canvas"></canvas>
   <div class="hero-bg-grid"></div>
   <div class="hero-top-line"></div>
-  <div class="hero-orb" id="hero-orb"></div>
 
   <!-- LEFT -->
   <div class="hero-content">
@@ -747,9 +737,6 @@ function triggerFilter(el, section) {
 <script>
 (function(){
   /* orb */
-  var orb=document.getElementById('hero-orb');
-  if(orb){document.addEventListener('mousemove',function(e){orb.style.left=e.clientX+'px';orb.style.top=e.clientY+'px';});}
-
   /* particle canvas */
   var cv=document.getElementById('hero-canvas');
   if(cv){
