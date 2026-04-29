@@ -399,25 +399,22 @@ function triggerFilter(el, section) {
   opacity:0;animation:heroFadeUp .6s .18s ease forwards;
 }
 .hero-name span{color:#bac964;}
-.hero-name-msc{
-  font-family:'DM Sans',system-ui,sans-serif;
-  font-size:clamp(.9rem,1.4vw,1.1rem);
-  font-weight:300;
-  letter-spacing:.06em;
-  color:rgba(186,201,100,.85);
-  vertical-align:middle;
-}
 
 /* Typewriter for subtitle */
 .hero-sub{
-  font-size:clamp(.85rem,1.3vw,.98rem);
-  color:rgba(186,201,100,.9);font-weight:300;letter-spacing:.08em;
+  font-size:clamp(.72rem,1.1vw,.85rem);
+  color:rgba(186,201,100,.9);font-weight:300;letter-spacing:.1em;
   margin-bottom:22px;
   white-space:nowrap;
   display:inline-block;
   position:relative;
   clip-path:inset(0 100% 0 0);
-  animation:heroSubReveal 1.2s steps(25,end) .7s forwards;
+  animation:heroSubReveal 1.6s steps(32,end) .7s forwards;
+}
+.hero-sub-dot{
+  color:rgba(186,201,100,.4);
+  margin:0 7px;
+  font-weight:300;
 }
 .hero-sub::after{
   content:'';
@@ -736,8 +733,8 @@ function triggerFilter(el, section) {
   <!-- LEFT -->
   <div class="hero-content">
     <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
-    <h1 class="hero-name">ABHISHEK NAGRECHA<span>,</span> <span class="hero-name-msc">MSc</span></h1>
-    <p class="hero-sub">Data Analytics Specialist</p>
+    <h1 class="hero-name">ABHISHEK NAGRECHA<span>,</span></h1>
+    <p class="hero-sub">MSc<span class="hero-sub-dot">·</span>Data Analytics Specialist</p>
     <div class="hdiv"></div>
 
     <div class="tags">
