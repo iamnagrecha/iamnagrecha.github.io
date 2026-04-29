@@ -399,6 +399,21 @@ function triggerFilter(el, section) {
   opacity:0;animation:heroFadeUp .6s .18s ease forwards;
 }
 .hero-name span{color:#bac964;}
+.hero-name-wrap{
+  display:flex;align-items:flex-start;gap:10px;
+  opacity:0;animation:heroFadeUp .6s .18s ease forwards;
+}
+.hero-name-wrap .hero-name{
+  opacity:1;animation:none;
+}
+.hero-msc-badge{
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:9px;font-weight:700;letter-spacing:.12em;
+  color:#060608;background:#bac964;
+  padding:4px 8px;border-radius:3px;
+  margin-top:10px;flex-shrink:0;
+  opacity:0;animation:heroFadeUp .4s .5s ease forwards;
+}
 
 /* Typewriter for subtitle */
 .hero-sub{
@@ -733,7 +748,10 @@ function triggerFilter(el, section) {
   <!-- LEFT -->
   <div class="hero-content">
     <div class="eyebrow"><div class="ey-line"></div><div class="ey-dot"></div></div>
-    <h1 class="hero-name">ABHISHEK NAGRECHA<span>,</span></h1>
+    <div class="hero-name-wrap">
+      <h1 class="hero-name">ABHISHEK NAGRECHA<span>,</span></h1>
+      <span class="hero-msc-badge">MSc</span>
+    </div>
     <p class="hero-sub">MSc<span class="hero-sub-dot">·</span>Data Analytics Specialist</p>
     <div class="hdiv"></div>
 
