@@ -738,6 +738,13 @@ function triggerFilter(el, section) {
 
   #hero-canvas{display:none;}
   .hero-name-wrap{justify-content:center;}
+  .hero-sub{
+    clip-path:none !important;
+    white-space:normal !important;
+    display:block !important;
+    animation:heroFadeUp .6s .7s ease both !important;
+  }
+  .hero-sub::after{display:none !important;}
 }
 </style>
 
