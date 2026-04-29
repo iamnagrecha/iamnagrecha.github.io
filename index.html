@@ -405,16 +405,22 @@ function triggerFilter(el, section) {
   font-size:clamp(.85rem,1.3vw,.98rem);
   color:rgba(186,201,100,.9);font-weight:300;letter-spacing:.08em;
   margin-bottom:22px;
-  overflow:hidden;white-space:nowrap;
-  display:block;
-  width:0;max-width:100%;border-right:1.5px solid rgba(186,201,100,.7);
-  animation:heroSubType 1.4s steps(32,end) .7s forwards, heroSubCaret .65s step-end .7s 4;
+  white-space:nowrap;
+  display:inline-block;
+  position:relative;
+  clip-path:inset(0 100% 0 0);
+  animation:heroSubReveal 1.4s steps(32,end) .7s forwards;
 }
-@keyframes heroSubType{from{width:0;}to{width:max-content;}}
-@supports not (width:max-content){
-  @keyframes heroSubType{from{width:0;}to{width:34ch;}}
+.hero-sub::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:1.5px;
+  background:rgba(186,201,100,.7);
+  animation:heroSubCaret .65s step-end .7s 4;
 }
-@keyframes heroSubCaret{0%,100%{border-color:transparent;}50%{border-color:rgba(186,201,100,.8);}}
+@keyframes heroSubReveal{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 0% 0 0);}}
+@keyframes heroSubCaret{0%,100%{opacity:0;}50%{opacity:1;}}
 
 .hdiv{width:44px;height:1.5px;background:#bac964;opacity:0;margin-bottom:20px;animation:heroFadeUp .4s 2.3s ease forwards;}
 
