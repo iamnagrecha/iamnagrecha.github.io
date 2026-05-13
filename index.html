@@ -1160,15 +1160,66 @@ function triggerFilter(el, section) {
       </div>
     </div>
 
-    <!-- Lead -->
-    <div class="row mb-4">
-      <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-        <p class="about-anim" data-delay="150"
-           style="font-size:clamp(1rem,2.5vw,1.15rem);line-height:1.8;margin-bottom:0;">
-          I help financial institutions
-          <strong style="color:#bac964;">detect, prevent, and report financial crime</strong>
-          &mdash; using data, automation, and deep AML expertise.
-        </p>
+    <!-- Lead: photo + text -->
+    <style>
+      .about-lead-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .about-photo-ring {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid rgba(186,201,100,0.55);
+        box-shadow: 0 0 0 6px rgba(186,201,100,0.07), 0 14px 40px rgba(0,0,0,0.5);
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .about-photo-ring img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .about-lead-text {
+        font-size: clamp(1rem, 2.5vw, 1.12rem);
+        line-height: 1.8;
+        margin: 0;
+        color: rgba(255,255,255,0.85);
+      }
+      @media (min-width: 768px) {
+        .about-lead-wrap {
+          flex-direction: row;
+          align-items: center;
+          text-align: left;
+          gap: 32px;
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .about-photo-ring {
+          width: 130px;
+          height: 130px;
+        }
+      }
+    </style>
+
+    <div class="row mb-4 justify-content-center">
+      <div class="col-12">
+        <div class="about-lead-wrap">
+          <div class="about-photo-ring about-anim" data-delay="80">
+            <img src="images/1778197942073.jpg" alt="Abhishek Nagrecha">
+          </div>
+          <p class="about-lead-text about-anim" data-delay="150">
+            I help financial institutions
+            <strong style="color:#bac964;">detect, prevent, and report financial crime</strong>
+            &mdash; using data, automation, and deep AML expertise.
+          </p>
+        </div>
       </div>
     </div>
 
