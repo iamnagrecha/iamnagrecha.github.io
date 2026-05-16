@@ -3536,73 +3536,73 @@ document.addEventListener("DOMContentLoaded", function () {
     padding: 70px 0 60px;
 }
 
-/* Override blog-card defaults for testimonial cards */
+/* Testimonial cards — identical look to .blog-card in Insights */
 #section-testimonials .testi-card.blog-card {
-    background: #1e1e1e;
-    border-color: rgba(186, 201, 100, 0.18);
-    border-radius: 16px;
-    padding: 32px 32px 28px;
+    background: #181818;
+    border: 1px solid #252525;
+    border-radius: 12px;
+    padding: 28px 28px 24px;
     position: relative;
     display: flex;
     flex-direction: column;
     cursor: default;
-    min-height: 260px;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 #section-testimonials .testi-card.blog-card:hover {
-    border-color: rgba(186, 201, 100, 0.5);
-    box-shadow: 0 8px 32px rgba(186, 201, 100, 0.1);
-    transform: translateY(-3px);
+    border-color: #bac964;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(186, 201, 100, 0.08);
 }
 
-/* Gold quote mark — prominent */
+/* Quote mark — matches Insights gold accent feel */
 #section-testimonials .testi-ql {
     display: block;
-    font-size: 56px;
+    font-size: 48px;
     line-height: 1;
     color: #bac964;
-    opacity: 0.65;
+    opacity: 0.5;
     font-family: Georgia, serif;
     user-select: none;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -1px;
 }
 
-/* Quote text — readable, warm white */
+/* Quote text — matches blog-card-desc contrast */
 #section-testimonials .testi-text {
-    font-size: 14px;
-    line-height: 1.85;
-    color: #b0b0b0;
-    margin: 0 0 24px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #888;
+    margin: 0 0 22px;
     font-style: italic;
     flex: 1;
 }
 #section-testimonials .testi-text .hl {
     color: #f0f0f0;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* Divider — visible but subtle */
+/* Divider — gold tinted like blog date accent */
 #section-testimonials .testi-divline {
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(186,201,100,0.25) 20%, rgba(186,201,100,0.25) 80%, transparent);
-    margin-bottom: 20px;
+    background: linear-gradient(to right, transparent, #252525 15%, #252525 85%, transparent);
+    margin-bottom: 18px;
 }
 
 /* Person row */
 #section-testimonials .testi-person {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
-/* Avatar — gold tinted circle */
+/* Avatar */
 #section-testimonials .testi-avatar {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: rgba(186, 201, 100, 0.14);
-    border: 1.5px solid rgba(186, 201, 100, 0.45);
+    background: rgba(186, 201, 100, 0.1);
+    border: 1.5px solid rgba(186, 201, 100, 0.35);
     color: #bac964;
     font-size: 11px;
     font-weight: 700;
@@ -3613,25 +3613,28 @@ document.addEventListener("DOMContentLoaded", function () {
     letter-spacing: 0.8px;
 }
 
+/* Name — gold to stand out */
 #section-testimonials .testi-name {
     font-size: 13px;
     font-weight: 600;
-    color: #fff;
+    color: #bac964;
     margin-bottom: 3px;
 }
+
+/* Role — matches blog-card-desc muted tone */
 #section-testimonials .testi-role {
     font-size: 11px;
-    color: #888;
+    color: #666;
     line-height: 1.4;
 }
 
 @media (max-width: 767px) {
     #section-testimonials { padding: 44px 0 40px; }
-    #section-testimonials .testi-card.blog-card { padding: 24px 22px 22px; min-height: unset; }
-    #section-testimonials .testi-ql { font-size: 44px; margin-bottom: 10px; }
-    #section-testimonials .testi-text { font-size: 13.5px; line-height: 1.8; margin-bottom: 20px; }
-    #section-testimonials .testi-person { gap: 12px; }
-    #section-testimonials .testi-avatar { width: 40px; height: 40px; font-size: 10px; }
+    #section-testimonials .testi-card.blog-card { padding: 22px 20px 20px; }
+    #section-testimonials .testi-ql { font-size: 38px; margin-bottom: 8px; }
+    #section-testimonials .testi-text { font-size: 13px; line-height: 1.75; margin-bottom: 18px; }
+    #section-testimonials .testi-person { gap: 10px; }
+    #section-testimonials .testi-avatar { width: 38px; height: 38px; font-size: 10px; }
     #section-testimonials .testi-name { font-size: 13px; }
     #section-testimonials .testi-role { font-size: 11px; }
 }
