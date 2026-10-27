@@ -2965,7 +2965,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const URL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@iamnagrecha&timestamp=" + Date.now();
+    const FEED = "https://medium.com/feed/@iamnagrecha";
+    const API_1 = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED);
+    const API_2 = "https://api.allorigins.win/raw?url=" + encodeURIComponent(FEED);
 
     function strip(html) {
         const d = document.createElement('div');
@@ -2990,9 +2992,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 ${blog.thumbnail ? `<div class="blog-card-img"><img src="${blog.thumbnail}" alt="" onerror="this.parentElement.style.display='none'"></div>` : ''}
                 <div class="blog-card-body">
                     ${date ? `<span class="blog-date">${date}</span>` : ''}
-                    <h3 class="blog-card-title"><a href="${blog.link}" target="_blank">${blog.title}</a></h3>
+                    <h3 class="blog-card-title"><a href="${blog.link}" target="_blank" rel="noopener">${blog.title}</a></h3>
                     <p class="blog-card-desc">${desc}</p>
-                    <a href="${blog.link}" target="_blank" class="blog-read-more">
+                    <a href="${blog.link}" target="_blank" rel="noopener" class="blog-read-more">
                         Read article
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
@@ -3006,12 +3008,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const track = document.getElementById(mobile ? 'blogTrackMobile' : 'blogTrackDesktop');
         if (!track) return;
 
-        // Clamp slide index
         const max = totalSlides() - 1;
         if (currentSlide > max) currentSlide = 0;
         if (currentSlide < 0) currentSlide = max;
 
-        // Build slides
         let html = '';
         if (mobile) {
             blogs.forEach(blog => { html += `<div class="blog-slide">${cardHTML(blog)}</div>`; });
@@ -3022,17 +3022,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         track.innerHTML = html;
-
-        // Slide to currentSlide
         goTo(currentSlide, false);
-
-        // Dots
         buildDots();
     }
 
     function goTo(idx, animate = true) {
-        const mobile = isMobile();
-        const track = document.getElementById(mobile ? 'blogTrackMobile' : 'blogTrackDesktop');
+        if (!blogs.length) return;
+        const track = document.getElementById(isMobile() ? 'blogTrackMobile' : 'blogTrackDesktop');
         if (!track) return;
         const max = totalSlides() - 1;
         if (idx > max) idx = 0;
@@ -3061,46 +3057,87 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Nav wiring
     document.getElementById('blogPrevDesktop').onclick = () => goTo(currentSlide - 1);
     document.getElementById('blogNextDesktop').onclick = () => goTo(currentSlide + 1);
     document.getElementById('blogPrevMobile').onclick = () => goTo(currentSlide - 1);
     document.getElementById('blogNextMobile').onclick = () => goTo(currentSlide + 1);
 
-    // Auto-play
     let timer = setInterval(() => goTo(currentSlide + 1), 5000);
-    document.getElementById('section-blog').addEventListener('mouseenter', () => clearInterval(timer));
-    document.getElementById('section-blog').addEventListener('mouseleave', () => {
+    const section = document.getElementById('section-blog');
+    section.addEventListener('mouseenter', () => clearInterval(timer));
+    section.addEventListener('mouseleave', () => {
         clearInterval(timer);
         timer = setInterval(() => goTo(currentSlide + 1), 5000);
     });
 
-    // Touch swipe
     let touchStartX = 0;
-    document.getElementById('section-blog').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-    document.getElementById('section-blog').addEventListener('touchend', e => {
+    section.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    section.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 50) goTo(currentSlide + (diff > 0 ? 1 : -1));
     });
 
-    // Resize
     let rTimer;
     window.addEventListener('resize', () => {
         clearTimeout(rTimer);
         rTimer = setTimeout(() => { currentSlide = 0; render(); }, 300);
     });
 
-    // Fetch
-    fetch(URL)
-        .then(r => r.json())
-        .then(data => {
-            blogs = data.items.slice(0, 12);
-            render();
-        })
-        .catch(err => console.error(err));
+    function showError() {
+        const msg = `<div style="color:#777;text-align:center;padding:40px 16px;font-family:'DM Sans',sans-serif;width:100%">
+            Couldn't load articles right now.
+            <a href="https://iamnagrecha.medium.com/" target="_blank" rel="noopener" style="color:#bac964">Read them on Medium &rarr;</a>
+        </div>`;
+        document.getElementById('blogTrackDesktop').innerHTML = msg;
+        document.getElementById('blogTrackMobile').innerHTML = msg;
+    }
+
+    function extractImg(html) {
+        const m = html.match(/<img[^>]+src="([^">]+)"/i);
+        return m ? m[1] : '';
+    }
+
+    function loadFromRss2Json() {
+        return fetch(API_1)
+            .then(r => r.json())
+            .then(data => {
+                if (data.status !== 'ok' || !Array.isArray(data.items) || !data.items.length) {
+                    throw new Error('rss2json failed: ' + (data.message || 'no items'));
+                }
+                return data.items.map(i => ({
+                    title: i.title, link: i.link, pubDate: i.pubDate,
+                    description: i.description || i.content || '',
+                    thumbnail: i.thumbnail || extractImg(i.content || i.description || '')
+                }));
+            });
+    }
+
+    function loadFromProxy() {
+        return fetch(API_2)
+            .then(r => r.text())
+            .then(xml => {
+                const doc = new DOMParser().parseFromString(xml, 'text/xml');
+                const items = Array.from(doc.querySelectorAll('item'));
+                if (!items.length) throw new Error('proxy returned no items');
+                return items.map(it => {
+                    const content = it.getElementsByTagName('content:encoded')[0]?.textContent || it.querySelector('description')?.textContent || '';
+                    return {
+                        title: it.querySelector('title')?.textContent || '',
+                        link: it.querySelector('link')?.textContent || '#',
+                        pubDate: it.querySelector('pubDate')?.textContent || '',
+                        description: content,
+                        thumbnail: extractImg(content)
+                    };
+                });
+            });
+    }
+
+    loadFromRss2Json()
+        .catch(err => { console.warn(err); return loadFromProxy(); })
+        .then(items => { blogs = items.slice(0, 12); render(); })
+        .catch(err => { console.error('All blog sources failed:', err); showError(); });
 });
 </script>
-
 <style>
 /* ── Fonts ── */
 #section-blog, #section-blog * {
